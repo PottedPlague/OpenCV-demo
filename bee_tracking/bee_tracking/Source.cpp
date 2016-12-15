@@ -22,7 +22,7 @@ int main()
 	Mat keyPointImage;									//for displaying video with marked keypoints
 	Mat trajectory = Mat::zeros(500, 700, CV_8UC3);		//create black empty image
 
-	double x0 = 0, y0 = 0, x1 = 0, y1 = 0;		//current coordinates and previous ones
+	double x0 = 0.0, y0 = 0.0, x1 = 0.0, y1 = 0.0, x2 = 0.0, y2 = 0.0;		//coordinates of light spots
 	int j = 0;								//line drawing counter
 	int k = 0;								//used to skip the first several loops, letting the camera ready
 	int distance = 0.0;
@@ -119,10 +119,12 @@ int main()
 				distance = sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0));
 				cout << distance << endl;
 				//line drawing and coordiantes displaying
-				if (distance >= 0 && distance < 63)
-					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 255, distance * 4), 2, 8);
+				if (distance >= 0 && distance < 52)
+					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 255, distance * 5), 2, 8);
+				else if (distance >= 52 && distance < 103)
+					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 255 - (distance - 51) * 5, 255), 2, 8);
 				else
-					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 255 - distance * 4, 255), 2, 8);
+					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 0, 255), 2, 8);
 				//cout << x0 << ", " << y0 << endl;
 				//cout << x1 << "," << y1 << endl;
 				
@@ -139,7 +141,7 @@ int main()
 		imshow("VideoCapture", keyPointImage);
 
 		//small delay before next loop   
-		waitKey(10);
+		waitKey(5);
 	}
 	return 0;
 }
