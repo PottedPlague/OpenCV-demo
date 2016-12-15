@@ -156,10 +156,10 @@ int main()
 				distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
 				distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
 				delta_dis = abs(distance_10 - distance_21);
-				if (delta_dis >= 0 && delta_dis < 52)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, delta_dis * 5), 2, 8);
-				else if (delta_dis >= 52 && delta_dis < 103)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255 - (delta_dis - 51) * 5, 255), 2, 8);
+				if (delta_dis >= 0 && delta_dis < 86)
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, delta_dis * 3), 2, 8);
+				else if (delta_dis >= 86 && delta_dis < 171)
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255 - (delta_dis - 85) * 3, 255), 2, 8);
 				else
 					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 2, 8);
 				cout << "Dis_1: " << left << setw(10) << distance_10 << "Dis_2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
