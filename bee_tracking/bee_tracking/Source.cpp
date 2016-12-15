@@ -1,4 +1,11 @@
+/*
+Light spot tracking programme 
+******************************
+Author: Cong Sun
+Date: 15/12/2016
 
+Version: low_frame_rate
+*/
 
 #include <opencv2\opencv.hpp>   
 #include <math.h>
