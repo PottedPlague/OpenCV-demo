@@ -1,6 +1,7 @@
 
 
 #include <opencv2\opencv.hpp>   
+#include <math.h>
 
 using namespace cv;
 using namespace std;
@@ -21,9 +22,10 @@ int main()
 	Mat keyPointImage;									//for displaying video with marked keypoints
 	Mat trajectory = Mat::zeros(500, 700, CV_8UC3);		//create black empty image
 
-	int x0 = 0, y0 = 0, x1 = 0, y1 = 0;		//current coordinates and previous ones
+	double x0 = 0, y0 = 0, x1 = 0, y1 = 0;		//current coordinates and previous ones
 	int j = 0;								//line drawing counter
 	int k = 0;								//used to skip the first several loops, letting the camera ready
+	int distance = 0.0;
 
 	//![SBD]  
 	//set detector parameters  
@@ -90,8 +92,10 @@ int main()
 		//mark the key points with red circles  
 		drawKeypoints(frame, detectKeyPoint, keyPointImage, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
-		//check if there are keypoints in the frame
-		if (detectKeyPoint.size() > 0)
+	
+
+		//![trajactory drawing] & [coordinates displaying]
+		if (detectKeyPoint.size() > 0)		//check if there are keypoints in the frame
 		{
 			//skip the first two points to avoid connection with the origin
 			if (j < 2)
@@ -102,9 +106,9 @@ int main()
 				x1 = x0;
 				y1 = y0;
 
-				//do nothing
-				cout << x0 << ", " << y0 << endl;
-				cout << x1 << ", " << y1 << endl;
+				//do nothing but display coordinates
+				//cout << x0 << ", " << y0 << endl;
+				//cout << x1 << ", " << y1 << endl;
 			}
 			else
 			{
@@ -112,11 +116,16 @@ int main()
 				x0 = detectKeyPoint[0].pt.x;
 				y0 = detectKeyPoint[0].pt.y;
 
-				//line drawing
-				line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(255, 255, 255), 2, 8);
-				cout << x0 << ", " << y0 << endl;
-				cout << x1 << "," << y1 << endl;
-
+				distance = sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0));
+				cout << distance << endl;
+				//line drawing and coordiantes displaying
+				if (distance >= 0 && distance < 63)
+					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 255, distance * 4), 2, 8);
+				else
+					line(trajectory, Point(x1, y1), Point(x0, y0), Scalar(0, 255 - distance * 4, 255), 2, 8);
+				//cout << x0 << ", " << y0 << endl;
+				//cout << x1 << "," << y1 << endl;
+				
 				//pass current point to x1 and y1, acting as the 'previous' point in the next loop
 				x1 = x0;
 				y1 = y0;
@@ -130,7 +139,7 @@ int main()
 		imshow("VideoCapture", keyPointImage);
 
 		//small delay before next loop   
-		waitKey(30);
+		waitKey(10);
 	}
 	return 0;
 }
