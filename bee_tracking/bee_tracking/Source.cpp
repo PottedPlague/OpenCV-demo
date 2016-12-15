@@ -15,7 +15,6 @@ Version: low_frame_rate
 using namespace cv;
 using namespace std;
 
-
 int main()
 {
 	//open the default camera   
@@ -87,7 +86,6 @@ int main()
 		{
 			frame.copyTo(gray);
 		}
-
 		//skip the first several frames
 		if (k < 10)
 		{
@@ -180,7 +178,6 @@ int main()
 			}
 			j++;
 		}
-
 		//display videos   
 		imshow("Original", gray);
 		imshow("Trajactory", trajectory);
