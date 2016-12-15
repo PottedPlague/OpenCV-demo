@@ -35,7 +35,7 @@ int main()
 	int j = 0;											//line drawing counter
 	int k = 0;											//used to skip the first several loops, letting the camera ready
 	int distance = 0.0;									//distance between the current point and the previous one
-	int distance_10 = 0.0, distance_21 = 0.0;		//distances between adjacent three points
+	int distance_10 = 0.0, distance_21 = 0.0;			//distances between adjacent three points
 	int delta_dis = 0.0;
 
 	//![SBD]  
@@ -93,7 +93,6 @@ int main()
 		{
 			continue;
 		}
-
 		//setting threshold to create binary image, using THRESH_BINARY_INVERTED   
 		threshold(gray, gray, 252, 255, 1);
 
@@ -102,8 +101,6 @@ int main()
 
 		//mark the key points with red circles  
 		drawKeypoints(frame, detectKeyPoint, keyPointImage, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
-
-	
 
 		//![trajactory drawing] & [coordinates displaying]
 		if (detectKeyPoint.size() > 0)		//check if there are keypoints in the frame
@@ -126,13 +123,15 @@ int main()
 			else
 			{
 				/*
-				//![option 1: distance]
+				//![option I: distance]
 				//read current keypoint coordinates
 				coor[0][0] = detectKeyPoint[0].pt.x;
 				coor[0][1] = detectKeyPoint[0].pt.y;
 
+				//calculate the distance between to adjacent points
 				distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
 				cout << "Distance: " << distance << endl;
+
 				//line drawing and coordiantes displaying
 				if (distance >= 0 && distance < 52)
 					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, distance * 5), 2, 8);
@@ -146,28 +145,38 @@ int main()
 				//pass current point to x1 and y1, acting as the 'previous' point in the next loop
 				coor[1][0] = coor[0][0];
 				coor[1][1] = coor[0][1];
-				//![option 1 end]
+				//![option I end]
 				*/				
 
-				//![option 2: acceleration]
+				//![option II: acceleration]
 				//read current keypoint coordinates
 				coor[0][0] = detectKeyPoint[0].pt.x;
 				coor[0][1] = detectKeyPoint[0].pt.y;
+
+				//calculate distances between each two adjacent points
 				distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
 				distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
+
+				//difference in distance, with fixed time interval, this can be treated as acceleration as well
 				delta_dis = abs(distance_10 - distance_21);
+
+				//line drawing
 				if (delta_dis >= 0 && delta_dis < 86)
 					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, delta_dis * 3), 2, 8);
 				else if (delta_dis >= 86 && delta_dis < 171)
 					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255 - (delta_dis - 85) * 3, 255), 2, 8);
 				else
 					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 2, 8);
+
+				//print the two distances and acceleration
 				cout << "Dis_1: " << left << setw(10) << distance_10 << "Dis_2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
+
+				//transmitting values
 				coor[2][0] = coor[1][0];
 				coor[2][1] = coor[1][1];
 				coor[1][0] = coor[0][0];
 				coor[1][1] = coor[0][1];
-				//![option 2 end]
+				//![option II end]
 			}
 			j++;
 		}
