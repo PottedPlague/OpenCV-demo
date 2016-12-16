@@ -11,6 +11,8 @@ Version: low_frame_rate
 #include <math.h>
 #include <iostream>
 #include <iomanip>
+#include <time.h>
+#include <Windows.h>
 
 using namespace cv;
 using namespace std;
@@ -28,14 +30,14 @@ int main()
 	vector<KeyPoint> detectKeyPoint;					//vector to store the keypoints
 
 	Mat keyPointImage;									//for displaying video with marked keypoints
-	Mat trajectory = Mat::zeros(500, 700, CV_8UC3);		//create black empty image
+	Mat trajectory = Mat::zeros(480, 640, CV_8UC3);		//create black empty image
 
 	double coor[3][2];									//coordinates of light spots
 	int j = 0;											//line drawing counter
 	int k = 0;											//used to skip the first several loops, letting the camera ready
-	int distance = 0.0;									//distance between the current point and the previous one
-	int distance_10 = 0.0, distance_21 = 0.0;			//distances between adjacent three points
-	int delta_dis = 0.0;
+	double distance = 0.0;									//distance between the current point and the previous one
+	double distance_10 = 0.0, distance_21 = 0.0;			//distances between adjacent three points
+	double delta_dis = 0.0;
 
 	//![SBD]  
 	//set detector parameters  
@@ -61,16 +63,27 @@ int main()
 	//instantiate a SBD pointer  
 	Ptr<SimpleBlobDetector> sbd = SimpleBlobDetector::create(params);
 
+	//set the display console position
+	HWND consoleWindow = GetConsoleWindow();
+	SetWindowPos(consoleWindow, 0, 880, 550, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+
 	//create two windows showing..   
 	namedWindow("Original");				//the original video captured   
-	moveWindow("Original", 150, 300);		//setting window position
+	moveWindow("Original", 150, 10);		//setting window position
 
 	namedWindow("VideoCapture");			//the video after setting threshold   
-	moveWindow("VideoCapture", 830, 300);	//setting window position
+	moveWindow("VideoCapture", 805, 10);	//setting window position
+
+	namedWindow("Trajactory", WINDOW_NORMAL);
+	moveWindow("Trajactory", 150, 520);
+
+
 
 	//![Main loop]
 	for (;;)
 	{
+		//clock_t startTime = clock();
+		
 		k++;
 		Mat frame, gray;
 
@@ -91,6 +104,10 @@ int main()
 		{
 			continue;
 		}
+
+		//cout << "Width : " << frame.cols << endl;
+		//cout << "Height: " << frame.rows << endl;
+
 		//setting threshold to create binary image, using THRESH_BINARY_INVERTED   
 		threshold(gray, gray, 252, 255, 1);
 
@@ -120,8 +137,8 @@ int main()
 			}
 			else
 			{
-				/*
-				//![option I: distance]
+				
+				//![option I: velocity]
 				//read current keypoint coordinates
 				coor[0][0] = detectKeyPoint[0].pt.x;
 				coor[0][1] = detectKeyPoint[0].pt.y;
@@ -130,22 +147,31 @@ int main()
 				distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
 				cout << "Distance: " << distance << endl;
 
-				//line drawing and coordiantes displaying
-				if (distance >= 0 && distance < 52)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, distance * 5), 2, 8);
-				else if (distance >= 52 && distance < 103)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255 - (distance - 51) * 5, 255), 2, 8);
+				//[1]:line drawing and coordiantes displaying
+				
+				if (distance >= 0.0 && distance <= 25.5)
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (distance * 10)), 1, 8);
+				else if (distance > 25.5 && distance <= 51.0)
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (distance - 25.5) * 10), 255), 1, 8);
 				else
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 2, 8);
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 1, 8);
+				
+				//[2]: dots drawing
+				//circle(trajectory, Point(coor[0][0], coor[0][1]), 0.5, Scalar(255, 255, 255), -1);
+
+
+
 				//cout << coor[0][0] << ", " << coor[0][1] << endl;
 				//cout << coor[1][0] << "," << coor[1][1] << endl;
+				cout << "Distance: " << left << setw(10) << distance << endl;
 				
 				//pass current point to x1 and y1, acting as the 'previous' point in the next loop
 				coor[1][0] = coor[0][0];
 				coor[1][1] = coor[0][1];
 				//![option I end]
-				*/				
+								
 
+				/*
 				//![option II: acceleration]
 				//read current keypoint coordinates
 				coor[0][0] = detectKeyPoint[0].pt.x;
@@ -159,10 +185,10 @@ int main()
 				delta_dis = abs(distance_10 - distance_21);
 
 				//line drawing
-				if (delta_dis >= 0 && delta_dis < 86)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, delta_dis * 3), 2, 8);
-				else if (delta_dis >= 86 && delta_dis < 171)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255 - (delta_dis - 85) * 3, 255), 2, 8);
+				if (delta_dis >= 0.0 && delta_dis <= 25.5)
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (delta_dis * 10)), 2, 8);
+				else if (delta_dis > 25.5 && delta_dis <= 51.0)
+					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (delta_dis - 25.5) * 10), 255), 2, 8);
 				else
 					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 2, 8);
 
@@ -175,6 +201,7 @@ int main()
 				coor[1][0] = coor[0][0];
 				coor[1][1] = coor[0][1];
 				//![option II end]
+				*/
 			}
 			j++;
 		}
@@ -184,7 +211,9 @@ int main()
 		imshow("VideoCapture", keyPointImage);
 
 		//small delay before next loop   
-		waitKey(20);
+		waitKey(5);
+
+		//cout << double(clock() - startTime) / (double)CLOCKS_PER_SEC << " seconds." << endl;
 	}
 	return 0;
 }
