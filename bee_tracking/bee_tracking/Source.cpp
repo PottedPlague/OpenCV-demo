@@ -138,6 +138,7 @@ int main()
 			else
 			{
 				
+				/**************************************************************************************/
 				//![option I: velocity]
 				//read current keypoint coordinates
 				coor[0][0] = detectKeyPoint[0].pt.x;
@@ -170,7 +171,7 @@ int main()
 				coor[1][1] = coor[0][1];
 				//![option I end]
 								
-
+				/**************************************************************************************/
 				/*
 				//![option II: acceleration]
 				//read current keypoint coordinates
