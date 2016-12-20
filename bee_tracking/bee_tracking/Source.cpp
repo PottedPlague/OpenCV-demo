@@ -13,6 +13,7 @@ Version: low_frame_rate
 #include <iomanip>
 #include <time.h>
 #include <Windows.h>
+#include <fstream>
 
 using namespace cv;
 using namespace std;
@@ -31,6 +32,11 @@ int main()
 
 	Mat keyPointImage;									//for displaying video with marked keypoints
 	Mat trajectory = Mat::zeros(480, 640, CV_8UC3);		//create black empty image
+
+	/*ofstream out_file;
+	out_file.open("D:\\pic\\coordiantes.txt");
+	double coordinates[50][2];
+	int count = 0;*/
 
 	double coor[3][2];									//coordinates of light spots
 	int j = 0;											//line drawing counter
@@ -74,7 +80,7 @@ int main()
 	namedWindow("VideoCapture");			//the video after setting threshold   
 	moveWindow("VideoCapture", 805, 10);	//setting window position
 
-	namedWindow("Trajactory", WINDOW_NORMAL);
+	namedWindow("Trajactory");
 	moveWindow("Trajactory", 150, 520);
 
 
@@ -144,9 +150,22 @@ int main()
 				coor[0][0] = detectKeyPoint[0].pt.x;
 				coor[0][1] = detectKeyPoint[0].pt.y;
 
+
+
+
+				/*if (count <= 50)
+				{
+					coordinates[count][0] = coor[0][0];
+					coordinates[count][1] = coor[0][1];
+					out_file << coordinates[count][0] << ", " << coordinates[count][1] << endl;
+				}
+				count++;*/
+
+
+
+
 				//calculate the distance between to adjacent points
 				distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
-				cout << "Distance: " << distance << endl;
 
 				//[1]:line drawing and coordiantes displaying
 				
@@ -162,9 +181,9 @@ int main()
 
 
 
-				//cout << coor[0][0] << ", " << coor[0][1] << endl;
+				cout << coor[0][0] << ", " << coor[0][1] << endl;
 				//cout << coor[1][0] << "," << coor[1][1] << endl;
-				cout << "Distance: " << left << setw(10) << distance << endl;
+				//cout << "Distance: " << left << setw(10) << distance << endl;
 				
 				//pass current point to x1 and y1, acting as the 'previous' point in the next loop
 				coor[1][0] = coor[0][0];
@@ -216,5 +235,7 @@ int main()
 
 		//cout << double(clock() - startTime) / (double)CLOCKS_PER_SEC << " seconds." << endl;
 	}
+	//out_file << endl;
+	//out_file.close();
 	return 0;
 }
