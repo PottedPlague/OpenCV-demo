@@ -14,6 +14,9 @@ Version: low_frame_rate
 #include <time.h>
 #include <Windows.h>
 #include <fstream>
+#include <iterator>
+#include <vector>
+
 
 using namespace cv;
 using namespace std;
@@ -28,21 +31,19 @@ int main()
 		return -1;
 	}
 
+	vector<double> coordinate_x;						//record horizontal coordinate
+	vector<double> coordinate_y;						//record vertical coordinate
+
 	vector<KeyPoint> detectKeyPoint;					//vector to store the keypoints
 
 	Mat keyPointImage;									//for displaying video with marked keypoints
 	Mat trajectory = Mat::zeros(480, 640, CV_8UC3);		//create black empty image
 
-	/*ofstream out_file;
-	out_file.open("D:\\pic\\coordiantes.txt");
-	double coordinates[50][2];
-	int count = 0;*/
-
 	double coor[3][2];									//coordinates of light spots
 	int j = 0;											//line drawing counter
 	int k = 0;											//used to skip the first several loops, letting the camera ready
-	double distance = 0.0;									//distance between the current point and the previous one
-	double distance_10 = 0.0, distance_21 = 0.0;			//distances between adjacent three points
+	double distance = 0.0;								//distance between the current point and the previous one
+	double distance_10 = 0.0, distance_21 = 0.0;		//distances between adjacent three points
 	double delta_dis = 0.0;
 
 	//![SBD]  
@@ -80,8 +81,8 @@ int main()
 	namedWindow("VideoCapture");			//the video after setting threshold   
 	moveWindow("VideoCapture", 805, 10);	//setting window position
 
-	namedWindow("Trajactory");
-	moveWindow("Trajactory", 150, 520);
+	namedWindow("Trajactory");				//the trajactory of the moving light spot
+	moveWindow("Trajactory", 150, 520);		//setting window position
 
 
 
@@ -150,19 +151,8 @@ int main()
 				coor[0][0] = detectKeyPoint[0].pt.x;
 				coor[0][1] = detectKeyPoint[0].pt.y;
 
-
-
-
-				/*if (count <= 50)
-				{
-					coordinates[count][0] = coor[0][0];
-					coordinates[count][1] = coor[0][1];
-					out_file << coordinates[count][0] << ", " << coordinates[count][1] << endl;
-				}
-				count++;*/
-
-
-
+				coordinate_x.push_back(coor[0][0]);
+				coordinate_y.push_back(coor[0][1]);
 
 				//calculate the distance between to adjacent points
 				distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
@@ -224,6 +214,18 @@ int main()
 				*/
 			}
 			j++;
+
+			//save vectors that store coordinates to text files
+			if (j >= 100)
+			{
+				ofstream output_file1("D:\\pic\\coordinate_x.txt");
+				ostream_iterator<double> output_iterator_x(output_file1, "\n");
+				copy(coordinate_x.begin(), coordinate_x.end(), output_iterator_x);
+
+				ofstream output_file2("D:\\pic\\coordinate_y.txt");
+				ostream_iterator<double> output_iterator_y(output_file2, "\n");
+				copy(coordinate_y.begin(), coordinate_y.end(), output_iterator_y);
+			}
 		}
 		//display videos   
 		imshow("Original", gray);
@@ -235,7 +237,14 @@ int main()
 
 		//cout << double(clock() - startTime) / (double)CLOCKS_PER_SEC << " seconds." << endl;
 	}
-	//out_file << endl;
-	//out_file.close();
+
+	/*ofstream output_file1("D:\\pic\\coordinate_x.txt");
+	ostream_iterator<double> output_iterator_x(output_file1, "\n");
+	copy(coordinate_x.begin(), coordinate_x.end(), output_iterator_x);
+
+	ofstream output_file2("D:\\pic\\coordinate_y.txt");
+	ostream_iterator<double> output_iterator_y(output_file2, "\n");
+	copy(coordinate_y.begin(), coordinate_y.end(), output_iterator_y);*/
+
 	return 0;
 }
