@@ -2,9 +2,9 @@
 Light spot tracking programme 
 ******************************
 Author: Cong Sun
-Date: 15/12/2016
+Date: 22/12/2016
 
-Version: low_frame_rate
+Version: 3d tracking &  coordinates saved in files
 */
 
 #include <opencv2\opencv.hpp>   
