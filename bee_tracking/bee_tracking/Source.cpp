@@ -21,6 +21,21 @@ Version: 3d tracking &  coordinates saved in files
 using namespace cv;
 using namespace std;
 
+const int BIIMAGE_SENSITIVITY = 252;
+const int THRESHOLD_TYPE = 1;				//1:
+
+const int METHOD_INDICATOR = 1;				//1: by distance; 2: by acceleration
+const int LINE_THICKNESS = 1;
+const double VELOCITY_SENSITIVITY = 25.5;
+
+string doubleToString(double number){
+
+	//this function has a number input and string output
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
+}
+
 int main()
 {
 	//open the default camera   
@@ -31,19 +46,25 @@ int main()
 		return -1;
 	}
 
-	vector<double> coordinate_x;						//record horizontal coordinate
-	vector<double> coordinate_y;						//record vertical coordinate
+	vector<double> coordinate_x;							//record horizontal coordinate
+	vector<double> coordinate_y;							//record vertical coordinate
 
-	vector<KeyPoint> detectKeyPoint;					//vector to store the keypoints
+	vector<KeyPoint> detectKeyPoint;						//vector to store the keypoints
 
-	Mat keyPointImage;									//for displaying video with marked keypoints
-	Mat trajectory = Mat::zeros(480, 640, CV_8UC3);		//create black empty image
+	Mat keyPointImage;										//for displaying video with marked keypoints
+	Mat trajectory_line = Mat::zeros(480, 640, CV_8UC3);	//create black empty image for displaying line-type trajactory
+	Mat trajectory_dot = Mat::zeros(480, 640, CV_8UC3);		//create black empty image for displaying dot-type trajactory
 
-	double coor[3][2];									//coordinates of light spots
-	int j = 0;											//line drawing counter
-	int k = 0;											//used to skip the first several loops, letting the camera ready
-	double distance = 0.0;								//distance between the current point and the previous one
-	double distance_10 = 0.0, distance_21 = 0.0;		//distances between adjacent three points
+	bool BinaryImage = false;								//can be toggled by pressing 'b'
+	bool pause = false;										//can be toggled by pressing 'p'
+	bool lineMode = false;									//can be toggled by pressing 'l'
+	bool dotMode = false;									//can be toggled by pressing 'd'
+
+	double coor[3][2];										//coordinates of light spots
+	int j = 0;												//line drawing counter
+	int k = 0;												//used to skip the first several loops, letting the camera ready
+	double distance = 0.0;									//distance between the current point and the previous one
+	double distance_10 = 0.0, distance_21 = 0.0;			//distances between adjacent three points
 	double delta_dis = 0.0;
 
 	//![SBD]  
@@ -74,15 +95,8 @@ int main()
 	HWND consoleWindow = GetConsoleWindow();
 	SetWindowPos(consoleWindow, 0, 880, 550, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 
-	//create two windows showing..   
-	namedWindow("Original");				//the original video captured   
-	moveWindow("Original", 150, 10);		//setting window position
-
-	namedWindow("VideoCapture");			//the video after setting threshold   
+	namedWindow("VideoCapture");			//create a window displaying the camera feed   
 	moveWindow("VideoCapture", 805, 10);	//setting window position
-
-	namedWindow("Trajactory");				//the trajactory of the moving light spot
-	moveWindow("Trajactory", 150, 520);		//setting window position
 
 
 
@@ -116,7 +130,7 @@ int main()
 		//cout << "Height: " << frame.rows << endl;
 
 		//setting threshold to create binary image, using THRESH_BINARY_INVERTED   
-		threshold(gray, gray, 252, 255, 1);
+		threshold(gray, gray, BIIMAGE_SENSITIVITY, 255, THRESHOLD_TYPE);
 
 		//detect lightspots in the frame and store them in detectKeyPoint  
 		sbd->detect(gray, detectKeyPoint);
@@ -144,78 +158,86 @@ int main()
 			}
 			else
 			{
-				
-				/**************************************************************************************/
-				//![option I: velocity]
-				//read current keypoint coordinates
-				coor[0][0] = detectKeyPoint[0].pt.x;
-				coor[0][1] = detectKeyPoint[0].pt.y;
+				switch (METHOD_INDICATOR)
+				{
+				case 1:
+					//![option I: velocity]
+					//read current keypoint coordinates
+					coor[0][0] = detectKeyPoint[0].pt.x;
+					coor[0][1] = detectKeyPoint[0].pt.y;
 
-				coordinate_x.push_back(coor[0][0]);
-				coordinate_y.push_back(coor[0][1]);
+					coordinate_x.push_back(coor[0][0]);
+					coordinate_y.push_back(coor[0][1]);
 
-				//calculate the distance between to adjacent points
-				distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
+					//calculate the distance between to adjacent points
+					distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
+					
+					
+					//line drawing
+					if (distance >= 0.0 && distance <= VELOCITY_SENSITIVITY)
+						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (distance * 10)), LINE_THICKNESS, 8);
+					else if (distance > VELOCITY_SENSITIVITY && distance <= 2 * VELOCITY_SENSITIVITY)
+						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (distance - VELOCITY_SENSITIVITY) * 10), 255), LINE_THICKNESS, 8);
+					else
+						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), LINE_THICKNESS, 8);
+						
+					//dots drawing
+					circle(trajectory_dot, Point(coor[0][0], coor[0][1]), 0.5, Scalar(255, 255, 255), -1);					
+					
+					//print the coordinates of current lightspot
+					putText(keyPointImage, "Tracking object at (" + doubleToString(coor[0][0]) + "," + doubleToString(coor[0][1]) + ")", Point(10, 20), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
 
-				//[1]:line drawing and coordiantes displaying
-				
-				if (distance >= 0.0 && distance <= 25.5)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (distance * 10)), 1, 8);
-				else if (distance > 25.5 && distance <= 51.0)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (distance - 25.5) * 10), 255), 1, 8);
-				else
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 1, 8);
-				
-				//[2]: dots drawing
-				//circle(trajectory, Point(coor[0][0], coor[0][1]), 0.5, Scalar(255, 255, 255), -1);
+					//print the distance between two adjacent spots
+					//cout << "Distance: " << left << setw(10) << distance << endl;
 
+					//pass current point to x1 and y1, acting as the 'previous' point in the next loop
+					coor[1][0] = coor[0][0];
+					coor[1][1] = coor[0][1];
 
+					break;
 
-				cout << coor[0][0] << ", " << coor[0][1] << endl;
-				//cout << coor[1][0] << "," << coor[1][1] << endl;
-				//cout << "Distance: " << left << setw(10) << distance << endl;
-				
-				//pass current point to x1 and y1, acting as the 'previous' point in the next loop
-				coor[1][0] = coor[0][0];
-				coor[1][1] = coor[0][1];
-				//![option I end]
-								
-				/**************************************************************************************/
-				/*
-				//![option II: acceleration]
-				//read current keypoint coordinates
-				coor[0][0] = detectKeyPoint[0].pt.x;
-				coor[0][1] = detectKeyPoint[0].pt.y;
+				case 2:
+					//![option II: acceleration]
+					//read current keypoint coordinates
+					coor[0][0] = detectKeyPoint[0].pt.x;
+					coor[0][1] = detectKeyPoint[0].pt.y;
 
-				//calculate distances between each two adjacent points
-				distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
-				distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
+					//calculate distances between each two adjacent points
+					distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
+					distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
 
-				//difference in distance, with fixed time interval, this can be treated as acceleration as well
-				delta_dis = abs(distance_10 - distance_21);
+					//difference in distance, with fixed time interval, this can be treated as acceleration as well
+					delta_dis = abs(distance_10 - distance_21);
 
-				//line drawing
-				if (delta_dis >= 0.0 && delta_dis <= 25.5)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (delta_dis * 10)), 2, 8);
-				else if (delta_dis > 25.5 && delta_dis <= 51.0)
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (delta_dis - 25.5) * 10), 255), 2, 8);
-				else
-					line(trajectory, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), 2, 8);
+					//line drawing
+					if (delta_dis >= 0.0 && delta_dis <= VELOCITY_SENSITIVITY)
+						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (delta_dis * 10)), LINE_THICKNESS, 8);
+					else if (delta_dis > VELOCITY_SENSITIVITY && delta_dis <= 2 * VELOCITY_SENSITIVITY)
+						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (delta_dis - VELOCITY_SENSITIVITY) * 10), 255), LINE_THICKNESS, 8);
+					else
+						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), LINE_THICKNESS, 8);
 
-				//print the two distances and acceleration
-				cout << "Dis_1: " << left << setw(10) << distance_10 << "Dis_2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
+					//dots drawing
+					circle(trajectory_dot, Point(coor[0][0], coor[0][1]), 0.5, Scalar(255, 255, 255), -1);
 
-				//transmitting values
-				coor[2][0] = coor[1][0];
-				coor[2][1] = coor[1][1];
-				coor[1][0] = coor[0][0];
-				coor[1][1] = coor[0][1];
-				//![option II end]
-				*/
+					//print the coordinates of current lightspot
+					cout << coor[0][0] << ", " << coor[0][1] << endl;
+
+					//print the two distances and acceleration
+					//cout << "Dis1: " << left << setw(10) << distance_10 << "Dis2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
+
+					//transmitting values
+					coor[2][0] = coor[1][0];
+					coor[2][1] = coor[1][1];
+					coor[1][0] = coor[0][0];
+					coor[1][1] = coor[0][1];
+
+					break;
+				}				
 			}
 			j++;
 
-			//save vectors that store coordinates to text files
+			//save coordinates to text files
 			if (j >= 100)
 			{
 				ofstream output_file1("D:\\pic\\coordinate_x.txt");
@@ -227,24 +249,91 @@ int main()
 				copy(coordinate_y.begin(), coordinate_y.end(), output_iterator_y);
 			}
 		}
-		//display videos   
-		imshow("Original", gray);
-		imshow("Trajactory", trajectory);
+
+		if (BinaryImage == true)
+		{
+			namedWindow("Binary Image");				//create a window displaying the binary image   
+			moveWindow("Binary Image", 150, 10);		//setting window position
+			imshow("Binary Image", gray);
+		}
+		else
+			destroyWindow("Binary Image");
+
+		if (lineMode == true)
+		{
+			namedWindow("Line Trajactory");				//create a window displaying the line-type trajactory of the moving light spot
+			moveWindow("Line Trajactory", 150, 520);	//setting window position
+			imshow("Line Trajactory", trajectory_line);
+		}
+		else
+			destroyWindow("Line Trajactory");
+
+		if (dotMode == true)
+		{
+			namedWindow("Dot Trajactory");				//create a window displaying the dot-type trajactory of the moving light spot
+			moveWindow("Dot Trajactory", 150, 520);	//setting window position
+			imshow("Dot Trajactory", trajectory_dot);
+		}
+		else
+			destroyWindow("Dot Trajactory");
+		
 		imshow("VideoCapture", keyPointImage);
 
-		//small delay before next loop   
-		waitKey(5);
+		//check to see if a button has been pressed.
+		//this 10ms delay is necessary for proper operation of this program
+		//if removed, frames will not have enough time to referesh and a blank 
+		//image will appear.
+		switch (waitKey(10))
+		{
+
+		case 27: //'esc' key has been pressed, exit program.
+			return 0;
+
+		case 98: //'b' has been pressed and this will open binary image window
+			BinaryImage = !BinaryImage;
+			if (BinaryImage == false) 
+				cout << "Binary image window closed." << endl;
+			else 
+				cout << "Binary image window opened." << endl;
+			break;
+
+		case 100: //'d' has been pressed and this will open dot-type trajactory plotting window
+			dotMode = !dotMode;
+			if (dotMode == false)
+				cout << "Dot-type trajactory window closed." << endl;
+			else
+				cout << "Dot-type trajactory window opened." << endl;
+			break;
+
+		case 108: //'l' has been pressed and this will open line-type trajactory plotting window
+			lineMode = !lineMode;
+			if (lineMode == false)
+				cout << "Line-type trajactory window closed." << endl;
+			else
+				cout << "Line-type trajactory window opened." << endl;
+			break;
+
+		case 112: //'p' has been pressed. this will pause/resume the code.
+			pause = !pause;
+			if (pause == true)
+			{
+				cout << "Code paused, press 'p' again to resume" << endl;
+				while (pause == true)
+				{
+					//stay in this loop until 
+					switch (waitKey())
+					{
+					case 112:
+						//change pause back to false
+						pause = false;
+						cout << "Code resumed." << endl;
+						break;
+					}
+				}
+			}
+		}
 
 		//cout << double(clock() - startTime) / (double)CLOCKS_PER_SEC << " seconds." << endl;
 	}
-
-	/*ofstream output_file1("D:\\pic\\coordinate_x.txt");
-	ostream_iterator<double> output_iterator_x(output_file1, "\n");
-	copy(coordinate_x.begin(), coordinate_x.end(), output_iterator_x);
-
-	ofstream output_file2("D:\\pic\\coordinate_y.txt");
-	ostream_iterator<double> output_iterator_y(output_file2, "\n");
-	copy(coordinate_y.begin(), coordinate_y.end(), output_iterator_y);*/
-
 	return 0;
 }
