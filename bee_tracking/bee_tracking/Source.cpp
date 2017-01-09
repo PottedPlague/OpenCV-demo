@@ -171,6 +171,13 @@ int main()
 
 					//calculate the distance between to adjacent points
 					distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
+
+					//calculate distances between each two adjacent points
+					distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
+					distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
+
+					//difference in distance, with fixed time interval, this can be treated as acceleration as well
+					delta_dis = abs(distance_10 - distance_21);
 					
 					
 					//line drawing
@@ -186,9 +193,12 @@ int main()
 					
 					//print the coordinates of current lightspot
 					putText(keyPointImage, "Tracking object at (" + doubleToString(coor[0][0]) + "," + doubleToString(coor[0][1]) + ")", Point(10, 20), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
-
+					
 					//print the distance between two adjacent spots
-					//cout << "Distance: " << left << setw(10) << distance << endl;
+					putText(keyPointImage, "Object velocity is:" + doubleToString(distance), Point(10, 40), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
+
+					//print the two distances and acceleration
+					putText(keyPointImage, "Object acceleration is:" + doubleToString(delta_dis), Point(10, 60), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
 
 					//pass current point to x1 and y1, acting as the 'previous' point in the next loop
 					coor[1][0] = coor[0][0];
@@ -201,6 +211,9 @@ int main()
 					//read current keypoint coordinates
 					coor[0][0] = detectKeyPoint[0].pt.x;
 					coor[0][1] = detectKeyPoint[0].pt.y;
+
+					coordinate_x.push_back(coor[0][0]);
+					coordinate_y.push_back(coor[0][1]);
 
 					//calculate distances between each two adjacent points
 					distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
