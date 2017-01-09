@@ -64,10 +64,13 @@ void RenderScene()
 	{
 		glColor3f(0.0f, 1.0f, 0.0f);
 		glPointSize(3);
-		glBegin(GL_POINTS);
+		glBegin(GL_LINES);
 		{
-			for (int i = 0; i < coor_x.size(); i++)
+			for (int i = 1; i < coor_x.size(); i++)
+			{
 				glVertex3f(coor_x[i], coor_y[i], -100.0f + 2.0f * i);
+				glVertex3f(coor_x[i - 1], coor_y[i - 1], -100.0f + 2.0f * (i - 1));
+			}
 		}
 		glEnd();
 	}
