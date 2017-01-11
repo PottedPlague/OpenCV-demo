@@ -16,13 +16,15 @@ Version: 3d tracking &  coordinates saved in files
 #include <fstream>
 #include <iterator>
 #include <vector>
+//#include "portaudio.h"
+//#include "pa_asio.h"
 
 
 using namespace cv;
 using namespace std;
 
 const int BIIMAGE_SENSITIVITY = 252;
-const int THRESHOLD_TYPE = 1;				//1:
+const int THRESHOLD_TYPE = 1;				//1: THRESH_BINARY; 2: THRESH_BINARY_INV; 3: THRESH_TRUNC; 4: TRESH_TOZERO; 5: THRESH_TOZERO_INV
 
 const int METHOD_INDICATOR = 1;				//1: by distance; 2: by acceleration
 const int LINE_THICKNESS = 1;
@@ -200,7 +202,11 @@ int main()
 					//print the two distances and acceleration
 					putText(keyPointImage, "Object acceleration is:" + doubleToString(delta_dis), Point(10, 60), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
 
+					//cout << "Dis1: " << left << setw(10) << distance_10 << "Dis2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
+
 					//pass current point to x1 and y1, acting as the 'previous' point in the next loop
+					coor[2][0] = coor[1][0];
+					coor[2][1] = coor[1][1];
 					coor[1][0] = coor[0][0];
 					coor[1][1] = coor[0][1];
 
