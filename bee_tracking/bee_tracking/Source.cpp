@@ -71,6 +71,8 @@ int main()
 	double distance_10 = 0.0, distance_21 = 0.0;			//distances between three adjacent points
 	double delta_dis = 0.0;
 
+	Point2d p0, p1, p2;
+
 	//![SBD]  
 	//set detector parameters  
 	SimpleBlobDetector::Params params;
@@ -102,8 +104,6 @@ int main()
 	namedWindow("VideoCapture");			//create a window displaying the camera feed   
 	moveWindow("VideoCapture", 805, 10);	//setting window position
 
-
-
 	//![Main loop]
 	for (;;)
 	{
@@ -114,7 +114,6 @@ int main()
 
 		//read every frame of the camera input   
 		cap >> frame;
-
 
 		//convert the original image to grayscale one
 		if (frame.channels() == 3)
@@ -150,46 +149,37 @@ int main()
 			if (j < 2)
 			{
 				//read current keypoint coordinates 
-				coor[0][0] = detectKeyPoint[0].pt.x;
-				coor[0][1] = detectKeyPoint[0].pt.y;
-				coor[1][0] = coor[0][0];
-				coor[1][1] = coor[0][1];
-				coor[2][0] = coor[0][0];
-				coor[2][1] = coor[0][1];
-
-				//do nothing but display coordinates
-				//cout << coor[0][0] << ", " << coor[0][1] << endl;
-				//cout << coor[1][0] << ", " << coor[1][1] << endl;
+				p0.x = detectKeyPoint[0].pt.x;
+				p0.y = detectKeyPoint[0].pt.y;
+				p1.x = p0.x;
+				p1.y = p0.y;
+				p2.x = p0.x;
+				p2.y = p0.y;
 			}
 			else
-			{
+			{				
+				//read current keypoint coordinates
+				p0.x = detectKeyPoint[0].pt.x;
+				p0.y = detectKeyPoint[0].pt.y;
+
+				coordinate_x.push_back(p0.x);
+				coordinate_y.push_back(p0.y);
+
+				//calculate the distance between to adjacent points
+				distance = norm(p0 - p1);
+
+				//calculate distances between each two adjacent points
+				distance_10 = norm(p0 - p1);
+				distance_21 = norm(p1 - p2);
+
+				//difference in distance, with fixed time interval, this can be treated as acceleration as well
+				delta_dis = abs(distance_10 - distance_21);
+
 				switch (METHOD_INDICATOR)
 				{
 				case 1:
-				{
+					{
 					//![option I: velocity]
-					//read current keypoint coordinates
-					coor[0][0] = detectKeyPoint[0].pt.x;
-					coor[0][1] = detectKeyPoint[0].pt.y;
-
-					coordinate_x.push_back(coor[0][0]);
-					coordinate_y.push_back(coor[0][1]);
-
-					Point2d p0(coor[0][0], coor[0][1]);
-					Point2d p1(coor[1][0], coor[1][1]);
-					Point2d p2(coor[2][0], coor[2][1]);
-
-					//calculate the distance between to adjacent points
-					distance = norm(p0 - p1);
-					//distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
-
-					//calculate distances between each two adjacent points
-					distance_10 = norm(p0 - p1);
-					distance_21 = norm(p1 - p2);
-
-					//difference in distance, with fixed time interval, this can be treated as acceleration as well
-					delta_dis = abs(distance_10 - distance_21);
-
 
 					//line drawing
 					if (distance >= 0.0 && distance <= VELOCITY_SENSITIVITY)
@@ -199,6 +189,24 @@ int main()
 					else
 						line(trajectory_line, p1, p0, Scalar(0, 0, 255), LINE_THICKNESS, 8);
 
+					break;
+					}
+
+				case 2:
+					{
+					//![option II: acceleration]
+
+					//line drawing
+					if (delta_dis >= 0.0 && delta_dis <= VELOCITY_SENSITIVITY)
+						line(trajectory_line, p1, p0, Scalar(0, 255, (delta_dis * 10)), LINE_THICKNESS, 8);
+					else if (delta_dis > VELOCITY_SENSITIVITY && delta_dis <= 2 * VELOCITY_SENSITIVITY)
+						line(trajectory_line, p1, p0, Scalar(0, (255 - (delta_dis - VELOCITY_SENSITIVITY) * 10), 255), LINE_THICKNESS, 8);
+					else
+						line(trajectory_line, p1, p0, Scalar(0, 0, 255), LINE_THICKNESS, 8);
+
+					break;
+					}
+				}
 					//dots drawing
 					circle(trajectory_dot, p0, 0.5, Scalar(255, 255, 255), -1);
 
@@ -214,58 +222,12 @@ int main()
 					//cout << "Dis1: " << left << setw(10) << distance_10 << "Dis2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
 
 					//pass current point to x1 and y1, acting as the 'previous' point in the next loop
-					coor[2][0] = coor[1][0];
-					coor[2][1] = coor[1][1];
-					coor[1][0] = coor[0][0];
-					coor[1][1] = coor[0][1];
-
-					break;
-				}
-
-				case 2:
-				{
-					//![option II: acceleration]
-					//read current keypoint coordinates
-					coor[0][0] = detectKeyPoint[0].pt.x;
-					coor[0][1] = detectKeyPoint[0].pt.y;
-
-					coordinate_x.push_back(coor[0][0]);
-					coordinate_y.push_back(coor[0][1]);
-
-					//calculate distances between each two adjacent points
-					distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
-					distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
-
-					//difference in distance, with fixed time interval, this can be treated as acceleration as well
-					delta_dis = abs(distance_10 - distance_21);
-
-					//line drawing
-					if (delta_dis >= 0.0 && delta_dis <= VELOCITY_SENSITIVITY)
-						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (delta_dis * 10)), LINE_THICKNESS, 8);
-					else if (delta_dis > VELOCITY_SENSITIVITY && delta_dis <= 2 * VELOCITY_SENSITIVITY)
-						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (delta_dis - VELOCITY_SENSITIVITY) * 10), 255), LINE_THICKNESS, 8);
-					else
-						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), LINE_THICKNESS, 8);
-
-					//dots drawing
-					circle(trajectory_dot, Point(coor[0][0], coor[0][1]), 0.5, Scalar(255, 255, 255), -1);
-
-					//print the coordinates of current lightspot
-					cout << coor[0][0] << ", " << coor[0][1] << endl;
-
-					//print the two distances and acceleration
-					//cout << "Dis1: " << left << setw(10) << distance_10 << "Dis2: " << left << setw(10) << distance_21 << "Acc: " << left << setw(10) << delta_dis << endl;
-
-					//transmitting values
-					coor[2][0] = coor[1][0];
-					coor[2][1] = coor[1][1];
-					coor[1][0] = coor[0][0];
-					coor[1][1] = coor[0][1];
-
-					break;
-				}
+					p2.x = p1.x;
+					p2.y = p1.y;
+					p1.x = p0.x;
+					p1.y = p0.y;		
 				}				
-			}
+			
 			j++;
 
 			//save coordinates to text files
@@ -311,9 +273,6 @@ int main()
 		imshow("VideoCapture", keyPointImage);
 
 		//check to see if a button has been pressed.
-		//this 10ms delay is necessary for proper operation of this program
-		//if removed, frames will not have enough time to referesh and a blank 
-		//image will appear.
 		switch (waitKey(10))
 		{
 
