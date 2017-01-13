@@ -1,5 +1,5 @@
 /*
-Light spot tracking programme 
+Light spot tracking programme
 ******************************
 Author: Cong Sun
 Date: 10/01/2017
@@ -7,7 +7,7 @@ Date: 10/01/2017
 Version: 3d tracking & coordinates saved in files
 */
 
-#include <opencv2\opencv.hpp>   
+#include <opencv2\opencv.hpp>
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
@@ -42,9 +42,9 @@ string doubleToString(double number){
 
 int main()
 {
-	//open the default camera   
+	//open the default camera
 	VideoCapture cap(0);
-	//check if the camera is opened successfully   
+	//check if the camera is opened successfully
 	if (!cap.isOpened())
 	{
 		return -1;
@@ -73,35 +73,35 @@ int main()
 
 	Point2d p0, p1, p2;
 
-	//![SBD]  
-	//set detector parameters  
+	//![SBD]
+	//set detector parameters
 	SimpleBlobDetector::Params params;
 
-	//filter by area  
+	//filter by area
 	params.filterByArea = true;
 	params.minArea = 20;
 	params.maxArea = 2000;
 
-	//filter by circularity  
+	//filter by circularity
 	params.filterByCircularity = true;
 	params.minCircularity = 0.1;
 
-	//filter by convexity  
+	//filter by convexity
 	params.filterByConvexity = true;
 	params.minConvexity = 0.87;
 
-	//filter by inertia 
+	//filter by inertia
 	params.filterByInertia = true;
 	params.minInertiaRatio = 0.01;
 
-	//instantiate a SBD pointer  
+	//instantiate a SBD pointer
 	Ptr<SimpleBlobDetector> sbd = SimpleBlobDetector::create(params);
 
 	//set the display console position
 	HWND consoleWindow = GetConsoleWindow();
 	SetWindowPos(consoleWindow, 0, 880, 550, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 
-	namedWindow("VideoCapture");			//create a window displaying the camera feed   
+	namedWindow("VideoCapture");			//create a window displaying the camera feed
 	moveWindow("VideoCapture", 805, 10);	//setting window position
 
 	//![Main loop]
@@ -112,7 +112,7 @@ int main()
 		k++;
 		Mat frame, gray;
 
-		//read every frame of the camera input   
+		//read every frame of the camera input
 		cap >> frame;
 
 		//convert the original image to grayscale one
@@ -133,13 +133,13 @@ int main()
 		//cout << "Width : " << frame.cols << endl;
 		//cout << "Height: " << frame.rows << endl;
 
-		//setting threshold to create binary image, using THRESH_BINARY_INVERTED   
+		//setting threshold to create binary image, using THRESH_BINARY_INVERTED
 		threshold(gray, gray, BIIMAGE_SENSITIVITY, 255, THRESHOLD_TYPE);
 
-		//detect lightspots in the frame and store them in detectKeyPoint  
+		//detect lightspots in the frame and store them in detectKeyPoint
 		sbd->detect(gray, detectKeyPoint);
 
-		//mark the key points with red circles  
+		//mark the key points with red circles
 		drawKeypoints(frame, detectKeyPoint, keyPointImage, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
 		//![trajactory drawing] & [coordinates displaying]
@@ -148,7 +148,7 @@ int main()
 			//skip the first two points to avoid connection with the origin
 			if (j < 2)
 			{
-				//read current keypoint coordinates 
+				//read current keypoint coordinates
 				p0.x = detectKeyPoint[0].pt.x;
 				p0.y = detectKeyPoint[0].pt.y;
 				p1.x = p0.x;
@@ -157,7 +157,7 @@ int main()
 				p2.y = p0.y;
 			}
 			else
-			{				
+			{
 				//read current keypoint coordinates
 				p0.x = detectKeyPoint[0].pt.x;
 				p0.y = detectKeyPoint[0].pt.y;
@@ -225,8 +225,8 @@ int main()
 					p2.x = p1.x;
 					p2.y = p1.y;
 					p1.x = p0.x;
-					p1.y = p0.y;		
-				}				
+					p1.y = p0.y;
+				}
 			
 			j++;
 
@@ -245,7 +245,7 @@ int main()
 
 		if (BinaryImage == true)
 		{
-			namedWindow("Binary Image");				//create a window displaying the binary image   
+			namedWindow("Binary Image");				//create a window displaying the binary image
 			moveWindow("Binary Image", 150, 10);		//setting window position
 			imshow("Binary Image", gray);
 		}
@@ -275,15 +275,14 @@ int main()
 		//check to see if a button has been pressed.
 		switch (waitKey(10))
 		{
-
 		case 27: //'esc' key has been pressed, exit program.
 			return 0;
 
 		case 98: //'b' has been pressed and this will open binary image window
 			BinaryImage = !BinaryImage;
-			if (BinaryImage == false) 
+			if (BinaryImage == false)
 				cout << "Binary image window closed." << endl;
-			else 
+			else
 				cout << "Binary image window opened." << endl;
 			break;
 
@@ -310,7 +309,7 @@ int main()
 				cout << "Code paused, press 'p' again to resume" << endl;
 				while (pause == true)
 				{
-					//stay in this loop until 
+					//stay in this loop until
 					switch (waitKey())
 					{
 					case 112:
