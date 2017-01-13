@@ -2,7 +2,7 @@
 Light spot tracking programme
 ******************************
 Author: Cong Sun
-Date: 10/01/2017
+Date: 13/01/2017
 
 Version: 3d tracking & coordinates saved in files
 */
