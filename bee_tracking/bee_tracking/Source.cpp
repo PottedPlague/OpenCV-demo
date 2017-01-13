@@ -2,12 +2,13 @@
 Light spot tracking programme 
 ******************************
 Author: Cong Sun
-Date: 22/12/2016
+Date: 10/01/2017
 
-Version: 3d tracking &  coordinates saved in files
+Version: 3d tracking & coordinates saved in files
 */
 
 #include <opencv2\opencv.hpp>   
+#include <stdio.h>
 #include <math.h>
 #include <iostream>
 #include <iomanip>
@@ -16,6 +17,7 @@ Version: 3d tracking &  coordinates saved in files
 #include <fstream>
 #include <iterator>
 #include <vector>
+
 //#include "portaudio.h"
 //#include "pa_asio.h"
 
@@ -112,6 +114,7 @@ int main()
 
 		//read every frame of the camera input   
 		cap >> frame;
+
 
 		//convert the original image to grayscale one
 		if (frame.channels() == 3)
