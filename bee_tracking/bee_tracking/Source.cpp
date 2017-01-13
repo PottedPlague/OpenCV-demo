@@ -68,7 +68,7 @@ int main()
 	int j = 0;												//line drawing counter
 	int k = 0;												//used to skip the first several loops, letting the camera ready
 	double distance = 0.0;									//distance between the current point and the previous one
-	double distance_10 = 0.0, distance_21 = 0.0;			//distances between adjacent three points
+	double distance_10 = 0.0, distance_21 = 0.0;			//distances between three adjacent points
 	double delta_dis = 0.0;
 
 	//![SBD]  
@@ -166,6 +166,7 @@ int main()
 				switch (METHOD_INDICATOR)
 				{
 				case 1:
+				{
 					//![option I: velocity]
 					//read current keypoint coordinates
 					coor[0][0] = detectKeyPoint[0].pt.x;
@@ -174,31 +175,36 @@ int main()
 					coordinate_x.push_back(coor[0][0]);
 					coordinate_y.push_back(coor[0][1]);
 
+					Point2d p0(coor[0][0], coor[0][1]);
+					Point2d p1(coor[1][0], coor[1][1]);
+					Point2d p2(coor[2][0], coor[2][1]);
+
 					//calculate the distance between to adjacent points
-					distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
+					distance = norm(p0 - p1);
+					//distance = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
 
 					//calculate distances between each two adjacent points
-					distance_10 = sqrt((coor[1][0] - coor[0][0]) * (coor[1][0] - coor[0][0]) + (coor[1][1] - coor[0][1]) * (coor[1][1] - coor[0][1]));
-					distance_21 = sqrt((coor[2][0] - coor[1][0]) * (coor[2][0] - coor[1][0]) + (coor[2][1] - coor[1][1]) * (coor[2][1] - coor[1][1]));
+					distance_10 = norm(p0 - p1);
+					distance_21 = norm(p1 - p2);
 
 					//difference in distance, with fixed time interval, this can be treated as acceleration as well
 					delta_dis = abs(distance_10 - distance_21);
-					
-					
+
+
 					//line drawing
 					if (distance >= 0.0 && distance <= VELOCITY_SENSITIVITY)
-						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 255, (distance * 10)), LINE_THICKNESS, 8);
+						line(trajectory_line, p1, p0, Scalar(0, 255, (distance * 10)), LINE_THICKNESS, 8);
 					else if (distance > VELOCITY_SENSITIVITY && distance <= 2 * VELOCITY_SENSITIVITY)
-						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, (255 - (distance - VELOCITY_SENSITIVITY) * 10), 255), LINE_THICKNESS, 8);
+						line(trajectory_line, p1, p0, Scalar(0, (255 - (distance - VELOCITY_SENSITIVITY) * 10), 255), LINE_THICKNESS, 8);
 					else
-						line(trajectory_line, Point(coor[1][0], coor[1][1]), Point(coor[0][0], coor[0][1]), Scalar(0, 0, 255), LINE_THICKNESS, 8);
-						
+						line(trajectory_line, p1, p0, Scalar(0, 0, 255), LINE_THICKNESS, 8);
+
 					//dots drawing
-					circle(trajectory_dot, Point(coor[0][0], coor[0][1]), 0.5, Scalar(255, 255, 255), -1);					
-					
+					circle(trajectory_dot, p0, 0.5, Scalar(255, 255, 255), -1);
+
 					//print the coordinates of current lightspot
-					putText(keyPointImage, "Tracking object at (" + doubleToString(coor[0][0]) + "," + doubleToString(coor[0][1]) + ")", Point(10, 20), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
-					
+					putText(keyPointImage, "Tracking object at (" + doubleToString(p0.x) + "," + doubleToString(p0.y) + ")", Point(10, 20), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
+
 					//print the distance between two adjacent spots
 					putText(keyPointImage, "Object velocity is:" + doubleToString(distance), Point(10, 40), 1, 1.0, Scalar(0, 0, 255), 1, CV_AA);
 
@@ -214,8 +220,10 @@ int main()
 					coor[1][1] = coor[0][1];
 
 					break;
+				}
 
 				case 2:
+				{
 					//![option II: acceleration]
 					//read current keypoint coordinates
 					coor[0][0] = detectKeyPoint[0].pt.x;
@@ -255,6 +263,7 @@ int main()
 					coor[1][1] = coor[0][1];
 
 					break;
+				}
 				}				
 			}
 			j++;
