@@ -2,9 +2,10 @@
 Light spot tracking programme
 ******************************
 Author: Cong Sun
-Date: 13/01/2017
+Date: 13/02/2017
 
 Version: 3d tracking & coordinates saved in files
+	and back into work
 */
 
 #include <opencv2\opencv.hpp>
@@ -17,6 +18,8 @@ Version: 3d tracking & coordinates saved in files
 #include <fstream>
 #include <iterator>
 #include <vector>
+#include "xiApiPlusOcv.hpp"
+
 
 //#include "portaudio.h"
 //#include "pa_asio.h"
@@ -44,6 +47,9 @@ int main()
 {
 	//open the default camera
 	VideoCapture cap(0);
+
+	xiAPIplusCameraOcv cam;
+
 	//check if the camera is opened successfully
 	if (!cap.isOpened())
 	{
@@ -64,7 +70,6 @@ int main()
 	bool lineMode = false;									//can be toggled by pressing 'l'
 	bool dotMode = false;									//can be toggled by pressing 'd'
 
-	double coor[3][2];										//coordinates of light spots
 	int j = 0;												//line drawing counter
 	int k = 0;												//used to skip the first several loops, letting the camera ready
 	double distance = 0.0;									//distance between the current point and the previous one
