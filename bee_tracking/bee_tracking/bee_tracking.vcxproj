@@ -80,8 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\portaudio\include;D:\opencv310\opencv\build\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\portaudio\build\msvc\x64\Debug;D:\opencv310\opencv\build\x64\vc12\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\opencv310\opencv\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\opencv310\opencv\build\x64\vc12\lib;$(LibraryPath)</LibraryPath>
     <OutDir>.\Output</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,7 +120,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\XIMEA\Examples\Bin;D:\opencv310\opencv\build\x64\vc12\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world310d.lib;portaudio_x64.lib;xiapi64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world310d.lib;xiapi64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
