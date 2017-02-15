@@ -46,15 +46,39 @@ string doubleToString(double number){
 int main()
 {
 	//open the default camera
-	VideoCapture cap(0);
+	//VideoCapture cap(0);
 
 	xiAPIplusCameraOcv cam;
+	// Retrieving a handle to the camera device
+	printf("Opening first camera...\n");
+	cam.OpenFirst();
+
+	//Set exposure
+	cam.SetExposureTime(10000); //10000 us = 10 ms
+	// Note: The default parameters of each camera might be different in different API versions
+	
+	cam.SetHeight(600);
+	cam.SetWidth(800);
+
+	printf("Starting acquisition...\n");
+	cam.StartAcquisition();
+
+//#define EXPECTED_IMAGES 40
+//	for (int images = 0; images < EXPECTED_IMAGES; images++)
+//	{
+//		Mat cv_mat_image = cam.GetNextImageOcvMat();
+//		imshow("Image from camera", cv_mat_image);
+//		waitKey(20);
+//		printf("\t%d\n", cv_mat_image.at<unsigned char>(0, 0));
+//
+//	}
+
 
 	//check if the camera is opened successfully
-	if (!cap.isOpened())
+	/*if (!cap.isOpened())
 	{
 		return -1;
-	}
+	}*/
 
 	vector<double> coordinate_x;							//record horizontal coordinate
 	vector<double> coordinate_y;							//record vertical coordinate
@@ -118,7 +142,7 @@ int main()
 		Mat frame, gray;
 
 		//read every frame of the camera input
-		cap >> frame;
+		frame = cam.GetNextImageOcvMat();
 
 		//convert the original image to grayscale one
 		if (frame.channels() == 3)
@@ -281,6 +305,11 @@ int main()
 		switch (waitKey(10))
 		{
 		case 27: //'esc' key has been pressed, exit program.
+			cam.StopAcquisition();
+			cam.Close();
+			printf("Done\n");
+
+			waitKey(500);
 			return 0;
 
 		case 98: //'b' has been pressed and this will open binary image window

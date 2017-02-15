@@ -82,6 +82,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>D:\portaudio\include;D:\opencv310\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\portaudio\build\msvc\x64\Debug;D:\opencv310\opencv\build\x64\vc12\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>.\Output</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
