@@ -118,10 +118,10 @@ int main()
 
 	//set the display console position
 	HWND consoleWindow = GetConsoleWindow();
-	SetWindowPos(consoleWindow, 0, 880, 550, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+	SetWindowPos(consoleWindow, 0, 80, 50, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 
 	namedWindow("VideoCapture");			//create a window displaying the camera feed
-	moveWindow("VideoCapture", 805, 10);	//setting window position
+	//moveWindow("VideoCapture", 805, 10);	//setting window position
 
 	//![Main loop]
 	for (;;)
@@ -267,7 +267,7 @@ int main()
 		if (BinaryImage == true)
 		{
 			namedWindow("Binary Image");				//create a window displaying the binary image
-			moveWindow("Binary Image", 150, 10);		//setting window position
+			//moveWindow("Binary Image", 150, 10);		//setting window position
 			imshow("Binary Image", gray);
 		}
 		else
@@ -276,7 +276,7 @@ int main()
 		if (lineMode == true)
 		{
 			namedWindow("Line Trajactory");				//create a window displaying the line-type trajactory of the moving light spot
-			moveWindow("Line Trajactory", 150, 520);	//setting window position
+			//moveWindow("Line Trajactory", 150, 520);	//setting window position
 			imshow("Line Trajactory", trajectory_line);
 		}
 		else
@@ -285,7 +285,7 @@ int main()
 		if (dotMode == true)
 		{
 			namedWindow("Dot Trajactory");				//create a window displaying the dot-type trajactory of the moving light spot
-			moveWindow("Dot Trajactory", 150, 520);	//setting window position
+			//moveWindow("Dot Trajactory", 150, 520);	//setting window position
 			imshow("Dot Trajactory", trajectory_dot);
 		}
 		else
