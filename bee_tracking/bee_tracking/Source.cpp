@@ -55,8 +55,8 @@ int main()
 	cam.SetExposureTime(10000); //10000 us = 10 ms
 	// Note: The default parameters of each camera might be different in different API versions
 	
-	cam.SetHeight(600);
-	cam.SetWidth(800);
+	cam.SetHeight(480);
+	cam.SetWidth(640);
 
 	printf("Starting acquisition...\n");
 	cam.StartAcquisition();
