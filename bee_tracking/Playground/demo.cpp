@@ -1,19 +1,24 @@
 
-#include <opencv2\opencv.hpp>
-#include <stdio.h>
-#include <math.h>
-#include <iostream>
+#include <opencv2\highgui\highgui.hpp>
+#include <opencv2\imgproc\imgproc.hpp>
 
 using namespace cv;
 using namespace std;
 
 int main()
 {
-	Mat previous, next;
-	previous = imread("D:\\pic\\previous.bmp");
-	next = imread("D:\\pic\\next.bmp");
-	Mat output;
-	calcOpticalFlowFarneback(previous, next, output, );
-	waitKey(50);
+	namedWindow("Example", WINDOW_AUTOSIZE);
+	VideoCapture cap;
+	cap.open("D://pic//example.mp4");
+	Mat frame;
+	for (;;)
+	{
+		cap >> frame;
+		if (frame.empty())
+			break;
+		imshow("Example", frame);
+		if (waitKey(16) >= 0)
+			break;
+	}
 	return 0;
 }

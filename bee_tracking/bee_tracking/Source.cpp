@@ -2,10 +2,9 @@
 Light spot tracking programme
 ******************************
 Author: Cong Sun
-Date: 13/02/2017
+Date: 16/02/2017
 
-Version: 3d tracking & coordinates saved in files
-	and back into work
+Version: ximea camera added
 */
 
 #include <opencv2\opencv.hpp>
@@ -62,7 +61,7 @@ int main()
 	cam.StartAcquisition();
 
 	//open the default camera
-	/*VideoCapture cap(1);
+	/*VideoCapture cap(0);
 
 	//check if the camera is opened successfully
 	if (!cap.isOpened())
