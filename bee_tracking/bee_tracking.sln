@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_demo", "OpenGL_demo\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Playground", "Playground\Playground.vcxproj", "{750A78ED-1944-44D4-A109-8A330DE84714}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Noise_capture", "Project1\Project1.vcxproj", "{ABDC5D35-7287-4A72-B356-D7A7623C44F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -52,6 +54,16 @@ Global
 		{750A78ED-1944-44D4-A109-8A330DE84714}.Release|Win32.ActiveCfg = Release|Win32
 		{750A78ED-1944-44D4-A109-8A330DE84714}.Release|Win32.Build.0 = Release|Win32
 		{750A78ED-1944-44D4-A109-8A330DE84714}.Release|x64.ActiveCfg = Release|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Debug|Win32.Build.0 = Debug|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Debug|x64.ActiveCfg = Debug|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Release|Win32.ActiveCfg = Release|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Release|Win32.Build.0 = Release|Win32
+		{ABDC5D35-7287-4A72-B356-D7A7623C44F7}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

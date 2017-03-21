@@ -19,10 +19,8 @@ Version: ximea camera added
 #include <vector>
 #include "xiApiPlusOcv.hpp"
 
-
 //#include "portaudio.h"
 //#include "pa_asio.h"
-
 
 using namespace cv;
 using namespace std;
@@ -36,7 +34,7 @@ const double VELOCITY_SENSITIVITY = 25.5;
 
 string doubleToString(double number){
 
-	//this function has a number input and string output
+	//this function has a double input and string output
 	std::stringstream ss;
 	ss << number;
 	return ss.str();
