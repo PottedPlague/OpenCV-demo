@@ -1,3 +1,4 @@
+#include "noise_capture.h"
 #include <opencv2\opencv.hpp>
 #include <iostream>
 #include <ctime>
@@ -6,15 +7,10 @@
 using namespace std;
 using namespace cv;
 
-string intToString(int number)
-{
-	//this function has a number input and string output
-	std::stringstream ss;
-	ss << number;
-	return ss.str();
-}
+string int2String(int number);
 
-int main()
+
+void noise_capture()
 {
 	Mat frame;
 	//open xim  ea camera
@@ -45,7 +41,7 @@ int main()
 	struct tm* now = localtime(&t);
 	string cap_time;
 
-	cap_time = intToString(now->tm_mday) + "-" + intToString(now->tm_mon + 1) + "-" + intToString(now->tm_year + 1900) + " " + intToString(now->tm_hour) + "." + intToString(now->tm_min);
+	cap_time = int2String(now->tm_mday) + "-" + int2String(now->tm_mon + 1) + "-" + int2String(now->tm_year + 1900) + " " + int2String(now->tm_hour) + "." + int2String(now->tm_min);
 	imwrite("D:\\pic\\" + cap_time + ".bmp", frame);
 	cout << cap_time << endl;
 	cout << "Image captured!" << endl;
@@ -57,7 +53,12 @@ int main()
 	cam.StopAcquisition();
 	cam.Close();
 	printf("Camera closed.\n");
+}
 
-	waitKey(500);
-	return 0;
+string int2String(int number)
+{
+	//this function has a number input and string output
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
 }

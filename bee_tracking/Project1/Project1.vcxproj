@@ -132,10 +132,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="demo.cpp" />
+    <ClCompile Include="Kalman.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SBD.cpp" />
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Kalman.h" />
+    <ClInclude Include="SBD.h" />
     <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

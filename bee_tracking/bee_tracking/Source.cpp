@@ -25,8 +25,8 @@ Version: ximea camera added
 using namespace cv;
 using namespace std;
 
-const int BIIMAGE_SENSITIVITY = 252;
-const int THRESHOLD_TYPE = 1;				//1: THRESH_BINARY; 2: THRESH_BINARY_INV; 3: THRESH_TRUNC; 4: TRESH_TOZERO; 5: THRESH_TOZERO_INV
+int BIIMAGE_SENSITIVITY = 252;
+const int THRESHOLD_TYPE = 1;				//0: THRESH_BINARY; 1: THRESH_BINARY_INV; 2: THRESH_TRUNC; 3: TRESH_TOZERO; 4: THRESH_TOZERO_INV
 
 const int METHOD_INDICATOR = 1;				//1: by distance; 2: by acceleration
 const int LINE_THICKNESS = 1;
@@ -43,29 +43,29 @@ string doubleToString(double number){
 int main()
 {
 	//open ximea camera
-	xiAPIplusCameraOcv cam;
+	//xiAPIplusCameraOcv cam;
 	// Retrieving a handle to the camera device
-	printf("Opening first camera...\n");
-	cam.OpenFirst();
+	//printf("Opening first camera...\n");
+	//cam.OpenFirst();
 
 	//Set exposure
-	cam.SetExposureTime(10000); //10000 us = 10 ms
+	//cam.SetExposureTime(10000); //10000 us = 10 ms
 	// Note: The default parameters of each camera might be different in different API versions
 	
-	cam.SetHeight(480);
-	cam.SetWidth(640);
+	//cam.SetHeight(480);
+	//cam.SetWidth(640);
 
-	printf("Starting acquisition...\n");
-	cam.StartAcquisition();
+	//printf("Starting acquisition...\n");
+	//cam.StartAcquisition();
 
 	//open the default camera
-	/*VideoCapture cap(0);
+	VideoCapture cap(0);
 
 	//check if the camera is opened successfully
 	if (!cap.isOpened())
 	{
 		return -1;
-	}*/
+	}
 
 	vector<double> coordinate_x;							//record horizontal coordinate
 	vector<double> coordinate_y;							//record vertical coordinate
@@ -80,6 +80,7 @@ int main()
 	bool pause = false;										//can be toggled by pressing 'p'
 	bool lineMode = false;									//can be toggled by pressing 'l'
 	bool dotMode = false;									//can be toggled by pressing 'd'
+	//bool trackingMode = false;								//can be toggled by pressing 't'
 
 	int j = 0;												//line drawing counter
 	int k = 0;												//used to skip the first several loops, letting the camera ready
@@ -119,6 +120,7 @@ int main()
 
 	namedWindow("VideoCapture");			//create a window displaying the camera feed
 	//moveWindow("VideoCapture", 805, 10);	//setting window position
+	createTrackbar("Threshold", "VideoCapture", &BIIMAGE_SENSITIVITY, 255, 0);
 
 	//![Main loop]
 	for (;;)
@@ -126,12 +128,12 @@ int main()
 		//clock_t startTime = clock();
 		
 		k++;
-		Mat frame, gray;
+		Mat frame, gray, bi_image;
 
 		//read every frame of the camera input
-		frame = cam.GetNextImageOcvMat();
+		//frame = cam.GetNextImageOcvMat();
 
-		//cap >> frame;
+		cap >> frame;
 
 		//convert the original image to grayscale one
 		if (frame.channels() == 3)
@@ -152,13 +154,13 @@ int main()
 		//cout << "Height: " << frame.rows << endl;
 
 		//setting threshold to create binary image, using THRESH_BINARY_INVERTED
-		threshold(gray, gray, BIIMAGE_SENSITIVITY, 255, THRESHOLD_TYPE);
+		threshold(gray, bi_image, BIIMAGE_SENSITIVITY, 255, THRESHOLD_TYPE);
 
 		//detect lightspots in the frame and store them in detectKeyPoint
-		sbd->detect(gray, detectKeyPoint);
+		sbd->detect(bi_image, detectKeyPoint);
 
 		//mark the key points with red circles
-		drawKeypoints(frame, detectKeyPoint, keyPointImage, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+		drawKeypoints(gray, detectKeyPoint, keyPointImage, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
 		//![trajactory drawing] & [coordinates displaying]
 		if (detectKeyPoint.size() > 0)		//check if there are keypoints in the frame
@@ -249,7 +251,7 @@ int main()
 			j++;
 
 			//save coordinates to text files
-			if (j >= 100)
+			if (j >= 50)
 			{
 				ofstream output_file1("D:\\pic\\coordinate_x.txt");
 				ostream_iterator<double> output_iterator_x(output_file1, "\n");
@@ -265,7 +267,7 @@ int main()
 		{
 			namedWindow("Binary Image");				//create a window displaying the binary image
 			//moveWindow("Binary Image", 150, 10);		//setting window position
-			imshow("Binary Image", gray);
+			imshow("Binary Image", bi_image);
 		}
 		else
 			destroyWindow("Binary Image");
@@ -294,9 +296,9 @@ int main()
 		switch (waitKey(10))
 		{
 		case 27: //'esc' key has been pressed, exit program.
-			cam.StopAcquisition();
-			cam.Close();
-			printf("Done\n");
+			//cam.StopAcquisition();
+			//cam.Close();
+			//printf("Done\n");
 
 			waitKey(500);
 			return 0;

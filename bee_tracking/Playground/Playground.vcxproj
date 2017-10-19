@@ -19,10 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="demo.cpp" />
+    <ClCompile Include="adjustLUT.cpp" />
+    <ClCompile Include="average.cpp" />
+    <ClCompile Include="camera_calibration.cpp" />
+    <ClCompile Include="detectContours.cpp" />
+    <ClCompile Include="disparity_map.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="tracking.cpp" />
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="adjustLUT.h" />
+    <ClInclude Include="average.h" />
+    <ClInclude Include="camera_calibration.h" />
+    <ClInclude Include="disparity_map.h" />
+    <ClInclude Include="detectContours.h" />
+    <ClInclude Include="tracking.h" />
     <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -78,9 +90,8 @@
     <LibraryPath>D:\opencv310\opencv\build\x64\vc12\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\opencv310\opencv\build\install\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\opencv310\opencv\build\install\x64\vc12\staticlib;D:\opencv310\opencv\build\install\x64\vc12\lib;$(LibraryPath)</LibraryPath>
-    <OutDir>D:\opencv310\opencv\build\install\x64\vc12\bin</OutDir>
+    <IncludePath>D:\opencv310\opencv\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\opencv310\opencv\build\x64\vc12\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -103,7 +114,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>D:\opencv310\opencv\build\install\x64\vc12\lib\*.lib;xiapi64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world310d.lib;xiapi64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\XIMEA\Examples\Bin;D:\opencv310\opencv\build\x64\vc12\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
