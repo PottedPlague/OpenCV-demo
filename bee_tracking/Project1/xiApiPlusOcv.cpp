@@ -1,7 +1,7 @@
 #include"xiApiPlusOcv.hpp"
 
 //-------------------------------------------------------------------------------------------------------------------
-// xiAPIplus parameters implementation file
+// xiAPIplus parameters implementation file - created from gen_xiAPIplus_cpp_file.xslt
 // XIMEA Application Programming Interface Object Oriented Approach
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Basic
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Exposure time in microseconds (XI_PRM_EXPOSURE)
 	int xiAPIplus_Camera::GetExposureTime()
@@ -28,6 +28,7 @@
 		CheckResult(res,"GetExposureTime");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetExposureTime_Maximum()
 	{
 		int val=0;
@@ -38,6 +39,7 @@
 		CheckResult(res,"GetExposureTime" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetExposureTime_Minimum()
 	{
 		int val=0;
@@ -48,7 +50,7 @@
 		CheckResult(res,"GetExposureTime" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetExposureTime_Increment()
 	{
 		int val=0;
@@ -59,7 +61,6 @@
 		CheckResult(res,"GetExposureTime" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetExposureTime(int ExposureTime)
 	{
@@ -69,7 +70,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_EXPOSURE, ExposureTime);
 		CheckResult(res,"SetExposureTime");
 	}
-			
+	
 	// Sets the number of times of exposure in one frame. (XI_PRM_EXPOSURE_BURST_COUNT)
 	int xiAPIplus_Camera::GetExposureBurstCount()
 	{
@@ -81,6 +82,7 @@
 		CheckResult(res,"GetExposureBurstCount");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetExposureBurstCount_Maximum()
 	{
 		int val=0;
@@ -91,6 +93,7 @@
 		CheckResult(res,"GetExposureBurstCount" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetExposureBurstCount_Minimum()
 	{
 		int val=0;
@@ -101,7 +104,7 @@
 		CheckResult(res,"GetExposureBurstCount" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetExposureBurstCount_Increment()
 	{
 		int val=0;
@@ -112,7 +115,6 @@
 		CheckResult(res,"GetExposureBurstCount" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetExposureBurstCount(int ExposureBurstCount)
 	{
@@ -122,7 +124,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_EXPOSURE_BURST_COUNT, ExposureBurstCount);
 		CheckResult(res,"SetExposureBurstCount");
 	}
-			
+	
 	// Gain selector for parameter Gain allows to select different type of gains. (XI_PRM_GAIN_SELECTOR)
 	XI_GAIN_SELECTOR_TYPE xiAPIplus_Camera::GetGainSelector()
 	{
@@ -145,6 +147,7 @@
 		CheckResult(res,"GetGainSelector" "_Maximum");
 		return (XI_GAIN_SELECTOR_TYPE)val;
 	}
+	
 	XI_GAIN_SELECTOR_TYPE xiAPIplus_Camera::GetGainSelector_Minimum()
 	{
 		int val=0;
@@ -175,7 +178,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_GAIN_SELECTOR, GainSelector);
 		CheckResult(res,"SetGainSelector");
 	}
-				
+	
 	// Gain in dB (XI_PRM_GAIN)
 	float xiAPIplus_Camera::GetGain()
 	{
@@ -187,6 +190,7 @@
 		CheckResult(res,"GetGain");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGain_Maximum()
 	{
 		float val=0;
@@ -197,6 +201,7 @@
 		CheckResult(res,"GetGain" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGain_Minimum()
 	{
 		float val=0;
@@ -207,6 +212,7 @@
 		CheckResult(res,"GetGain" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGain_Increment()
 	{
 		float val=0;
@@ -226,7 +232,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_GAIN, Gain);
 		CheckResult(res,"SetGain");
 	}
-			
+	
 	// Change image resolution by binning or skipping. (XI_PRM_DOWNSAMPLING)
 	XI_DOWNSAMPLING_VALUE xiAPIplus_Camera::GetDownsampling()
 	{
@@ -249,6 +255,7 @@
 		CheckResult(res,"GetDownsampling" "_Maximum");
 		return (XI_DOWNSAMPLING_VALUE)val;
 	}
+	
 	XI_DOWNSAMPLING_VALUE xiAPIplus_Camera::GetDownsampling_Minimum()
 	{
 		int val=0;
@@ -279,7 +286,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DOWNSAMPLING, Downsampling);
 		CheckResult(res,"SetDownsampling");
 	}
-				
+	
 	// Change image downsampling type. (XI_PRM_DOWNSAMPLING_TYPE)
 	XI_DOWNSAMPLING_TYPE xiAPIplus_Camera::GetDownsamplingType()
 	{
@@ -302,6 +309,7 @@
 		CheckResult(res,"GetDownsamplingType" "_Maximum");
 		return (XI_DOWNSAMPLING_TYPE)val;
 	}
+	
 	XI_DOWNSAMPLING_TYPE xiAPIplus_Camera::GetDownsamplingType_Minimum()
 	{
 		int val=0;
@@ -332,7 +340,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DOWNSAMPLING_TYPE, DownsamplingType);
 		CheckResult(res,"SetDownsamplingType");
 	}
-				
+	
 	// Binning engine selector. (XI_PRM_BINNING_SELECTOR)
 	XI_BIN_SELECTOR xiAPIplus_Camera::GetBinningSelector()
 	{
@@ -355,6 +363,7 @@
 		CheckResult(res,"GetBinningSelector" "_Maximum");
 		return (XI_BIN_SELECTOR)val;
 	}
+	
 	XI_BIN_SELECTOR xiAPIplus_Camera::GetBinningSelector_Minimum()
 	{
 		int val=0;
@@ -385,7 +394,61 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_SELECTOR, BinningSelector);
 		CheckResult(res,"SetBinningSelector");
 	}
-				
+	
+	// Sets the mode to use to combine vertical pixel together. (XI_PRM_BINNING_VERTICAL_MODE)
+	XI_BIN_MODE xiAPIplus_Camera::GetBinningVerticalMode()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalMode");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_MODE, &val);
+		CheckResult(res,"GetBinningVerticalMode");
+		return (XI_BIN_MODE)val;
+	}
+	
+	XI_BIN_MODE xiAPIplus_Camera::GetBinningVerticalMode_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalMode" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_MODE XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetBinningVerticalMode" "_Maximum");
+		return (XI_BIN_MODE)val;
+	}
+	
+	XI_BIN_MODE xiAPIplus_Camera::GetBinningVerticalMode_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalMode" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_MODE XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetBinningVerticalMode" "_Minimum");
+		return (XI_BIN_MODE)val;
+	}
+	
+	int xiAPIplus_Camera::GetBinningVerticalMode_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalMode" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_MODE XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetBinningVerticalMode" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetBinningVerticalMode(XI_BIN_MODE BinningVerticalMode)
+	{
+		
+		CheckCamHandleInt("SetBinningVerticalMode",(int)BinningVerticalMode);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_MODE, BinningVerticalMode);
+		CheckResult(res,"SetBinningVerticalMode");
+	}
+	
 	// Vertical Binning - number of vertical photo-sensitive cells to combine together. (XI_PRM_BINNING_VERTICAL)
 	int xiAPIplus_Camera::GetBinningVertical()
 	{
@@ -397,6 +460,7 @@
 		CheckResult(res,"GetBinningVertical");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBinningVertical_Maximum()
 	{
 		int val=0;
@@ -407,6 +471,7 @@
 		CheckResult(res,"GetBinningVertical" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBinningVertical_Minimum()
 	{
 		int val=0;
@@ -417,7 +482,7 @@
 		CheckResult(res,"GetBinningVertical" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetBinningVertical_Increment()
 	{
 		int val=0;
@@ -428,7 +493,6 @@
 		CheckResult(res,"GetBinningVertical" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetBinningVertical(int BinningVertical)
 	{
@@ -438,7 +502,61 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL, BinningVertical);
 		CheckResult(res,"SetBinningVertical");
 	}
-			
+	
+	// Sets the mode to use to combine horizontal pixel together. (XI_PRM_BINNING_HORIZONTAL_MODE)
+	XI_BIN_MODE xiAPIplus_Camera::GetBinningHorizontalMode()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningHorizontalMode");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_MODE, &val);
+		CheckResult(res,"GetBinningHorizontalMode");
+		return (XI_BIN_MODE)val;
+	}
+	
+	XI_BIN_MODE xiAPIplus_Camera::GetBinningHorizontalMode_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningHorizontalMode" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_MODE XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetBinningHorizontalMode" "_Maximum");
+		return (XI_BIN_MODE)val;
+	}
+	
+	XI_BIN_MODE xiAPIplus_Camera::GetBinningHorizontalMode_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningHorizontalMode" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_MODE XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetBinningHorizontalMode" "_Minimum");
+		return (XI_BIN_MODE)val;
+	}
+	
+	int xiAPIplus_Camera::GetBinningHorizontalMode_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningHorizontalMode" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_MODE XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetBinningHorizontalMode" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetBinningHorizontalMode(XI_BIN_MODE BinningHorizontalMode)
+	{
+		
+		CheckCamHandleInt("SetBinningHorizontalMode",(int)BinningHorizontalMode);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_MODE, BinningHorizontalMode);
+		CheckResult(res,"SetBinningHorizontalMode");
+	}
+	
 	// Horizontal Binning - number of horizontal photo-sensitive cells to combine together. (XI_PRM_BINNING_HORIZONTAL)
 	int xiAPIplus_Camera::GetBinningHorizontal()
 	{
@@ -450,6 +568,7 @@
 		CheckResult(res,"GetBinningHorizontal");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBinningHorizontal_Maximum()
 	{
 		int val=0;
@@ -460,6 +579,7 @@
 		CheckResult(res,"GetBinningHorizontal" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBinningHorizontal_Minimum()
 	{
 		int val=0;
@@ -470,7 +590,7 @@
 		CheckResult(res,"GetBinningHorizontal" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetBinningHorizontal_Increment()
 	{
 		int val=0;
@@ -481,7 +601,6 @@
 		CheckResult(res,"GetBinningHorizontal" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetBinningHorizontal(int BinningHorizontal)
 	{
@@ -491,60 +610,115 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL, BinningHorizontal);
 		CheckResult(res,"SetBinningHorizontal");
 	}
-			
-	// Binning pattern type. (XI_PRM_BINNING_PATTERN)
-	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningPattern()
+	
+	// Binning horizontal pattern type. (XI_PRM_BINNING_HORIZONTAL_PATTERN)
+	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningHorizontalPattern()
 	{
 		int val=0;
 		
-		CheckCamHandle("GetBinningPattern");
+		CheckCamHandle("GetBinningHorizontalPattern");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_PATTERN, &val);
-		CheckResult(res,"GetBinningPattern");
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_PATTERN, &val);
+		CheckResult(res,"GetBinningHorizontalPattern");
 		return (XI_BIN_PATTERN)val;
 	}
 	
-	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningPattern_Maximum()
+	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningHorizontalPattern_Maximum()
 	{
 		int val=0;
 		
-		CheckCamHandle("GetBinningPattern" "_Maximum");
+		CheckCamHandle("GetBinningHorizontalPattern" "_Maximum");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_PATTERN XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetBinningPattern" "_Maximum");
-		return (XI_BIN_PATTERN)val;
-	}
-	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningPattern_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetBinningPattern" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_PATTERN XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetBinningPattern" "_Minimum");
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_PATTERN XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetBinningHorizontalPattern" "_Maximum");
 		return (XI_BIN_PATTERN)val;
 	}
 	
-	int xiAPIplus_Camera::GetBinningPattern_Increment()
+	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningHorizontalPattern_Minimum()
 	{
 		int val=0;
 		
-		CheckCamHandle("GetBinningPattern" "_Increment");
+		CheckCamHandle("GetBinningHorizontalPattern" "_Minimum");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_PATTERN XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetBinningPattern" "_Increment");
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_PATTERN XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetBinningHorizontalPattern" "_Minimum");
+		return (XI_BIN_PATTERN)val;
+	}
+	
+	int xiAPIplus_Camera::GetBinningHorizontalPattern_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningHorizontalPattern" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_PATTERN XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetBinningHorizontalPattern" "_Increment");
 		return val;
 	}
 	
-	void xiAPIplus_Camera::SetBinningPattern(XI_BIN_PATTERN BinningPattern)
+	void xiAPIplus_Camera::SetBinningHorizontalPattern(XI_BIN_PATTERN BinningHorizontalPattern)
 	{
 		
-		CheckCamHandleInt("SetBinningPattern",(int)BinningPattern);
+		CheckCamHandleInt("SetBinningHorizontalPattern",(int)BinningHorizontalPattern);
 		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_PATTERN, BinningPattern);
-		CheckResult(res,"SetBinningPattern");
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_HORIZONTAL_PATTERN, BinningHorizontalPattern);
+		CheckResult(res,"SetBinningHorizontalPattern");
 	}
-				
+	
+	// Binning vertical pattern type. (XI_PRM_BINNING_VERTICAL_PATTERN)
+	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningVerticalPattern()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalPattern");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_PATTERN, &val);
+		CheckResult(res,"GetBinningVerticalPattern");
+		return (XI_BIN_PATTERN)val;
+	}
+	
+	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningVerticalPattern_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalPattern" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_PATTERN XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetBinningVerticalPattern" "_Maximum");
+		return (XI_BIN_PATTERN)val;
+	}
+	
+	XI_BIN_PATTERN xiAPIplus_Camera::GetBinningVerticalPattern_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalPattern" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_PATTERN XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetBinningVerticalPattern" "_Minimum");
+		return (XI_BIN_PATTERN)val;
+	}
+	
+	int xiAPIplus_Camera::GetBinningVerticalPattern_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBinningVerticalPattern" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_PATTERN XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetBinningVerticalPattern" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetBinningVerticalPattern(XI_BIN_PATTERN BinningVerticalPattern)
+	{
+		
+		CheckCamHandleInt("SetBinningVerticalPattern",(int)BinningVerticalPattern);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BINNING_VERTICAL_PATTERN, BinningVerticalPattern);
+		CheckResult(res,"SetBinningVerticalPattern");
+	}
+	
 	// Decimation engine selector. (XI_PRM_DECIMATION_SELECTOR)
 	XI_DEC_SELECTOR xiAPIplus_Camera::GetDecimationSelector()
 	{
@@ -567,6 +741,7 @@
 		CheckResult(res,"GetDecimationSelector" "_Maximum");
 		return (XI_DEC_SELECTOR)val;
 	}
+	
 	XI_DEC_SELECTOR xiAPIplus_Camera::GetDecimationSelector_Minimum()
 	{
 		int val=0;
@@ -597,7 +772,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DECIMATION_SELECTOR, DecimationSelector);
 		CheckResult(res,"SetDecimationSelector");
 	}
-				
+	
 	// Vertical Decimation - vertical sub-sampling of the image - reduces the vertical resolution of the image by the specified vertical decimation factor. (XI_PRM_DECIMATION_VERTICAL)
 	int xiAPIplus_Camera::GetDecimationVertical()
 	{
@@ -609,6 +784,7 @@
 		CheckResult(res,"GetDecimationVertical");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDecimationVertical_Maximum()
 	{
 		int val=0;
@@ -619,6 +795,7 @@
 		CheckResult(res,"GetDecimationVertical" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDecimationVertical_Minimum()
 	{
 		int val=0;
@@ -629,7 +806,7 @@
 		CheckResult(res,"GetDecimationVertical" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetDecimationVertical_Increment()
 	{
 		int val=0;
@@ -640,7 +817,6 @@
 		CheckResult(res,"GetDecimationVertical" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetDecimationVertical(int DecimationVertical)
 	{
@@ -650,7 +826,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DECIMATION_VERTICAL, DecimationVertical);
 		CheckResult(res,"SetDecimationVertical");
 	}
-			
+	
 	// Horizontal Decimation - horizontal sub-sampling of the image - reduces the horizontal resolution of the image by the specified vertical decimation factor. (XI_PRM_DECIMATION_HORIZONTAL)
 	int xiAPIplus_Camera::GetDecimationHorizontal()
 	{
@@ -662,6 +838,7 @@
 		CheckResult(res,"GetDecimationHorizontal");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDecimationHorizontal_Maximum()
 	{
 		int val=0;
@@ -672,6 +849,7 @@
 		CheckResult(res,"GetDecimationHorizontal" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDecimationHorizontal_Minimum()
 	{
 		int val=0;
@@ -682,7 +860,7 @@
 		CheckResult(res,"GetDecimationHorizontal" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetDecimationHorizontal_Increment()
 	{
 		int val=0;
@@ -693,7 +871,6 @@
 		CheckResult(res,"GetDecimationHorizontal" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetDecimationHorizontal(int DecimationHorizontal)
 	{
@@ -703,60 +880,115 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DECIMATION_HORIZONTAL, DecimationHorizontal);
 		CheckResult(res,"SetDecimationHorizontal");
 	}
-			
-	// Decimation pattern type. (XI_PRM_DECIMATION_PATTERN)
-	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationPattern()
+	
+	// Decimation horizontal pattern type. (XI_PRM_DECIMATION_HORIZONTAL_PATTERN)
+	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationHorizontalPattern()
 	{
 		int val=0;
 		
-		CheckCamHandle("GetDecimationPattern");
+		CheckCamHandle("GetDecimationHorizontalPattern");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_PATTERN, &val);
-		CheckResult(res,"GetDecimationPattern");
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_HORIZONTAL_PATTERN, &val);
+		CheckResult(res,"GetDecimationHorizontalPattern");
 		return (XI_DEC_PATTERN)val;
 	}
 	
-	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationPattern_Maximum()
+	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationHorizontalPattern_Maximum()
 	{
 		int val=0;
 		
-		CheckCamHandle("GetDecimationPattern" "_Maximum");
+		CheckCamHandle("GetDecimationHorizontalPattern" "_Maximum");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_PATTERN XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetDecimationPattern" "_Maximum");
-		return (XI_DEC_PATTERN)val;
-	}
-	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationPattern_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetDecimationPattern" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_PATTERN XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetDecimationPattern" "_Minimum");
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_HORIZONTAL_PATTERN XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetDecimationHorizontalPattern" "_Maximum");
 		return (XI_DEC_PATTERN)val;
 	}
 	
-	int xiAPIplus_Camera::GetDecimationPattern_Increment()
+	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationHorizontalPattern_Minimum()
 	{
 		int val=0;
 		
-		CheckCamHandle("GetDecimationPattern" "_Increment");
+		CheckCamHandle("GetDecimationHorizontalPattern" "_Minimum");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_PATTERN XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetDecimationPattern" "_Increment");
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_HORIZONTAL_PATTERN XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetDecimationHorizontalPattern" "_Minimum");
+		return (XI_DEC_PATTERN)val;
+	}
+	
+	int xiAPIplus_Camera::GetDecimationHorizontalPattern_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetDecimationHorizontalPattern" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_HORIZONTAL_PATTERN XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetDecimationHorizontalPattern" "_Increment");
 		return val;
 	}
 	
-	void xiAPIplus_Camera::SetDecimationPattern(XI_DEC_PATTERN DecimationPattern)
+	void xiAPIplus_Camera::SetDecimationHorizontalPattern(XI_DEC_PATTERN DecimationHorizontalPattern)
 	{
 		
-		CheckCamHandleInt("SetDecimationPattern",(int)DecimationPattern);
+		CheckCamHandleInt("SetDecimationHorizontalPattern",(int)DecimationHorizontalPattern);
 		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DECIMATION_PATTERN, DecimationPattern);
-		CheckResult(res,"SetDecimationPattern");
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DECIMATION_HORIZONTAL_PATTERN, DecimationHorizontalPattern);
+		CheckResult(res,"SetDecimationHorizontalPattern");
 	}
-				
+	
+	// Decimation vertical pattern type. (XI_PRM_DECIMATION_VERTICAL_PATTERN)
+	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationVerticalPattern()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetDecimationVerticalPattern");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_VERTICAL_PATTERN, &val);
+		CheckResult(res,"GetDecimationVerticalPattern");
+		return (XI_DEC_PATTERN)val;
+	}
+	
+	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationVerticalPattern_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetDecimationVerticalPattern" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_VERTICAL_PATTERN XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetDecimationVerticalPattern" "_Maximum");
+		return (XI_DEC_PATTERN)val;
+	}
+	
+	XI_DEC_PATTERN xiAPIplus_Camera::GetDecimationVerticalPattern_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetDecimationVerticalPattern" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_VERTICAL_PATTERN XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetDecimationVerticalPattern" "_Minimum");
+		return (XI_DEC_PATTERN)val;
+	}
+	
+	int xiAPIplus_Camera::GetDecimationVerticalPattern_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetDecimationVerticalPattern" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DECIMATION_VERTICAL_PATTERN XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetDecimationVerticalPattern" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetDecimationVerticalPattern(XI_DEC_PATTERN DecimationVerticalPattern)
+	{
+		
+		CheckCamHandleInt("SetDecimationVerticalPattern",(int)DecimationVerticalPattern);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DECIMATION_VERTICAL_PATTERN, DecimationVerticalPattern);
+		CheckResult(res,"SetDecimationVerticalPattern");
+	}
+	
 	// Selects which test pattern generator is controlled by the TestPattern feature. (XI_PRM_TEST_PATTERN_GENERATOR_SELECTOR)
 	XI_TEST_PATTERN_GENERATOR xiAPIplus_Camera::GetTestPatternGeneratorSelector()
 	{
@@ -779,6 +1011,7 @@
 		CheckResult(res,"GetTestPatternGeneratorSelector" "_Maximum");
 		return (XI_TEST_PATTERN_GENERATOR)val;
 	}
+	
 	XI_TEST_PATTERN_GENERATOR xiAPIplus_Camera::GetTestPatternGeneratorSelector_Minimum()
 	{
 		int val=0;
@@ -809,7 +1042,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TEST_PATTERN_GENERATOR_SELECTOR, TestPatternGeneratorSelector);
 		CheckResult(res,"SetTestPatternGeneratorSelector");
 	}
-				
+	
 	// Selects which test pattern type is generated by the selected generator. (XI_PRM_TEST_PATTERN)
 	XI_TEST_PATTERN xiAPIplus_Camera::GetTestPattern()
 	{
@@ -832,6 +1065,7 @@
 		CheckResult(res,"GetTestPattern" "_Maximum");
 		return (XI_TEST_PATTERN)val;
 	}
+	
 	XI_TEST_PATTERN xiAPIplus_Camera::GetTestPattern_Minimum()
 	{
 		int val=0;
@@ -862,7 +1096,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TEST_PATTERN, TestPattern);
 		CheckResult(res,"SetTestPattern");
 	}
-				
+	
 	// Output data format. (XI_PRM_IMAGE_DATA_FORMAT)
 	XI_IMG_FORMAT xiAPIplus_Camera::GetImageDataFormat()
 	{
@@ -885,6 +1119,7 @@
 		CheckResult(res,"GetImageDataFormat" "_Maximum");
 		return (XI_IMG_FORMAT)val;
 	}
+	
 	XI_IMG_FORMAT xiAPIplus_Camera::GetImageDataFormat_Minimum()
 	{
 		int val=0;
@@ -915,7 +1150,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_DATA_FORMAT, ImageDataFormat);
 		CheckResult(res,"SetImageDataFormat");
 	}
-				
+	
 	// Change sensor shutter type(CMOS sensor). (XI_PRM_SHUTTER_TYPE)
 	XI_SHUTTER_TYPE xiAPIplus_Camera::GetShutterType()
 	{
@@ -938,6 +1173,7 @@
 		CheckResult(res,"GetShutterType" "_Maximum");
 		return (XI_SHUTTER_TYPE)val;
 	}
+	
 	XI_SHUTTER_TYPE xiAPIplus_Camera::GetShutterType_Minimum()
 	{
 		int val=0;
@@ -968,7 +1204,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SHUTTER_TYPE, ShutterType);
 		CheckResult(res,"SetShutterType");
 	}
-				
+	
 	// Number of taps (XI_PRM_SENSOR_TAPS)
 	XI_SENSOR_TAP_CNT xiAPIplus_Camera::GetSensorTaps()
 	{
@@ -991,6 +1227,7 @@
 		CheckResult(res,"GetSensorTaps" "_Maximum");
 		return (XI_SENSOR_TAP_CNT)val;
 	}
+	
 	XI_SENSOR_TAP_CNT xiAPIplus_Camera::GetSensorTaps_Minimum()
 	{
 		int val=0;
@@ -1021,7 +1258,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_TAPS, SensorTaps);
 		CheckResult(res,"SetSensorTaps");
 	}
-				
+	
 	// Automatic exposure/gain (XI_PRM_AEAG)
 	bool xiAPIplus_Camera::IsAutoExposureAutoGain()
 	{
@@ -1033,7 +1270,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableAutoExposureAutoGain()
 	{
 		
@@ -1042,6 +1278,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG, XI_ON);
 		CheckResult(res,"EnableAutoExposureAutoGain");
 	}
+
 	void xiAPIplus_Camera::DisableAutoExposureAutoGain()
 	{
 		
@@ -1049,8 +1286,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG, XI_OFF);
 		CheckResult(res,"DisableAutoExposureAutoGain");
-	}
-			
+	}	
+	
 	// Automatic exposure/gain ROI offset X (XI_PRM_AEAG_ROI_OFFSET_X)
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetX()
 	{
@@ -1062,6 +1299,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetX");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetX_Maximum()
 	{
 		int val=0;
@@ -1072,6 +1310,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetX" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetX_Minimum()
 	{
 		int val=0;
@@ -1082,7 +1321,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetX" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetX_Increment()
 	{
 		int val=0;
@@ -1093,7 +1332,6 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetX" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAutoExposureAutoGainROIoffsetX(int AutoExposureAutoGainROIoffsetX)
 	{
@@ -1103,7 +1341,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG_ROI_OFFSET_X, AutoExposureAutoGainROIoffsetX);
 		CheckResult(res,"SetAutoExposureAutoGainROIoffsetX");
 	}
-			
+	
 	// Automatic exposure/gain ROI offset Y (XI_PRM_AEAG_ROI_OFFSET_Y)
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetY()
 	{
@@ -1115,6 +1353,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetY");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetY_Maximum()
 	{
 		int val=0;
@@ -1125,6 +1364,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetY" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetY_Minimum()
 	{
 		int val=0;
@@ -1135,7 +1375,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetY" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIoffsetY_Increment()
 	{
 		int val=0;
@@ -1146,7 +1386,6 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIoffsetY" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAutoExposureAutoGainROIoffsetY(int AutoExposureAutoGainROIoffsetY)
 	{
@@ -1156,7 +1395,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG_ROI_OFFSET_Y, AutoExposureAutoGainROIoffsetY);
 		CheckResult(res,"SetAutoExposureAutoGainROIoffsetY");
 	}
-			
+	
 	// Automatic exposure/gain ROI Width (XI_PRM_AEAG_ROI_WIDTH)
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIWidth()
 	{
@@ -1168,6 +1407,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIWidth");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIWidth_Maximum()
 	{
 		int val=0;
@@ -1178,6 +1418,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIWidth" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIWidth_Minimum()
 	{
 		int val=0;
@@ -1188,7 +1429,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIWidth" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIWidth_Increment()
 	{
 		int val=0;
@@ -1199,7 +1440,6 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIWidth" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAutoExposureAutoGainROIWidth(int AutoExposureAutoGainROIWidth)
 	{
@@ -1209,7 +1449,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG_ROI_WIDTH, AutoExposureAutoGainROIWidth);
 		CheckResult(res,"SetAutoExposureAutoGainROIWidth");
 	}
-			
+	
 	// Automatic exposure/gain ROI Height (XI_PRM_AEAG_ROI_HEIGHT)
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIHeight()
 	{
@@ -1221,6 +1461,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIHeight");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIHeight_Maximum()
 	{
 		int val=0;
@@ -1231,6 +1472,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIHeight" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIHeight_Minimum()
 	{
 		int val=0;
@@ -1241,7 +1483,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIHeight" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAutoExposureAutoGainROIHeight_Increment()
 	{
 		int val=0;
@@ -1252,7 +1494,6 @@
 		CheckResult(res,"GetAutoExposureAutoGainROIHeight" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAutoExposureAutoGainROIHeight(int AutoExposureAutoGainROIHeight)
 	{
@@ -1262,66 +1503,8 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG_ROI_HEIGHT, AutoExposureAutoGainROIHeight);
 		CheckResult(res,"SetAutoExposureAutoGainROIHeight");
 	}
-			
-	// Horizontal flip enable (XI_PRM_HORIZONTAL_FLIP)
-	bool xiAPIplus_Camera::IsHorizontalFlip()
-	{
-		int val=0;
-		
-		CheckCamHandle("IsHorizontalFlip");
-		
-		xiGetParamInt(camera_handle, XI_PRM_HORIZONTAL_FLIP, &val);
-		return (val!=0);
-	}
 	
-	
-	void xiAPIplus_Camera::EnableHorizontalFlip()
-	{
-		
-		CheckCamHandle("IsHorizontalFlip");
-		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HORIZONTAL_FLIP, XI_ON);
-		CheckResult(res,"EnableHorizontalFlip");
-	}
-	void xiAPIplus_Camera::DisableHorizontalFlip()
-	{
-		
-		CheckCamHandle("DisableHorizontalFlip");
-		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HORIZONTAL_FLIP, XI_OFF);
-		CheckResult(res,"DisableHorizontalFlip");
-	}
-			
-	// Vertical flip enable (XI_PRM_VERTICAL_FLIP)
-	bool xiAPIplus_Camera::IsVerticalFlip()
-	{
-		int val=0;
-		
-		CheckCamHandle("IsVerticalFlip");
-		
-		xiGetParamInt(camera_handle, XI_PRM_VERTICAL_FLIP, &val);
-		return (val!=0);
-	}
-	
-	
-	void xiAPIplus_Camera::EnableVerticalFlip()
-	{
-		
-		CheckCamHandle("IsVerticalFlip");
-		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_VERTICAL_FLIP, XI_ON);
-		CheckResult(res,"EnableVerticalFlip");
-	}
-	void xiAPIplus_Camera::DisableVerticalFlip()
-	{
-		
-		CheckCamHandle("DisableVerticalFlip");
-		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_VERTICAL_FLIP, XI_OFF);
-		CheckResult(res,"DisableVerticalFlip");
-	}
-			
-	// Correction of bad pixels (XI_PRM_BPC)
+	// Correction of sensor defects (pixels, columns, rows) enable/disable (XI_PRM_BPC)
 	bool xiAPIplus_Camera::IsBadPixelCorrection()
 	{
 		int val=0;
@@ -1332,7 +1515,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableBadPixelCorrection()
 	{
 		
@@ -1341,6 +1523,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BPC, XI_ON);
 		CheckResult(res,"EnableBadPixelCorrection");
 	}
+
 	void xiAPIplus_Camera::DisableBadPixelCorrection()
 	{
 		
@@ -1348,8 +1531,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BPC, XI_OFF);
 		CheckResult(res,"DisableBadPixelCorrection");
-	}
-			
+	}	
+	
 	// Automatic white balance (XI_PRM_AUTO_WB)
 	bool xiAPIplus_Camera::IsWhiteBalanceAuto()
 	{
@@ -1361,7 +1544,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableWhiteBalanceAuto()
 	{
 		
@@ -1370,6 +1552,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AUTO_WB, XI_ON);
 		CheckResult(res,"EnableWhiteBalanceAuto");
 	}
+
 	void xiAPIplus_Camera::DisableWhiteBalanceAuto()
 	{
 		
@@ -1377,52 +1560,9 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AUTO_WB, XI_OFF);
 		CheckResult(res,"DisableWhiteBalanceAuto");
-	}
-			
+	}	
+	
 	// Calculates White Balance(xiGetImage function must be called) (XI_PRM_MANUAL_WB)
-	int xiAPIplus_Camera::GetWhiteBalanceManualNow()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetWhiteBalanceManualNow");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_MANUAL_WB, &val);
-		CheckResult(res,"GetWhiteBalanceManualNow");
-		return val;
-	}
-	int xiAPIplus_Camera::GetWhiteBalanceManualNow_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetWhiteBalanceManualNow" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_MANUAL_WB XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetWhiteBalanceManualNow" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetWhiteBalanceManualNow_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetWhiteBalanceManualNow" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_MANUAL_WB XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetWhiteBalanceManualNow" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetWhiteBalanceManualNow_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetWhiteBalanceManualNow" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_MANUAL_WB XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetWhiteBalanceManualNow" "_Increment");
-		return val;
-	}
-
-	
 	void xiAPIplus_Camera::SetWhiteBalanceManualNow(int WhiteBalanceManualNow)
 	{
 		
@@ -1431,7 +1571,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_MANUAL_WB, WhiteBalanceManualNow);
 		CheckResult(res,"SetWhiteBalanceManualNow");
 	}
-			
+	
 	// White balance red coefficient (XI_PRM_WB_KR)
 	float xiAPIplus_Camera::GetWhiteBalanceRed()
 	{
@@ -1443,6 +1583,7 @@
 		CheckResult(res,"GetWhiteBalanceRed");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceRed_Maximum()
 	{
 		float val=0;
@@ -1453,6 +1594,7 @@
 		CheckResult(res,"GetWhiteBalanceRed" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceRed_Minimum()
 	{
 		float val=0;
@@ -1463,6 +1605,7 @@
 		CheckResult(res,"GetWhiteBalanceRed" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceRed_Increment()
 	{
 		float val=0;
@@ -1482,7 +1625,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_WB_KR, WhiteBalanceRed);
 		CheckResult(res,"SetWhiteBalanceRed");
 	}
-			
+	
 	// White balance green coefficient (XI_PRM_WB_KG)
 	float xiAPIplus_Camera::GetWhiteBalanceGreen()
 	{
@@ -1494,6 +1637,7 @@
 		CheckResult(res,"GetWhiteBalanceGreen");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceGreen_Maximum()
 	{
 		float val=0;
@@ -1504,6 +1648,7 @@
 		CheckResult(res,"GetWhiteBalanceGreen" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceGreen_Minimum()
 	{
 		float val=0;
@@ -1514,6 +1659,7 @@
 		CheckResult(res,"GetWhiteBalanceGreen" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceGreen_Increment()
 	{
 		float val=0;
@@ -1533,7 +1679,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_WB_KG, WhiteBalanceGreen);
 		CheckResult(res,"SetWhiteBalanceGreen");
 	}
-			
+	
 	// White balance blue coefficient (XI_PRM_WB_KB)
 	float xiAPIplus_Camera::GetWhiteBalanceBlue()
 	{
@@ -1545,6 +1691,7 @@
 		CheckResult(res,"GetWhiteBalanceBlue");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceBlue_Maximum()
 	{
 		float val=0;
@@ -1555,6 +1702,7 @@
 		CheckResult(res,"GetWhiteBalanceBlue" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceBlue_Minimum()
 	{
 		float val=0;
@@ -1565,6 +1713,7 @@
 		CheckResult(res,"GetWhiteBalanceBlue" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetWhiteBalanceBlue_Increment()
 	{
 		float val=0;
@@ -1584,7 +1733,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_WB_KB, WhiteBalanceBlue);
 		CheckResult(res,"SetWhiteBalanceBlue");
 	}
-			
+	
 	// Width of the Image provided by the device (in pixels). (XI_PRM_WIDTH)
 	int xiAPIplus_Camera::GetWidth()
 	{
@@ -1596,6 +1745,7 @@
 		CheckResult(res,"GetWidth");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetWidth_Maximum()
 	{
 		int val=0;
@@ -1606,6 +1756,7 @@
 		CheckResult(res,"GetWidth" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetWidth_Minimum()
 	{
 		int val=0;
@@ -1616,7 +1767,7 @@
 		CheckResult(res,"GetWidth" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetWidth_Increment()
 	{
 		int val=0;
@@ -1627,7 +1778,6 @@
 		CheckResult(res,"GetWidth" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetWidth(int Width)
 	{
@@ -1637,7 +1787,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_WIDTH, Width);
 		CheckResult(res,"SetWidth");
 	}
-			
+	
 	// Height of the Image provided by the device (in pixels). (XI_PRM_HEIGHT)
 	int xiAPIplus_Camera::GetHeight()
 	{
@@ -1649,6 +1799,7 @@
 		CheckResult(res,"GetHeight");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHeight_Maximum()
 	{
 		int val=0;
@@ -1659,6 +1810,7 @@
 		CheckResult(res,"GetHeight" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHeight_Minimum()
 	{
 		int val=0;
@@ -1669,7 +1821,7 @@
 		CheckResult(res,"GetHeight" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetHeight_Increment()
 	{
 		int val=0;
@@ -1680,7 +1832,6 @@
 		CheckResult(res,"GetHeight" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetHeight(int Height)
 	{
@@ -1690,7 +1841,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HEIGHT, Height);
 		CheckResult(res,"SetHeight");
 	}
-			
+	
 	// Horizontal offset from the origin to the area of interest (in pixels). (XI_PRM_OFFSET_X)
 	int xiAPIplus_Camera::GetOffsetX()
 	{
@@ -1702,6 +1853,7 @@
 		CheckResult(res,"GetOffsetX");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetOffsetX_Maximum()
 	{
 		int val=0;
@@ -1712,6 +1864,7 @@
 		CheckResult(res,"GetOffsetX" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetOffsetX_Minimum()
 	{
 		int val=0;
@@ -1722,7 +1875,7 @@
 		CheckResult(res,"GetOffsetX" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetOffsetX_Increment()
 	{
 		int val=0;
@@ -1733,7 +1886,6 @@
 		CheckResult(res,"GetOffsetX" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetOffsetX(int OffsetX)
 	{
@@ -1743,7 +1895,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_OFFSET_X, OffsetX);
 		CheckResult(res,"SetOffsetX");
 	}
-			
+	
 	// Vertical offset from the origin to the area of interest (in pixels). (XI_PRM_OFFSET_Y)
 	int xiAPIplus_Camera::GetOffsetY()
 	{
@@ -1755,6 +1907,7 @@
 		CheckResult(res,"GetOffsetY");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetOffsetY_Maximum()
 	{
 		int val=0;
@@ -1765,6 +1918,7 @@
 		CheckResult(res,"GetOffsetY" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetOffsetY_Minimum()
 	{
 		int val=0;
@@ -1775,7 +1929,7 @@
 		CheckResult(res,"GetOffsetY" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetOffsetY_Increment()
 	{
 		int val=0;
@@ -1786,7 +1940,6 @@
 		CheckResult(res,"GetOffsetY" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetOffsetY(int OffsetY)
 	{
@@ -1796,7 +1949,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_OFFSET_Y, OffsetY);
 		CheckResult(res,"SetOffsetY");
 	}
-			
+	
 	// Selects Region in Multiple ROI which parameters are set by width, height, ... ,region mode (XI_PRM_REGION_SELECTOR )
 	int xiAPIplus_Camera::GetRegion_selector()
 	{
@@ -1808,6 +1961,7 @@
 		CheckResult(res,"GetRegion_selector");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetRegion_selector_Maximum()
 	{
 		int val=0;
@@ -1818,6 +1972,7 @@
 		CheckResult(res,"GetRegion_selector" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetRegion_selector_Minimum()
 	{
 		int val=0;
@@ -1828,7 +1983,7 @@
 		CheckResult(res,"GetRegion_selector" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetRegion_selector_Increment()
 	{
 		int val=0;
@@ -1839,7 +1994,6 @@
 		CheckResult(res,"GetRegion_selector" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetRegion_selector(int Region_selector)
 	{
@@ -1849,7 +2003,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_REGION_SELECTOR , Region_selector);
 		CheckResult(res,"SetRegion_selector");
 	}
-			
+	
 	// Activates/deactivates Region selected by Region Selector (XI_PRM_REGION_MODE )
 	int xiAPIplus_Camera::GetRegion_mode()
 	{
@@ -1861,6 +2015,7 @@
 		CheckResult(res,"GetRegion_mode");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetRegion_mode_Maximum()
 	{
 		int val=0;
@@ -1871,6 +2026,7 @@
 		CheckResult(res,"GetRegion_mode" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetRegion_mode_Minimum()
 	{
 		int val=0;
@@ -1881,7 +2037,7 @@
 		CheckResult(res,"GetRegion_mode" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetRegion_mode_Increment()
 	{
 		int val=0;
@@ -1892,7 +2048,6 @@
 		CheckResult(res,"GetRegion_mode" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetRegion_mode(int Region_mode)
 	{
@@ -1902,12 +2057,129 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_REGION_MODE , Region_mode);
 		CheckResult(res,"SetRegion_mode");
 	}
-			
+	
+	// Horizontal flip enable (XI_PRM_HORIZONTAL_FLIP)
+	bool xiAPIplus_Camera::IsHorizontalFlip()
+	{
+		int val=0;
+		
+		CheckCamHandle("IsHorizontalFlip");
+		
+		xiGetParamInt(camera_handle, XI_PRM_HORIZONTAL_FLIP, &val);
+		return (val!=0);
+	}
+	
+	void xiAPIplus_Camera::EnableHorizontalFlip()
+	{
+		
+		CheckCamHandle("IsHorizontalFlip");
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HORIZONTAL_FLIP, XI_ON);
+		CheckResult(res,"EnableHorizontalFlip");
+	}
+
+	void xiAPIplus_Camera::DisableHorizontalFlip()
+	{
+		
+		CheckCamHandle("DisableHorizontalFlip");
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HORIZONTAL_FLIP, XI_OFF);
+		CheckResult(res,"DisableHorizontalFlip");
+	}	
+	
+	// Vertical flip enable (XI_PRM_VERTICAL_FLIP)
+	bool xiAPIplus_Camera::IsVerticalFlip()
+	{
+		int val=0;
+		
+		CheckCamHandle("IsVerticalFlip");
+		
+		xiGetParamInt(camera_handle, XI_PRM_VERTICAL_FLIP, &val);
+		return (val!=0);
+	}
+	
+	void xiAPIplus_Camera::EnableVerticalFlip()
+	{
+		
+		CheckCamHandle("IsVerticalFlip");
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_VERTICAL_FLIP, XI_ON);
+		CheckResult(res,"EnableVerticalFlip");
+	}
+
+	void xiAPIplus_Camera::DisableVerticalFlip()
+	{
+		
+		CheckCamHandle("DisableVerticalFlip");
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_VERTICAL_FLIP, XI_OFF);
+		CheckResult(res,"DisableVerticalFlip");
+	}	
+	
+	// Image flat field correction (XI_PRM_FFC)
+	bool xiAPIplus_Camera::IsFlatFieldCorrection()
+	{
+		int val=0;
+		
+		CheckCamHandle("IsFlatFieldCorrection");
+		
+		xiGetParamInt(camera_handle, XI_PRM_FFC, &val);
+		return (val!=0);
+	}
+	
+	void xiAPIplus_Camera::EnableFlatFieldCorrection()
+	{
+		
+		CheckCamHandle("IsFlatFieldCorrection");
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_FFC, XI_ON);
+		CheckResult(res,"EnableFlatFieldCorrection");
+	}
+
+	void xiAPIplus_Camera::DisableFlatFieldCorrection()
+	{
+		
+		CheckCamHandle("DisableFlatFieldCorrection");
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_FFC, XI_OFF);
+		CheckResult(res,"DisableFlatFieldCorrection");
+	}	
+	
+	// Set name of file to be applied for FFC processor. (XI_PRM_FFC_FLAT_FIELD_FILE_NAME)
+	void xiAPIplus_Camera::GetFFCFlatFieldFileName(char* buffer, int buffer_length)
+	{
+		
+		XI_RETURN res=xiGetParamString(camera_handle, XI_PRM_FFC_FLAT_FIELD_FILE_NAME, buffer, buffer_length);
+		CheckResult(res,"GetFFCFlatFieldFileName");
+	}
+	
+	void xiAPIplus_Camera::SetFFCFlatFieldFileName(char* new_value)
+	{
+		
+		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_FFC_FLAT_FIELD_FILE_NAME, new_value, (DWORD)strlen(new_value));
+		CheckResult(res,"SetFFCFlatFieldFileName");
+	}
+	
+	// Set name of file to be applied for FFC processor. (XI_PRM_FFC_DARK_FIELD_FILE_NAME)
+	void xiAPIplus_Camera::GetFFCDarkFieldFileName(char* buffer, int buffer_length)
+	{
+		
+		XI_RETURN res=xiGetParamString(camera_handle, XI_PRM_FFC_DARK_FIELD_FILE_NAME, buffer, buffer_length);
+		CheckResult(res,"GetFFCDarkFieldFileName");
+	}
+	
+	void xiAPIplus_Camera::SetFFCDarkFieldFileName(char* new_value)
+	{
+		
+		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_FFC_DARK_FIELD_FILE_NAME, new_value, (DWORD)strlen(new_value));
+		CheckResult(res,"SetFFCDarkFieldFileName");
+	}
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: AE Setup
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Exposure priority (0.8 - exposure 80%, gain 20%). (XI_PRM_EXP_PRIORITY)
 	float xiAPIplus_Camera::GetAutoExposureAutoGainExposurePriority()
@@ -1920,6 +2192,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainExposurePriority");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetAutoExposureAutoGainExposurePriority_Maximum()
 	{
 		float val=0;
@@ -1930,6 +2203,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainExposurePriority" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetAutoExposureAutoGainExposurePriority_Minimum()
 	{
 		float val=0;
@@ -1940,6 +2214,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainExposurePriority" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetAutoExposureAutoGainExposurePriority_Increment()
 	{
 		float val=0;
@@ -1959,7 +2234,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_EXP_PRIORITY, AutoExposureAutoGainExposurePriority);
 		CheckResult(res,"SetAutoExposureAutoGainExposurePriority");
 	}
-			
+	
 	// Maximum limit of gain in AEAG procedure (XI_PRM_AG_MAX_LIMIT)
 	float xiAPIplus_Camera::GetAutoGainTopLimit()
 	{
@@ -1971,6 +2246,7 @@
 		CheckResult(res,"GetAutoGainTopLimit");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetAutoGainTopLimit_Maximum()
 	{
 		float val=0;
@@ -1981,6 +2257,7 @@
 		CheckResult(res,"GetAutoGainTopLimit" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetAutoGainTopLimit_Minimum()
 	{
 		float val=0;
@@ -1991,6 +2268,7 @@
 		CheckResult(res,"GetAutoGainTopLimit" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetAutoGainTopLimit_Increment()
 	{
 		float val=0;
@@ -2010,7 +2288,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_AG_MAX_LIMIT, AutoGainTopLimit);
 		CheckResult(res,"SetAutoGainTopLimit");
 	}
-			
+	
 	// Maximum time (us) used for exposure in AEAG procedure (XI_PRM_AE_MAX_LIMIT)
 	int xiAPIplus_Camera::GetAutoExposureTopLimit()
 	{
@@ -2022,6 +2300,7 @@
 		CheckResult(res,"GetAutoExposureTopLimit");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureTopLimit_Maximum()
 	{
 		int val=0;
@@ -2032,6 +2311,7 @@
 		CheckResult(res,"GetAutoExposureTopLimit" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureTopLimit_Minimum()
 	{
 		int val=0;
@@ -2042,7 +2322,7 @@
 		CheckResult(res,"GetAutoExposureTopLimit" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAutoExposureTopLimit_Increment()
 	{
 		int val=0;
@@ -2053,7 +2333,6 @@
 		CheckResult(res,"GetAutoExposureTopLimit" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAutoExposureTopLimit(int AutoExposureTopLimit)
 	{
@@ -2063,7 +2342,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AE_MAX_LIMIT, AutoExposureTopLimit);
 		CheckResult(res,"SetAutoExposureTopLimit");
 	}
-			
+	
 	// Average intensity of output signal AEAG should achieve(in %) (XI_PRM_AEAG_LEVEL)
 	int xiAPIplus_Camera::GetAutoExposureAutoGainTargetLevel()
 	{
@@ -2075,6 +2354,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainTargetLevel");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainTargetLevel_Maximum()
 	{
 		int val=0;
@@ -2085,6 +2365,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainTargetLevel" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAutoExposureAutoGainTargetLevel_Minimum()
 	{
 		int val=0;
@@ -2095,7 +2376,7 @@
 		CheckResult(res,"GetAutoExposureAutoGainTargetLevel" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAutoExposureAutoGainTargetLevel_Increment()
 	{
 		int val=0;
@@ -2106,7 +2387,6 @@
 		CheckResult(res,"GetAutoExposureAutoGainTargetLevel" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAutoExposureAutoGainTargetLevel(int AutoExposureAutoGainTargetLevel)
 	{
@@ -2116,12 +2396,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AEAG_LEVEL, AutoExposureAutoGainTargetLevel);
 		CheckResult(res,"SetAutoExposureAutoGainTargetLevel");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Performance
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Set/get bandwidth(datarate)(in Megabits) (XI_PRM_LIMIT_BANDWIDTH)
 	int xiAPIplus_Camera::GetBandwidthLimit()
@@ -2134,6 +2414,7 @@
 		CheckResult(res,"GetBandwidthLimit");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBandwidthLimit_Maximum()
 	{
 		int val=0;
@@ -2144,6 +2425,7 @@
 		CheckResult(res,"GetBandwidthLimit" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBandwidthLimit_Minimum()
 	{
 		int val=0;
@@ -2154,7 +2436,7 @@
 		CheckResult(res,"GetBandwidthLimit" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetBandwidthLimit_Increment()
 	{
 		int val=0;
@@ -2165,7 +2447,6 @@
 		CheckResult(res,"GetBandwidthLimit" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetBandwidthLimit(int BandwidthLimit)
 	{
@@ -2175,7 +2456,115 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LIMIT_BANDWIDTH, BandwidthLimit);
 		CheckResult(res,"SetBandwidthLimit");
 	}
-			
+	
+	// Bandwidth limit enabled (XI_PRM_LIMIT_BANDWIDTH_MODE)
+	XI_SWITCH xiAPIplus_Camera::GetBandwidthLimitMode()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBandwidthLimitMode");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LIMIT_BANDWIDTH_MODE, &val);
+		CheckResult(res,"GetBandwidthLimitMode");
+		return (XI_SWITCH)val;
+	}
+	
+	XI_SWITCH xiAPIplus_Camera::GetBandwidthLimitMode_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBandwidthLimitMode" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LIMIT_BANDWIDTH_MODE XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetBandwidthLimitMode" "_Maximum");
+		return (XI_SWITCH)val;
+	}
+	
+	XI_SWITCH xiAPIplus_Camera::GetBandwidthLimitMode_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBandwidthLimitMode" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LIMIT_BANDWIDTH_MODE XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetBandwidthLimitMode" "_Minimum");
+		return (XI_SWITCH)val;
+	}
+	
+	int xiAPIplus_Camera::GetBandwidthLimitMode_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetBandwidthLimitMode" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LIMIT_BANDWIDTH_MODE XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetBandwidthLimitMode" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetBandwidthLimitMode(XI_SWITCH BandwidthLimitMode)
+	{
+		
+		CheckCamHandleInt("SetBandwidthLimitMode",(int)BandwidthLimitMode);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LIMIT_BANDWIDTH_MODE, BandwidthLimitMode);
+		CheckResult(res,"SetBandwidthLimitMode");
+	}
+	
+	// Image sensor line period in us (XI_PRM_SENSOR_LINE_PERIOD)
+	float xiAPIplus_Camera::GetSensorLinePeriod()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetSensorLinePeriod");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_SENSOR_LINE_PERIOD, &val);
+		CheckResult(res,"GetSensorLinePeriod");
+		return val;
+	}
+
+	float xiAPIplus_Camera::GetSensorLinePeriod_Maximum()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetSensorLinePeriod" "_Maximum");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_SENSOR_LINE_PERIOD XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetSensorLinePeriod" "_Maximum");
+		return val;
+	}
+
+	float xiAPIplus_Camera::GetSensorLinePeriod_Minimum()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetSensorLinePeriod" "_Minimum");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_SENSOR_LINE_PERIOD XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetSensorLinePeriod" "_Minimum");
+		return val;
+	}
+
+	float xiAPIplus_Camera::GetSensorLinePeriod_Increment()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetSensorLinePeriod" "_Increment");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_SENSOR_LINE_PERIOD XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetSensorLinePeriod" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetSensorLinePeriod(float SensorLinePeriod)
+	{
+		
+		CheckCamHandle("SetSensorLinePeriod");
+		
+		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_SENSOR_LINE_PERIOD, SensorLinePeriod);
+		CheckResult(res,"SetSensorLinePeriod");
+	}
+	
 	// Sensor output data bit depth. (XI_PRM_SENSOR_DATA_BIT_DEPTH)
 	XI_BIT_DEPTH xiAPIplus_Camera::GetSensorDataBitDepth()
 	{
@@ -2198,6 +2587,7 @@
 		CheckResult(res,"GetSensorDataBitDepth" "_Maximum");
 		return (XI_BIT_DEPTH)val;
 	}
+	
 	XI_BIT_DEPTH xiAPIplus_Camera::GetSensorDataBitDepth_Minimum()
 	{
 		int val=0;
@@ -2228,7 +2618,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_DATA_BIT_DEPTH, SensorDataBitDepth);
 		CheckResult(res,"SetSensorDataBitDepth");
 	}
-				
+	
 	// Device output data bit depth. (XI_PRM_OUTPUT_DATA_BIT_DEPTH)
 	XI_BIT_DEPTH xiAPIplus_Camera::GetDeviceOutputDataBitDepth()
 	{
@@ -2251,6 +2641,7 @@
 		CheckResult(res,"GetDeviceOutputDataBitDepth" "_Maximum");
 		return (XI_BIT_DEPTH)val;
 	}
+	
 	XI_BIT_DEPTH xiAPIplus_Camera::GetDeviceOutputDataBitDepth_Minimum()
 	{
 		int val=0;
@@ -2281,7 +2672,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_OUTPUT_DATA_BIT_DEPTH, DeviceOutputDataBitDepth);
 		CheckResult(res,"SetDeviceOutputDataBitDepth");
 	}
-				
+	
 	// bitdepth of data returned by function xiGetImage (XI_PRM_IMAGE_DATA_BIT_DEPTH)
 	XI_BIT_DEPTH xiAPIplus_Camera::GetImageDataBitDepth()
 	{
@@ -2304,6 +2695,7 @@
 		CheckResult(res,"GetImageDataBitDepth" "_Maximum");
 		return (XI_BIT_DEPTH)val;
 	}
+	
 	XI_BIT_DEPTH xiAPIplus_Camera::GetImageDataBitDepth_Minimum()
 	{
 		int val=0;
@@ -2334,7 +2726,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_DATA_BIT_DEPTH, ImageDataBitDepth);
 		CheckResult(res,"SetImageDataBitDepth");
 	}
-				
+	
 	// Device output data packing (or grouping) enabled. Packing could be enabled if output_data_bit_depth > 8 and packing capability is available. (XI_PRM_OUTPUT_DATA_PACKING)
 	bool xiAPIplus_Camera::IsDeviceOutputDataPacking()
 	{
@@ -2346,7 +2738,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableDeviceOutputDataPacking()
 	{
 		
@@ -2355,6 +2746,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_OUTPUT_DATA_PACKING, XI_ON);
 		CheckResult(res,"EnableDeviceOutputDataPacking");
 	}
+
 	void xiAPIplus_Camera::DisableDeviceOutputDataPacking()
 	{
 		
@@ -2362,8 +2754,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_OUTPUT_DATA_PACKING, XI_OFF);
 		CheckResult(res,"DisableDeviceOutputDataPacking");
-	}
-			
+	}	
+	
 	// Data packing type. Some cameras supports only specific packing type. (XI_PRM_OUTPUT_DATA_PACKING_TYPE)
 	XI_OUTPUT_DATA_PACKING_TYPE xiAPIplus_Camera::GetDeviceOutputDataPackingType()
 	{
@@ -2386,6 +2778,7 @@
 		CheckResult(res,"GetDeviceOutputDataPackingType" "_Maximum");
 		return (XI_OUTPUT_DATA_PACKING_TYPE)val;
 	}
+	
 	XI_OUTPUT_DATA_PACKING_TYPE xiAPIplus_Camera::GetDeviceOutputDataPackingType_Minimum()
 	{
 		int val=0;
@@ -2416,12 +2809,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_OUTPUT_DATA_PACKING_TYPE, DeviceOutputDataPackingType);
 		CheckResult(res,"SetDeviceOutputDataPackingType");
 	}
-				
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Temperature
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Returns 1 for cameras that support cooling. (XI_PRM_IS_COOLED)
 	bool xiAPIplus_Camera::IsCooled()
@@ -2434,7 +2827,6 @@
 		return (val!=0);
 	}
 	
-	
 	// Start camera cooling. (XI_PRM_COOLING)
 	bool xiAPIplus_Camera::IsCooling()
 	{
@@ -2446,7 +2838,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableCooling()
 	{
 		
@@ -2455,6 +2846,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_COOLING, XI_ON);
 		CheckResult(res,"EnableCooling");
 	}
+
 	void xiAPIplus_Camera::DisableCooling()
 	{
 		
@@ -2462,8 +2854,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_COOLING, XI_OFF);
 		CheckResult(res,"DisableCooling");
-	}
-			
+	}	
+	
 	// Set sensor target temperature for cooling. (XI_PRM_TARGET_TEMP)
 	float xiAPIplus_Camera::GetTargetTemperature()
 	{
@@ -2475,6 +2867,7 @@
 		CheckResult(res,"GetTargetTemperature");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTargetTemperature_Maximum()
 	{
 		float val=0;
@@ -2485,6 +2878,7 @@
 		CheckResult(res,"GetTargetTemperature" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTargetTemperature_Minimum()
 	{
 		float val=0;
@@ -2495,6 +2889,7 @@
 		CheckResult(res,"GetTargetTemperature" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTargetTemperature_Increment()
 	{
 		float val=0;
@@ -2514,7 +2909,106 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_TARGET_TEMP, TargetTemperature);
 		CheckResult(res,"SetTargetTemperature");
 	}
-			
+	
+	// Selector of mechanical point where thermometer is located. (XI_PRM_TEMP_SELECTOR)
+	XI_TEMP_SELECTOR xiAPIplus_Camera::GetTemperatureSelector()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTemperatureSelector");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TEMP_SELECTOR, &val);
+		CheckResult(res,"GetTemperatureSelector");
+		return (XI_TEMP_SELECTOR)val;
+	}
+	
+	XI_TEMP_SELECTOR xiAPIplus_Camera::GetTemperatureSelector_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTemperatureSelector" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TEMP_SELECTOR XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetTemperatureSelector" "_Maximum");
+		return (XI_TEMP_SELECTOR)val;
+	}
+	
+	XI_TEMP_SELECTOR xiAPIplus_Camera::GetTemperatureSelector_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTemperatureSelector" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TEMP_SELECTOR XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetTemperatureSelector" "_Minimum");
+		return (XI_TEMP_SELECTOR)val;
+	}
+	
+	int xiAPIplus_Camera::GetTemperatureSelector_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTemperatureSelector" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TEMP_SELECTOR XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetTemperatureSelector" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetTemperatureSelector(XI_TEMP_SELECTOR TemperatureSelector)
+	{
+		
+		CheckCamHandleInt("SetTemperatureSelector",(int)TemperatureSelector);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TEMP_SELECTOR, TemperatureSelector);
+		CheckResult(res,"SetTemperatureSelector");
+	}
+	
+	// Camera temperature (selected by XI_PRM_TEMP_SELECTOR) (XI_PRM_TEMP)
+	float xiAPIplus_Camera::GetTemperature()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetTemperature");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_TEMP, &val);
+		CheckResult(res,"GetTemperature");
+		return val;
+	}
+
+	float xiAPIplus_Camera::GetTemperature_Maximum()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetTemperature" "_Maximum");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_TEMP XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetTemperature" "_Maximum");
+		return val;
+	}
+
+	float xiAPIplus_Camera::GetTemperature_Minimum()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetTemperature" "_Minimum");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_TEMP XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetTemperature" "_Minimum");
+		return val;
+	}
+
+	float xiAPIplus_Camera::GetTemperature_Increment()
+	{
+		float val=0;
+		
+		CheckCamHandle("GetTemperature" "_Increment");
+		
+		XI_RETURN res=xiGetParamFloat(camera_handle, XI_PRM_TEMP XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetTemperature" "_Increment");
+		return val;
+	}
+	
 	// Camera sensor temperature (XI_PRM_CHIP_TEMP)
 	float xiAPIplus_Camera::GetTemperatureSensor()
 	{
@@ -2526,6 +3020,7 @@
 		CheckResult(res,"GetTemperatureSensor");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureSensor_Maximum()
 	{
 		float val=0;
@@ -2536,6 +3031,7 @@
 		CheckResult(res,"GetTemperatureSensor" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureSensor_Minimum()
 	{
 		float val=0;
@@ -2546,6 +3042,7 @@
 		CheckResult(res,"GetTemperatureSensor" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureSensor_Increment()
 	{
 		float val=0;
@@ -2568,6 +3065,7 @@
 		CheckResult(res,"GetTemperatureHousing");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureHousing_Maximum()
 	{
 		float val=0;
@@ -2578,6 +3076,7 @@
 		CheckResult(res,"GetTemperatureHousing" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureHousing_Minimum()
 	{
 		float val=0;
@@ -2588,6 +3087,7 @@
 		CheckResult(res,"GetTemperatureHousing" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureHousing_Increment()
 	{
 		float val=0;
@@ -2610,6 +3110,7 @@
 		CheckResult(res,"GetTemperatureHousingBackSide");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureHousingBackSide_Maximum()
 	{
 		float val=0;
@@ -2620,6 +3121,7 @@
 		CheckResult(res,"GetTemperatureHousingBackSide" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureHousingBackSide_Minimum()
 	{
 		float val=0;
@@ -2630,6 +3132,7 @@
 		CheckResult(res,"GetTemperatureHousingBackSide" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureHousingBackSide_Increment()
 	{
 		float val=0;
@@ -2652,6 +3155,7 @@
 		CheckResult(res,"GetTemperatureSensorBoard");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureSensorBoard_Maximum()
 	{
 		float val=0;
@@ -2662,6 +3166,7 @@
 		CheckResult(res,"GetTemperatureSensorBoard" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureSensorBoard_Minimum()
 	{
 		float val=0;
@@ -2672,6 +3177,7 @@
 		CheckResult(res,"GetTemperatureSensorBoard" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetTemperatureSensorBoard_Increment()
 	{
 		float val=0;
@@ -2687,7 +3193,7 @@
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Color Correction
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Mode of color management system. (XI_PRM_CMS)
 	XI_CMS_MODE xiAPIplus_Camera::GetColorManagementMode()
@@ -2711,6 +3217,7 @@
 		CheckResult(res,"GetColorManagementMode" "_Maximum");
 		return (XI_CMS_MODE)val;
 	}
+	
 	XI_CMS_MODE xiAPIplus_Camera::GetColorManagementMode_Minimum()
 	{
 		int val=0;
@@ -2741,7 +3248,61 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CMS, ColorManagementMode);
 		CheckResult(res,"SetColorManagementMode");
 	}
-				
+	
+	// Intent of color management system. (XI_PRM_CMS_INTENT)
+	XI_CMS_INTENT xiAPIplus_Camera::GetColorManagementIntent()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetColorManagementIntent");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_CMS_INTENT, &val);
+		CheckResult(res,"GetColorManagementIntent");
+		return (XI_CMS_INTENT)val;
+	}
+	
+	XI_CMS_INTENT xiAPIplus_Camera::GetColorManagementIntent_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetColorManagementIntent" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_CMS_INTENT XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetColorManagementIntent" "_Maximum");
+		return (XI_CMS_INTENT)val;
+	}
+	
+	XI_CMS_INTENT xiAPIplus_Camera::GetColorManagementIntent_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetColorManagementIntent" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_CMS_INTENT XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetColorManagementIntent" "_Minimum");
+		return (XI_CMS_INTENT)val;
+	}
+	
+	int xiAPIplus_Camera::GetColorManagementIntent_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetColorManagementIntent" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_CMS_INTENT XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetColorManagementIntent" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetColorManagementIntent(XI_CMS_INTENT ColorManagementIntent)
+	{
+		
+		CheckCamHandleInt("SetColorManagementIntent",(int)ColorManagementIntent);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CMS_INTENT, ColorManagementIntent);
+		CheckResult(res,"SetColorManagementIntent");
+	}
+	
 	// Enable applying of CMS profiles to xiGetImage (see XI_PRM_INPUT_CMS_PROFILE, XI_PRM_OUTPUT_CMS_PROFILE). (XI_PRM_APPLY_CMS)
 	bool xiAPIplus_Camera::IsColorManagementApply()
 	{
@@ -2753,7 +3314,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableColorManagementApply()
 	{
 		
@@ -2762,6 +3322,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_APPLY_CMS, XI_ON);
 		CheckResult(res,"EnableColorManagementApply");
 	}
+
 	void xiAPIplus_Camera::DisableColorManagementApply()
 	{
 		
@@ -2769,8 +3330,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_APPLY_CMS, XI_OFF);
 		CheckResult(res,"DisableColorManagementApply");
-	}
-			
+	}	
+	
 	// Filename for input cms profile (e.g. input.icc) (XI_PRM_INPUT_CMS_PROFILE)
 	void xiAPIplus_Camera::GetColorManagementInputProfile(char* buffer, int buffer_length)
 	{
@@ -2789,7 +3350,7 @@
 		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_INPUT_CMS_PROFILE, new_value, (DWORD)strlen(new_value));
 		CheckResult(res,"SetColorManagementInputProfile");
 	}
-			
+	
 	// Filename for output cms profile (e.g. input.icc) (XI_PRM_OUTPUT_CMS_PROFILE)
 	void xiAPIplus_Camera::GetColorManagementOutputProfile(char* buffer, int buffer_length)
 	{
@@ -2808,7 +3369,7 @@
 		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_OUTPUT_CMS_PROFILE, new_value, (DWORD)strlen(new_value));
 		CheckResult(res,"SetColorManagementOutputProfile");
 	}
-			
+	
 	// Returns 1 for color cameras. (XI_PRM_IMAGE_IS_COLOR)
 	bool xiAPIplus_Camera::IsSensorColor()
 	{
@@ -2819,7 +3380,6 @@
 		xiGetParamInt(camera_handle, XI_PRM_IMAGE_IS_COLOR, &val);
 		return (val!=0);
 	}
-	
 	
 	// Returns color filter array type of RAW data. (XI_PRM_COLOR_FILTER_ARRAY)
 	XI_COLOR_FILTER_ARRAY xiAPIplus_Camera::GetSensorColorFilterArray()
@@ -2843,6 +3403,7 @@
 		CheckResult(res,"GetSensorColorFilterArray" "_Maximum");
 		return (XI_COLOR_FILTER_ARRAY)val;
 	}
+	
 	XI_COLOR_FILTER_ARRAY xiAPIplus_Camera::GetSensorColorFilterArray_Minimum()
 	{
 		int val=0;
@@ -2876,6 +3437,7 @@
 		CheckResult(res,"GetGammaLuminosity");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGammaLuminosity_Maximum()
 	{
 		float val=0;
@@ -2886,6 +3448,7 @@
 		CheckResult(res,"GetGammaLuminosity" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGammaLuminosity_Minimum()
 	{
 		float val=0;
@@ -2896,6 +3459,7 @@
 		CheckResult(res,"GetGammaLuminosity" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGammaLuminosity_Increment()
 	{
 		float val=0;
@@ -2915,7 +3479,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_GAMMAY, GammaLuminosity);
 		CheckResult(res,"SetGammaLuminosity");
 	}
-			
+	
 	// Chromaticity gamma (XI_PRM_GAMMAC)
 	float xiAPIplus_Camera::GetGammaChromaticity()
 	{
@@ -2927,6 +3491,7 @@
 		CheckResult(res,"GetGammaChromaticity");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGammaChromaticity_Maximum()
 	{
 		float val=0;
@@ -2937,6 +3502,7 @@
 		CheckResult(res,"GetGammaChromaticity" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGammaChromaticity_Minimum()
 	{
 		float val=0;
@@ -2947,6 +3513,7 @@
 		CheckResult(res,"GetGammaChromaticity" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetGammaChromaticity_Increment()
 	{
 		float val=0;
@@ -2966,7 +3533,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_GAMMAC, GammaChromaticity);
 		CheckResult(res,"SetGammaChromaticity");
 	}
-			
+	
 	// Sharpness Strenght (XI_PRM_SHARPNESS)
 	float xiAPIplus_Camera::GetSharpness()
 	{
@@ -2978,6 +3545,7 @@
 		CheckResult(res,"GetSharpness");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetSharpness_Maximum()
 	{
 		float val=0;
@@ -2988,6 +3556,7 @@
 		CheckResult(res,"GetSharpness" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetSharpness_Minimum()
 	{
 		float val=0;
@@ -2998,6 +3567,7 @@
 		CheckResult(res,"GetSharpness" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetSharpness_Increment()
 	{
 		float val=0;
@@ -3017,7 +3587,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_SHARPNESS, Sharpness);
 		CheckResult(res,"SetSharpness");
 	}
-			
+	
 	// Color Correction Matrix element [0][0] (XI_PRM_CC_MATRIX_00)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix00()
 	{
@@ -3029,6 +3599,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix00");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix00_Maximum()
 	{
 		float val=0;
@@ -3039,6 +3610,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix00" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix00_Minimum()
 	{
 		float val=0;
@@ -3049,6 +3621,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix00" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix00_Increment()
 	{
 		float val=0;
@@ -3068,7 +3641,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_00, ColorCorrectionMatrix00);
 		CheckResult(res,"SetColorCorrectionMatrix00");
 	}
-			
+	
 	// Color Correction Matrix element [0][1] (XI_PRM_CC_MATRIX_01)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix01()
 	{
@@ -3080,6 +3653,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix01");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix01_Maximum()
 	{
 		float val=0;
@@ -3090,6 +3664,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix01" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix01_Minimum()
 	{
 		float val=0;
@@ -3100,6 +3675,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix01" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix01_Increment()
 	{
 		float val=0;
@@ -3119,7 +3695,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_01, ColorCorrectionMatrix01);
 		CheckResult(res,"SetColorCorrectionMatrix01");
 	}
-			
+	
 	// Color Correction Matrix element [0][2] (XI_PRM_CC_MATRIX_02)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix02()
 	{
@@ -3131,6 +3707,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix02");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix02_Maximum()
 	{
 		float val=0;
@@ -3141,6 +3718,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix02" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix02_Minimum()
 	{
 		float val=0;
@@ -3151,6 +3729,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix02" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix02_Increment()
 	{
 		float val=0;
@@ -3170,7 +3749,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_02, ColorCorrectionMatrix02);
 		CheckResult(res,"SetColorCorrectionMatrix02");
 	}
-			
+	
 	// Color Correction Matrix element [0][3] (XI_PRM_CC_MATRIX_03)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix03()
 	{
@@ -3182,6 +3761,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix03");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix03_Maximum()
 	{
 		float val=0;
@@ -3192,6 +3772,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix03" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix03_Minimum()
 	{
 		float val=0;
@@ -3202,6 +3783,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix03" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix03_Increment()
 	{
 		float val=0;
@@ -3221,7 +3803,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_03, ColorCorrectionMatrix03);
 		CheckResult(res,"SetColorCorrectionMatrix03");
 	}
-			
+	
 	// Color Correction Matrix element [1][0] (XI_PRM_CC_MATRIX_10)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix10()
 	{
@@ -3233,6 +3815,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix10");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix10_Maximum()
 	{
 		float val=0;
@@ -3243,6 +3826,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix10" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix10_Minimum()
 	{
 		float val=0;
@@ -3253,6 +3837,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix10" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix10_Increment()
 	{
 		float val=0;
@@ -3272,7 +3857,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_10, ColorCorrectionMatrix10);
 		CheckResult(res,"SetColorCorrectionMatrix10");
 	}
-			
+	
 	// Color Correction Matrix element [1][1] (XI_PRM_CC_MATRIX_11)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix11()
 	{
@@ -3284,6 +3869,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix11");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix11_Maximum()
 	{
 		float val=0;
@@ -3294,6 +3880,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix11" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix11_Minimum()
 	{
 		float val=0;
@@ -3304,6 +3891,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix11" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix11_Increment()
 	{
 		float val=0;
@@ -3323,7 +3911,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_11, ColorCorrectionMatrix11);
 		CheckResult(res,"SetColorCorrectionMatrix11");
 	}
-			
+	
 	// Color Correction Matrix element [1][2] (XI_PRM_CC_MATRIX_12)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix12()
 	{
@@ -3335,6 +3923,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix12");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix12_Maximum()
 	{
 		float val=0;
@@ -3345,6 +3934,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix12" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix12_Minimum()
 	{
 		float val=0;
@@ -3355,6 +3945,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix12" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix12_Increment()
 	{
 		float val=0;
@@ -3374,7 +3965,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_12, ColorCorrectionMatrix12);
 		CheckResult(res,"SetColorCorrectionMatrix12");
 	}
-			
+	
 	// Color Correction Matrix element [1][3] (XI_PRM_CC_MATRIX_13)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix13()
 	{
@@ -3386,6 +3977,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix13");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix13_Maximum()
 	{
 		float val=0;
@@ -3396,6 +3988,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix13" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix13_Minimum()
 	{
 		float val=0;
@@ -3406,6 +3999,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix13" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix13_Increment()
 	{
 		float val=0;
@@ -3425,7 +4019,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_13, ColorCorrectionMatrix13);
 		CheckResult(res,"SetColorCorrectionMatrix13");
 	}
-			
+	
 	// Color Correction Matrix element [2][0] (XI_PRM_CC_MATRIX_20)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix20()
 	{
@@ -3437,6 +4031,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix20");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix20_Maximum()
 	{
 		float val=0;
@@ -3447,6 +4042,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix20" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix20_Minimum()
 	{
 		float val=0;
@@ -3457,6 +4053,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix20" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix20_Increment()
 	{
 		float val=0;
@@ -3476,7 +4073,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_20, ColorCorrectionMatrix20);
 		CheckResult(res,"SetColorCorrectionMatrix20");
 	}
-			
+	
 	// Color Correction Matrix element [2][1] (XI_PRM_CC_MATRIX_21)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix21()
 	{
@@ -3488,6 +4085,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix21");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix21_Maximum()
 	{
 		float val=0;
@@ -3498,6 +4096,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix21" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix21_Minimum()
 	{
 		float val=0;
@@ -3508,6 +4107,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix21" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix21_Increment()
 	{
 		float val=0;
@@ -3527,7 +4127,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_21, ColorCorrectionMatrix21);
 		CheckResult(res,"SetColorCorrectionMatrix21");
 	}
-			
+	
 	// Color Correction Matrix element [2][2] (XI_PRM_CC_MATRIX_22)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix22()
 	{
@@ -3539,6 +4139,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix22");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix22_Maximum()
 	{
 		float val=0;
@@ -3549,6 +4150,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix22" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix22_Minimum()
 	{
 		float val=0;
@@ -3559,6 +4161,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix22" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix22_Increment()
 	{
 		float val=0;
@@ -3578,7 +4181,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_22, ColorCorrectionMatrix22);
 		CheckResult(res,"SetColorCorrectionMatrix22");
 	}
-			
+	
 	// Color Correction Matrix element [2][3] (XI_PRM_CC_MATRIX_23)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix23()
 	{
@@ -3590,6 +4193,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix23");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix23_Maximum()
 	{
 		float val=0;
@@ -3600,6 +4204,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix23" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix23_Minimum()
 	{
 		float val=0;
@@ -3610,6 +4215,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix23" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix23_Increment()
 	{
 		float val=0;
@@ -3629,7 +4235,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_23, ColorCorrectionMatrix23);
 		CheckResult(res,"SetColorCorrectionMatrix23");
 	}
-			
+	
 	// Color Correction Matrix element [3][0] (XI_PRM_CC_MATRIX_30)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix30()
 	{
@@ -3641,6 +4247,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix30");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix30_Maximum()
 	{
 		float val=0;
@@ -3651,6 +4258,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix30" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix30_Minimum()
 	{
 		float val=0;
@@ -3661,6 +4269,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix30" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix30_Increment()
 	{
 		float val=0;
@@ -3680,7 +4289,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_30, ColorCorrectionMatrix30);
 		CheckResult(res,"SetColorCorrectionMatrix30");
 	}
-			
+	
 	// Color Correction Matrix element [3][1] (XI_PRM_CC_MATRIX_31)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix31()
 	{
@@ -3692,6 +4301,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix31");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix31_Maximum()
 	{
 		float val=0;
@@ -3702,6 +4312,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix31" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix31_Minimum()
 	{
 		float val=0;
@@ -3712,6 +4323,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix31" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix31_Increment()
 	{
 		float val=0;
@@ -3731,7 +4343,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_31, ColorCorrectionMatrix31);
 		CheckResult(res,"SetColorCorrectionMatrix31");
 	}
-			
+	
 	// Color Correction Matrix element [3][2] (XI_PRM_CC_MATRIX_32)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix32()
 	{
@@ -3743,6 +4355,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix32");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix32_Maximum()
 	{
 		float val=0;
@@ -3753,6 +4366,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix32" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix32_Minimum()
 	{
 		float val=0;
@@ -3763,6 +4377,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix32" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix32_Increment()
 	{
 		float val=0;
@@ -3782,7 +4397,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_32, ColorCorrectionMatrix32);
 		CheckResult(res,"SetColorCorrectionMatrix32");
 	}
-			
+	
 	// Color Correction Matrix element [3][3] (XI_PRM_CC_MATRIX_33)
 	float xiAPIplus_Camera::GetColorCorrectionMatrix33()
 	{
@@ -3794,6 +4409,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix33");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix33_Maximum()
 	{
 		float val=0;
@@ -3804,6 +4420,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix33" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix33_Minimum()
 	{
 		float val=0;
@@ -3814,6 +4431,7 @@
 		CheckResult(res,"GetColorCorrectionMatrix33" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetColorCorrectionMatrix33_Increment()
 	{
 		float val=0;
@@ -3833,51 +4451,8 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_CC_MATRIX_33, ColorCorrectionMatrix33);
 		CheckResult(res,"SetColorCorrectionMatrix33");
 	}
-			
+	
 	// Set default Color Correction Matrix (XI_PRM_DEFAULT_CC_MATRIX)
-	int xiAPIplus_Camera::GetColorCorrectionMatrixDefault()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetColorCorrectionMatrixDefault");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEFAULT_CC_MATRIX, &val);
-		CheckResult(res,"GetColorCorrectionMatrixDefault");
-		return val;
-	}
-	int xiAPIplus_Camera::GetColorCorrectionMatrixDefault_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetColorCorrectionMatrixDefault" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEFAULT_CC_MATRIX XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetColorCorrectionMatrixDefault" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetColorCorrectionMatrixDefault_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetColorCorrectionMatrixDefault" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEFAULT_CC_MATRIX XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetColorCorrectionMatrixDefault" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetColorCorrectionMatrixDefault_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetColorCorrectionMatrixDefault" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEFAULT_CC_MATRIX XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetColorCorrectionMatrixDefault" "_Increment");
-		return val;
-	}
-
-	
 	void xiAPIplus_Camera::SetColorCorrectionMatrixDefault(int ColorCorrectionMatrixDefault)
 	{
 		
@@ -3886,12 +4461,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEFAULT_CC_MATRIX, ColorCorrectionMatrixDefault);
 		CheckResult(res,"SetColorCorrectionMatrixDefault");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Device IO
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Defines source of trigger. (XI_PRM_TRG_SOURCE)
 	XI_TRG_SOURCE xiAPIplus_Camera::GetTriggerSource()
@@ -3915,6 +4490,7 @@
 		CheckResult(res,"GetTriggerSource" "_Maximum");
 		return (XI_TRG_SOURCE)val;
 	}
+	
 	XI_TRG_SOURCE xiAPIplus_Camera::GetTriggerSource_Minimum()
 	{
 		int val=0;
@@ -3945,51 +4521,8 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TRG_SOURCE, TriggerSource);
 		CheckResult(res,"SetTriggerSource");
 	}
-				
+	
 	// Generates an internal trigger. XI_PRM_TRG_SOURCE must be set to TRG_SOFTWARE. (XI_PRM_TRG_SOFTWARE)
-	int xiAPIplus_Camera::GetTriggerSoftware()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetTriggerSoftware");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_SOFTWARE, &val);
-		CheckResult(res,"GetTriggerSoftware");
-		return val;
-	}
-	int xiAPIplus_Camera::GetTriggerSoftware_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetTriggerSoftware" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_SOFTWARE XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetTriggerSoftware" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetTriggerSoftware_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetTriggerSoftware" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_SOFTWARE XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetTriggerSoftware" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetTriggerSoftware_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetTriggerSoftware" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_SOFTWARE XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetTriggerSoftware" "_Increment");
-		return val;
-	}
-
-	
 	void xiAPIplus_Camera::SetTriggerSoftware(int TriggerSoftware)
 	{
 		
@@ -3998,7 +4531,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TRG_SOFTWARE, TriggerSoftware);
 		CheckResult(res,"SetTriggerSoftware");
 	}
-			
+	
 	// Selects the type of trigger. (XI_PRM_TRG_SELECTOR)
 	XI_TRG_SELECTOR xiAPIplus_Camera::GetTriggerSelector()
 	{
@@ -4021,6 +4554,7 @@
 		CheckResult(res,"GetTriggerSelector" "_Maximum");
 		return (XI_TRG_SELECTOR)val;
 	}
+	
 	XI_TRG_SELECTOR xiAPIplus_Camera::GetTriggerSelector_Minimum()
 	{
 		int val=0;
@@ -4051,7 +4585,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TRG_SELECTOR, TriggerSelector);
 		CheckResult(res,"SetTriggerSelector");
 	}
-				
+	
 	// Sets number of frames acquired by burst. This burst is used only if trigger is set to FrameBurstStart (XI_PRM_ACQ_FRAME_BURST_COUNT)
 	int xiAPIplus_Camera::GetAcquisitionFrameBurstCount()
 	{
@@ -4063,6 +4597,7 @@
 		CheckResult(res,"GetAcquisitionFrameBurstCount");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionFrameBurstCount_Maximum()
 	{
 		int val=0;
@@ -4073,6 +4608,7 @@
 		CheckResult(res,"GetAcquisitionFrameBurstCount" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionFrameBurstCount_Minimum()
 	{
 		int val=0;
@@ -4083,7 +4619,7 @@
 		CheckResult(res,"GetAcquisitionFrameBurstCount" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionFrameBurstCount_Increment()
 	{
 		int val=0;
@@ -4094,7 +4630,6 @@
 		CheckResult(res,"GetAcquisitionFrameBurstCount" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionFrameBurstCount(int AcquisitionFrameBurstCount)
 	{
@@ -4104,12 +4639,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_FRAME_BURST_COUNT, AcquisitionFrameBurstCount);
 		CheckResult(res,"SetAcquisitionFrameBurstCount");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: GPIO Setup
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Selects GPI (XI_PRM_GPI_SELECTOR)
 	XI_GPI_SELECTOR xiAPIplus_Camera::GetGPISelector()
@@ -4133,6 +4668,7 @@
 		CheckResult(res,"GetGPISelector" "_Maximum");
 		return (XI_GPI_SELECTOR)val;
 	}
+	
 	XI_GPI_SELECTOR xiAPIplus_Camera::GetGPISelector_Minimum()
 	{
 		int val=0;
@@ -4163,7 +4699,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_GPI_SELECTOR, GPISelector);
 		CheckResult(res,"SetGPISelector");
 	}
-				
+	
 	// Defines GPI functionality (XI_PRM_GPI_MODE)
 	XI_GPI_MODE xiAPIplus_Camera::GetGPIMode()
 	{
@@ -4186,6 +4722,7 @@
 		CheckResult(res,"GetGPIMode" "_Maximum");
 		return (XI_GPI_MODE)val;
 	}
+	
 	XI_GPI_MODE xiAPIplus_Camera::GetGPIMode_Minimum()
 	{
 		int val=0;
@@ -4216,7 +4753,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_GPI_MODE, GPIMode);
 		CheckResult(res,"SetGPIMode");
 	}
-				
+	
 	// GPI level (XI_PRM_GPI_LEVEL)
 	int xiAPIplus_Camera::GetGPILevel()
 	{
@@ -4228,6 +4765,7 @@
 		CheckResult(res,"GetGPILevel");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPILevel_Maximum()
 	{
 		int val=0;
@@ -4238,6 +4776,7 @@
 		CheckResult(res,"GetGPILevel" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPILevel_Minimum()
 	{
 		int val=0;
@@ -4248,7 +4787,7 @@
 		CheckResult(res,"GetGPILevel" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetGPILevel_Increment()
 	{
 		int val=0;
@@ -4259,17 +4798,7 @@
 		CheckResult(res,"GetGPILevel" "_Increment");
 		return val;
 	}
-
 	
-	void xiAPIplus_Camera::SetGPILevel(int GPILevel)
-	{
-		
-		CheckCamHandleInt("SetGPILevel",GPILevel);
-		
-		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_GPI_LEVEL, GPILevel);
-		CheckResult(res,"SetGPILevel");
-	}
-			
 	// Selects GPO (XI_PRM_GPO_SELECTOR)
 	XI_GPO_SELECTOR xiAPIplus_Camera::GetGPOSelector()
 	{
@@ -4292,6 +4821,7 @@
 		CheckResult(res,"GetGPOSelector" "_Maximum");
 		return (XI_GPO_SELECTOR)val;
 	}
+	
 	XI_GPO_SELECTOR xiAPIplus_Camera::GetGPOSelector_Minimum()
 	{
 		int val=0;
@@ -4322,7 +4852,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_GPO_SELECTOR, GPOSelector);
 		CheckResult(res,"SetGPOSelector");
 	}
-				
+	
 	// Defines GPO functionality (XI_PRM_GPO_MODE)
 	XI_GPO_MODE xiAPIplus_Camera::GetGPOMode()
 	{
@@ -4345,6 +4875,7 @@
 		CheckResult(res,"GetGPOMode" "_Maximum");
 		return (XI_GPO_MODE)val;
 	}
+	
 	XI_GPO_MODE xiAPIplus_Camera::GetGPOMode_Minimum()
 	{
 		int val=0;
@@ -4375,7 +4906,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_GPO_MODE, GPOMode);
 		CheckResult(res,"SetGPOMode");
 	}
-				
+	
 	// Selects LED (XI_PRM_LED_SELECTOR)
 	XI_LED_SELECTOR xiAPIplus_Camera::GetLEDSelector()
 	{
@@ -4398,6 +4929,7 @@
 		CheckResult(res,"GetLEDSelector" "_Maximum");
 		return (XI_LED_SELECTOR)val;
 	}
+	
 	XI_LED_SELECTOR xiAPIplus_Camera::GetLEDSelector_Minimum()
 	{
 		int val=0;
@@ -4428,7 +4960,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LED_SELECTOR, LEDSelector);
 		CheckResult(res,"SetLEDSelector");
 	}
-				
+	
 	// Defines LED functionality (XI_PRM_LED_MODE)
 	XI_LED_MODE xiAPIplus_Camera::GetLEDMode()
 	{
@@ -4451,6 +4983,7 @@
 		CheckResult(res,"GetLEDMode" "_Maximum");
 		return (XI_LED_MODE)val;
 	}
+	
 	XI_LED_MODE xiAPIplus_Camera::GetLEDMode_Minimum()
 	{
 		int val=0;
@@ -4481,7 +5014,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LED_MODE, LEDMode);
 		CheckResult(res,"SetLEDMode");
 	}
-				
+	
 	// Enable/Disable debounce to selected GPI (XI_PRM_DEBOUNCE_EN)
 	bool xiAPIplus_Camera::IsGPIDebounce()
 	{
@@ -4493,7 +5026,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableGPIDebounce()
 	{
 		
@@ -4502,6 +5034,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEBOUNCE_EN, XI_ON);
 		CheckResult(res,"EnableGPIDebounce");
 	}
+
 	void xiAPIplus_Camera::DisableGPIDebounce()
 	{
 		
@@ -4509,13 +5042,13 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEBOUNCE_EN, XI_OFF);
 		CheckResult(res,"DisableGPIDebounce");
-	}
-			
+	}	
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Debounce Setup
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Debounce time (x * 10us) (XI_PRM_DEBOUNCE_T0)
 	int xiAPIplus_Camera::GetGPIDebounceFirstEdge()
@@ -4528,6 +5061,7 @@
 		CheckResult(res,"GetGPIDebounceFirstEdge");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPIDebounceFirstEdge_Maximum()
 	{
 		int val=0;
@@ -4538,6 +5072,7 @@
 		CheckResult(res,"GetGPIDebounceFirstEdge" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPIDebounceFirstEdge_Minimum()
 	{
 		int val=0;
@@ -4548,7 +5083,7 @@
 		CheckResult(res,"GetGPIDebounceFirstEdge" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetGPIDebounceFirstEdge_Increment()
 	{
 		int val=0;
@@ -4559,7 +5094,6 @@
 		CheckResult(res,"GetGPIDebounceFirstEdge" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetGPIDebounceFirstEdge(int GPIDebounceFirstEdge)
 	{
@@ -4569,7 +5103,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEBOUNCE_T0, GPIDebounceFirstEdge);
 		CheckResult(res,"SetGPIDebounceFirstEdge");
 	}
-			
+	
 	// Debounce time (x * 10us) (XI_PRM_DEBOUNCE_T1)
 	int xiAPIplus_Camera::GetGPIDebounceSecondEdge()
 	{
@@ -4581,6 +5115,7 @@
 		CheckResult(res,"GetGPIDebounceSecondEdge");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPIDebounceSecondEdge_Maximum()
 	{
 		int val=0;
@@ -4591,6 +5126,7 @@
 		CheckResult(res,"GetGPIDebounceSecondEdge" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPIDebounceSecondEdge_Minimum()
 	{
 		int val=0;
@@ -4601,7 +5137,7 @@
 		CheckResult(res,"GetGPIDebounceSecondEdge" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetGPIDebounceSecondEdge_Increment()
 	{
 		int val=0;
@@ -4612,7 +5148,6 @@
 		CheckResult(res,"GetGPIDebounceSecondEdge" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetGPIDebounceSecondEdge(int GPIDebounceSecondEdge)
 	{
@@ -4622,7 +5157,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEBOUNCE_T1, GPIDebounceSecondEdge);
 		CheckResult(res,"SetGPIDebounceSecondEdge");
 	}
-			
+	
 	// Debounce polarity (pol = 1 t0 - falling edge, t1 - rising edge) (XI_PRM_DEBOUNCE_POL)
 	int xiAPIplus_Camera::GetGPIDebouncePolarity()
 	{
@@ -4634,6 +5169,7 @@
 		CheckResult(res,"GetGPIDebouncePolarity");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPIDebouncePolarity_Maximum()
 	{
 		int val=0;
@@ -4644,6 +5180,7 @@
 		CheckResult(res,"GetGPIDebouncePolarity" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetGPIDebouncePolarity_Minimum()
 	{
 		int val=0;
@@ -4654,7 +5191,7 @@
 		CheckResult(res,"GetGPIDebouncePolarity" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetGPIDebouncePolarity_Increment()
 	{
 		int val=0;
@@ -4665,7 +5202,6 @@
 		CheckResult(res,"GetGPIDebouncePolarity" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetGPIDebouncePolarity(int GPIDebouncePolarity)
 	{
@@ -4675,12 +5211,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEBOUNCE_POL, GPIDebouncePolarity);
 		CheckResult(res,"SetGPIDebouncePolarity");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Lens Control
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Status of lens control interface. This shall be set to XI_ON before any Lens operations. (XI_PRM_LENS_MODE)
 	bool xiAPIplus_Camera::IsLensMode()
@@ -4693,7 +5229,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableLensMode()
 	{
 		
@@ -4702,6 +5237,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LENS_MODE, XI_ON);
 		CheckResult(res,"EnableLensMode");
 	}
+
 	void xiAPIplus_Camera::DisableLensMode()
 	{
 		
@@ -4709,8 +5245,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LENS_MODE, XI_OFF);
 		CheckResult(res,"DisableLensMode");
-	}
-			
+	}	
+	
 	// Current lens aperture value in stops. Examples: 2.8, 4, 5.6, 8, 11 (XI_PRM_LENS_APERTURE_VALUE)
 	float xiAPIplus_Camera::GetLensApertureValue()
 	{
@@ -4722,6 +5258,7 @@
 		CheckResult(res,"GetLensApertureValue");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensApertureValue_Maximum()
 	{
 		float val=0;
@@ -4732,6 +5269,7 @@
 		CheckResult(res,"GetLensApertureValue" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensApertureValue_Minimum()
 	{
 		float val=0;
@@ -4742,6 +5280,7 @@
 		CheckResult(res,"GetLensApertureValue" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensApertureValue_Increment()
 	{
 		float val=0;
@@ -4761,7 +5300,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_LENS_APERTURE_VALUE, LensApertureValue);
 		CheckResult(res,"SetLensApertureValue");
 	}
-			
+	
 	// Lens current focus movement value to be used by XI_PRM_LENS_FOCUS_MOVE in motor steps. (XI_PRM_LENS_FOCUS_MOVEMENT_VALUE)
 	int xiAPIplus_Camera::GetLensFocusMovementValue()
 	{
@@ -4773,6 +5312,7 @@
 		CheckResult(res,"GetLensFocusMovementValue");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetLensFocusMovementValue_Maximum()
 	{
 		int val=0;
@@ -4783,6 +5323,7 @@
 		CheckResult(res,"GetLensFocusMovementValue" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetLensFocusMovementValue_Minimum()
 	{
 		int val=0;
@@ -4793,7 +5334,7 @@
 		CheckResult(res,"GetLensFocusMovementValue" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetLensFocusMovementValue_Increment()
 	{
 		int val=0;
@@ -4804,7 +5345,6 @@
 		CheckResult(res,"GetLensFocusMovementValue" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetLensFocusMovementValue(int LensFocusMovementValue)
 	{
@@ -4814,51 +5354,8 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LENS_FOCUS_MOVEMENT_VALUE, LensFocusMovementValue);
 		CheckResult(res,"SetLensFocusMovementValue");
 	}
-			
+	
 	// Moves lens focus motor by steps set in XI_PRM_LENS_FOCUS_MOVEMENT_VALUE. (XI_PRM_LENS_FOCUS_MOVE)
-	int xiAPIplus_Camera::GetLensFocusMove()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetLensFocusMove");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LENS_FOCUS_MOVE, &val);
-		CheckResult(res,"GetLensFocusMove");
-		return val;
-	}
-	int xiAPIplus_Camera::GetLensFocusMove_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetLensFocusMove" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LENS_FOCUS_MOVE XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetLensFocusMove" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetLensFocusMove_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetLensFocusMove" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LENS_FOCUS_MOVE XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetLensFocusMove" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetLensFocusMove_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetLensFocusMove" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_LENS_FOCUS_MOVE XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetLensFocusMove" "_Increment");
-		return val;
-	}
-
-	
 	void xiAPIplus_Camera::SetLensFocusMove(int LensFocusMove)
 	{
 		
@@ -4867,7 +5364,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LENS_FOCUS_MOVE, LensFocusMove);
 		CheckResult(res,"SetLensFocusMove");
 	}
-			
+	
 	// Lens focus distance in cm. (XI_PRM_LENS_FOCUS_DISTANCE)
 	float xiAPIplus_Camera::GetLensFocusDistance()
 	{
@@ -4879,6 +5376,7 @@
 		CheckResult(res,"GetLensFocusDistance");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFocusDistance_Maximum()
 	{
 		float val=0;
@@ -4889,6 +5387,7 @@
 		CheckResult(res,"GetLensFocusDistance" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFocusDistance_Minimum()
 	{
 		float val=0;
@@ -4899,6 +5398,7 @@
 		CheckResult(res,"GetLensFocusDistance" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFocusDistance_Increment()
 	{
 		float val=0;
@@ -4921,6 +5421,7 @@
 		CheckResult(res,"GetLensFocalLength");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFocalLength_Maximum()
 	{
 		float val=0;
@@ -4931,6 +5432,7 @@
 		CheckResult(res,"GetLensFocalLength" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFocalLength_Minimum()
 	{
 		float val=0;
@@ -4941,6 +5443,7 @@
 		CheckResult(res,"GetLensFocalLength" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFocalLength_Increment()
 	{
 		float val=0;
@@ -4974,6 +5477,7 @@
 		CheckResult(res,"GetLensFeatureSelector" "_Maximum");
 		return (XI_LENS_FEATURE)val;
 	}
+	
 	XI_LENS_FEATURE xiAPIplus_Camera::GetLensFeatureSelector_Minimum()
 	{
 		int val=0;
@@ -5004,7 +5508,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LENS_FEATURE_SELECTOR, LensFeatureSelector);
 		CheckResult(res,"SetLensFeatureSelector");
 	}
-				
+	
 	// Allows access to lens feature value currently selected by XI_PRM_LENS_FEATURE_SELECTOR. (XI_PRM_LENS_FEATURE)
 	float xiAPIplus_Camera::GetLensFeature()
 	{
@@ -5016,6 +5520,7 @@
 		CheckResult(res,"GetLensFeature");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFeature_Maximum()
 	{
 		float val=0;
@@ -5026,6 +5531,7 @@
 		CheckResult(res,"GetLensFeature" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFeature_Minimum()
 	{
 		float val=0;
@@ -5036,6 +5542,7 @@
 		CheckResult(res,"GetLensFeature" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetLensFeature_Increment()
 	{
 		float val=0;
@@ -5055,7 +5562,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_LENS_FEATURE, LensFeature);
 		CheckResult(res,"SetLensFeature");
 	}
-			
+	
 	// Write/Read data sequences to/from lens (XI_PRM_LENS_COMM_DATA)
 	void xiAPIplus_Camera::GetLensCommData(char* buffer, int buffer_length)
 	{
@@ -5070,7 +5577,7 @@
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Device info parameters
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Return device name (XI_PRM_DEVICE_NAME)
 	void xiAPIplus_Camera::GetCameraName(char* buffer, int buffer_length)
@@ -5103,6 +5610,7 @@
 		CheckResult(res,"GetModelId");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetModelId_Maximum()
 	{
 		int val=0;
@@ -5113,6 +5621,7 @@
 		CheckResult(res,"GetModelId" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetModelId_Minimum()
 	{
 		int val=0;
@@ -5123,7 +5632,7 @@
 		CheckResult(res,"GetModelId" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetModelId_Increment()
 	{
 		int val=0;
@@ -5134,51 +5643,61 @@
 		CheckResult(res,"GetModelId" "_Increment");
 		return val;
 	}
-
 	
-	// Return device serial number (XI_PRM_DEVICE_SN)
-	int xiAPIplus_Camera::GetSerialNumber()
+	// Return device sensor model id (XI_PRM_SENSOR_MODEL_ID)
+	int xiAPIplus_Camera::GetSensorId()
 	{
 		int val=0;
+		
+		CheckCamHandle("GetSensorId");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_SENSOR_MODEL_ID, &val);
+		CheckResult(res,"GetSensorId");
+		return val;
+	}
+	
+	int xiAPIplus_Camera::GetSensorId_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetSensorId" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_SENSOR_MODEL_ID XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetSensorId" "_Maximum");
+		return val;
+	}
+	
+	int xiAPIplus_Camera::GetSensorId_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetSensorId" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_SENSOR_MODEL_ID XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetSensorId" "_Minimum");
+		return val;
+	}
+
+	int xiAPIplus_Camera::GetSensorId_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetSensorId" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_SENSOR_MODEL_ID XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetSensorId" "_Increment");
+		return val;
+	}
+	
+	// Return device serial number (XI_PRM_DEVICE_SN)
+	void xiAPIplus_Camera::GetSerialNumber(char* buffer, int buffer_length)
+	{
 		
 		CheckCamHandle("GetSerialNumber");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_SN, &val);
+		XI_RETURN res=xiGetParamString(camera_handle, XI_PRM_DEVICE_SN, buffer, buffer_length);
 		CheckResult(res,"GetSerialNumber");
-		return val;
 	}
-	int xiAPIplus_Camera::GetSerialNumber_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetSerialNumber" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_SN XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetSerialNumber" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetSerialNumber_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetSerialNumber" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_SN XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetSerialNumber" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetSerialNumber_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetSerialNumber" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_SN XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetSerialNumber" "_Increment");
-		return val;
-	}
-
 	
 	// Return sensor serial number (XI_PRM_DEVICE_SENS_SN)
 	void xiAPIplus_Camera::GetSensorSerialNumber(char* buffer, int buffer_length)
@@ -5240,11 +5759,65 @@
 		CheckResult(res,"GetDeviceManifest");
 	}
 	
+	// User image data at image header to track parameters synchronization. (XI_PRM_IMAGE_USER_DATA)
+	int xiAPIplus_Camera::GetImageUserData()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetImageUserData");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_IMAGE_USER_DATA, &val);
+		CheckResult(res,"GetImageUserData");
+		return val;
+	}
+	
+	int xiAPIplus_Camera::GetImageUserData_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetImageUserData" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_IMAGE_USER_DATA XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetImageUserData" "_Maximum");
+		return val;
+	}
+	
+	int xiAPIplus_Camera::GetImageUserData_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetImageUserData" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_IMAGE_USER_DATA XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetImageUserData" "_Minimum");
+		return val;
+	}
+
+	int xiAPIplus_Camera::GetImageUserData_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetImageUserData" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_IMAGE_USER_DATA XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetImageUserData" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetImageUserData(int ImageUserData)
+	{
+		
+		CheckCamHandleInt("SetImageUserData",ImageUserData);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_USER_DATA, ImageUserData);
+		CheckResult(res,"SetImageUserData");
+	}
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Device acquisition settings
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// The alpha channel of RGB32 output image format. (XI_PRM_IMAGE_DATA_FORMAT_RGB32_ALPHA)
 	int xiAPIplus_Camera::GetImageDataFormatRGB32Alpha()
@@ -5257,6 +5830,7 @@
 		CheckResult(res,"GetImageDataFormatRGB32Alpha");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImageDataFormatRGB32Alpha_Maximum()
 	{
 		int val=0;
@@ -5267,6 +5841,7 @@
 		CheckResult(res,"GetImageDataFormatRGB32Alpha" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImageDataFormatRGB32Alpha_Minimum()
 	{
 		int val=0;
@@ -5277,7 +5852,7 @@
 		CheckResult(res,"GetImageDataFormatRGB32Alpha" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetImageDataFormatRGB32Alpha_Increment()
 	{
 		int val=0;
@@ -5288,7 +5863,6 @@
 		CheckResult(res,"GetImageDataFormatRGB32Alpha" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetImageDataFormatRGB32Alpha(int ImageDataFormatRGB32Alpha)
 	{
@@ -5298,7 +5872,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_DATA_FORMAT_RGB32_ALPHA, ImageDataFormatRGB32Alpha);
 		CheckResult(res,"SetImageDataFormatRGB32Alpha");
 	}
-			
+	
 	// Buffer size in bytes sufficient for output image returned by xiGetImage (XI_PRM_IMAGE_PAYLOAD_SIZE)
 	int xiAPIplus_Camera::GetImagePayloadSize()
 	{
@@ -5310,6 +5884,7 @@
 		CheckResult(res,"GetImagePayloadSize");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImagePayloadSize_Maximum()
 	{
 		int val=0;
@@ -5320,6 +5895,7 @@
 		CheckResult(res,"GetImagePayloadSize" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImagePayloadSize_Minimum()
 	{
 		int val=0;
@@ -5330,7 +5906,7 @@
 		CheckResult(res,"GetImagePayloadSize" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetImagePayloadSize_Increment()
 	{
 		int val=0;
@@ -5341,7 +5917,6 @@
 		CheckResult(res,"GetImagePayloadSize" "_Increment");
 		return val;
 	}
-
 	
 	// Current format of pixels on transport layer. (XI_PRM_TRANSPORT_PIXEL_FORMAT)
 	XI_GenTL_Image_Format_e xiAPIplus_Camera::GetTransportPixelFormat()
@@ -5365,6 +5940,7 @@
 		CheckResult(res,"GetTransportPixelFormat" "_Maximum");
 		return (XI_GenTL_Image_Format_e)val;
 	}
+	
 	XI_GenTL_Image_Format_e xiAPIplus_Camera::GetTransportPixelFormat_Minimum()
 	{
 		int val=0;
@@ -5395,7 +5971,61 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TRANSPORT_PIXEL_FORMAT, TransportPixelFormat);
 		CheckResult(res,"SetTransportPixelFormat");
 	}
-				
+	
+	// Target selector for data - CPU RAM or GPU RAM (XI_PRM_TRANSPORT_DATA_TARGET)
+	XI_TRANSPORT_DATA_TARGET_MODE xiAPIplus_Camera::GetTransportDataTarget()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTransportDataTarget");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRANSPORT_DATA_TARGET, &val);
+		CheckResult(res,"GetTransportDataTarget");
+		return (XI_TRANSPORT_DATA_TARGET_MODE)val;
+	}
+	
+	XI_TRANSPORT_DATA_TARGET_MODE xiAPIplus_Camera::GetTransportDataTarget_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTransportDataTarget" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRANSPORT_DATA_TARGET XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetTransportDataTarget" "_Maximum");
+		return (XI_TRANSPORT_DATA_TARGET_MODE)val;
+	}
+	
+	XI_TRANSPORT_DATA_TARGET_MODE xiAPIplus_Camera::GetTransportDataTarget_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTransportDataTarget" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRANSPORT_DATA_TARGET XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetTransportDataTarget" "_Minimum");
+		return (XI_TRANSPORT_DATA_TARGET_MODE)val;
+	}
+	
+	int xiAPIplus_Camera::GetTransportDataTarget_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetTransportDataTarget" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRANSPORT_DATA_TARGET XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetTransportDataTarget" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetTransportDataTarget(XI_TRANSPORT_DATA_TARGET_MODE TransportDataTarget)
+	{
+		
+		CheckCamHandleInt("SetTransportDataTarget",(int)TransportDataTarget);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TRANSPORT_DATA_TARGET, TransportDataTarget);
+		CheckResult(res,"SetTransportDataTarget");
+	}
+	
 	// Sensor clock frequency in Hz. (XI_PRM_SENSOR_CLOCK_FREQ_HZ)
 	float xiAPIplus_Camera::GetSensorClockFrequencyHz()
 	{
@@ -5407,6 +6037,7 @@
 		CheckResult(res,"GetSensorClockFrequencyHz");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetSensorClockFrequencyHz_Maximum()
 	{
 		float val=0;
@@ -5417,6 +6048,7 @@
 		CheckResult(res,"GetSensorClockFrequencyHz" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetSensorClockFrequencyHz_Minimum()
 	{
 		float val=0;
@@ -5427,6 +6059,7 @@
 		CheckResult(res,"GetSensorClockFrequencyHz" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetSensorClockFrequencyHz_Increment()
 	{
 		float val=0;
@@ -5446,7 +6079,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_SENSOR_CLOCK_FREQ_HZ, SensorClockFrequencyHz);
 		CheckResult(res,"SetSensorClockFrequencyHz");
 	}
-			
+	
 	// Sensor clock frequency index. Sensor with selected frequencies have possibility to set the frequency only by this index. (XI_PRM_SENSOR_CLOCK_FREQ_INDEX)
 	int xiAPIplus_Camera::GetSensorClockFrequencyIndex()
 	{
@@ -5458,6 +6091,7 @@
 		CheckResult(res,"GetSensorClockFrequencyIndex");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetSensorClockFrequencyIndex_Maximum()
 	{
 		int val=0;
@@ -5468,6 +6102,7 @@
 		CheckResult(res,"GetSensorClockFrequencyIndex" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetSensorClockFrequencyIndex_Minimum()
 	{
 		int val=0;
@@ -5478,7 +6113,7 @@
 		CheckResult(res,"GetSensorClockFrequencyIndex" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetSensorClockFrequencyIndex_Increment()
 	{
 		int val=0;
@@ -5489,7 +6124,6 @@
 		CheckResult(res,"GetSensorClockFrequencyIndex" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetSensorClockFrequencyIndex(int SensorClockFrequencyIndex)
 	{
@@ -5499,7 +6133,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_CLOCK_FREQ_INDEX, SensorClockFrequencyIndex);
 		CheckResult(res,"SetSensorClockFrequencyIndex");
 	}
-			
+	
 	// Number of output channels from sensor used for data transfer. (XI_PRM_SENSOR_OUTPUT_CHANNEL_COUNT)
 	XI_SENSOR_OUTPUT_CHANNEL_COUNT xiAPIplus_Camera::GetSensorOutputChannelCount()
 	{
@@ -5522,6 +6156,7 @@
 		CheckResult(res,"GetSensorOutputChannelCount" "_Maximum");
 		return (XI_SENSOR_OUTPUT_CHANNEL_COUNT)val;
 	}
+	
 	XI_SENSOR_OUTPUT_CHANNEL_COUNT xiAPIplus_Camera::GetSensorOutputChannelCount_Minimum()
 	{
 		int val=0;
@@ -5552,7 +6187,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_OUTPUT_CHANNEL_COUNT, SensorOutputChannelCount);
 		CheckResult(res,"SetSensorOutputChannelCount");
 	}
-				
+	
 	// Define framerate in Hz (XI_PRM_FRAMERATE)
 	float xiAPIplus_Camera::GetFrameRate()
 	{
@@ -5564,6 +6199,7 @@
 		CheckResult(res,"GetFrameRate");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetFrameRate_Maximum()
 	{
 		float val=0;
@@ -5574,6 +6210,7 @@
 		CheckResult(res,"GetFrameRate" "_Maximum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetFrameRate_Minimum()
 	{
 		float val=0;
@@ -5584,6 +6221,7 @@
 		CheckResult(res,"GetFrameRate" "_Minimum");
 		return val;
 	}
+
 	float xiAPIplus_Camera::GetFrameRate_Increment()
 	{
 		float val=0;
@@ -5603,7 +6241,7 @@
 		XI_RETURN res=xiSetParamFloat(camera_handle, XI_PRM_FRAMERATE, FrameRate);
 		CheckResult(res,"SetFrameRate");
 	}
-			
+	
 	// Select counter (XI_PRM_COUNTER_SELECTOR)
 	XI_COUNTER_SELECTOR xiAPIplus_Camera::GetCounterSelector()
 	{
@@ -5626,6 +6264,7 @@
 		CheckResult(res,"GetCounterSelector" "_Maximum");
 		return (XI_COUNTER_SELECTOR)val;
 	}
+	
 	XI_COUNTER_SELECTOR xiAPIplus_Camera::GetCounterSelector_Minimum()
 	{
 		int val=0;
@@ -5656,7 +6295,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_COUNTER_SELECTOR, CounterSelector);
 		CheckResult(res,"SetCounterSelector");
 	}
-				
+	
 	// Counter status (XI_PRM_COUNTER_VALUE)
 	int xiAPIplus_Camera::GetCounterValue()
 	{
@@ -5668,6 +6307,7 @@
 		CheckResult(res,"GetCounterValue");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetCounterValue_Maximum()
 	{
 		int val=0;
@@ -5678,6 +6318,7 @@
 		CheckResult(res,"GetCounterValue" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetCounterValue_Minimum()
 	{
 		int val=0;
@@ -5688,7 +6329,7 @@
 		CheckResult(res,"GetCounterValue" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetCounterValue_Increment()
 	{
 		int val=0;
@@ -5699,7 +6340,6 @@
 		CheckResult(res,"GetCounterValue" "_Increment");
 		return val;
 	}
-
 	
 	// Type of sensor frames timing. (XI_PRM_ACQ_TIMING_MODE)
 	XI_ACQ_TIMING_MODE xiAPIplus_Camera::GetAcquisitionTimingMode()
@@ -5723,6 +6363,7 @@
 		CheckResult(res,"GetAcquisitionTimingMode" "_Maximum");
 		return (XI_ACQ_TIMING_MODE)val;
 	}
+	
 	XI_ACQ_TIMING_MODE xiAPIplus_Camera::GetAcquisitionTimingMode_Minimum()
 	{
 		int val=0;
@@ -5753,7 +6394,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_TIMING_MODE, AcquisitionTimingMode);
 		CheckResult(res,"SetAcquisitionTimingMode");
 	}
-				
+	
 	// Measure and return available interface bandwidth(int Megabits) (XI_PRM_AVAILABLE_BANDWIDTH)
 	int xiAPIplus_Camera::GetBandwidthAvailable()
 	{
@@ -5765,6 +6406,7 @@
 		CheckResult(res,"GetBandwidthAvailable");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBandwidthAvailable_Maximum()
 	{
 		int val=0;
@@ -5775,6 +6417,7 @@
 		CheckResult(res,"GetBandwidthAvailable" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetBandwidthAvailable_Minimum()
 	{
 		int val=0;
@@ -5785,7 +6428,7 @@
 		CheckResult(res,"GetBandwidthAvailable" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetBandwidthAvailable_Increment()
 	{
 		int val=0;
@@ -5796,7 +6439,6 @@
 		CheckResult(res,"GetBandwidthAvailable" "_Increment");
 		return val;
 	}
-
 	
 	// Data move policy (XI_PRM_BUFFER_POLICY)
 	XI_BP xiAPIplus_Camera::GetBufferPolicy()
@@ -5820,6 +6462,7 @@
 		CheckResult(res,"GetBufferPolicy" "_Maximum");
 		return (XI_BP)val;
 	}
+	
 	XI_BP xiAPIplus_Camera::GetBufferPolicy_Minimum()
 	{
 		int val=0;
@@ -5850,7 +6493,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BUFFER_POLICY, BufferPolicy);
 		CheckResult(res,"SetBufferPolicy");
 	}
-				
+	
 	// Activates LUT. (XI_PRM_LUT_EN)
 	bool xiAPIplus_Camera::IsLookUpTable()
 	{
@@ -5862,7 +6505,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableLookUpTable()
 	{
 		
@@ -5871,6 +6513,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LUT_EN, XI_ON);
 		CheckResult(res,"EnableLookUpTable");
 	}
+
 	void xiAPIplus_Camera::DisableLookUpTable()
 	{
 		
@@ -5878,8 +6521,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LUT_EN, XI_OFF);
 		CheckResult(res,"DisableLookUpTable");
-	}
-			
+	}	
+	
 	// Control the index (offset) of the coefficient to access in the LUT. (XI_PRM_LUT_INDEX)
 	int xiAPIplus_Camera::GetLookUpTableIndex()
 	{
@@ -5891,6 +6534,7 @@
 		CheckResult(res,"GetLookUpTableIndex");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetLookUpTableIndex_Maximum()
 	{
 		int val=0;
@@ -5901,6 +6545,7 @@
 		CheckResult(res,"GetLookUpTableIndex" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetLookUpTableIndex_Minimum()
 	{
 		int val=0;
@@ -5911,7 +6556,7 @@
 		CheckResult(res,"GetLookUpTableIndex" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetLookUpTableIndex_Increment()
 	{
 		int val=0;
@@ -5922,7 +6567,6 @@
 		CheckResult(res,"GetLookUpTableIndex" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetLookUpTableIndex(int LookUpTableIndex)
 	{
@@ -5932,7 +6576,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LUT_INDEX, LookUpTableIndex);
 		CheckResult(res,"SetLookUpTableIndex");
 	}
-			
+	
 	// Value at entry LUTIndex of the LUT (XI_PRM_LUT_VALUE)
 	int xiAPIplus_Camera::GetLookUpTableValue()
 	{
@@ -5944,6 +6588,7 @@
 		CheckResult(res,"GetLookUpTableValue");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetLookUpTableValue_Maximum()
 	{
 		int val=0;
@@ -5954,6 +6599,7 @@
 		CheckResult(res,"GetLookUpTableValue" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetLookUpTableValue_Minimum()
 	{
 		int val=0;
@@ -5964,7 +6610,7 @@
 		CheckResult(res,"GetLookUpTableValue" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetLookUpTableValue_Increment()
 	{
 		int val=0;
@@ -5975,7 +6621,6 @@
 		CheckResult(res,"GetLookUpTableValue" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetLookUpTableValue(int LookUpTableValue)
 	{
@@ -5985,9 +6630,9 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_LUT_VALUE, LookUpTableValue);
 		CheckResult(res,"SetLookUpTableValue");
 	}
-			
+	
 	// Specifies the delay in microseconds (us) to apply after the trigger reception before activating it. (XI_PRM_TRG_DELAY)
-	XI_GPI_SELECTOR xiAPIplus_Camera::GetTriggerDelay()
+	int xiAPIplus_Camera::GetTriggerDelay()
 	{
 		int val=0;
 		
@@ -5995,10 +6640,10 @@
 		
 		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_DELAY, &val);
 		CheckResult(res,"GetTriggerDelay");
-		return (XI_GPI_SELECTOR)val;
+		return val;
 	}
 	
-	XI_GPI_SELECTOR xiAPIplus_Camera::GetTriggerDelay_Maximum()
+	int xiAPIplus_Camera::GetTriggerDelay_Maximum()
 	{
 		int val=0;
 		
@@ -6006,9 +6651,10 @@
 		
 		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_DELAY XI_PRM_INFO_MAX, &val);
 		CheckResult(res,"GetTriggerDelay" "_Maximum");
-		return (XI_GPI_SELECTOR)val;
+		return val;
 	}
-	XI_GPI_SELECTOR xiAPIplus_Camera::GetTriggerDelay_Minimum()
+	
+	int xiAPIplus_Camera::GetTriggerDelay_Minimum()
 	{
 		int val=0;
 		
@@ -6016,9 +6662,9 @@
 		
 		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_TRG_DELAY XI_PRM_INFO_MIN, &val);
 		CheckResult(res,"GetTriggerDelay" "_Minimum");
-		return (XI_GPI_SELECTOR)val;
+		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetTriggerDelay_Increment()
 	{
 		int val=0;
@@ -6030,15 +6676,15 @@
 		return val;
 	}
 	
-	void xiAPIplus_Camera::SetTriggerDelay(XI_GPI_SELECTOR TriggerDelay)
+	void xiAPIplus_Camera::SetTriggerDelay(int TriggerDelay)
 	{
 		
-		CheckCamHandleInt("SetTriggerDelay",(int)TriggerDelay);
+		CheckCamHandleInt("SetTriggerDelay",TriggerDelay);
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TRG_DELAY, TriggerDelay);
 		CheckResult(res,"SetTriggerDelay");
 	}
-				
+	
 	// Defines how time stamp reset engine will be armed (XI_PRM_TS_RST_MODE)
 	XI_TS_RST_MODE xiAPIplus_Camera::GetTimeStampResetMode()
 	{
@@ -6061,6 +6707,7 @@
 		CheckResult(res,"GetTimeStampResetMode" "_Maximum");
 		return (XI_TS_RST_MODE)val;
 	}
+	
 	XI_TS_RST_MODE xiAPIplus_Camera::GetTimeStampResetMode_Minimum()
 	{
 		int val=0;
@@ -6091,7 +6738,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TS_RST_MODE, TimeStampResetMode);
 		CheckResult(res,"SetTimeStampResetMode");
 	}
-				
+	
 	// Defines which source will be used for timestamp reset. Writing this parameter will trigger settings of engine (arming) (XI_PRM_TS_RST_SOURCE)
 	XI_TS_RST_SOURCE xiAPIplus_Camera::GetTimeStampResetSource()
 	{
@@ -6114,6 +6761,7 @@
 		CheckResult(res,"GetTimeStampResetSource" "_Maximum");
 		return (XI_TS_RST_SOURCE)val;
 	}
+	
 	XI_TS_RST_SOURCE xiAPIplus_Camera::GetTimeStampResetSource_Minimum()
 	{
 		int val=0;
@@ -6144,12 +6792,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_TS_RST_SOURCE, TimeStampResetSource);
 		CheckResult(res,"SetTimeStampResetSource");
 	}
-				
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Extended Device parameters
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Returns 1 if camera connected and works properly. (XI_PRM_IS_DEVICE_EXIST)
 	bool xiAPIplus_Camera::IsExist()
@@ -6162,7 +6810,6 @@
 		return (val!=0);
 	}
 	
-	
 	// Acquisition buffer size in buffer_size_unit. Default bytes. (XI_PRM_ACQ_BUFFER_SIZE)
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytes()
 	{
@@ -6174,6 +6821,7 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytes");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytes_Maximum()
 	{
 		int val=0;
@@ -6184,6 +6832,7 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytes" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytes_Minimum()
 	{
 		int val=0;
@@ -6194,7 +6843,7 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytes" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytes_Increment()
 	{
 		int val=0;
@@ -6205,7 +6854,6 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytes" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionBufferSizeBytes(int AcquisitionBufferSizeBytes)
 	{
@@ -6215,7 +6863,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_BUFFER_SIZE, AcquisitionBufferSizeBytes);
 		CheckResult(res,"SetAcquisitionBufferSizeBytes");
 	}
-			
+	
 	// Acquisition buffer size unit in bytes. Default 1. E.g. Value 1024 means that buffer_size is in KiBytes (XI_PRM_ACQ_BUFFER_SIZE_UNIT)
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytesUnit()
 	{
@@ -6227,6 +6875,7 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytesUnit");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytesUnit_Maximum()
 	{
 		int val=0;
@@ -6237,6 +6886,7 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytesUnit" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytesUnit_Minimum()
 	{
 		int val=0;
@@ -6247,7 +6897,7 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytesUnit" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionBufferSizeBytesUnit_Increment()
 	{
 		int val=0;
@@ -6258,7 +6908,6 @@
 		CheckResult(res,"GetAcquisitionBufferSizeBytesUnit" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionBufferSizeBytesUnit(int AcquisitionBufferSizeBytesUnit)
 	{
@@ -6268,7 +6917,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_BUFFER_SIZE_UNIT, AcquisitionBufferSizeBytesUnit);
 		CheckResult(res,"SetAcquisitionBufferSizeBytesUnit");
 	}
-			
+	
 	// Acquisition transport buffer size in bytes (XI_PRM_ACQ_TRANSPORT_BUFFER_SIZE)
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferSizeBytes()
 	{
@@ -6280,6 +6929,7 @@
 		CheckResult(res,"GetAcquisitionTransportBufferSizeBytes");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferSizeBytes_Maximum()
 	{
 		int val=0;
@@ -6290,6 +6940,7 @@
 		CheckResult(res,"GetAcquisitionTransportBufferSizeBytes" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferSizeBytes_Minimum()
 	{
 		int val=0;
@@ -6300,7 +6951,7 @@
 		CheckResult(res,"GetAcquisitionTransportBufferSizeBytes" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferSizeBytes_Increment()
 	{
 		int val=0;
@@ -6311,7 +6962,6 @@
 		CheckResult(res,"GetAcquisitionTransportBufferSizeBytes" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionTransportBufferSizeBytes(int AcquisitionTransportBufferSizeBytes)
 	{
@@ -6321,7 +6971,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_TRANSPORT_BUFFER_SIZE, AcquisitionTransportBufferSizeBytes);
 		CheckResult(res,"SetAcquisitionTransportBufferSizeBytes");
 	}
-			
+	
 	// Acquisition transport packet size in bytes (XI_PRM_ACQ_TRANSPORT_PACKET_SIZE)
 	int xiAPIplus_Camera::GetAcquisitionTransportPacketSizeBytes()
 	{
@@ -6333,6 +6983,7 @@
 		CheckResult(res,"GetAcquisitionTransportPacketSizeBytes");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionTransportPacketSizeBytes_Maximum()
 	{
 		int val=0;
@@ -6343,6 +6994,7 @@
 		CheckResult(res,"GetAcquisitionTransportPacketSizeBytes" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionTransportPacketSizeBytes_Minimum()
 	{
 		int val=0;
@@ -6353,7 +7005,7 @@
 		CheckResult(res,"GetAcquisitionTransportPacketSizeBytes" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionTransportPacketSizeBytes_Increment()
 	{
 		int val=0;
@@ -6364,7 +7016,6 @@
 		CheckResult(res,"GetAcquisitionTransportPacketSizeBytes" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionTransportPacketSizeBytes(int AcquisitionTransportPacketSizeBytes)
 	{
@@ -6374,7 +7025,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_TRANSPORT_PACKET_SIZE, AcquisitionTransportPacketSizeBytes);
 		CheckResult(res,"SetAcquisitionTransportPacketSizeBytes");
 	}
-			
+	
 	// Queue of field/frame buffers (XI_PRM_BUFFERS_QUEUE_SIZE)
 	int xiAPIplus_Camera::GetAcquisitionQueueImagesCount()
 	{
@@ -6386,6 +7037,7 @@
 		CheckResult(res,"GetAcquisitionQueueImagesCount");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionQueueImagesCount_Maximum()
 	{
 		int val=0;
@@ -6396,6 +7048,7 @@
 		CheckResult(res,"GetAcquisitionQueueImagesCount" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionQueueImagesCount_Minimum()
 	{
 		int val=0;
@@ -6406,7 +7059,7 @@
 		CheckResult(res,"GetAcquisitionQueueImagesCount" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionQueueImagesCount_Increment()
 	{
 		int val=0;
@@ -6417,7 +7070,6 @@
 		CheckResult(res,"GetAcquisitionQueueImagesCount" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionQueueImagesCount(int AcquisitionQueueImagesCount)
 	{
@@ -6427,7 +7079,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_BUFFERS_QUEUE_SIZE, AcquisitionQueueImagesCount);
 		CheckResult(res,"SetAcquisitionQueueImagesCount");
 	}
-			
+	
 	// Number of buffers to commit to low level (XI_PRM_ACQ_TRANSPORT_BUFFER_COMMIT)
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferCommit()
 	{
@@ -6439,6 +7091,7 @@
 		CheckResult(res,"GetAcquisitionTransportBufferCommit");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferCommit_Maximum()
 	{
 		int val=0;
@@ -6449,6 +7102,7 @@
 		CheckResult(res,"GetAcquisitionTransportBufferCommit" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferCommit_Minimum()
 	{
 		int val=0;
@@ -6459,7 +7113,7 @@
 		CheckResult(res,"GetAcquisitionTransportBufferCommit" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetAcquisitionTransportBufferCommit_Increment()
 	{
 		int val=0;
@@ -6470,7 +7124,6 @@
 		CheckResult(res,"GetAcquisitionTransportBufferCommit" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetAcquisitionTransportBufferCommit(int AcquisitionTransportBufferCommit)
 	{
@@ -6480,7 +7133,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQ_TRANSPORT_BUFFER_COMMIT, AcquisitionTransportBufferCommit);
 		CheckResult(res,"SetAcquisitionTransportBufferCommit");
 	}
-			
+	
 	// GetImage returns most recent frame (XI_PRM_RECENT_FRAME)
 	bool xiAPIplus_Camera::IsSelectRecentImage()
 	{
@@ -6492,7 +7145,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableSelectRecentImage()
 	{
 		
@@ -6501,6 +7153,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_RECENT_FRAME, XI_ON);
 		CheckResult(res,"EnableSelectRecentImage");
 	}
+
 	void xiAPIplus_Camera::DisableSelectRecentImage()
 	{
 		
@@ -6508,52 +7161,9 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_RECENT_FRAME, XI_OFF);
 		CheckResult(res,"DisableSelectRecentImage");
-	}
-			
+	}	
+	
 	// Resets the camera to default state. (XI_PRM_DEVICE_RESET)
-	int xiAPIplus_Camera::GetDeviceReset()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetDeviceReset");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_RESET, &val);
-		CheckResult(res,"GetDeviceReset");
-		return val;
-	}
-	int xiAPIplus_Camera::GetDeviceReset_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetDeviceReset" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_RESET XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetDeviceReset" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetDeviceReset_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetDeviceReset" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_RESET XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetDeviceReset" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetDeviceReset_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetDeviceReset" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_DEVICE_RESET XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetDeviceReset" "_Increment");
-		return val;
-	}
-
-	
 	void xiAPIplus_Camera::SetDeviceReset(int DeviceReset)
 	{
 		
@@ -6562,12 +7172,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEVICE_RESET, DeviceReset);
 		CheckResult(res,"SetDeviceReset");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Sensor Defects Correction
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Correction of column FPN (XI_PRM_COLUMN_FPN_CORRECTION)
 	XI_SWITCH xiAPIplus_Camera::GetColumnFpnCorrection()
@@ -6591,6 +7201,7 @@
 		CheckResult(res,"GetColumnFpnCorrection" "_Maximum");
 		return (XI_SWITCH)val;
 	}
+	
 	XI_SWITCH xiAPIplus_Camera::GetColumnFpnCorrection_Minimum()
 	{
 		int val=0;
@@ -6621,7 +7232,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_COLUMN_FPN_CORRECTION, ColumnFpnCorrection);
 		CheckResult(res,"SetColumnFpnCorrection");
 	}
-				
+	
 	// Correction of row FPN (XI_PRM_ROW_FPN_CORRECTION)
 	XI_SWITCH xiAPIplus_Camera::GetRowFpnCorrection()
 	{
@@ -6644,6 +7255,7 @@
 		CheckResult(res,"GetRowFpnCorrection" "_Maximum");
 		return (XI_SWITCH)val;
 	}
+	
 	XI_SWITCH xiAPIplus_Camera::GetRowFpnCorrection_Minimum()
 	{
 		int val=0;
@@ -6674,7 +7286,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ROW_FPN_CORRECTION, RowFpnCorrection);
 		CheckResult(res,"SetRowFpnCorrection");
 	}
-				
+	
 	// Select image correction function (XI_PRM_IMAGE_CORRECTION_SELECTOR)
 	XI_IMAGE_CORRECTION_SELECTOR xiAPIplus_Camera::GetImageCorrectionSelector()
 	{
@@ -6697,6 +7309,7 @@
 		CheckResult(res,"GetImageCorrectionSelector" "_Maximum");
 		return (XI_IMAGE_CORRECTION_SELECTOR)val;
 	}
+	
 	XI_IMAGE_CORRECTION_SELECTOR xiAPIplus_Camera::GetImageCorrectionSelector_Minimum()
 	{
 		int val=0;
@@ -6727,7 +7340,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_CORRECTION_SELECTOR, ImageCorrectionSelector);
 		CheckResult(res,"SetImageCorrectionSelector");
 	}
-				
+	
 	// Select image correction selected function value (XI_PRM_IMAGE_CORRECTION_VALUE)
 	int xiAPIplus_Camera::GetImageCorrectionValue()
 	{
@@ -6739,6 +7352,7 @@
 		CheckResult(res,"GetImageCorrectionValue");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImageCorrectionValue_Maximum()
 	{
 		int val=0;
@@ -6749,6 +7363,7 @@
 		CheckResult(res,"GetImageCorrectionValue" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImageCorrectionValue_Minimum()
 	{
 		int val=0;
@@ -6759,7 +7374,7 @@
 		CheckResult(res,"GetImageCorrectionValue" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetImageCorrectionValue_Increment()
 	{
 		int val=0;
@@ -6770,7 +7385,6 @@
 		CheckResult(res,"GetImageCorrectionValue" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetImageCorrectionValue(int ImageCorrectionValue)
 	{
@@ -6780,12 +7394,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_CORRECTION_VALUE, ImageCorrectionValue);
 		CheckResult(res,"SetImageCorrectionValue");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Sensor features
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Current sensor mode. Allows to select sensor mode by one integer. Setting of this parameter affects: image dimensions and downsampling. (XI_PRM_SENSOR_MODE)
 	XI_SENSOR_MODE xiAPIplus_Camera::GetSensorMode()
@@ -6809,6 +7423,7 @@
 		CheckResult(res,"GetSensorMode" "_Maximum");
 		return (XI_SENSOR_MODE)val;
 	}
+	
 	XI_SENSOR_MODE xiAPIplus_Camera::GetSensorMode_Minimum()
 	{
 		int val=0;
@@ -6839,7 +7454,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_MODE, SensorMode);
 		CheckResult(res,"SetSensorMode");
 	}
-				
+	
 	// Enable High Dynamic Range feature. (XI_PRM_HDR)
 	bool xiAPIplus_Camera::IsHDR()
 	{
@@ -6851,7 +7466,6 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableHDR()
 	{
 		
@@ -6860,6 +7474,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HDR, XI_ON);
 		CheckResult(res,"EnableHDR");
 	}
+
 	void xiAPIplus_Camera::DisableHDR()
 	{
 		
@@ -6867,8 +7482,8 @@
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HDR, XI_OFF);
 		CheckResult(res,"DisableHDR");
-	}
-			
+	}	
+	
 	// The number of kneepoints in the PWLR. (XI_PRM_HDR_KNEEPOINT_COUNT)
 	int xiAPIplus_Camera::GetHDR_KNEEPOINT_COUNT()
 	{
@@ -6880,6 +7495,7 @@
 		CheckResult(res,"GetHDR_KNEEPOINT_COUNT");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDR_KNEEPOINT_COUNT_Maximum()
 	{
 		int val=0;
@@ -6890,6 +7506,7 @@
 		CheckResult(res,"GetHDR_KNEEPOINT_COUNT" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDR_KNEEPOINT_COUNT_Minimum()
 	{
 		int val=0;
@@ -6900,7 +7517,7 @@
 		CheckResult(res,"GetHDR_KNEEPOINT_COUNT" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetHDR_KNEEPOINT_COUNT_Increment()
 	{
 		int val=0;
@@ -6911,7 +7528,6 @@
 		CheckResult(res,"GetHDR_KNEEPOINT_COUNT" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetHDR_KNEEPOINT_COUNT(int HDR_KNEEPOINT_COUNT)
 	{
@@ -6921,7 +7537,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HDR_KNEEPOINT_COUNT, HDR_KNEEPOINT_COUNT);
 		CheckResult(res,"SetHDR_KNEEPOINT_COUNT");
 	}
-			
+	
 	// position of first kneepoint(in % of XI_PRM_EXPOSURE) (XI_PRM_HDR_T1)
 	int xiAPIplus_Camera::GetHDRTimeSlope1()
 	{
@@ -6933,6 +7549,7 @@
 		CheckResult(res,"GetHDRTimeSlope1");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRTimeSlope1_Maximum()
 	{
 		int val=0;
@@ -6943,6 +7560,7 @@
 		CheckResult(res,"GetHDRTimeSlope1" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRTimeSlope1_Minimum()
 	{
 		int val=0;
@@ -6953,7 +7571,7 @@
 		CheckResult(res,"GetHDRTimeSlope1" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetHDRTimeSlope1_Increment()
 	{
 		int val=0;
@@ -6964,7 +7582,6 @@
 		CheckResult(res,"GetHDRTimeSlope1" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetHDRTimeSlope1(int HDRTimeSlope1)
 	{
@@ -6974,7 +7591,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HDR_T1, HDRTimeSlope1);
 		CheckResult(res,"SetHDRTimeSlope1");
 	}
-			
+	
 	// position of second kneepoint (in % of XI_PRM_EXPOSURE) (XI_PRM_HDR_T2)
 	int xiAPIplus_Camera::GetHDRTimeSlope2()
 	{
@@ -6986,6 +7603,7 @@
 		CheckResult(res,"GetHDRTimeSlope2");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRTimeSlope2_Maximum()
 	{
 		int val=0;
@@ -6996,6 +7614,7 @@
 		CheckResult(res,"GetHDRTimeSlope2" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRTimeSlope2_Minimum()
 	{
 		int val=0;
@@ -7006,7 +7625,7 @@
 		CheckResult(res,"GetHDRTimeSlope2" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetHDRTimeSlope2_Increment()
 	{
 		int val=0;
@@ -7017,7 +7636,6 @@
 		CheckResult(res,"GetHDRTimeSlope2" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetHDRTimeSlope2(int HDRTimeSlope2)
 	{
@@ -7027,7 +7645,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_HDR_T2, HDRTimeSlope2);
 		CheckResult(res,"SetHDRTimeSlope2");
 	}
-			
+	
 	// value of first kneepoint (% of sensor saturation) (XI_PRM_KNEEPOINT1)
 	int xiAPIplus_Camera::GetHDRKnee1Percent()
 	{
@@ -7039,6 +7657,7 @@
 		CheckResult(res,"GetHDRKnee1Percent");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRKnee1Percent_Maximum()
 	{
 		int val=0;
@@ -7049,6 +7668,7 @@
 		CheckResult(res,"GetHDRKnee1Percent" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRKnee1Percent_Minimum()
 	{
 		int val=0;
@@ -7059,7 +7679,7 @@
 		CheckResult(res,"GetHDRKnee1Percent" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetHDRKnee1Percent_Increment()
 	{
 		int val=0;
@@ -7070,7 +7690,6 @@
 		CheckResult(res,"GetHDRKnee1Percent" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetHDRKnee1Percent(int HDRKnee1Percent)
 	{
@@ -7080,7 +7699,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_KNEEPOINT1, HDRKnee1Percent);
 		CheckResult(res,"SetHDRKnee1Percent");
 	}
-			
+	
 	// value of second kneepoint (% of sensor saturation) (XI_PRM_KNEEPOINT2)
 	int xiAPIplus_Camera::GetHDRKnee2Percent()
 	{
@@ -7092,6 +7711,7 @@
 		CheckResult(res,"GetHDRKnee2Percent");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRKnee2Percent_Maximum()
 	{
 		int val=0;
@@ -7102,6 +7722,7 @@
 		CheckResult(res,"GetHDRKnee2Percent" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetHDRKnee2Percent_Minimum()
 	{
 		int val=0;
@@ -7112,7 +7733,7 @@
 		CheckResult(res,"GetHDRKnee2Percent" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetHDRKnee2Percent_Increment()
 	{
 		int val=0;
@@ -7123,7 +7744,6 @@
 		CheckResult(res,"GetHDRKnee2Percent" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetHDRKnee2Percent(int HDRKnee2Percent)
 	{
@@ -7133,7 +7753,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_KNEEPOINT2, HDRKnee2Percent);
 		CheckResult(res,"SetHDRKnee2Percent");
 	}
-			
+	
 	// Last image black level counts. Can be used for Offline processing to recall it. (XI_PRM_IMAGE_BLACK_LEVEL)
 	int xiAPIplus_Camera::GetImageBlackLevel()
 	{
@@ -7145,6 +7765,7 @@
 		CheckResult(res,"GetImageBlackLevel");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImageBlackLevel_Maximum()
 	{
 		int val=0;
@@ -7155,6 +7776,7 @@
 		CheckResult(res,"GetImageBlackLevel" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetImageBlackLevel_Minimum()
 	{
 		int val=0;
@@ -7165,7 +7787,7 @@
 		CheckResult(res,"GetImageBlackLevel" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetImageBlackLevel_Increment()
 	{
 		int val=0;
@@ -7176,7 +7798,6 @@
 		CheckResult(res,"GetImageBlackLevel" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetImageBlackLevel(int ImageBlackLevel)
 	{
@@ -7186,12 +7807,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_IMAGE_BLACK_LEVEL, ImageBlackLevel);
 		CheckResult(res,"SetImageBlackLevel");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Version info
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Returns version of API. (XI_PRM_API_VERSION)
 	void xiAPIplus_Camera::GetVersionAPI(char* buffer, int buffer_length)
@@ -7243,55 +7864,31 @@
 		CheckResult(res,"GetVersionFPGA1");
 	}
 	
-	// Returns hardware revision number. (XI_PRM_HW_REVISION)
-	int xiAPIplus_Camera::GetHWRevision()
+	// Returns version of XML manifest. (XI_PRM_XMLMAN_VERSION)
+	void xiAPIplus_Camera::GetVersionXMLMAN(char* buffer, int buffer_length)
 	{
-		int val=0;
+		
+		CheckCamHandle("GetVersionXMLMAN");
+		
+		XI_RETURN res=xiGetParamString(camera_handle, XI_PRM_XMLMAN_VERSION, buffer, buffer_length);
+		CheckResult(res,"GetVersionXMLMAN");
+	}
+	
+	// Returns hardware revision number. (XI_PRM_HW_REVISION)
+	void xiAPIplus_Camera::GetHWRevision(char* buffer, int buffer_length)
+	{
 		
 		CheckCamHandle("GetHWRevision");
 		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_HW_REVISION, &val);
+		XI_RETURN res=xiGetParamString(camera_handle, XI_PRM_HW_REVISION, buffer, buffer_length);
 		CheckResult(res,"GetHWRevision");
-		return val;
 	}
-	int xiAPIplus_Camera::GetHWRevision_Maximum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetHWRevision" "_Maximum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_HW_REVISION XI_PRM_INFO_MAX, &val);
-		CheckResult(res,"GetHWRevision" "_Maximum");
-		return val;
-	}
-	int xiAPIplus_Camera::GetHWRevision_Minimum()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetHWRevision" "_Minimum");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_HW_REVISION XI_PRM_INFO_MIN, &val);
-		CheckResult(res,"GetHWRevision" "_Minimum");
-		return val;
-	}
-	
-	int xiAPIplus_Camera::GetHWRevision_Increment()
-	{
-		int val=0;
-		
-		CheckCamHandle("GetHWRevision" "_Increment");
-		
-		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_HW_REVISION XI_PRM_INFO_INCREMENT, &val);
-		CheckResult(res,"GetHWRevision" "_Increment");
-		return val;
-	}
-
 	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: API features
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Set debug level (XI_PRM_DEBUG_LEVEL)
 	XI_DEBUG_LEVEL xiAPIplus_Camera::GetDebugLevel()
@@ -7311,6 +7908,7 @@
 		CheckResult(res,"GetDebugLevel" "_Maximum");
 		return (XI_DEBUG_LEVEL)val;
 	}
+	
 	XI_DEBUG_LEVEL xiAPIplus_Camera::GetDebugLevel_Minimum()
 	{
 		int val=0;
@@ -7335,7 +7933,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEBUG_LEVEL, DebugLevel);
 		CheckResult(res,"SetDebugLevel");
 	}
-				
+	
 	// Automatic bandwidth calculation, (XI_PRM_AUTO_BANDWIDTH_CALCULATION)
 	bool xiAPIplus_Camera::IsAutoBandwidthCalculation()
 	{
@@ -7345,20 +7943,20 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableAutoBandwidthCalculation()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AUTO_BANDWIDTH_CALCULATION, XI_ON);
 		CheckResult(res,"EnableAutoBandwidthCalculation");
 	}
+
 	void xiAPIplus_Camera::DisableAutoBandwidthCalculation()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_AUTO_BANDWIDTH_CALCULATION, XI_OFF);
 		CheckResult(res,"DisableAutoBandwidthCalculation");
-	}
-			
+	}	
+	
 	// Enables (2015/FAPI) processing chain for MQ MU cameras (XI_PRM_NEW_PROCESS_CHAIN_ENABLE)
 	bool xiAPIplus_Camera::IsNewProcessChainEnable()
 	{
@@ -7368,20 +7966,20 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableNewProcessChainEnable()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_NEW_PROCESS_CHAIN_ENABLE, XI_ON);
 		CheckResult(res,"EnableNewProcessChainEnable");
 	}
+
 	void xiAPIplus_Camera::DisableNewProcessChainEnable()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_NEW_PROCESS_CHAIN_ENABLE, XI_OFF);
 		CheckResult(res,"DisableNewProcessChainEnable");
-	}
-			
+	}	
+	
 	// Enable enumeration of golden devices (XI_PRM_CAM_ENUM_GOLDEN_ENABLED)
 	bool xiAPIplus_Camera::IsCamEnumGoldenEnabled()
 	{
@@ -7391,20 +7989,43 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableCamEnumGoldenEnabled()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CAM_ENUM_GOLDEN_ENABLED, XI_ON);
 		CheckResult(res,"EnableCamEnumGoldenEnabled");
 	}
+
 	void xiAPIplus_Camera::DisableCamEnumGoldenEnabled()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CAM_ENUM_GOLDEN_ENABLED, XI_OFF);
 		CheckResult(res,"DisableCamEnumGoldenEnabled");
+	}	
+	
+	// Resets USB device if started as bootloader (XI_PRM_RESET_USB_IF_BOOTLOADER)
+	bool xiAPIplus_Camera::IsResetUSBIfBootloader()
+	{
+		int val=0;
+		
+		xiGetParamInt(camera_handle, XI_PRM_RESET_USB_IF_BOOTLOADER, &val);
+		return (val!=0);
 	}
-			
+	
+	void xiAPIplus_Camera::EnableResetUSBIfBootloader()
+	{
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_RESET_USB_IF_BOOTLOADER, XI_ON);
+		CheckResult(res,"EnableResetUSBIfBootloader");
+	}
+
+	void xiAPIplus_Camera::DisableResetUSBIfBootloader()
+	{
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_RESET_USB_IF_BOOTLOADER, XI_OFF);
+		CheckResult(res,"DisableResetUSBIfBootloader");
+	}	
+	
 	// Number of camera simulators to be available. (XI_PRM_CAM_SIMULATORS_COUNT)
 	int xiAPIplus_Camera::GetCameraSimulatorsCount()
 	{
@@ -7414,6 +8035,7 @@
 		CheckResult(res,"GetCameraSimulatorsCount");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetCameraSimulatorsCount_Maximum()
 	{
 		int val=0;
@@ -7422,6 +8044,7 @@
 		CheckResult(res,"GetCameraSimulatorsCount" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetCameraSimulatorsCount_Minimum()
 	{
 		int val=0;
@@ -7430,7 +8053,7 @@
 		CheckResult(res,"GetCameraSimulatorsCount" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetCameraSimulatorsCount_Increment()
 	{
 		int val=0;
@@ -7439,7 +8062,6 @@
 		CheckResult(res,"GetCameraSimulatorsCount" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetCameraSimulatorsCount(int CameraSimulatorsCount)
 	{
@@ -7447,7 +8069,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CAM_SIMULATORS_COUNT, CameraSimulatorsCount);
 		CheckResult(res,"SetCameraSimulatorsCount");
 	}
-			
+	
 	// Camera sensor will not be initialized when 1=XI_ON is set. (XI_PRM_CAM_SENSOR_INIT_DISABLED)
 	bool xiAPIplus_Camera::IsCameraSensorInitDisabled()
 	{
@@ -7457,25 +8079,25 @@
 		return (val!=0);
 	}
 	
-	
 	void xiAPIplus_Camera::EnableCameraSensorInitDisabled()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CAM_SENSOR_INIT_DISABLED, XI_ON);
 		CheckResult(res,"EnableCameraSensorInitDisabled");
 	}
+
 	void xiAPIplus_Camera::DisableCameraSensorInitDisabled()
 	{
 		
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_CAM_SENSOR_INIT_DISABLED, XI_OFF);
 		CheckResult(res,"DisableCameraSensorInitDisabled");
-	}
-			
+	}	
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Camera FFS
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Read file from camera flash filesystem. (XI_PRM_READ_FILE_FFS)
 	void xiAPIplus_Camera::GetReadFileFFS(char* buffer, int buffer_length)
@@ -7499,7 +8121,7 @@
 		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_WRITE_FILE_FFS, new_value, (DWORD)strlen(new_value));
 		CheckResult(res,"SetWriteFileFFS");
 	}
-			
+	
 	// Set name of file to be written/read from camera FFS. (XI_PRM_FFS_FILE_NAME)
 	void xiAPIplus_Camera::GetFFSFileName(char* buffer, int buffer_length)
 	{
@@ -7514,7 +8136,7 @@
 		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_FFS_FILE_NAME, new_value, (DWORD)strlen(new_value));
 		CheckResult(res,"SetFFSFileName");
 	}
-			
+	
 	// File number. (XI_PRM_FFS_FILE_ID)
 	int xiAPIplus_Camera::GetFFSFileId()
 	{
@@ -7524,6 +8146,7 @@
 		CheckResult(res,"GetFFSFileId");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFFSFileId_Maximum()
 	{
 		int val=0;
@@ -7532,6 +8155,7 @@
 		CheckResult(res,"GetFFSFileId" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFFSFileId_Minimum()
 	{
 		int val=0;
@@ -7540,7 +8164,7 @@
 		CheckResult(res,"GetFFSFileId" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetFFSFileId_Increment()
 	{
 		int val=0;
@@ -7549,7 +8173,6 @@
 		CheckResult(res,"GetFFSFileId" "_Increment");
 		return val;
 	}
-
 	
 	// Size of file. (XI_PRM_FFS_FILE_SIZE)
 	int xiAPIplus_Camera::GetFFSFileSize()
@@ -7560,6 +8183,7 @@
 		CheckResult(res,"GetFFSFileSize");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFFSFileSize_Maximum()
 	{
 		int val=0;
@@ -7568,6 +8192,7 @@
 		CheckResult(res,"GetFFSFileSize" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFFSFileSize_Minimum()
 	{
 		int val=0;
@@ -7576,7 +8201,7 @@
 		CheckResult(res,"GetFFSFileSize" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetFFSFileSize_Increment()
 	{
 		int val=0;
@@ -7585,7 +8210,6 @@
 		CheckResult(res,"GetFFSFileSize" "_Increment");
 		return val;
 	}
-
 	
 	// Size of free camera FFS. (XI_PRM_FREE_FFS_SIZE)
 	int xiAPIplus_Camera::GetFreeFFSSize()
@@ -7596,6 +8220,7 @@
 		CheckResult(res,"GetFreeFFSSize");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFreeFFSSize_Maximum()
 	{
 		int val=0;
@@ -7604,6 +8229,7 @@
 		CheckResult(res,"GetFreeFFSSize" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFreeFFSSize_Minimum()
 	{
 		int val=0;
@@ -7612,7 +8238,7 @@
 		CheckResult(res,"GetFreeFFSSize" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetFreeFFSSize_Increment()
 	{
 		int val=0;
@@ -7621,7 +8247,6 @@
 		CheckResult(res,"GetFreeFFSSize" "_Increment");
 		return val;
 	}
-
 	
 	// Size of used camera FFS. (XI_PRM_USED_FFS_SIZE)
 	int xiAPIplus_Camera::GetUsedFFSSize()
@@ -7632,6 +8257,7 @@
 		CheckResult(res,"GetUsedFFSSize");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetUsedFFSSize_Maximum()
 	{
 		int val=0;
@@ -7640,6 +8266,7 @@
 		CheckResult(res,"GetUsedFFSSize" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetUsedFFSSize_Minimum()
 	{
 		int val=0;
@@ -7648,7 +8275,7 @@
 		CheckResult(res,"GetUsedFFSSize" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetUsedFFSSize_Increment()
 	{
 		int val=0;
@@ -7657,7 +8284,6 @@
 		CheckResult(res,"GetUsedFFSSize" "_Increment");
 		return val;
 	}
-
 	
 	// Setting of key enables file operations on some cameras. (XI_PRM_FFS_ACCESS_KEY)
 	int xiAPIplus_Camera::GetFFSAccessKey()
@@ -7670,6 +8296,7 @@
 		CheckResult(res,"GetFFSAccessKey");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFFSAccessKey_Maximum()
 	{
 		int val=0;
@@ -7680,6 +8307,7 @@
 		CheckResult(res,"GetFFSAccessKey" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetFFSAccessKey_Minimum()
 	{
 		int val=0;
@@ -7690,7 +8318,7 @@
 		CheckResult(res,"GetFFSAccessKey" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetFFSAccessKey_Increment()
 	{
 		int val=0;
@@ -7701,7 +8329,6 @@
 		CheckResult(res,"GetFFSAccessKey" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetFFSAccessKey(int FFSAccessKey)
 	{
@@ -7711,12 +8338,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_FFS_ACCESS_KEY, FFSAccessKey);
 		CheckResult(res,"SetFFSAccessKey");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: APIContextControl
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// List of current parameters settings context - parameters with values. Used for offline processing. (XI_PRM_API_CONTEXT_LIST)
 	void xiAPIplus_Camera::GetApiContextList(char* buffer, int buffer_length)
@@ -7732,12 +8359,12 @@
 		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_API_CONTEXT_LIST, new_value, (DWORD)strlen(new_value));
 		CheckResult(res,"SetApiContextList");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Sensor Control
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Selects the current feature which is accessible by XI_PRM_SENSOR_FEATURE_VALUE. (XI_PRM_SENSOR_FEATURE_SELECTOR)
 	XI_SENSOR_FEATURE_SELECTOR xiAPIplus_Camera::GetSensorFeatureSelector()
@@ -7761,6 +8388,7 @@
 		CheckResult(res,"GetSensorFeatureSelector" "_Maximum");
 		return (XI_SENSOR_FEATURE_SELECTOR)val;
 	}
+	
 	XI_SENSOR_FEATURE_SELECTOR xiAPIplus_Camera::GetSensorFeatureSelector_Minimum()
 	{
 		int val=0;
@@ -7791,7 +8419,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_FEATURE_SELECTOR, SensorFeatureSelector);
 		CheckResult(res,"SetSensorFeatureSelector");
 	}
-				
+	
 	// Allows access to sensor feature value currently selected by XI_PRM_SENSOR_FEATURE_SELECTOR. (XI_PRM_SENSOR_FEATURE_VALUE)
 	int xiAPIplus_Camera::GetSensorFeatureValue()
 	{
@@ -7803,6 +8431,7 @@
 		CheckResult(res,"GetSensorFeatureValue");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetSensorFeatureValue_Maximum()
 	{
 		int val=0;
@@ -7813,6 +8442,7 @@
 		CheckResult(res,"GetSensorFeatureValue" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetSensorFeatureValue_Minimum()
 	{
 		int val=0;
@@ -7823,7 +8453,7 @@
 		CheckResult(res,"GetSensorFeatureValue" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetSensorFeatureValue_Increment()
 	{
 		int val=0;
@@ -7834,7 +8464,6 @@
 		CheckResult(res,"GetSensorFeatureValue" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetSensorFeatureValue(int SensorFeatureValue)
 	{
@@ -7844,12 +8473,12 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_SENSOR_FEATURE_VALUE, SensorFeatureValue);
 		CheckResult(res,"SetSensorFeatureValue");
 	}
-			
+	
 
 	//-------------------------------------------------------------------------------------------------------------------
 	// ---- Parameter Group: Extended Features
 	//-------------------------------------------------------------------------------------------------------------------
-	
+
 	
 	// Selection of extended feature. (XI_PRM_EXTENDED_FEATURE_SELECTOR)
 	XI_EXT_FEATURE_SELECTOR xiAPIplus_Camera::GetExtendedFeatureSelector()
@@ -7873,6 +8502,7 @@
 		CheckResult(res,"GetExtendedFeatureSelector" "_Maximum");
 		return (XI_EXT_FEATURE_SELECTOR)val;
 	}
+	
 	XI_EXT_FEATURE_SELECTOR xiAPIplus_Camera::GetExtendedFeatureSelector_Minimum()
 	{
 		int val=0;
@@ -7903,7 +8533,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_EXTENDED_FEATURE_SELECTOR, ExtendedFeatureSelector);
 		CheckResult(res,"SetExtendedFeatureSelector");
 	}
-				
+	
 	// Extended feature value. (XI_PRM_EXTENDED_FEATURE)
 	int xiAPIplus_Camera::GetExtendedFeature()
 	{
@@ -7915,6 +8545,7 @@
 		CheckResult(res,"GetExtendedFeature");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetExtendedFeature_Maximum()
 	{
 		int val=0;
@@ -7925,6 +8556,7 @@
 		CheckResult(res,"GetExtendedFeature" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetExtendedFeature_Minimum()
 	{
 		int val=0;
@@ -7935,7 +8567,7 @@
 		CheckResult(res,"GetExtendedFeature" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetExtendedFeature_Increment()
 	{
 		int val=0;
@@ -7946,7 +8578,6 @@
 		CheckResult(res,"GetExtendedFeature" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetExtendedFeature(int ExtendedFeature)
 	{
@@ -7956,7 +8587,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_EXTENDED_FEATURE, ExtendedFeature);
 		CheckResult(res,"SetExtendedFeature");
 	}
-			
+	
 	// Selects device unit. (XI_PRM_DEVICE_UNIT_SELECTOR)
 	XI_DEVICE_UNIT_SELECTOR xiAPIplus_Camera::GetDeviceUnitSelector()
 	{
@@ -7979,6 +8610,7 @@
 		CheckResult(res,"GetDeviceUnitSelector" "_Maximum");
 		return (XI_DEVICE_UNIT_SELECTOR)val;
 	}
+	
 	XI_DEVICE_UNIT_SELECTOR xiAPIplus_Camera::GetDeviceUnitSelector_Minimum()
 	{
 		int val=0;
@@ -8009,7 +8641,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEVICE_UNIT_SELECTOR, DeviceUnitSelector);
 		CheckResult(res,"SetDeviceUnitSelector");
 	}
-				
+	
 	// Selects register of selected device unit(XI_PRM_DEVICE_UNIT_SELECTOR). (XI_PRM_DEVICE_UNIT_REGISTER_SELECTOR)
 	int xiAPIplus_Camera::GetDeviceUnitRegisterSelector()
 	{
@@ -8021,6 +8653,7 @@
 		CheckResult(res,"GetDeviceUnitRegisterSelector");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDeviceUnitRegisterSelector_Maximum()
 	{
 		int val=0;
@@ -8031,6 +8664,7 @@
 		CheckResult(res,"GetDeviceUnitRegisterSelector" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDeviceUnitRegisterSelector_Minimum()
 	{
 		int val=0;
@@ -8041,7 +8675,7 @@
 		CheckResult(res,"GetDeviceUnitRegisterSelector" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetDeviceUnitRegisterSelector_Increment()
 	{
 		int val=0;
@@ -8052,7 +8686,6 @@
 		CheckResult(res,"GetDeviceUnitRegisterSelector" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetDeviceUnitRegisterSelector(int DeviceUnitRegisterSelector)
 	{
@@ -8062,7 +8695,7 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEVICE_UNIT_REGISTER_SELECTOR, DeviceUnitRegisterSelector);
 		CheckResult(res,"SetDeviceUnitRegisterSelector");
 	}
-			
+	
 	// Sets/gets register value of selected device unit(XI_PRM_DEVICE_UNIT_SELECTOR). (XI_PRM_DEVICE_UNIT_REGISTER_VALUE)
 	int xiAPIplus_Camera::GetDeviceUnitRegister()
 	{
@@ -8074,6 +8707,7 @@
 		CheckResult(res,"GetDeviceUnitRegister");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDeviceUnitRegister_Maximum()
 	{
 		int val=0;
@@ -8084,6 +8718,7 @@
 		CheckResult(res,"GetDeviceUnitRegister" "_Maximum");
 		return val;
 	}
+	
 	int xiAPIplus_Camera::GetDeviceUnitRegister_Minimum()
 	{
 		int val=0;
@@ -8094,7 +8729,7 @@
 		CheckResult(res,"GetDeviceUnitRegister" "_Minimum");
 		return val;
 	}
-	
+
 	int xiAPIplus_Camera::GetDeviceUnitRegister_Increment()
 	{
 		int val=0;
@@ -8105,7 +8740,6 @@
 		CheckResult(res,"GetDeviceUnitRegister" "_Increment");
 		return val;
 	}
-
 	
 	void xiAPIplus_Camera::SetDeviceUnitRegister(int DeviceUnitRegister)
 	{
@@ -8115,7 +8749,121 @@
 		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_DEVICE_UNIT_REGISTER_VALUE, DeviceUnitRegister);
 		CheckResult(res,"SetDeviceUnitRegister");
 	}
-			
+	
+	// Callback address of pointer that is called upon long tasks (e.g. XI_PRM_WRITE_FILE_FFS). (XI_PRM_API_PROGRESS_CALLBACK)
+	void xiAPIplus_Camera::GetApiProgressCallback(char* buffer, int buffer_length)
+	{
+		
+		XI_RETURN res=xiGetParamString(camera_handle, XI_PRM_API_PROGRESS_CALLBACK, buffer, buffer_length);
+		CheckResult(res,"GetApiProgressCallback");
+	}
+	
+	void xiAPIplus_Camera::SetApiProgressCallback(char* new_value)
+	{
+		
+		XI_RETURN res=xiSetParamString(camera_handle, XI_PRM_API_PROGRESS_CALLBACK, new_value, (DWORD)strlen(new_value));
+		CheckResult(res,"SetApiProgressCallback");
+	}
+	
+	// Selects the internal acquisition signal to read using XI_PRM_ACQUISITION_STATUS. (XI_PRM_ACQUISITION_STATUS_SELECTOR)
+	XI_ACQUISITION_STATUS_SELECTOR xiAPIplus_Camera::GetAcquisitionStatusSelector()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatusSelector");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS_SELECTOR, &val);
+		CheckResult(res,"GetAcquisitionStatusSelector");
+		return (XI_ACQUISITION_STATUS_SELECTOR)val;
+	}
+	
+	XI_ACQUISITION_STATUS_SELECTOR xiAPIplus_Camera::GetAcquisitionStatusSelector_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatusSelector" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS_SELECTOR XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetAcquisitionStatusSelector" "_Maximum");
+		return (XI_ACQUISITION_STATUS_SELECTOR)val;
+	}
+	
+	XI_ACQUISITION_STATUS_SELECTOR xiAPIplus_Camera::GetAcquisitionStatusSelector_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatusSelector" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS_SELECTOR XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetAcquisitionStatusSelector" "_Minimum");
+		return (XI_ACQUISITION_STATUS_SELECTOR)val;
+	}
+	
+	int xiAPIplus_Camera::GetAcquisitionStatusSelector_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatusSelector" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS_SELECTOR XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetAcquisitionStatusSelector" "_Increment");
+		return val;
+	}
+	
+	void xiAPIplus_Camera::SetAcquisitionStatusSelector(XI_ACQUISITION_STATUS_SELECTOR AcquisitionStatusSelector)
+	{
+		
+		CheckCamHandleInt("SetAcquisitionStatusSelector",(int)AcquisitionStatusSelector);
+		
+		XI_RETURN res=xiSetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS_SELECTOR, AcquisitionStatusSelector);
+		CheckResult(res,"SetAcquisitionStatusSelector");
+	}
+	
+	// Acquisition status(True/False) (XI_PRM_ACQUISITION_STATUS)
+	XI_SWITCH xiAPIplus_Camera::GetAcquisitionStatus()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatus");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS, &val);
+		CheckResult(res,"GetAcquisitionStatus");
+		return (XI_SWITCH)val;
+	}
+	
+	XI_SWITCH xiAPIplus_Camera::GetAcquisitionStatus_Maximum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatus" "_Maximum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS XI_PRM_INFO_MAX, &val);
+		CheckResult(res,"GetAcquisitionStatus" "_Maximum");
+		return (XI_SWITCH)val;
+	}
+	
+	XI_SWITCH xiAPIplus_Camera::GetAcquisitionStatus_Minimum()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatus" "_Minimum");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS XI_PRM_INFO_MIN, &val);
+		CheckResult(res,"GetAcquisitionStatus" "_Minimum");
+		return (XI_SWITCH)val;
+	}
+	
+	int xiAPIplus_Camera::GetAcquisitionStatus_Increment()
+	{
+		int val=0;
+		
+		CheckCamHandle("GetAcquisitionStatus" "_Increment");
+		
+		XI_RETURN res=xiGetParamInt(camera_handle, XI_PRM_ACQUISITION_STATUS XI_PRM_INFO_INCREMENT, &val);
+		CheckResult(res,"GetAcquisitionStatus" "_Increment");
+		return val;
+	}
+	
 
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -8132,7 +8880,7 @@ xiapi_errorcode_t xiAPIplus_errorcodes_list[]=
 		XI_INVALID_HANDLE                 ,  "Invalid handle",
 		XI_READREG                        ,  "Register read error",
 		XI_WRITEREG                       ,  "Register write error",
-		XI_FREE_RESOURCES                 ,  "Freeing resiurces error",
+		XI_FREE_RESOURCES                 ,  "Freeing resources error",
 		XI_FREE_CHANNEL                   ,  "Freeing channel error",
 		XI_FREE_BANDWIDTH                 ,  "Freeing bandwith error",
 		XI_READBLK                        ,  "Read block error",
@@ -8155,8 +8903,8 @@ xiapi_errorcode_t xiAPIplus_errorcodes_list[]=
 		XI_INCOMPLETE_TM                  ,  "Incomplete TM",
 		XI_BUS_RESET_FAILED               ,  "Bus reset error",
 		XI_NOT_IMPLEMENTED                ,  "Not implemented",
-		XI_SHADING_TOOBRIGHT              ,  "Shading too bright",
-		XI_SHADING_TOODARK                ,  "Shading too dark",
+		XI_SHADING_TOOBRIGHT              ,  "Shading is too bright",
+		XI_SHADING_TOODARK                ,  "Shading is too dark",
 		XI_TOO_LOW_GAIN                   ,  "Gain is too low",
 		XI_INVALID_BPL                    ,  "Invalid bad pixel list",
 		XI_BPL_REALLOC                    ,  "Bad pixel list realloc error",
@@ -8171,41 +8919,44 @@ xiapi_errorcode_t xiAPIplus_errorcodes_list[]=
 		XI_ACQUISITION_ALREADY_UP         ,  "Acquisition already started",
 		XI_OLD_DRIVER_VERSION             ,  "Old version of device driver installed to the system.",
 		XI_GET_LAST_ERROR                 ,  "To get error code please call GetLastError function.",
-		XI_CANT_PROCESS                   ,  "Data cant be processed",
-		XI_ACQUISITION_STOPED             ,  "Acquisition has been stopped. It should be started before GetImage.",
-		XI_ACQUISITION_STOPED_WERR        ,  "Acquisition has been stoped with error.",
-		XI_INVALID_INPUT_ICC_PROFILE      ,  "Input ICC profile missed or corrupted",
-		XI_INVALID_OUTPUT_ICC_PROFILE     ,  "Output ICC profile missed or corrupted",
+		XI_CANT_PROCESS                   ,  "Data cannot be processed",
+		XI_ACQUISITION_STOPED             ,  "Acquisition is stopped. It needs to be started to perform operation.",
+		XI_ACQUISITION_STOPED_WERR        ,  "Acquisition has been stopped with an error.",
+		XI_INVALID_INPUT_ICC_PROFILE      ,  "Input ICC profile missing or corrupted",
+		XI_INVALID_OUTPUT_ICC_PROFILE     ,  "Output ICC profile missing or corrupted",
 		XI_DEVICE_NOT_READY               ,  "Device not ready to operate",
-		XI_SHADING_TOOCONTRAST            ,  "Shading too contrast",
+		XI_SHADING_TOOCONTRAST            ,  "Shading is too contrast",
 		XI_ALREADY_INITIALIZED            ,  "Module already initialized",
-		XI_NOT_ENOUGH_PRIVILEGES          ,  "Application doesnt enough privileges(one or more app",
-		XI_NOT_COMPATIBLE_DRIVER          ,  "Installed driver not compatible with current software",
+		XI_NOT_ENOUGH_PRIVILEGES          ,  "Application does not have enough privileges (one or more app)",
+		XI_NOT_COMPATIBLE_DRIVER          ,  "Installed driver is not compatible with current software",
 		XI_TM_INVALID_RESOURCE            ,  "TM file was not loaded successfully from resources",
-		XI_DEVICE_HAS_BEEN_RESETED        ,  "Device has been reseted, abnormal initial state",
+		XI_DEVICE_HAS_BEEN_RESETED        ,  "Device has been reset, abnormal initial state",
 		XI_NO_DEVICES_FOUND               ,  "No Devices Found",
-		XI_RESOURCE_OR_FUNCTION_LOCKED    ,  "Resource(device) or function locked by mutex",
+		XI_RESOURCE_OR_FUNCTION_LOCKED    ,  "Resource (device) or function locked by mutex",
 		XI_BUFFER_SIZE_TOO_SMALL          ,  "Buffer provided by user is too small",
 		XI_COULDNT_INIT_PROCESSOR         ,  "Couldnt initialize processor.",
 		XI_NOT_INITIALIZED                ,  "The object/module/procedure/process being referred to has not been started.",
-		XI_RESOURCE_NOT_FOUND             ,  "Resource not found(could be processor, file, item..).",
+		XI_RESOURCE_NOT_FOUND             ,  "Resource not found(could be processor, file, item...).",
 		XI_UNKNOWN_PARAM                  ,  "Unknown parameter",
 		XI_WRONG_PARAM_VALUE              ,  "Wrong parameter value",
 		XI_WRONG_PARAM_TYPE               ,  "Wrong parameter type",
 		XI_WRONG_PARAM_SIZE               ,  "Wrong parameter size",
-		XI_BUFFER_TOO_SMALL               ,  "Input buffer too small",
-		XI_NOT_SUPPORTED_PARAM            ,  "Parameter info not supported",
+		XI_BUFFER_TOO_SMALL               ,  "Input buffer is too small",
+		XI_NOT_SUPPORTED_PARAM            ,  "Parameter is not supported",
 		XI_NOT_SUPPORTED_PARAM_INFO       ,  "Parameter info not supported",
-		XI_NOT_SUPPORTED_DATA_FORMAT      ,  "Data format not supported",
+		XI_NOT_SUPPORTED_DATA_FORMAT      ,  "Data format is not supported",
 		XI_READ_ONLY_PARAM                ,  "Read only parameter",
 		XI_BANDWIDTH_NOT_SUPPORTED        ,  "This camera does not support currently available bandwidth",
 		XI_INVALID_FFS_FILE_NAME          ,  "FFS file selector is invalid or NULL",
 		XI_FFS_FILE_NOT_FOUND             ,  "FFS file not found",
-		XI_PARAM_NOT_SETTABLE             ,  "Parameter value can't be set(might be out of range or invalid)",
+		XI_PARAM_NOT_SETTABLE             ,  "Parameter value cannot be set (might be out of range or invalid).",
+		XI_SAFE_POLICY_NOT_SUPPORTED      ,  "Safe buffer policy is not supported. E.g. when transport target is set to GPU (GPUDirect).",
+		XI_GPUDIRECT_NOT_AVAILABLE        ,  "GPUDirect is not available. E.g. platform isn't supported or CUDA toolkit isn't installed.",
 		XI_PROC_OTHER_ERROR               ,  "Processing error - other",
 		XI_PROC_PROCESSING_ERROR          ,  "Error while image processing.",
 		XI_PROC_INPUT_FORMAT_UNSUPPORTED  ,  "Input format is not supported for processing.",
 		XI_PROC_OUTPUT_FORMAT_UNSUPPORTED ,  "Output format is not supported for processing.",
+		XI_OUT_OF_RANGE                   ,  "Parameter value is out of range",
 		
 };
 
@@ -8291,12 +9042,23 @@ void xiAPIplus_Camera::CheckResult(XI_RETURN res, const char* location)
 	}
 }
 
+void xiAPIplus_Camera::CheckResultParam(XI_RETURN res, const char* location, const char* param)
+{
+	xiAPIPlusDP((DBFOUT "%d\n",res));
+	if (res != XI_OK)
+	{
+		char buff[MAX_PATH] = "";
+		sprintf(buff, "%s - %s", location, param);
+		ReportException(res, buff);
+	}
+}
+
 void xiAPIplus_Exception::GetDescription(char* name, size_t name_max_size)
 {
 	if (!name) return;
 	if (!description) return;
 	if (name_max_size<sizeof(description)) return;
-	strncpy_s(name, name_max_size + 1, description, name_max_size);
+	strncpy(name,description,name_max_size);
 }
 
 void xiAPIplus_Exception::PrintError()
@@ -8354,22 +9116,16 @@ void xiAPIplus_Camera::OpenByID(unsigned long id)
 	if(!camera_handle) res = XI_INVALID_HANDLE;
 	CheckResult(res,"OpenByID");
 }
-void xiAPIplus_Camera::OpenBySN(unsigned long serial_number)
+void xiAPIplus_Camera::OpenBySN(char* serial_number)
 {
-	xiAPIPlusDP((DBFIN "%s\n","OpenBySN"));
-	xiAPIplus API;
-	unsigned long count = API.GetNumberOfConnectedCameras();
-	for (unsigned long id=0;id<count;id++)
-	{
-		OpenByID(id);
-		if (GetSerialNumber() == (int)(serial_number))
-		{
-			// found
-			return;
-		}
-		Close();
-	}
-	CheckResult(XI_NO_DEVICES_FOUND,"OpenBySN");
+	if (!serial_number)  ReportException(XI_WRONG_PARAM_VALUE, "xiAPIplus_Camera::OpenBySN()");
+	
+	xiAPIPlusDP((DBFIN "%s\n", "OpenBySN"));
+	XI_RETURN res = xiOpenDeviceBy(XI_OPEN_BY_SN, serial_number, &camera_handle);
+	CheckResult(res, "OpenBySN");
+
+	if (!camera_handle) res = XI_INVALID_HANDLE;
+	CheckResult(res, "OpenBySN");
 }
 
 void xiAPIplus_Camera::OpenByPath(char* device_path)
@@ -8382,6 +9138,30 @@ void xiAPIplus_Camera::OpenByPath(char* device_path)
 
 	if(!camera_handle) res = XI_INVALID_HANDLE;
 	CheckResult(res,"OpenByPath");
+}
+
+void xiAPIplus_Camera::OpenByUserID(char* user_id)
+{
+	if(!user_id)  ReportException(XI_WRONG_PARAM_VALUE, "xiAPIplus_Camera::OpenByUserID()");
+
+	xiAPIPlusDP((DBFIN "%s\n","OpenByUserID"));
+	XI_RETURN res=xiOpenDeviceBy(XI_OPEN_BY_USER_ID, user_id, &camera_handle);
+	CheckResult(res,"OpenByUserID");
+
+	if(!camera_handle) res = XI_INVALID_HANDLE;
+	CheckResult(res,"OpenByUserID");
+}
+
+void xiAPIplus_Camera::OpenByLocation(char* location)
+{
+	if(!location)  ReportException(XI_WRONG_PARAM_VALUE, "xiAPIplus_Camera::OpenByLocation()");
+
+	xiAPIPlusDP((DBFIN "%s\n","OpenByUserID"));
+	XI_RETURN res=xiOpenDeviceBy(XI_OPEN_BY_LOC_PATH, location, &camera_handle);
+	CheckResult(res,"OpenByLocation");
+
+	if(!camera_handle) res = XI_INVALID_HANDLE;
+	CheckResult(res,"OpenByLocation");
 }
 
 // ---------------------------------------------------------------------
@@ -8437,7 +9217,7 @@ xiAPIplus_Image* xiAPIplus_Camera::GetNextImage(xiAPIplus_Image* app_image)
 	XI_RETURN res = XI_OK;
 	res = xiGetImage(camera_handle, image_timeout_ms, image->GetXI_IMG());
 	CheckResult(res,"GetNextImage");
-	return image;
+	return image;	
 }
 
 // ---------------------------------------------------------------------
@@ -8473,28 +9253,55 @@ void xiAPIplus_Camera::GetXIAPIParamString(char* xiapi_param_name, char* value, 
 {
 	CheckCamHandle("GetXIAPIParamStr");
 	XI_RETURN res=xiGetParamString(camera_handle, xiapi_param_name, value, value_max_size);
-	CheckResult(res,"GetXIAPIParamStr");
+	CheckResultParam(res,"GetXIAPIParamStr", xiapi_param_name);
 }
 
 void xiAPIplus_Camera::SetXIAPIParamString(char* xiapi_param_name, char* value, unsigned int value_max_size)
 {
 	CheckCamHandle("SetXIAPIParamStr");
 	XI_RETURN res=xiSetParamString(camera_handle, xiapi_param_name, value, value_max_size);
-	CheckResult(res,"SetXIAPIParamStr");
+	CheckResultParam(res,"SetXIAPIParamStr", xiapi_param_name);
+}
+
+void xiAPIplus_Camera::GetXIAPIParamInt(char* xiapi_param_name, int* value)
+{
+	CheckCamHandle("GetXIAPIParamInt");
+	XI_RETURN res=xiGetParamInt(camera_handle, xiapi_param_name, value);
+	CheckResultParam(res,"GetXIAPIParamInt", xiapi_param_name);
+}
+void xiAPIplus_Camera::SetXIAPIParamInt(char* xiapi_param_name, int value)
+{
+	CheckCamHandle("SetXIAPIParamInt");
+	XI_RETURN res=xiSetParamInt(camera_handle, xiapi_param_name, value);
+	CheckResultParam(res,"SetXIAPIParamInt", xiapi_param_name);
+}
+
+void xiAPIplus_Camera::GetXIAPIParamFloat(char* xiapi_param_name, float* value)
+{
+	CheckCamHandle("GetXIAPIParamFloat");
+	XI_RETURN res=xiGetParamFloat(camera_handle, xiapi_param_name, value);
+	CheckResultParam(res,"GetXIAPIParamFloat", xiapi_param_name);
+}
+
+void xiAPIplus_Camera::SetXIAPIParamFloat(char* xiapi_param_name, float value)
+{
+	CheckCamHandle("SetXIAPIParamFloat");
+	XI_RETURN res=xiSetParamFloat(camera_handle, xiapi_param_name, value);
+	CheckResultParam(res,"SetXIAPIParamFloat", xiapi_param_name);
 }
 
 void xiAPIplus_Camera::SetXIAPIParam(char* xiapi_param_name, void* value, size_t value_size, XI_PRM_TYPE type)
 {
 	CheckCamHandle("SetXIAPIParam");
 	XI_RETURN res=xiSetParam(camera_handle, xiapi_param_name, value, (DWORD)value_size,type);
-	CheckResult(res,"GetXIAPIParam");
+	CheckResultParam(res,"SetXIAPIParam", xiapi_param_name);
 }
 
 void xiAPIplus_Camera::GetXIAPIParam(char* xiapi_param_name, void* value, size_t * value_size, XI_PRM_TYPE * type)
 {
 	CheckCamHandle("GetXIAPIParam");
 	XI_RETURN res=xiGetParam(camera_handle, xiapi_param_name, value, (DWORD*)value_size,type);
-	CheckResult(res,"GetXIAPIParam");
+	CheckResultParam(res,"GetXIAPIParam", xiapi_param_name);
 }
 
 // ---------------------------------------------------------------------
@@ -8566,7 +9373,7 @@ int xiAPIplus_Image::GetTotalPixelValues()
 		vals=0x1000; // 4096
 		break;
 	default:
-		ReportException(XI_NOT_SUPPORTED_DATA_FORMAT, "GetBytesPerPixel");
+		ReportException(XI_NOT_SUPPORTED_DATA_FORMAT, "GetTotalPixelValues");
 		break;
 	}
 	return vals;
@@ -8587,7 +9394,7 @@ int xiAPIplus_Image::GetBitCount()
 	case XI_MONO16:
 	case XI_RAW16:      vals=16; break;
 	default:
-		ReportException(XI_NOT_SUPPORTED_DATA_FORMAT, "GetBytesPerPixel");
+		ReportException(XI_NOT_SUPPORTED_DATA_FORMAT, "GetBitCount");
 		break;
 	}
 	return vals;
@@ -8791,10 +9598,14 @@ void xiAPIplusCameraOcv::resetCvImage_()
 	bool do_reset = false;
 	//printf ("Reseting image\n");
 	// first check basic image resolution
-	if(((int) next_image_->GetWidth()!= cv_image_->width) || ((int)next_image_->GetHeight()!= cv_image_->height)){
-		do_reset = true; 
-		
+	if (next_image_->GetDataFormat()!=XI_MONO8){
+		if(((int) next_image_->GetWidth()!= cv_image_->width) || ((int)next_image_->GetHeight()!= cv_image_->height))
+			do_reset = true; 
 	}
+	else {
+		if(((int) (next_image_->GetWidth()+next_image_->GetPadding_X())!= cv_image_->width) || ((int)next_image_->GetHeight()!= cv_image_->height))
+			do_reset = true; 
+	}	
 
 	// afterwards check image format
 	switch( next_image_->GetDataFormat())
@@ -8839,8 +9650,8 @@ void xiAPIplusCameraOcv::resetCvImage_()
 
 		switch( next_image_->GetDataFormat())
 		{
-		case XI_MONO8       :
-		case XI_RAW8        : cv_image_ = cvCreateImage(cvSize( next_image_->GetWidth(), next_image_->GetHeight()), IPL_DEPTH_8U, 1); printf ("Doing reset to mono\n"); break;
+		case XI_MONO8       : cv_image_ = cvCreateImage(cvSize( next_image_->GetWidth()+next_image_->GetPadding_X(), next_image_->GetHeight()), IPL_DEPTH_8U, 1); printf ("Doing reset to mono\n"); break;
+		case XI_RAW8        : cv_image_ = cvCreateImage(cvSize( next_image_->GetWidth(), next_image_->GetHeight()), IPL_DEPTH_8U, 1); printf ("Doing reset to mono\n"); break;		
 		case XI_MONO16      :
 		case XI_RAW16       : cv_image_ = cvCreateImage(cvSize( next_image_->GetWidth(), next_image_->GetHeight()), IPL_DEPTH_16U, 1); printf ("Doing reset to mono\n");break;
 		case XI_RGB24       :

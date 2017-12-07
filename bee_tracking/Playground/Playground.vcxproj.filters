@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="average.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tracking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="disparity_map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="camera_calibration.cpp">
@@ -33,17 +27,17 @@
     <ClCompile Include="detectContours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="adjustLUT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="xiApiPlusOcv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adjustLUT.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="average.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tracking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -56,10 +50,10 @@
     <ClInclude Include="detectContours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="xiApiPlusOcv.hpp">
+    <ClInclude Include="adjustLUT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjustLUT.h">
+    <ClInclude Include="xiApiPlusOcv.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

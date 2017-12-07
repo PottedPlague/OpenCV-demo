@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="xiApiPlusOcv.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -27,15 +24,36 @@
     <ClCompile Include="Kalman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="xiApiPlusOcv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OLcontours.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="connectedComp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RTcontours.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="xiApiPlusOcv.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SBD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Kalman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xiApiPlusOcv.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RTcontours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OLcontours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="connectedComp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
