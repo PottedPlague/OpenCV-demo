@@ -58,7 +58,7 @@ void RTcontours()
 		cvtColor(frame, mask, CV_GRAY2BGR);
 		vector<Vec4i> hierarchy;
 		vector<vector<Point> > contours;
-		findContours(frame, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+		findContours(frame, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
 
 		vector<Moments> M(contours.size());
 		vector<Point2f> MC(contours.size());
@@ -81,6 +81,7 @@ void RTcontours()
 			// Draw each contour only for visualisation purposes
 			drawContours(mask, contours, static_cast<int>(i), Scalar(0, 0, 255), 2, 8, hierarchy, 0);
 			circle(mask, MC[i], 4, Scalar(0, 0, 255), -1);
+			cout << "Coors of centre:" << MC[i].x << "," << MC[i].y << endl;
 		}
 
 		framerate = CLOCKS_PER_SEC / (clock() - startTime);

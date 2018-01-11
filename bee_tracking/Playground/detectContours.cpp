@@ -18,7 +18,7 @@ void detectContours()
 	threshold(grey, bw, 50, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
 
 	vector<Vec4i> hierarchy;
-	vector<vector<Point> > contours;
+	vector<vector<Point>> contours;
 	findContours(bw, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
 
 	vector<Moments> M(contours.size());
