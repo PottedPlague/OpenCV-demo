@@ -16,6 +16,8 @@ namespace beeproject {
 		double getVelocity();
 		/* @Returns current linear acceleration of honeybee in current position. (m/s2)*/
 		double getAcceleration();
+		/* @Returns the set of frames of the bee trail. */
+		std::vector<cv::Mat> getFrames();
 
 		/* @Function creates a binding box same size as the selected ROI. 
 		Then the boneybee appears on the background plane as a filled circle with a diameter of 4 within the binding box. 
@@ -54,6 +56,7 @@ namespace beeproject {
 		cv::Point2d initialposition_;
 		cv::Point2d currentposition_;
 		std::vector<cv::Point2d> positions_;
+		std::vector<cv::Mat> frames_;
 		cv::Mat background_;
 		cv::Mat drawingboard_;
 	};

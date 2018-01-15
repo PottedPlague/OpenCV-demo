@@ -37,6 +37,8 @@ void honeybee::startMoving(int msec, int frate)
 {
 	duration_ = msec;
 	framerate_ = frate;
+
+	int resetPoint = 10;
 	double rand_a = rand() % 50 / 10.0; 
 	double rand_b = rand() % 50 / 10.0; 
 	double rand_c = rand() % 100 / 10.0; 
@@ -47,7 +49,7 @@ void honeybee::startMoving(int msec, int frate)
 	std::complex<double> result;
 	for (int i = 0; i < duration_*framerate_ / 500; i++)
 	{
-		if (i % 20 == 0)
+		if (i % resetPoint == 0)
 		{
 			rand_x = rand_a;
 			rand_y = rand_b;
@@ -60,16 +62,17 @@ void honeybee::startMoving(int msec, int frate)
 
 		}
 		theta_ = 0.05 * i;
-		rho_ = (i % 20) * (7 - 3 * cos(rand_a * theta_) * sin(rand_b * theta_) + cos(rand_c * theta_))
-				+ (19 - i % 20) * (7 - 3 * cos(rand_x * theta_) * sin(rand_y * theta_) + cos(rand_z * theta_));
+		rho_ = (i % resetPoint) * (7 - 3 * cos(rand_a * theta_) * sin(rand_b * theta_) + cos(rand_c * theta_))
+				+ (resetPoint - 1 - i % resetPoint) * (7 - 3 * cos(rand_x * theta_) * sin(rand_y * theta_) + cos(rand_z * theta_));
 
 		result = std::polar(rho_, theta_);
-		currentposition_.x = 1.4 * result.real() + bindingbox_.x + bindingbox_.width / 2;
-		currentposition_.y = 1.4 * result.imag() + bindingbox_.y + bindingbox_.height / 2;
+		currentposition_.x = 30.0/resetPoint * result.real() + bindingbox_.x + bindingbox_.width / 2;
+		currentposition_.y = 30.0/resetPoint * result.imag() + bindingbox_.y + bindingbox_.height / 2;
 		positions_.push_back(currentposition_);
 
 		drawingboard_ = background_.clone();
 		cv::circle(drawingboard_, positions_.back(), 4, beecolour_, -1);
+		frames_.push_back(drawingboard_);
 
 		cv::imshow("Output", drawingboard_);
 		cv::waitKey(10);
@@ -90,4 +93,9 @@ double honeybee::getVelocity()
 cv::Point2d honeybee::getPosition()
 {
 	return positions_.back();
+}
+
+std::vector<cv::Mat> honeybee::getFrames()
+{
+	return frames_;
 }

@@ -7,12 +7,17 @@ int main()
 	cv::Mat frame = cv::Mat::zeros(cv::Size(800, 600), CV_8UC3);
 	cv::Rect2d beebox;
 	beebox = cv::selectROI(frame);
+	std::string filename = "D:/pic/virtualbee.avi";
+
+	cv::VideoWriter writer(filename, CV_FOURCC('M', 'J', 'P', 'G'), 50, cv::Size(frame.cols, frame.rows));
 	honeybee bee;
 	
 	bee.add(frame, beebox);
 
 	bee.startMoving();
-
+	for (size_t i = 0; i < bee.getFrames().size(); i++)
+		writer.write(bee.getFrames()[i]);
+	
 	return 0;
 }
 
