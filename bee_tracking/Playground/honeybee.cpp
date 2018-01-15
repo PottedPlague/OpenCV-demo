@@ -24,27 +24,57 @@ void honeybee::setFramerate(int frate)
 	framerate_ = frate;
 }
 
-void honeybee::add(cv::Mat dst, cv::Rect2d range, cv::Point2d initPosition, int duration, cv::Scalar beeColour)
+void honeybee::add(cv::Mat dst, cv::Rect2d range, cv::Point2d initPosition, cv::Scalar beeColour)
 {
 	background_ = dst.clone();
-	duration_ = duration;
 	initialposition_ = initPosition;
 	beecolour_ = beeColour;
 	bindingbox_ = range;
 	positions_.push_back(initPosition);
 }
 
-void honeybee::startMoving()
+void honeybee::startMoving(int msec, int frate)
 {
-	currentposition_.x = bindingbox_.x + rand() % 100 / 100.0 * bindingbox_.width;
-	currentposition_.y = bindingbox_.y + rand() % 100 / 100.0 * bindingbox_.height;
-	positions_.push_back(currentposition_);
+	duration_ = msec;
+	framerate_ = frate;
+	double rand_a = rand() % 50 / 10.0; 
+	double rand_b = rand() % 50 / 10.0; 
+	double rand_c = rand() % 100 / 10.0; 
+	double rand_x = rand() % 50 / 10.0; 
+	double rand_y = rand() % 50 / 10.0; 
+	double rand_z = rand() % 100 / 10.0;
+	
+	std::complex<double> result;
+	for (int i = 0; i < duration_*framerate_ / 500; i++)
+	{
+		if (i % 20 == 0)
+		{
+			rand_x = rand_a;
+			rand_y = rand_b;
+			rand_z = rand_c;
 
-	drawingboard_ = background_.clone();
-	cv::circle(drawingboard_, positions_.back(), 4, beecolour_, -1);
+			rand_a = rand() % 50 / 10.0;
+			rand_b = rand() % 50 / 10.0;
+			rand_c = rand() % 100 / 10.0;
 
-	cv::imshow("Output", drawingboard_);
-	cv::waitKey(30);
+
+		}
+		theta_ = 0.05 * i;
+		rho_ = (i % 20) * (7 - 3 * cos(rand_a * theta_) * sin(rand_b * theta_) + cos(rand_c * theta_))
+				+ (19 - i % 20) * (7 - 3 * cos(rand_x * theta_) * sin(rand_y * theta_) + cos(rand_z * theta_));
+
+		result = std::polar(rho_, theta_);
+		currentposition_.x = 1.4 * result.real() + bindingbox_.x + bindingbox_.width / 2;
+		currentposition_.y = 1.4 * result.imag() + bindingbox_.y + bindingbox_.height / 2;
+		positions_.push_back(currentposition_);
+
+		drawingboard_ = background_.clone();
+		cv::circle(drawingboard_, positions_.back(), 4, beecolour_, -1);
+
+		cv::imshow("Output", drawingboard_);
+		cv::waitKey(10);
+	}
+	
 }
 
 double honeybee::getAcceleration()

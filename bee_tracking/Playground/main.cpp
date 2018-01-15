@@ -11,8 +11,7 @@ int main()
 	
 	bee.add(frame, beebox);
 
-	for (;;)
-		bee.startMoving();
+	bee.startMoving();
 
 	return 0;
 }
