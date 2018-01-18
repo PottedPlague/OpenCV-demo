@@ -28,7 +28,7 @@ int main()
 	//std::string filename = "D:/pic/virtualbee.avi";
 
 	//cv::VideoWriter writer(filename, CV_FOURCC('M', 'J', 'P', 'G'), 50, cv::Size(frame.cols, frame.rows));
-	add(frame, 100, beebox);
+	add(frame, 10, beebox);
 	
 	startMoving();
 
