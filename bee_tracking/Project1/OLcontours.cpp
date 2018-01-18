@@ -59,43 +59,6 @@ void OLcontours()
 	//Set exposure
 	cam.SetExposureTime(3000); //3000 us = 3 ms
 
-							   //Set resolution
-							   //cam.SetHeight(480);
-							   //cam.SetWidth(640);
-
-							   //vector<KeyPoint> detectKeyPoint;
-
-							   //---------------simple blob detection-------------------
-							   //setting detector parameters
-
-							   //SimpleBlobDetector::Params params;
-
-							   //filter by colour
-							   //params.filterByColor = true;
-							   //params.blobColor = 255;
-
-							   //filter by area
-							   //params.filterByArea = true;
-							   //params.minArea = 20;
-							   //params.maxArea = 2000;
-
-							   //filter by circularity
-							   //params.filterByCircularity = true;
-							   //params.minCircularity = 0.01;
-
-							   //filter by convexity
-							   //params.filterByConvexity = true;
-							   //params.minConvexity = 0.07;
-
-							   //filter by inertia
-							   //params.filterByInertia = true;
-							   //params.minInertiaRatio = 0.01;
-
-							   //--------------------------------------------------------------------------------------------------
-
-							   //instantiate a SBD pointer
-							   //Ptr<SimpleBlobDetector> sbd = SimpleBlobDetector::create(params);
-
 	printf("Starting acquisition...\n");
 	cam.StartAcquisition();
 	startTime = clock();

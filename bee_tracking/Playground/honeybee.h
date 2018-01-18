@@ -3,11 +3,12 @@
 #include <complex>
 
 namespace beeproject {
-	class honeybee
+
+	class Honeybee
 	{
 	public:
-		honeybee();
-		~honeybee();
+		Honeybee();
+		~Honeybee();
 
 		/* @Returns current position of honeybee model. 
 		The coordinate system uses OpenCV 2D double point type - Point2d. */
@@ -16,24 +17,14 @@ namespace beeproject {
 		double getVelocity();
 		/* @Returns current linear acceleration of honeybee in current position. (m/s2)*/
 		double getAcceleration();
-		/* @Returns the set of frames of the bee trail. */
-		std::vector<cv::Mat> getFrames();
+		/* @Returns the colour of bee in Scalar type. */
+		cv::Scalar getColour();
 
-		/* @Function creates a binding box same size as the selected ROI. 
-		Then the boneybee appears on the background plane as a filled circle with a diameter of 4 within the binding box. 
-		The appearing position is randomly calculated with certain velocity and acceleration constraints. 
+		/* @Function creates a binding box same size as the selected ROI.
+		Then the boneybee appears on the background plane as a filled circle with a diameter of 4 within the binding box.
+		The appearing position is randomly calculated with certain velocity and acceleration constraints.
 		The appearing duration and framerate is configured by user in advance or by default. */
-		void startMoving(int msec = 10000, int frate = 50);
-		/* @Adds a honeybee to the moving plane. 
-		@param dst - the Mat type plane to put bee on. The plane colour is pure black by default. 
-		@param range - rectangular boundaries of honeybee's range of movement. 
-		@param initPosition - initial position of bee if not defined by user. 
-		@param duration - flight duration of bee. 
-		@param beeColour - the colour of bee model shown in the background defined by BGR values. Yellow by default. */
-		void add(cv::Mat dst,
-				 cv::Rect2d range,
-				 cv::Point2d initPosition = cv::Point2d(0, 0),
-				 cv::Scalar beeColour = cv::Scalar(0, 255, 255));	
+		void nextPosition();
 
 		/* @Sets the flight duration of bee. 
 		@param msec - duration in millisecond*/
@@ -48,6 +39,7 @@ namespace beeproject {
 		double rho_;
 		double theta_;
 		double velocity_;
+		double angvelocity_;
 		double acceleration_;
 		int framerate_;
 		int duration_;
@@ -56,9 +48,18 @@ namespace beeproject {
 		cv::Point2d initialposition_;
 		cv::Point2d currentposition_;
 		std::vector<cv::Point2d> positions_;
-		std::vector<cv::Mat> frames_;
 		cv::Mat background_;
 		cv::Mat drawingboard_;
+		double rands[6];
 	};
 
+	/* @Adds a set of honeybees to the moving plane.
+	@param dst - the Mat type plane to put bee on. The plane colour is pure black by default.
+	@param range - rectangular boundaries of honeybee's range of movement.
+	@param initPosition - initial position of bee if not defined by user.
+	@param duration - flight duration of bee.
+	@param beeColour - the colour of bee model shown in the background defined by BGR values. Yellow by default. */
+	void add(cv::Mat dst, int amount, cv::Rect2d range);
+
+	void startMoving(int frate = 50, int msec = 10000);
 }	//namespace beeproject

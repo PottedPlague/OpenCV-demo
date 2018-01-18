@@ -27,6 +27,7 @@
     <ClCompile Include="honeybee.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="multiTracking.cpp" />
+    <ClCompile Include="offlineContourFinding.cpp" />
     <ClCompile Include="tyt.cpp" />
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
@@ -38,6 +39,7 @@
     <ClInclude Include="EnableGPUDevice.h" />
     <ClInclude Include="honeybee.h" />
     <ClInclude Include="multiTrackingh.h" />
+    <ClInclude Include="offlineContourFinding.h" />
     <ClInclude Include="tyt.h" />
     <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>

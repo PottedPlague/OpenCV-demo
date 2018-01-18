@@ -45,6 +45,9 @@
     <ClCompile Include="honeybee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="offlineContourFinding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="disparity_map.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="honeybee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="offlineContourFinding.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

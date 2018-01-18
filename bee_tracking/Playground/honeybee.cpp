@@ -2,100 +2,127 @@
 
 using namespace beeproject;
 
-honeybee::honeybee() 
+cv::Mat background;
+cv::Mat drawingboard;
+
+cv::Rect2d bindingbox;
+int count;
+int resetPoint = 100;
+
+std::vector<Honeybee> bees;
+std::vector<cv::Mat> frames;
+
+std::complex<double> result;
+
+Honeybee::Honeybee() 
 {
-	framerate_ = 30;
+	initialposition_ = cv::Point2d(0, 0);
+	beecolour_ = cv::Scalar(0, 255, 255);
+	rands[0] = rand() % 50 / 10.0;
+	rands[1] = rand() % 50 / 10.0;
+	rands[2] = rand() % 100 / 10.0;
+	rands[3] = rand() % 50 / 10.0;
+	rands[4] = rand() % 50 / 10.0;
+	rands[5] = rand() % 100 / 10.0;
+	angvelocity_ = (500 + rand() % 1000) / 30000.0;
 }
 
-honeybee::~honeybee() {}
+Honeybee::~Honeybee() {}
 
-void honeybee::setMovementRange(cv::Rect2d range)
+void Honeybee::setMovementRange(cv::Rect2d range)
 {
 	bindingbox_ = range;
 }
 
-void honeybee::setFlightDuration(int msec)
+void Honeybee::setFlightDuration(int msec)
 {
 	duration_ = msec;
 }
 
-void honeybee::setFramerate(int frate)
+void Honeybee::setFramerate(int frate)
 {
 	framerate_ = frate;
 }
 
-void honeybee::add(cv::Mat dst, cv::Rect2d range, cv::Point2d initPosition, cv::Scalar beeColour)
-{
-	background_ = dst.clone();
-	initialposition_ = initPosition;
-	beecolour_ = beeColour;
-	bindingbox_ = range;
-	positions_.push_back(initPosition);
-}
 
-void honeybee::startMoving(int msec, int frate)
-{
-	duration_ = msec;
-	framerate_ = frate;
 
-	int resetPoint = 10;
-	double rand_a = rand() % 50 / 10.0; 
-	double rand_b = rand() % 50 / 10.0; 
-	double rand_c = rand() % 100 / 10.0; 
-	double rand_x = rand() % 50 / 10.0; 
-	double rand_y = rand() % 50 / 10.0; 
-	double rand_z = rand() % 100 / 10.0;
-	
-	std::complex<double> result;
-	for (int i = 0; i < duration_*framerate_ / 500; i++)
+void Honeybee::nextPosition()
+{
+	if (count % resetPoint == 0)
 	{
-		if (i % resetPoint == 0)
-		{
-			rand_x = rand_a;
-			rand_y = rand_b;
-			rand_z = rand_c;
+		rands[3] = rands[0];
+		rands[4] = rands[1];
+		rands[5] = rands[2];
 
-			rand_a = rand() % 50 / 10.0;
-			rand_b = rand() % 50 / 10.0;
-			rand_c = rand() % 100 / 10.0;
+		rands[0] = rand() % 50 / 10.0;
+		rands[1] = rand() % 50 / 10.0;
+		rands[2] = rand() % 100 / 10.0;
 
-
-		}
-		theta_ = 0.05 * i;
-		rho_ = (i % resetPoint) * (7 - 3 * cos(rand_a * theta_) * sin(rand_b * theta_) + cos(rand_c * theta_))
-				+ (resetPoint - 1 - i % resetPoint) * (7 - 3 * cos(rand_x * theta_) * sin(rand_y * theta_) + cos(rand_z * theta_));
-
-		result = std::polar(rho_, theta_);
-		currentposition_.x = 30.0/resetPoint * result.real() + bindingbox_.x + bindingbox_.width / 2;
-		currentposition_.y = 30.0/resetPoint * result.imag() + bindingbox_.y + bindingbox_.height / 2;
-		positions_.push_back(currentposition_);
-
-		drawingboard_ = background_.clone();
-		cv::circle(drawingboard_, positions_.back(), 4, beecolour_, -1);
-		frames_.push_back(drawingboard_);
-
-		cv::imshow("Output", drawingboard_);
-		cv::waitKey(10);
 	}
-	
+	theta_ = angvelocity_ * count;
+	rho_ = (count % resetPoint) * (7 - 3 * cos(rands[0] * theta_) * sin(rands[1] * theta_) + cos(rands[2] * theta_))
+			+ (resetPoint - 1 - count % resetPoint) * (7 - 3 * cos(rands[3] * theta_) * sin(rands[4] * theta_) + cos(rands[5] * theta_));
+
+	result = std::polar(rho_, theta_);
+	currentposition_.x = 30.0/resetPoint * result.real() + bindingbox.x + bindingbox.width / 2;
+	currentposition_.y = 30.0/resetPoint * result.imag() + bindingbox.y + bindingbox.height / 2;
+	positions_.push_back(currentposition_);
 }
 
-double honeybee::getAcceleration()
+double Honeybee::getAcceleration()
 {
 	return acceleration_;
 }
 
-double honeybee::getVelocity()
+double Honeybee::getVelocity()
 {
 	return velocity_;
 }
 
-cv::Point2d honeybee::getPosition()
+cv::Point2d Honeybee::getPosition()
 {
 	return positions_.back();
 }
 
-std::vector<cv::Mat> honeybee::getFrames()
+cv::Scalar Honeybee::getColour()
 {
-	return frames_;
+	return beecolour_;
+}
+
+void beeproject::add(cv::Mat dst, int amount, cv::Rect2d range)
+{
+	for (int i = 0; i < amount; i++)
+	{
+		Honeybee bee;
+		bees.push_back(bee);
+	}
+		
+	background = dst.clone();
+	bindingbox = range;
+}
+
+void beeproject::startMoving(int frate, int msec)
+{
+	int framerate = frate;
+	int durationT = msec;
+
+	count = 0;
+
+	for (; count < durationT * framerate / 500; count++)
+	{
+		drawingboard = background.clone();
+		for (size_t i = 0; i < bees.size(); i++)
+		{
+			bees[i].nextPosition();
+			cv::circle(drawingboard, bees[i].getPosition(), 4, bees[i].getColour(), -1);
+		}
+		
+		/*bees[0].nextPosition();
+		cv::circle(drawingboard, bees[0].getPosition(), 4, bees[0].getColour(), -1);*/
+		
+		frames.push_back(drawingboard);
+
+		cv::imshow("Output", drawingboard);
+		cv::waitKey(5);
+	}
 }
