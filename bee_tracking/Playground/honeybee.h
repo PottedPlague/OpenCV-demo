@@ -61,5 +61,5 @@ namespace beeproject {
 	@param beeColour - the colour of bee model shown in the background defined by BGR values. Yellow by default. */
 	void add(cv::Mat dst, int amount, cv::Rect2d range);
 
-	void startMoving(int frate = 50, int msec = 10000);
+	std::vector<cv::Mat> startMoving(int frate = 50, int msec = 10000);
 }	//namespace beeproject

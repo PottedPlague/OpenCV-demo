@@ -1,4 +1,4 @@
-
+//
 //#include "offlineContourFinding.h"
 //
 //int main()
@@ -6,7 +6,7 @@
 //	return OLcontours();
 //}
 
-#define ENABLE_TESTS 1	// 1 - bee creation
+#define ENABLE_TESTS 0	// 1 - bee creation
 						// 2 - KCF tracker
 
 
@@ -25,23 +25,20 @@ int main()
 	cv::Mat frame = cv::Mat::zeros(cv::Size(800, 600), CV_8UC3);
 	cv::Rect2d beebox;
 	beebox = cv::selectROI(frame);
-	//std::string filename = "D:/pic/virtualbee.avi";
+	
+	std::string filename = "D:/pic/virtualbee.avi";
 
-	//cv::VideoWriter writer(filename, CV_FOURCC('M', 'J', 'P', 'G'), 50, cv::Size(frame.cols, frame.rows));
+	cv::VideoWriter writer(filename, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(frame.cols, frame.rows));
 	add(frame, 10, beebox);
 	
-	startMoving();
+	std::vector<cv::Mat> video(startMoving());
 
-	/*for (size_t i = 0; i <; i++)
-		writer.write(bee.getFrames()[i]);*/
+	for (size_t i = 0; i < video.size(); i++)
+		writer.write(video[i]);
 	
 	return 0;
 }
 #endif
-
-
-
-
 
 /******************************************************************************
 KCF tracker

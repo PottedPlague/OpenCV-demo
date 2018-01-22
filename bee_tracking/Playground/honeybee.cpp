@@ -101,14 +101,14 @@ void beeproject::add(cv::Mat dst, int amount, cv::Rect2d range)
 	bindingbox = range;
 }
 
-void beeproject::startMoving(int frate, int msec)
+std::vector<cv::Mat> beeproject::startMoving(int frate, int msec)
 {
 	int framerate = frate;
 	int durationT = msec;
 
 	count = 0;
 
-	for (; count < durationT * framerate / 500; count++)
+	for (; count < durationT * framerate / 1000; count++)
 	{
 		drawingboard = background.clone();
 		for (size_t i = 0; i < bees.size(); i++)
@@ -123,6 +123,7 @@ void beeproject::startMoving(int frate, int msec)
 		frames.push_back(drawingboard);
 
 		cv::imshow("Output", drawingboard);
-		cv::waitKey(5);
+		cv::waitKey(20);	//framerate control
 	}
+	return frames;
 }

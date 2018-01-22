@@ -2,11 +2,19 @@
 #include <opencv2\opencv.hpp>
 #include <iostream>
 
+std::string intToString(int number) {
+
+	//this function has an integer input and string output
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
+}
+
 int OLcontours()
 {
 	std::vector<cv::Mat> video;
 	cv::Mat frame;
-	std::string filename = "D:/pic/vrbee.avi";
+	std::string filename = "D:/pic/virtualbee.avi";
 	int perc = 101;
 
 	cv::VideoCapture cap;
@@ -43,13 +51,15 @@ int OLcontours()
 
 		for (size_t s = 0; s < contours.size(); s++)
 		{
-			double area = cv::contourArea(contours[s]);
+			//double area = cv::contourArea(contours[s]);
 			/*if (area < 1e2 || 1e5 < area)
 				continue;*/
 			cv::drawContours(video[i], contours, s, cv::Scalar(0, 0, 255), 1, 8, cv::noArray(), 0);
 			cv::circle(video[i], MC[s], 2, cv::Scalar(0, 0, 255), -1);
-			cv::putText(video[i], "bee", MC[s], 1, 3.0, cv::Scalar(0, 0, 255), 2, CV_AA);
+			cv::putText(video[i], intToString(s), MC[s], 1, 1.0, cv::Scalar(0, 0, 255), 1, CV_AA);
 		}
+
+		cv::putText(video[i], "Number of detected bees: " + intToString(contours.size()), cv::Point(10, 20), 1, 2.0, cv::Scalar(0, 255, 255), 2);
 
 		if (perc != 100 * i / video.size())
 		{

@@ -24,9 +24,6 @@
     <ClCompile Include="detectContours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adjustLUT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="xiApiPlusOcv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,9 +31,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnableGPUDevice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tyt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="multiTracking.cpp">
@@ -59,16 +53,10 @@
     <ClInclude Include="detectContours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjustLUT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="xiApiPlusOcv.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnableGPUDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tyt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="multiTrackingh.h">

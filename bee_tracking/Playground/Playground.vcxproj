@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="adjustLUT.cpp" />
     <ClCompile Include="camera_calibration.cpp" />
     <ClCompile Include="detectContours.cpp" />
     <ClCompile Include="disparity_map.cpp" />
@@ -28,11 +27,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="multiTracking.cpp" />
     <ClCompile Include="offlineContourFinding.cpp" />
-    <ClCompile Include="tyt.cpp" />
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="adjustLUT.h" />
     <ClInclude Include="camera_calibration.h" />
     <ClInclude Include="disparity_map.h" />
     <ClInclude Include="detectContours.h" />
@@ -40,7 +37,6 @@
     <ClInclude Include="honeybee.h" />
     <ClInclude Include="multiTrackingh.h" />
     <ClInclude Include="offlineContourFinding.h" />
-    <ClInclude Include="tyt.h" />
     <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

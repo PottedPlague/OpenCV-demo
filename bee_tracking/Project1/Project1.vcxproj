@@ -142,7 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="connectedComp.cpp" />
+    <ClCompile Include="adjustLUT.cpp" />
     <ClCompile Include="Kalman.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OLcontours.cpp" />
@@ -151,7 +151,7 @@
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="connectedComp.h" />
+    <ClInclude Include="adjustLUT.h" />
     <ClInclude Include="Kalman.h" />
     <ClInclude Include="OLcontours.h" />
     <ClInclude Include="RTcontours.h" />

@@ -30,10 +30,10 @@
     <ClCompile Include="OLcontours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="connectedComp.cpp">
+    <ClCompile Include="RTcontours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RTcontours.cpp">
+    <ClCompile Include="adjustLUT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClInclude Include="OLcontours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="connectedComp.h">
+    <ClInclude Include="adjustLUT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
