@@ -19,11 +19,56 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="xiApiPlusOcv.cpp" />
+    <ClCompile Include="Detector\DNNDetector.cpp" />
+    <ClCompile Include="Detector\FaceDetector.cpp" />
+    <ClCompile Include="Detector\MotionDetector.cpp" />
+    <ClCompile Include="Detector\PedestrianDetector.cpp" />
+    <ClCompile Include="Detector\Subsense\LBSP.cpp" />
+    <ClCompile Include="Detector\vibe_src\vibe.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Tracker\Ctracker.cpp" />
+    <ClCompile Include="Tracker\graph\components.cpp" />
+    <ClCompile Include="Tracker\graph\fheap.c" />
+    <ClCompile Include="Tracker\graph\gml2dot.cpp" />
+    <ClCompile Include="Tracker\graph\gml2nestedsql.cpp" />
+    <ClCompile Include="Tracker\graph\gport.cpp" />
+    <ClCompile Include="Tracker\graph\mincut.cpp" />
+    <ClCompile Include="Tracker\graph\mwbmatching.cpp" />
+    <ClCompile Include="Tracker\graph\mygraph.cpp" />
+    <ClCompile Include="Tracker\graph\mytree.cpp" />
+    <ClCompile Include="Tracker\graph\rings.cpp" />
+    <ClCompile Include="Tracker\graph\script.cpp" />
+    <ClCompile Include="Tracker\graph\tokenise.cpp" />
+    <ClCompile Include="Tracker\HungarianAlg\HungarianAlg.cpp" />
+    <ClCompile Include="Tracker\Kalman.cpp" />
+    <ClCompile Include="Tracker\LocalTracker.cpp" />
+    <ClCompile Include="Tracker\track.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="xiApiPlusOcv.hpp" />
+    <ClInclude Include="defines.h" />
+    <ClInclude Include="Detector\DNNDetector.h" />
+    <ClInclude Include="Detector\FaceDetector.h" />
+    <ClInclude Include="Detector\MotionDetector.h" />
+    <ClInclude Include="Detector\PedestrianDetector.h" />
+    <ClInclude Include="Detector\Subsense\DistanceUtils.h" />
+    <ClInclude Include="Detector\Subsense\LBSP.h" />
+    <ClInclude Include="Detector\Subsense\RandUtils.h" />
+    <ClInclude Include="Detector\vibe_src\vibe.hpp" />
+    <ClInclude Include="MouseExample.h" />
+    <ClInclude Include="nms.h" />
+    <ClInclude Include="Tracker\graph\fheap.h" />
+    <ClInclude Include="Tracker\graph\gdefs.h" />
+    <ClInclude Include="Tracker\graph\gport.h" />
+    <ClInclude Include="Tracker\graph\mincut.h" />
+    <ClInclude Include="Tracker\graph\mwbmatching.h" />
+    <ClInclude Include="Tracker\graph\mygraph.h" />
+    <ClInclude Include="Tracker\graph\mytree.h" />
+    <ClInclude Include="Tracker\graph\tokenise.h" />
+    <ClInclude Include="Tracker\HungarianAlg\HungarianAlg.h" />
+    <ClInclude Include="Tracker\Kalman.h" />
+    <ClInclude Include="Tracker\LocalTracker.h" />
+    <ClInclude Include="Tracker\track.h" />
+    <ClInclude Include="VideoExample.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E22E9926-9308-42AA-9E1B-4B845F501320}</ProjectGuid>
@@ -97,7 +142,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -113,7 +158,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;HAVE_VIDEOINPUT;HAVE_DSHOW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;HAVE_VIDEOINPUT;HAVE_DSHOW;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\opencv\BUILD\install\include;D:\XIMEA\Examples\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

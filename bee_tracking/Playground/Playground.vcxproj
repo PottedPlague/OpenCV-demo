@@ -20,23 +20,27 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera_calibration.cpp" />
-    <ClCompile Include="detectContours.cpp" />
+    <ClCompile Include="detector.cpp" />
     <ClCompile Include="disparity_map.cpp" />
     <ClCompile Include="EnableGPUDevice.cpp" />
     <ClCompile Include="honeybee.cpp" />
+    <ClCompile Include="Kalman.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="multiTracking.cpp" />
     <ClCompile Include="offlineContourFinding.cpp" />
+    <ClCompile Include="tracker.cpp" />
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera_calibration.h" />
+    <ClInclude Include="detector.h" />
     <ClInclude Include="disparity_map.h" />
-    <ClInclude Include="detectContours.h" />
     <ClInclude Include="EnableGPUDevice.h" />
     <ClInclude Include="honeybee.h" />
+    <ClInclude Include="Kalman.h" />
     <ClInclude Include="multiTrackingh.h" />
     <ClInclude Include="offlineContourFinding.h" />
+    <ClInclude Include="tracker.h" />
     <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

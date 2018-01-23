@@ -188,3 +188,6 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/bee_tracking/bee_tracking/Tracker
+/bee_tracking/bee_tracking/data
+/bee_tracking/bee_tracking/Detector

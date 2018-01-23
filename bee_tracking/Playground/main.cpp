@@ -6,8 +6,9 @@
 //	return OLcontours();
 //}
 
-#define ENABLE_TESTS 0	// 1 - bee creation
+#define ENABLE_TESTS 3	// 1 - bee creation
 						// 2 - KCF tracker
+						// 3 - Kalman filter
 
 
 
@@ -119,5 +120,29 @@ int main() {
 		if (waitKey(1) == 27)break;
 	}
 	
+}
+#endif
+
+#if ENABLE_TESTS == 3
+#include "Kalman.h"
+#include "detector.h"
+
+using namespace beeproject;
+
+int main()
+{
+	std::vector<cv::Point2d> Pts;
+	Pts = detectContours();
+	KF myKalman;
+	myKalman.create(cv::Point(642, 288), cv::Point2d(0, 0));
+
+	for (int i = 0; i < Pts.size(); i++)
+	{
+		myKalman.predict();
+		myKalman.update(Pts[i], 1);
+	}
+	cv::waitKey(0);
+
+	return 0;
 }
 #endif

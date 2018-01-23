@@ -21,9 +21,6 @@
     <ClCompile Include="camera_calibration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="detectContours.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="xiApiPlusOcv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,15 +39,21 @@
     <ClCompile Include="offlineContourFinding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Kalman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="detector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="disparity_map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="camera_calibration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="detectContours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="xiApiPlusOcv.hpp">
@@ -66,6 +69,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="offlineContourFinding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kalman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
