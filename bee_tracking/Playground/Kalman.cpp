@@ -53,26 +53,18 @@ cv::Point2d KF::predict()
 
 	//prediction point
 	lastPointResult_ = cv::Point2d(y_k.at<float>(0), y_k.at<float>(1));
-	cv::circle(board_, lastPointResult_, 2, cv::Scalar(0, 0, 255), -1);
 
 	return lastPointResult_;
 }
 
-cv::Point2d KF::update(cv::Point2d pt, bool isReceived)
+void KF::update(cv::Point2d measurement, bool isReceived)
 {
 	// measurement, positions on x and y axis
 	cv::Mat z_k = cv::Mat::zeros(2, 1, CV_32F);
 
 	//measurement point
-	z_k.at<float>(0) = pt.x;
-	z_k.at<float>(1) = pt.y;
-	
-	cv::circle(board_, cv::Point(z_k.at<float>(0), z_k.at<float>(1)), 2, cv::Scalar(0, 255, 0), -1);
-
-	cv::imshow("Kalman", board_);
-	cv::waitKey(30);
+	z_k.at<float>(0) = measurement.x;
+	z_k.at<float>(1) = measurement.y;
 
 	myKalman_.correct(z_k);
-
-	return 0;
 }

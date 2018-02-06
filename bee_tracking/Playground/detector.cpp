@@ -1,9 +1,9 @@
 #include "detector.h"
 
-std::vector<cv::Point2d> detectContours()
+std::vector<std::vector<cv::Point2d>> detectContours()
 {
 	std::vector<cv::Mat> video;
-	std::vector<cv::Point2d> coors;
+	std::vector<std::vector<cv::Point2d>> coors;
 	cv::Mat frame;
 	std::string filename = "D:/pic/virtualbee_1.avi";
 	cv::VideoCapture cap;
@@ -33,7 +33,7 @@ std::vector<cv::Point2d> detectContours()
 			M[s] = cv::moments(contours[s]);
 		for (size_t s = 0; s < contours.size(); s++)
 			MC[s] = cv::Point2d(M[s].m10 / M[s].m00, M[s].m01 / M[s].m00);
-		coors.push_back(MC[0]);
+		coors.push_back(MC);
 	}
 
 	return coors;
