@@ -9,6 +9,7 @@ namespace beeproject
 	public:
 		Track(int ID, cv::Point2d initPt);
 		~Track();
+		KF callKalman();
 
 	private:
 		int trackID_;
@@ -22,16 +23,17 @@ namespace beeproject
 	class Tracker
 	{
 	public:
-		Tracker(int maxFramesToSkip, double distThresh, std::vector<std::vector<cv::Point2d>> centroids);
+		Tracker(int maxFramesToSkip, double distThresh, int maxTraceLength, int trackIDCount);
 		~Tracker();
 
-		void solve();
+		void solve(std::vector<std::vector<cv::Point2d>> detections);
 
 	private:
 		size_t countID_;
 		std::vector<Track> tracks_;
 		int maxFramesToSkip_;
 		double distThresh_;
+		int maxTraceLength_;
 		std::vector<std::vector<cv::Point2d>> detections_;
 
 	};

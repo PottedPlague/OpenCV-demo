@@ -14,31 +14,44 @@ Track::~Track()
 {
 }
 
-Tracker::Tracker(int maxFramesToSkip, double distThresh, std::vector<std::vector<cv::Point2d>> centroids)
+KF Track::callKalman()
+{
+	return kalman_;
+}
+
+Tracker::Tracker(int maxFramesToSkip, double distThresh, int maxTraceLength, int trackIDCount)
 {
 	maxFramesToSkip_ = maxFramesToSkip;
 	distThresh_ = distThresh;
-	detections_ = centroids;
-	countID_ = 0;
+	maxTraceLength_ = maxTraceLength;
+	countID_ = trackIDCount;
 }
 
 Tracker::~Tracker()
 {
 }
 
-void Tracker::solve()
+void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections) 
 {
-	// create new tracks at the beginning besed on detection results
-	if (tracks_.size() < detections_.size())
-	{
-		size_t lack = detections_.size() - tracks_.size();
-		for (; countID_ < lack; countID_++)
-		{
-			Track track = Track(countID_, detections_[0][countID_]);
-			tracks_.push_back(track);
-		}
-	}
+	std::vector<Track> tracks;
+	detections_ = detections;
 
+	for (int frameCount = 0; frameCount < detections_.size(); frameCount++)
+	{
+		if (tracks.size() == 0 && detections_[frameCount].size() != 0)
+			for (int i = 0; i < detections_[frameCount].size(); i++)
+			{
+				countID_++;															//ID starts from 1, not 0
+				tracks.push_back(Track(countID_, detections_[0][i]));
+			}
+		
+		int N = tracks.size();
+		int M = detections_[frameCount].size();
+		for (int i = 0; i < N; i++)
+			tracks[i].callKalman().predict();
+
+		cv::Mat cost = cv::Mat::zeros(cv::Size(N, M), CV_32F);
+	}
 
 	// calculate cost matrix
 

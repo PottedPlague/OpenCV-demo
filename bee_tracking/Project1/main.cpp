@@ -1,6 +1,5 @@
 #include "OLcontours.h"
 #include "RTcontours.h"
-#include "connectedComp.h"
 #include "xiApiPlusOcv.hpp"
 #include <iostream>
 
