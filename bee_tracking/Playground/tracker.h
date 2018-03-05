@@ -9,7 +9,9 @@ namespace beeproject
 	public:
 		Track(int ID, cv::Point2d initPt);
 		~Track();
-		KF callKalman();
+		void makePrediction();
+		void updateKalman(cv::Point2d measurement);
+		cv::Point2d getPrediction();
 
 	private:
 		int trackID_;
