@@ -8,6 +8,7 @@ Track::Track(int ID, cv::Point2d initPt)
 	coorPre_ = initPt;
 	skippedFrames_ = 0;
 	kalman_.create(initPt);
+	isReceived = 0;
 }
 
 Track::~Track()
@@ -21,7 +22,7 @@ void Track::makePrediction()
 
 void Track::updateKalman(cv::Point2d measurement)
 {
-	kalman_.update(measurement, 1);
+	kalman_.update(measurement);
 }
 
 cv::Point2d Track::getPrediction()
@@ -43,6 +44,8 @@ Tracker::~Tracker()
 
 void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections) 
 {
+	std::vector<cv::Scalar> colours = { cv::Scalar(0, 254, 0), cv::Scalar(0, 0, 254), cv::Scalar(254, 0, 0) };
+
 	std::vector<Track> tracks;
 	detections_ = detections;
 	cv::Mat drawingboard = cv::Mat::zeros(cv::Size(800, 800), CV_8UC3);
@@ -57,11 +60,12 @@ void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections)
 				countID_++;															//ID starts from 0
 			}
 
-		int N = tracks.size();														//N - predictions; M - detections
-		for (int i = 0; i < N; i++)
-			assignment.push_back(-1);
+		int N = tracks.size();														//N - tracks; M - new detections
 		int M = detections_[frameCount].size();
-		cv::Mat cost = cv::Mat::zeros(cv::Size(N, M), CV_32F);						//cost matrix
+		for (int i = 0; i < M; i++)
+			assignment.push_back(-1);
+		
+		cv::Mat cost = cv::Mat::zeros(cv::Size(M, N), CV_32F);						//cost matrix
 		
 		for (int p = 0; p < N; p++)
 		{
@@ -69,8 +73,13 @@ void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections)
 			for (int q = 0; q < M; q++)
 			{
 				cost.at<float>(p, q) = cv::norm(tracks[p].getPrediction() - detections_[frameCount][q]);
+				//std::cout << tracks[p].getPrediction().x << ", " << tracks[p].getPrediction().y << std::endl;
+				//std::cout << detections_[frameCount][q].x << ", " << detections_[frameCount][q].y << std::endl;
+				std::cout << cost.at<float>(p, q) << " ";
 			}
+			std::cout << std::endl;
 		}
+		std::cout << std::endl;
 
 		//start assignment
 		for (int p = 0; p < N; p++)
@@ -78,26 +87,54 @@ void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections)
 			double min = std::numeric_limits<double>::max();
 			for (int q = 0; q < M; q++)
 			{
-				if (cost.at<float>(p, q) < min)
+				if (assignment[q] == -1)
 				{
-					min = cost.at<float>(p, q);
-					assignment[p] = q;
-				}	
+					if (cost.at<float>(p, q) < min && cost.at<float>(p, q) < 20.0)
+					{
+						min = cost.at<float>(p, q);
+						assignment[q] = p;
+						tracks[p].isReceived = 1;
+					}
+				}
 			}
 		}
-			
-		for (int i = 0; i < N; i++)
-			tracks[i].updateKalman(detections_[frameCount][assignment[i]]);
 
-		cv::circle(drawingboard, tracks[0].getPrediction(), 2, cv::Scalar(0, 255, 0), -1);
+		//check if all existing tracks have assignment, use previous predictions to update those have no assigned points.
+		for (int i = 0; i < N; i++)
+		{
+			if (tracks[i].isReceived == 0)
+			{
+				tracks[i].updateKalman(tracks[i].getPrediction());
+			}
+			else
+			{
+				//if (frameCount > 350)
+					cv::circle(drawingboard, tracks[i].getPrediction(), 2, colours[i], -1);
+			}
+				
+		}
+
+		//check if all the detection points have assigned to tracks, create new tracks for points belong to no track
+		for (int i = 0; i < M; i++)
+		{
+			if (assignment[i] == -1)
+				continue;															//------talk about this later------
+			else
+			{
+				tracks[assignment[i]].updateKalman(detections_[frameCount][i]);
+				tracks[i].isReceived = 0;
+			}
+		}
+
+		/*cv::circle(drawingboard, tracks[0].getPrediction(), 2, cv::Scalar(0, 255, 0), -1);
 		cv::circle(drawingboard, detections_[frameCount][assignment[0]], 2, cv::Scalar(0, 130, 0), -1);
 		cv::circle(drawingboard, tracks[1].getPrediction(), 2, cv::Scalar(0, 0, 255), -1);
 		cv::circle(drawingboard, detections_[frameCount][assignment[1]], 2, cv::Scalar(0, 0, 130), -1);
 		cv::circle(drawingboard, tracks[2].getPrediction(), 2, cv::Scalar(255, 0, 0), -1);
-		cv::circle(drawingboard, detections_[frameCount][assignment[2]], 2, cv::Scalar(130, 0, 0), -1);
+		cv::circle(drawingboard, detections_[frameCount][assignment[2]], 2, cv::Scalar(130, 0, 0), -1);*/
 		
 		cv::imshow("Output", drawingboard);
-		cv::waitKey(30);
+		cv::waitKey(30);				//30 or 80
 	}
 
 	// calculate cost matrix

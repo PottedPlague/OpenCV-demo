@@ -57,7 +57,7 @@ cv::Point2d KF::predict()
 	return lastPointResult_;
 }
 
-void KF::update(cv::Point2d measurement, bool isReceived)
+void KF::update(cv::Point2d measurement)
 {
 	// measurement, positions on x and y axis
 	cv::Mat z_k = cv::Mat::zeros(2, 1, CV_32F);

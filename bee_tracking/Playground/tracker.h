@@ -12,6 +12,7 @@ namespace beeproject
 		void makePrediction();
 		void updateKalman(cv::Point2d measurement);
 		cv::Point2d getPrediction();
+		bool isReceived;
 
 	private:
 		int trackID_;

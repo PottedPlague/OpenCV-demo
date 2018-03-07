@@ -12,7 +12,7 @@ namespace beeproject
 
 		void create(cv::Point2d p0, cv::Point2d v0 = cv::Point2d(0, 0));
 		cv::Point2d predict();
-		void update(cv::Point2d measurement, bool isReceived);
+		void update(cv::Point2d measurement);
 
 	private:
 		std::vector<cv::Point2d> initPoints_;
