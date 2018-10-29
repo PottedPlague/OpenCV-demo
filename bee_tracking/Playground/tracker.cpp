@@ -50,6 +50,10 @@ void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections)
 	detections_ = detections;
 	cv::Mat drawingboard = cv::Mat::zeros(cv::Size(800, 800), CV_8UC3);
 
+	//video writer
+	std::string filename = "D:/pic/3points_encounter.avi";
+	cv::VideoWriter writer(filename, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(drawingboard.cols, drawingboard.rows));
+
 	for (int frameCount = 5; frameCount < detections_.size(); frameCount++)			//frame starts from 5
 	{
 		std::vector<int> assignment;
@@ -108,7 +112,7 @@ void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections)
 			}
 			else
 			{
-				//if (frameCount > 350)
+				if (frameCount > 380)
 					cv::circle(drawingboard, tracks[i].getPrediction(), 2, colours[i], -1);
 			}
 				
@@ -135,6 +139,8 @@ void Tracker::solve(std::vector<std::vector<cv::Point2d>> detections)
 		
 		cv::imshow("Output", drawingboard);
 		cv::waitKey(30);				//30 or 80
+
+		writer.write(drawingboard.clone());
 	}
 
 	// calculate cost matrix

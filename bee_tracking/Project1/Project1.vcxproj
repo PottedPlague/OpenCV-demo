@@ -142,21 +142,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="adjustLUT.cpp" />
+    <ClCompile Include="3dRecording.cpp" />
+    <ClCompile Include="birdsEye.cpp" />
+    <ClCompile Include="camCalib.cpp" />
+    <ClCompile Include="disparity.cpp" />
+    <ClCompile Include="dualCam.cpp" />
     <ClCompile Include="Kalman.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OLcontours.cpp" />
-    <ClCompile Include="RTcontours.cpp" />
-    <ClCompile Include="SBD.cpp" />
-    <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="adjustLUT.h" />
+    <ClInclude Include="3dRecording.h" />
+    <ClInclude Include="birdsEye.h" />
+    <ClInclude Include="camCalib.h" />
+    <ClInclude Include="disparity.h" />
+    <ClInclude Include="dualCam.h" />
     <ClInclude Include="Kalman.h" />
-    <ClInclude Include="OLcontours.h" />
-    <ClInclude Include="RTcontours.h" />
-    <ClInclude Include="SBD.h" />
-    <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,10 +6,11 @@
 //	return OLcontours();
 //}
 
-#define ENABLE_TESTS 3	// 1 - bee creation
+#define ENABLE_TESTS 5	// 1 - bee creation
 						// 2 - KCF tracker
 						// 3 - Kalman filter
-
+						// 4 - resize images in bulk
+						// 5 - Museum demo
 
 
 /******************************************************************************
@@ -147,4 +148,193 @@ int main()
 
 	return 0;
 }
+#endif
+
+#if ENABLE_TESTS == 4
+#include <opencv2\opencv.hpp>
+#include <iostream>
+#include <string>
+
+using namespace std;
+using namespace cv;
+
+std::string intToStr(int number)
+{
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
+}
+
+int main()
+{
+	/*Rect roi;
+	roi.x = 0;
+	roi.y = 0;
+	roi.width = 2048;
+	roi.height = 270;
+
+	for (int i = 1; i < 101; i++)
+	{
+		string filename_i = "F:/corridor/15m_files/15m (" + intToStr(i) + ").tif";
+		string filename_o = "F:/corridor/cropped/15m_files/15m (" + intToStr(i) + ").tif";
+		Mat img = imread(filename_i, CV_LOAD_IMAGE_GRAYSCALE);
+		Mat crop = img(roi).clone();
+		imwrite(filename_o, crop);
+	}*/
+	for (int k = 1; k < 1040; k++)
+	{
+		string filename_i = "F:/corridor_redo/16m_files/16m (" + intToStr(k) + ").tif";
+		string filename_o = "F:/corridor_redo/scaled/16m-" + intToStr(k) + ".tif";
+		Mat img = imread(filename_i, CV_LOAD_IMAGE_GRAYSCALE);
+
+		for (int i = 0; i < img.rows; i++)
+			for (int j = 0; j < img.cols; j++)
+			{
+				if (img.at<uchar>(i, j) * 30 > 254)
+					img.at<uchar>(i, j) = 255;
+				else
+					img.at<uchar>(i, j) = img.at<uchar>(i, j) * 30;
+			}
+
+		imwrite(filename_o, img);
+	}
+
+	waitKey(200);
+	return 0;
+}
+
+#endif
+
+#if ENABLE_TESTS == 5
+#include <opencv2\opencv.hpp>
+#include <stdio.h>
+using namespace std;
+using namespace cv;
+
+int main()
+{
+	VideoCapture cam(1);
+	cam.set(CAP_PROP_FRAME_WIDTH, 1280);
+	cam.set(CAP_PROP_FRAME_HEIGHT, 720);
+	cam.set(CAP_PROP_AUTOFOCUS, 0);
+	Mat track_f = Mat::zeros(720, 1280, CV_8UC3);
+	//vector<KeyPoint> detectKeyPoint;	
+	vector<Point2d> track;
+	Point2d pt;
+	//Mat keyPointImage;
+	int j = 0;
+
+	for (;;)
+	{
+		Mat frame, flip, gray, binary, output;
+		cam >> frame;
+		cv::flip(frame, flip, 1);
+		cvtColor(flip, gray, COLOR_BGR2GRAY);
+		GaussianBlur(gray, gray, Size(11, 11), 1.0);
+		threshold(gray, binary, 190, 255, 0);
+
+		std::vector<std::vector<cv::Point>> contours;
+		cv::findContours(binary, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+		Moments M;
+		Point2d MC;
+		if (contours.size() > 0)
+		{
+			M = moments(contours[0]);
+			MC = Point2d(M.m10 / M.m00, M.m01 / M.m00);
+			if (isnan(MC.x))
+				continue;
+			track.push_back(MC);
+			circle(flip, MC, 4, Scalar(0, 0, 255), 4);
+			j++;
+			if (j >= 3)
+			{
+				line(track_f, track.end()[-1], track.end()[-2], Scalar(0, 255, 255), 2);
+			}
+		}
+		addWeighted(track_f, 1.0, flip, 1.0, 0.0, output);
+		//imshow("Track", track_f);
+		imshow("Binary", binary);
+		imshow("Camera", output);
+		switch (waitKey(20))
+		{
+		case 27:
+			return 0;
+		case 114:
+			{
+				track_f = Mat::zeros(720, 1280, CV_8UC3);
+				j = 0;
+			}
+		}
+	}
+	cam.release();
+	destroyAllWindows();
+	waitKey(200);
+	return 0;
+	/*
+	//![SBD]
+	//set detector parameters
+	SimpleBlobDetector::Params params;
+
+	//filter by area
+	params.filterByArea = true;
+	params.minArea = 20;
+	params.maxArea = 2000;
+
+	//filter by circularity
+	params.filterByCircularity = true;
+	params.minCircularity = 0.1;
+
+	//filter by convexity
+	params.filterByConvexity = true;
+	params.minConvexity = 0.87;
+
+	//filter by inertia
+	params.filterByInertia = true;
+	params.minInertiaRatio = 0.01;
+
+	//instantiate a SBD pointer
+	Ptr<SimpleBlobDetector> sbd = SimpleBlobDetector::create(params);
+
+	int j = 0;
+	double distance = 0.0;
+
+	while (1)
+	{
+		Mat frame, gray, binary;
+		cam >> frame;
+		cvtColor(frame, gray, COLOR_BGR2GRAY);
+		GaussianBlur(gray, gray, Size(11, 11), 1.0);
+		threshold(gray, binary, 215, 255, 1);
+		sbd->detect(binary, detectKeyPoint);
+		drawKeypoints(gray, detectKeyPoint, frame, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+		if (detectKeyPoint.size() > 0)
+		{
+			pt.x = detectKeyPoint[0].pt.x;
+			pt.y = detectKeyPoint[0].pt.y;
+			track.push_back(pt);
+			j++;
+			if (j >= 3)
+			{
+				line(track_f, track.end()[-1], track.end()[-2], Scalar(0, 255, 255), 2);
+			}
+		}
+		
+		imshow("Track", track_f);
+		imshow("Detection", frame);
+		imshow("Binary", binary);
+		switch (waitKey(20))
+		{
+		case 27:
+			return 0;
+		case 114:
+			track_f = Mat::zeros(720, 1280, CV_8UC3);
+		}
+		
+	}
+
+	cam.release();
+	destroyAllWindows();
+	return 0;*/
+}
+
 #endif

@@ -18,42 +18,42 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SBD.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Kalman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="xiApiPlusOcv.cpp">
+    <ClCompile Include="dualCam.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OLcontours.cpp">
+    <ClCompile Include="3dRecording.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RTcontours.cpp">
+    <ClCompile Include="camCalib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adjustLUT.cpp">
+    <ClCompile Include="disparity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="birdsEye.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SBD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Kalman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="xiApiPlusOcv.hpp">
+    <ClInclude Include="dualCam.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RTcontours.h">
+    <ClInclude Include="3dRecording.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OLcontours.h">
+    <ClInclude Include="camCalib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjustLUT.h">
+    <ClInclude Include="disparity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="birdsEye.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
