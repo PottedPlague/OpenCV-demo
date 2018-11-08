@@ -12,9 +12,9 @@ int camCalib()
 	int board_h = 6;
 
 	Size board_sz = Size(board_w, board_h);
-	int board_n = board_h * board_w;
+	int board_n = board_h * board_w;							//54 inner corners
 
-	vector<vector<Point3f>> objectPoints;
+	vector<vector<Point3f>> objectPoints;			
 	vector<vector<Point2f>> imagePoints;
 	vector<Point2f> corners;
 
@@ -24,15 +24,15 @@ int camCalib()
 
 	bool found = false;
 
-	vector<Point3f> obj;
+	vector<Point3f> obj;										//in "chessboard corners" unit
 	for (int j = 0; j < board_n; j++)
-		obj.push_back(Point3f(j / board_w, j%board_w, 0.0f));
+		obj.push_back(Point3f(j / board_w, j%board_w, 0.0f));	//(0,0,0), (0,1,0),...,(5,8,0)
 
 	for (int k = 1; k<50; k++)
 	{
 		img = imread(path + to_string(k) + ".tif");
 		cvtColor(img, gray, CV_BGR2GRAY);
-		found = findChessboardCorners(gray, board_sz, corners, CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS); //CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS
+		found = findChessboardCorners(gray, board_sz, corners); //CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS
 
 		if (found)
 		{
@@ -49,19 +49,21 @@ int camCalib()
 
 
 	cout << "Starting Calibration" << endl;
-	Mat CM = Mat(3, 3, CV_64FC1);
-	Mat D;
+	Mat intrinsic_matrix, distortion_coeffs;
+	//Mat CM = Mat(3, 3, CV_64FC1);
+	//Mat D;
 	vector<Mat> rvecs, tvecs;
 
-	calibrateCamera(objectPoints, imagePoints, img.size(), CM, D, rvecs, tvecs);
+	calibrateCamera(objectPoints, imagePoints, img.size(), intrinsic_matrix, distortion_coeffs, rvecs, tvecs);
 	Mat imgU;
-	undistort(img, imgU, CM, D);
+	undistort(img, imgU, intrinsic_matrix, distortion_coeffs);
 	FileStorage fs("monocam.yml", FileStorage::WRITE);
-	fs << "CM" << CM;
-	fs << "D" << D;
+	fs << "camera_matrix" << intrinsic_matrix;
+	fs << "distortion_coefficients" << distortion_coeffs;
 	cout << "Done Calibration\n" << endl;
 
 	cout << "Starting Rectification\n" << endl;
 	fs.release();
+	destroyAllWindows();
 	return 0;
 }

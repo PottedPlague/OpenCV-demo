@@ -149,6 +149,8 @@
     <ClCompile Include="dualCam.cpp" />
     <ClCompile Include="Kalman.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="sim_detector.cpp" />
+    <ClCompile Include="sim_subtractor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3dRecording.h" />
@@ -157,6 +159,8 @@
     <ClInclude Include="disparity.h" />
     <ClInclude Include="dualCam.h" />
     <ClInclude Include="Kalman.h" />
+    <ClInclude Include="sim_detector.h" />
+    <ClInclude Include="sim_subtractor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

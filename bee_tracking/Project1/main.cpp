@@ -3,10 +3,8 @@
 #include "dualCam.h"
 #include "disparity.h"
 #include "birdsEye.h"
-#include <opencv2\opencv.hpp>
-
-using namespace std;
-using namespace cv;
+#include "sim_subtractor.h"
+#include "sim_detector.h"
 
 int main()
 {
@@ -51,5 +49,9 @@ int main()
 	//	if (waitKey(5) == 27)
 	//		break;
 	//}
+
 	//return birdsEyeView();
+	//return camCalib();
+	//return simSubtractor();
+	return simDetector();
 }
