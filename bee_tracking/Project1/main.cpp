@@ -5,6 +5,7 @@
 #include "birdsEye.h"
 #include "sim_subtractor.h"
 #include "sim_detector.h"
+#include "sim_coorCalc.h"
 
 int main()
 {
@@ -53,5 +54,6 @@ int main()
 	//return birdsEyeView();
 	//return camCalib();
 	//return simSubtractor();
-	return simDetector();
+	//return simDetector();
+	return simCoorCalc();
 }
