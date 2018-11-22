@@ -13,18 +13,18 @@ int simDetector()
 	capR.open("F:/renderoutput/helical_line/morph/right.avi");
 
 	Mat frameL, frameR, threshL, threshR;
-	vector<vector<Point>> contoursL, contoursR;
-	vector<Point> centroidL, centroidR;
+	vector<vector<Point>> contoursL, contoursR;								//collection of the largest contours in each scene
+	vector<Point> centroidL, centroidR;										//centres of mass
 	vector<int> numConL, numConR;
 	double area;
 
 
-	Mat outputL = Mat::zeros(Size((int)capL.get(3), (int)capL.get(4)), CV_8UC3);
-	Mat outputR = Mat::zeros(Size((int)capR.get(3), (int)capR.get(4)), CV_8UC3);
+	//Mat outputL = Mat::zeros(Size((int)capL.get(3), (int)capL.get(4)), CV_8UC3);
+	//Mat outputR = Mat::zeros(Size((int)capR.get(3), (int)capR.get(4)), CV_8UC3);
 
 	for (;;)
 	{
-		vector<vector<Point>> cntL, cntR;
+		vector<vector<Point>> cntL, cntR;									//contours in a single scene
 		capL >> frameL;
 		capR >> frameR;
 		if (frameL.empty()|frameR.empty())

@@ -145,24 +145,34 @@
     <ClCompile Include="3dRecording.cpp" />
     <ClCompile Include="birdsEye.cpp" />
     <ClCompile Include="camCalib.cpp" />
+    <ClCompile Include="detector.cpp" />
     <ClCompile Include="disparity.cpp" />
     <ClCompile Include="dualCam.cpp" />
-    <ClCompile Include="Kalman.cpp" />
+    <ClCompile Include="Hungarian.cpp" />
+    <ClCompile Include="KalmanFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sim_coorCalc.cpp" />
     <ClCompile Include="sim_detector.cpp" />
     <ClCompile Include="sim_subtractor.cpp" />
+    <ClCompile Include="track.cpp" />
+    <ClCompile Include="tracker.cpp" />
+    <ClCompile Include="tracking_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3dRecording.h" />
     <ClInclude Include="birdsEye.h" />
     <ClInclude Include="camCalib.h" />
+    <ClInclude Include="detector.h" />
     <ClInclude Include="disparity.h" />
     <ClInclude Include="dualCam.h" />
-    <ClInclude Include="Kalman.h" />
+    <ClInclude Include="Hungarian.h" />
+    <ClInclude Include="KalmanFilter.h" />
     <ClInclude Include="sim_coorCalc.h" />
     <ClInclude Include="sim_detector.h" />
     <ClInclude Include="sim_subtractor.h" />
+    <ClInclude Include="track.h" />
+    <ClInclude Include="tracker.h" />
+    <ClInclude Include="tracking_main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
