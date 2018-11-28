@@ -69,6 +69,7 @@ cv::Point KF::update(cv::Point measurement, bool flag)
 	{
 		z_k.at<float>(0) = lastPointResult_.x;
 		z_k.at<float>(1) = lastPointResult_.y;
+
 	}
 	else
 	{

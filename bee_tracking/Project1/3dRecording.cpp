@@ -17,8 +17,8 @@ void tdRecording()
 	std::string filename2 = "D:/pic/dual2.avi";
 	int numFrame = 0;
 
-	cv::VideoWriter writer1(filename1, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(cap1.get(CAP_PROP_FRAME_WIDTH), cap1.get(CAP_PROP_FRAME_HEIGHT)));
-	cv::VideoWriter writer2(filename2, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(cap2.get(CAP_PROP_FRAME_WIDTH), cap2.get(CAP_PROP_FRAME_HEIGHT)));
+	cv::VideoWriter writer1(filename1, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(cap1.get(cv::CAP_PROP_FRAME_WIDTH), cap1.get(cv::CAP_PROP_FRAME_HEIGHT)));
+	cv::VideoWriter writer2(filename2, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(cap2.get(cv::CAP_PROP_FRAME_WIDTH), cap2.get(cv::CAP_PROP_FRAME_HEIGHT)));
 
 	while (numFrame < 600)
 	{

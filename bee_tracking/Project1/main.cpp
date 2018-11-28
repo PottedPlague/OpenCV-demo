@@ -8,6 +8,7 @@
 #include "sim_coorCalc.h"
 #include "KalmanFilter.h"
 #include "Hungarian.h"
+#include "tracking_main.h"
 
 int main()
 {
@@ -58,14 +59,5 @@ int main()
 	//return simSubtractor();
 	//return simDetector();
 	//return simCoorCalc();
-	std::vector<int> detects = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-	std::vector<int> del = { 4, 6, 10 };
-	for (int i = del.size() - 1; i >= 0; i--)
-	{
-		detects.erase(detects.begin() + del[i]);
-		cout << "done." << endl;
-	}
-		
-
-	return 0;
+	return trackingMain();
 }

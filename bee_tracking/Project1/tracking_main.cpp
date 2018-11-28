@@ -3,15 +3,15 @@
 int trackingMain()
 {
 	cv::VideoCapture cap;
-	cap.open("video.avi");
+	cap.open("F:/renderoutput/helical_line/morph/left.avi");
 	Detectors detector;
-	Tracker tracker(300, 30, 40, 100);
+	Tracker tracker(50, 10, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter
 	int skip_frame_count = 0;
 
 	std::vector<cv::Scalar> track_colours = { 
-		(255, 0, 0), (0, 255, 0), (0, 0, 255), 
-		(255, 255, 0), (0, 255, 255), (255, 0, 255), 
-		(255, 127, 255), (127, 0, 255), (127, 0, 127) };
+		cv::Scalar(255, 0, 0), cv::Scalar(0, 255, 0), cv::Scalar(0, 0, 255), 
+		cv::Scalar(255, 255, 0), cv::Scalar(0, 255, 255), cv::Scalar(255, 0, 255), 
+		cv::Scalar(255, 127, 255), cv::Scalar(127, 0, 255), cv::Scalar(127, 0, 127) };
 
 	bool pause = 0;
 	cv::Mat frame, orig_frame;
@@ -20,7 +20,10 @@ int trackingMain()
 	{
 		cap >> frame;
 		if (frame.empty())
+		{
+			cv::destroyAllWindows();
 			return -1;
+		}
 
 		orig_frame = frame.clone();
 		if (skip_frame_count < 2)
@@ -51,9 +54,8 @@ int trackingMain()
 			}
 			cv::imshow("Tracking", frame);
 		}
-		cv::waitKey(50);
 
-		int k = cv::waitKey(50);
+		int k = cv::waitKey(16);
 		if (k == 27)
 			break;
 		if (k == 112)
@@ -74,5 +76,6 @@ int trackingMain()
 			}
 		}
 	}
+	cv::destroyAllWindows();
 	return 0;
 }
