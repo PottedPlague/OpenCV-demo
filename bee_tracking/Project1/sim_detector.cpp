@@ -9,8 +9,8 @@ using namespace cv;
 int simDetector()
 {
 	VideoCapture capL, capR;
-	capL.open("F:/renderoutput/helical_line/morph/left.avi");
-	capR.open("F:/renderoutput/helical_line/morph/right.avi");
+	capL.open("F:/renderoutput/multi/left.avi");
+	capR.open("F:/renderoutput/multi/right.avi");
 
 	Mat frameL, frameR, threshL, threshR;
 	vector<vector<Point>> contoursL, contoursR;								//collection of the largest contours in each scene

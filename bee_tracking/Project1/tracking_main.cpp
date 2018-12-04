@@ -3,9 +3,9 @@
 int trackingMain()
 {
 	cv::VideoCapture cap;
-	cap.open("F:/renderoutput/helical_line/morph/left.avi");
+	cap.open("F:/renderoutput/multi/morph/right_long.avi");
 	Detectors detector;
-	Tracker tracker(50, 10, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter
+	Tracker tracker(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
 	int skip_frame_count = 0;
 
 	std::vector<cv::Scalar> track_colours = { 

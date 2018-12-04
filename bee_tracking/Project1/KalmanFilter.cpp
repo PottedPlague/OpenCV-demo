@@ -35,9 +35,9 @@ void KF::create(cv::Point p0, cv::Point v0)
 
 	// Initialise other Kalman filter parameters. 
 	cv::setIdentity(myKalman_.measurementMatrix);
-	cv::setIdentity(myKalman_.processNoiseCov, cv::Scalar::all(1e-1));
-	cv::setIdentity(myKalman_.measurementNoiseCov, cv::Scalar::all(1e-1));
-	cv::setIdentity(myKalman_.errorCovPost, cv::Scalar::all(.1));
+	cv::setIdentity(myKalman_.processNoiseCov, cv::Scalar::all(1e-2));					//Q_k
+	cv::setIdentity(myKalman_.measurementNoiseCov, cv::Scalar::all(1e-1));				//R_k
+	cv::setIdentity(myKalman_.errorCovPost, cv::Scalar::all(.1));						//P_k
 
 	// choose random initial state
 	//cv::randn(KF.statePost, cv::Scalar::all(0), cv::Scalar::all(0.1));

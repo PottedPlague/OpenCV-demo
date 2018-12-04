@@ -13,7 +13,7 @@ int simSubtractor()
 	VideoWriter outL, outR;
 	Ptr<bgsegm::BackgroundSubtractorMOG> pMOG = bgsegm::createBackgroundSubtractorMOG();
 
-	int sce = 0;						// 0 - cube, 1 - helical line
+	int sce = 1;						// 0 - cube, 1 - helical line
 	if (sce == 0)
 	{
 		capL.open("F:/renderoutput/cube/left_uc.avi");
@@ -29,15 +29,15 @@ int simSubtractor()
 
 	if (sce == 1)
 	{
-		capL.open("F:/renderoutput/helical_line/left_uc.avi");
-		capR.open("F:/renderoutput/helical_line/right_uc.avi");
+		capL.open("F:/renderoutput/multi/left_long.avi");
+		capR.open("F:/renderoutput/multi/right_long.avi");
 
-		outL.open("F:/renderoutput/helical_line/morph/left.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size((int)capL.get(CAP_PROP_FRAME_WIDTH), (int)capL.get(CAP_PROP_FRAME_HEIGHT)));
-		outR.open("F:/renderoutput/helical_line/morph/right.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size((int)capR.get(CAP_PROP_FRAME_WIDTH), (int)capR.get(CAP_PROP_FRAME_HEIGHT)));
+		outL.open("F:/renderoutput/multi/morph/left_long.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size((int)capL.get(CAP_PROP_FRAME_WIDTH), (int)capL.get(CAP_PROP_FRAME_HEIGHT)));
+		outR.open("F:/renderoutput/multi/morph/right_long.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size((int)capR.get(CAP_PROP_FRAME_WIDTH), (int)capR.get(CAP_PROP_FRAME_HEIGHT)));
 
 		pMOG->setHistory(200);
 		pMOG->setNMixtures(5);
-		pMOG->setBackgroundRatio(0.9);
+		pMOG->setBackgroundRatio(0.85);
 	}
 	Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(5, 5));
 	Mat frameL, frameR, fgmaskL, fgmaskR, outputL, outputR;
