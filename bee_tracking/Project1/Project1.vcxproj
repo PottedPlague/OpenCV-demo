@@ -151,6 +151,7 @@
     <ClCompile Include="Hungarian.cpp" />
     <ClCompile Include="KalmanFilter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="matcher.cpp" />
     <ClCompile Include="sim_coorCalc.cpp" />
     <ClCompile Include="sim_detector.cpp" />
     <ClCompile Include="sim_subtractor.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="dualCam.h" />
     <ClInclude Include="Hungarian.h" />
     <ClInclude Include="KalmanFilter.h" />
+    <ClInclude Include="matcher.h" />
     <ClInclude Include="sim_coorCalc.h" />
     <ClInclude Include="sim_detector.h" />
     <ClInclude Include="sim_subtractor.h" />

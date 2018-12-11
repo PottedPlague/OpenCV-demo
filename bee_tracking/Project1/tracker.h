@@ -9,7 +9,7 @@ public:
 	~Tracker();
 	void update(std::vector<cv::Point> detections);
 	std::vector<Track> tracks;
-
+	
 private:
 	int dist_thresh_;
 	int max_frame_to_skip_;

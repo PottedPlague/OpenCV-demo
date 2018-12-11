@@ -2,10 +2,12 @@
 
 int trackingMain()
 {
-	cv::VideoCapture cap;
-	cap.open("F:/renderoutput/multi/morph/right_long.avi");
-	Detectors detector;
-	Tracker tracker(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
+	cv::VideoCapture capL, capR;
+	capL.open("F:/renderoutput/multi/morph/left_long.avi");
+	capR.open("F:/renderoutput/multi/morph/right_long.avi");
+	Detectors detectorL, detectorR;
+	Tracker trackerL(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
+	Tracker trackerR(50, 20, 40, 100);
 	int skip_frame_count = 0;
 
 	std::vector<cv::Scalar> track_colours = { 
@@ -14,46 +16,65 @@ int trackingMain()
 		cv::Scalar(255, 127, 255), cv::Scalar(127, 0, 255), cv::Scalar(127, 0, 127) };
 
 	bool pause = 0;
-	cv::Mat frame, orig_frame;
+	cv::Mat frameL, frameR, orig_frameL, orig_frameR;
 
 	for (;;)
 	{
-		cap >> frame;
-		if (frame.empty())
+		capL >> frameL;
+		capR >> frameR;
+		if (frameL.empty()||frameR.empty())
 		{
 			cv::destroyAllWindows();
 			return -1;
 		}
 
-		orig_frame = frame.clone();
+		orig_frameL = frameL.clone();
+		orig_frameR = frameR.clone();
 		if (skip_frame_count < 2)
 		{
 			skip_frame_count++;
 			continue;
 		}
 
-		std::vector<cv::Point> centers = detector.detect(frame, 'l');
+		std::vector<cv::Point> centersL = detectorL.detect(frameL, 'l');
+		std::vector<cv::Point> centersR = detectorR.detect(frameR, 'r');
 
-		if (centers.size() > 0)
+		if (centersL.size() > 0 && centersR.size() > 0)
 		{
-			tracker.update(centers);
-			for (int i = 0; i < tracker.tracks.size(); i++)
+			trackerL.update(centersL);
+			trackerR.update(centersR);
+			for (int i = 0; i < trackerL.tracks.size(); i++)
 			{
-				if (tracker.tracks[i].trace.size() > 1)
+				if (trackerL.tracks[i].trace.size() > 1)
 				{
-					for (int j = 0; j < tracker.tracks[i].trace.size() - 1; j++)
+					for (int j = 0; j < trackerL.tracks[i].trace.size() - 1; j++)
 					{
 						//int x1 = tracker.tracks[i].trace[j].x;
 						//int y1 = tracker.tracks[i].trace[j].y;
 						//int x2 = tracker.tracks[i].trace[j + 1].x;
 						//int y2 = tracker.tracks[i].trace[j + 1].y;
-						int clr = tracker.tracks[i].track_id_ % 9;
-						cv::line(frame, tracker.tracks[i].trace[j], tracker.tracks[i].trace[j + 1], track_colours[clr], 2);
+						int clr = trackerL.tracks[i].track_id_ % 9;
+						cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
 					}
 				}
 			}
-			cv::imshow("Tracking", frame);
+
+			for (int i = 0; i < trackerR.tracks.size(); i++)
+			{
+				if (trackerR.tracks[i].trace.size() > 1)
+				{
+					for (int j = 0; j < trackerR.tracks[i].trace.size() - 1; j++)
+					{
+						int clr = trackerR.tracks[i].track_id_ % 9;
+						cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
+					}
+				}
+			}
+			cv::imshow("Left scene", frameL);
+			cv::imshow("Right scene", frameR);
 		}
+
+
 
 		int k = cv::waitKey(16);
 		if (k == 27)

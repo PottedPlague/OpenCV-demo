@@ -10,6 +10,7 @@
 #include "Hungarian.h"
 #include "tracking_main.h"
 
+
 int main()
 {
 	//Mat img = imread("Picture12.bmp", 1);
@@ -59,6 +60,31 @@ int main()
 	//return simSubtractor();
 	//return simDetector();
 	//return simCoorCalc();
-	return trackingMain();
+	//return trackingMain();
+
+	class Track_m
+	{
+	public:
+		std::vector<cv::Point> trace;
+	private:
+	};
+
+	vector<Track_m> tracks;
+	vector<vector<Track_m*>> subGroups;
+	for (int i = 0; i < 3; i++)
+	{
+		Track_m track;
+		tracks.push_back(track);
+		tracks[i].trace.push_back(cv::Point(i + 1, i + 10));
+	}
+
+	vector<Track_m*> subGroup;
+	for (int i = 0; i < tracks.size(); i++)
+	{
+		subGroups.push_back(subGroup);
+		subGroups[i].push_back(&tracks[i]);
+	}
+
+	return 0;
 
 }
