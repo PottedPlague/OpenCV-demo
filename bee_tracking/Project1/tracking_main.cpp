@@ -8,7 +8,9 @@ int trackingMain()
 	Detectors detectorL, detectorR;
 	Tracker trackerL(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
 	Tracker trackerR(50, 20, 40, 100);
+	Matcher matcher;
 	int skip_frame_count = 0;
+	std::vector<std::vector<Track*>> successfulMatches;
 
 	std::vector<cv::Scalar> track_colours = { 
 		cv::Scalar(255, 0, 0), cv::Scalar(0, 255, 0), cv::Scalar(0, 0, 255), 
@@ -74,7 +76,7 @@ int trackingMain()
 			cv::imshow("Right scene", frameR);
 		}
 
-
+		successfulMatches = matcher.doMatch(trackerL, trackerR);
 
 		int k = cv::waitKey(16);
 		if (k == 27)

@@ -56,11 +56,12 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 				if (gap > thresh_)
 					breakpointsR.push_back(i);
 			}
-			breakpointsL.push_back(breakpointsL.back() + 1);
-			breakpointsR.push_back(breakpointsR.back() + 1);
-			int p = 1;
+			int p = 0;
 			for (;;)
 			{
+				if (p >= breakpointsL.size() && p >= breakpointsR.size())
+					break;
+
 				int gap = abs(left.tracks[breakpointsL[p]].trace.back().y - right.tracks[breakpointsR[p]].trace.back().y);
 				if (gap <= threshGap_)
 				{
@@ -70,10 +71,9 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 					breakpointsL.erase(breakpointsL.begin() + p);
 				else
 					breakpointsR.erase(breakpointsR.begin() + p);
-
-				if (p >= breakpointsL.size() && p >= breakpointsR.size())
-					break;
 			}
+			breakpointsL.push_back(breakpointsL.back() + 1);
+			breakpointsR.push_back(breakpointsR.back() + 1);
 			std::vector<std::vector<Track*>> newGroupsL;
 			std::vector<std::vector<Track*>> newGroupsR;
 			for (int i = 0; i < breakpointsL.size() - 1; i++)
@@ -128,11 +128,15 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 				if (gap > thresh_)
 					breakpointsR.push_back(j);
 			}
+			
 			breakpointsL.push_back(breakpointsL.back() + 1);
 			breakpointsR.push_back(breakpointsR.back() + 1);
-			int p = 1;
+			int p = 0;
 			for (;;)
 			{
+				if (p >= breakpointsL.size() && p >= breakpointsR.size())
+					break;
+
 				int gap = abs(subGroupsL[i][breakpointsL[p]]->trace.back().y - subGroupsR[i][breakpointsR[p]]->trace.back().y);
 				if (gap <= threshGap_)
 				{
@@ -142,10 +146,9 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 					breakpointsL.erase(breakpointsL.begin() + p);
 				else
 					breakpointsR.erase(breakpointsR.begin() + p);
-
-				if (p >= breakpointsL.size() && p >= breakpointsR.size())
-					break;
 			}
+
+			
 			for (int j = 0; i < breakpointsL.size() - 1; i++)
 			{
 				std::vector<Track*> newGroupL(subGroupsL[i].begin() + breakpointsL[j], subGroupsL[i].begin() + breakpointsL[j + 1]);
@@ -163,5 +166,17 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 		subGroupsR = newGroupsR;
 	}
 
-	return std::vector<std::vector<Track*>>();
+	for (int i = 0; i < subGroupsL.size(); i++)
+	{
+		if (subGroupsL[i].size() == subGroupsR[i].size() == 1)
+		{
+			std::vector<Track*> vec;
+			vec.push_back(subGroupsL[i].back());
+			vec.push_back(subGroupsR[i].back());
+			matchedPair.push_back(vec);
+			subGroupsL.erase(subGroupsL.begin() + i);
+			subGroupsR.erase(subGroupsR.begin() + i);
+		}
+	}
+	return matchedPair;
 }

@@ -17,6 +17,7 @@ public:
 	} compStruct_p;
 
 	std::vector<std::vector<Track*>> doMatch(Tracker& left, Tracker& right);
+	std::vector<std::vector<Track*>> matchedPair;
 
 private:
 	int thresh_;
