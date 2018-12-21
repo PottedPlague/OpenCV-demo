@@ -5,6 +5,7 @@ Matcher::Matcher()
 	thresh_ = 10;
 	threshGap_ = 5;
 	frameZero_ = true;
+	clrCounter = 0;
 }
 
 Matcher::~Matcher()
@@ -129,13 +130,24 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 					breakpointsR.push_back(j);
 			}
 			
-			breakpointsL.push_back(breakpointsL.back() + 1);
-			breakpointsR.push_back(breakpointsR.back() + 1);
 			int p = 0;
 			for (;;)
 			{
-				if (p >= breakpointsL.size() && p >= breakpointsR.size())
-					break;
+				if (p >= breakpointsL.size() || p >= breakpointsR.size())
+				{
+					if (p < breakpointsL.size())
+					{
+						breakpointsL.erase(breakpointsL.begin() + p );
+						continue;
+					}
+					else if (p < breakpointsR.size())
+					{
+						breakpointsR.erase(breakpointsR.begin() + p);
+						continue;
+					}
+					else
+						break;
+				}
 
 				int gap = abs(subGroupsL[i][breakpointsL[p]]->trace.back().y - subGroupsR[i][breakpointsR[p]]->trace.back().y);
 				if (gap <= threshGap_)
@@ -148,13 +160,14 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 					breakpointsR.erase(breakpointsR.begin() + p);
 			}
 
-			
-			for (int j = 0; i < breakpointsL.size() - 1; i++)
+			breakpointsL.push_back(breakpointsL.back() + 1);
+			breakpointsR.push_back(breakpointsR.back() + 1);
+			for (int j = 0; j < breakpointsL.size() - 1; j++)
 			{
 				std::vector<Track*> newGroupL(subGroupsL[i].begin() + breakpointsL[j], subGroupsL[i].begin() + breakpointsL[j + 1]);
 				newGroupsL.push_back(newGroupL);
 			}
-			for (int j = 0; i < breakpointsR.size() - 1; i++)
+			for (int j = 0; j < breakpointsR.size() - 1; j++)
 			{
 				std::vector<Track*> newGroupR(subGroupsR[i].begin() + breakpointsR[j], subGroupsR[i].begin() + breakpointsR[j + 1]);
 				newGroupsR.push_back(newGroupR);
@@ -168,11 +181,14 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 
 	for (int i = 0; i < subGroupsL.size(); i++)
 	{
-		if (subGroupsL[i].size() == subGroupsR[i].size() == 1)
+		if (subGroupsL[i].size() == 1 && subGroupsR[i].size() == 1)
 		{
 			std::vector<Track*> vec;
 			vec.push_back(subGroupsL[i].back());
 			vec.push_back(subGroupsR[i].back());
+			subGroupsL[i].back()->clr_id = clrCounter;
+			subGroupsR[i].back()->clr_id = clrCounter;
+			clrCounter++;
 			matchedPair.push_back(vec);
 			subGroupsL.erase(subGroupsL.begin() + i);
 			subGroupsR.erase(subGroupsR.begin() + i);

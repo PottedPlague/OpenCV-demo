@@ -12,6 +12,7 @@ public:
 	int real;
 	std::vector<cv::Point> trace;
 	int track_id_;
+	int clr_id;
 private:
 	
 };

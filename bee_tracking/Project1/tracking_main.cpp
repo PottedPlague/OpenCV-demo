@@ -32,7 +32,7 @@ int trackingMain()
 
 		orig_frameL = frameL.clone();
 		orig_frameR = frameR.clone();
-		if (skip_frame_count < 2)
+		if (skip_frame_count < 5)
 		{
 			skip_frame_count++;
 			continue;
@@ -45,17 +45,15 @@ int trackingMain()
 		{
 			trackerL.update(centersL);
 			trackerR.update(centersR);
+			successfulMatches = matcher.doMatch(trackerL, trackerR);
 			for (int i = 0; i < trackerL.tracks.size(); i++)
 			{
 				if (trackerL.tracks[i].trace.size() > 1)
 				{
 					for (int j = 0; j < trackerL.tracks[i].trace.size() - 1; j++)
 					{
-						//int x1 = tracker.tracks[i].trace[j].x;
-						//int y1 = tracker.tracks[i].trace[j].y;
-						//int x2 = tracker.tracks[i].trace[j + 1].x;
-						//int y2 = tracker.tracks[i].trace[j + 1].y;
-						int clr = trackerL.tracks[i].track_id_ % 9;
+						//int clr = trackerL.tracks[i].track_id_ % 9;
+						int clr = trackerL.tracks[i].clr_id % 9;
 						cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
 					}
 				}
@@ -67,7 +65,8 @@ int trackingMain()
 				{
 					for (int j = 0; j < trackerR.tracks[i].trace.size() - 1; j++)
 					{
-						int clr = trackerR.tracks[i].track_id_ % 9;
+						//int clr = trackerR.tracks[i].track_id_ % 9;
+						int clr = trackerR.tracks[i].clr_id % 9;
 						cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
 					}
 				}
@@ -76,7 +75,7 @@ int trackingMain()
 			cv::imshow("Right scene", frameR);
 		}
 
-		successfulMatches = matcher.doMatch(trackerL, trackerR);
+		
 
 		int k = cv::waitKey(16);
 		if (k == 27)

@@ -18,7 +18,7 @@ public:
 
 	std::vector<std::vector<Track*>> doMatch(Tracker& left, Tracker& right);
 	std::vector<std::vector<Track*>> matchedPair;
-
+	int clrCounter;
 private:
 	int thresh_;
 	int threshGap_;
