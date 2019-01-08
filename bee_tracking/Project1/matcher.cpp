@@ -167,11 +167,15 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 				std::vector<Track*> newGroupL(subGroupsL[i].begin() + breakpointsL[j], subGroupsL[i].begin() + breakpointsL[j + 1]);
 				newGroupsL.push_back(newGroupL);
 			}
+			std::vector<Track*> newGroupL(subGroupsL[i].begin() + breakpointsL.back(), subGroupsL[i].end());
+			newGroupsL.push_back(newGroupL);
 			for (int j = 0; j < breakpointsR.size() - 1; j++)
 			{
 				std::vector<Track*> newGroupR(subGroupsR[i].begin() + breakpointsR[j], subGroupsR[i].begin() + breakpointsR[j + 1]);
 				newGroupsR.push_back(newGroupR);
 			}
+			std::vector<Track*> newGroupR(subGroupsR[i].begin() + breakpointsR.back(), subGroupsR[i].end());
+			newGroupsR.push_back(newGroupR);
 		}
 		subGroupsL.clear();
 		subGroupsL = newGroupsL;
@@ -192,6 +196,7 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 			matchedPair.push_back(vec);
 			subGroupsL.erase(subGroupsL.begin() + i);
 			subGroupsR.erase(subGroupsR.begin() + i);
+			i--;
 		}
 	}
 	return matchedPair;
