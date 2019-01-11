@@ -28,6 +28,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="multiTracking.cpp" />
     <ClCompile Include="offlineContourFinding.cpp" />
+    <ClCompile Include="parallelAlign.cpp" />
     <ClCompile Include="tracker.cpp" />
     <ClCompile Include="xiApiPlusOcv.cpp" />
   </ItemGroup>
@@ -40,6 +41,7 @@
     <ClInclude Include="Kalman.h" />
     <ClInclude Include="multiTrackingh.h" />
     <ClInclude Include="offlineContourFinding.h" />
+    <ClInclude Include="parallelAlign.h" />
     <ClInclude Include="tracker.h" />
     <ClInclude Include="xiApiPlusOcv.hpp" />
   </ItemGroup>

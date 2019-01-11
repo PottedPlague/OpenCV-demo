@@ -48,6 +48,9 @@
     <ClCompile Include="detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="parallelAlign.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="disparity_map.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="detector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parallelAlign.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

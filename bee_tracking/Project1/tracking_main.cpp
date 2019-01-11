@@ -27,7 +27,7 @@ int trackingMain()
 		if (frameL.empty()||frameR.empty())
 		{
 			cv::destroyAllWindows();
-			return -1;
+			break;
 		}
 
 		orig_frameL = frameL.clone();
@@ -54,7 +54,10 @@ int trackingMain()
 					{
 						//int clr = trackerL.tracks[i].track_id_ % 9;
 						int clr = trackerL.tracks[i].clr_id % 9;
-						cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
+						if (trackerL.tracks[i].getPaired())
+						{
+							cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
+						}
 					}
 				}
 			}
@@ -67,15 +70,16 @@ int trackingMain()
 					{
 						//int clr = trackerR.tracks[i].track_id_ % 9;
 						int clr = trackerR.tracks[i].clr_id % 9;
-						cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
+						if (trackerR.tracks[i].getPaired())
+						{
+							cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
+						}
 					}
 				}
 			}
-			cv::imshow("Left scene", frameL);
-			cv::imshow("Right scene", frameR);
+			//cv::imshow("Left scene", frameL);
+			//cv::imshow("Right scene", frameR);
 		}
-
-		
 
 		int k = cv::waitKey(16);
 		if (k == 27)
@@ -98,6 +102,8 @@ int trackingMain()
 			}
 		}
 	}
+
+	simCoorCalc(successfulMatches);
 	cv::destroyAllWindows();
 	return 0;
 }

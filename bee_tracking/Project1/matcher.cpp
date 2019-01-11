@@ -188,12 +188,14 @@ std::vector<std::vector<Track*>> Matcher::doMatch(Tracker& left, Tracker& right)
 		if (subGroupsL[i].size() == 1 && subGroupsR[i].size() == 1)
 		{
 			std::vector<Track*> vec;
-			vec.push_back(subGroupsL[i].back());
+			vec.push_back(subGroupsL[i].back());					//0->left, 1->right
 			vec.push_back(subGroupsR[i].back());
 			subGroupsL[i].back()->clr_id = clrCounter;
 			subGroupsR[i].back()->clr_id = clrCounter;
 			clrCounter++;
 			matchedPair.push_back(vec);
+			subGroupsL[i].back()->setPaired(true);
+			subGroupsR[i].back()->setPaired(true);
 			subGroupsL.erase(subGroupsL.begin() + i);
 			subGroupsR.erase(subGroupsR.begin() + i);
 			i--;

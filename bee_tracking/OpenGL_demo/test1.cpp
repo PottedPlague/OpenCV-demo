@@ -10,8 +10,10 @@ using namespace std;
 static GLfloat xRot = 0.0f;
 static GLfloat yRot = 0.0f;
 
-vector<double> coor_x;
-vector<double> coor_y;
+//vector<double> coor_x;
+//vector<double> coor_y;
+//vector<double> coor_z;
+vector<vector<vector<double>>> tracks;
 
 void RenderScene();
 void SetupRC();
@@ -21,19 +23,23 @@ void SpecialKeys(int key, int x, int y);
 
 int main(int argc, char* argv[])
 {
-	ifstream isx("D:\\pic\\coordinate_x.txt");
+	/*ifstream isx("D:\\pic\\coordinate_x.txt");
 	istream_iterator<double> startx(isx), endx;
 	copy(startx, endx, back_inserter(coor_x));
 
 	ifstream isy("D:\\pic\\coordinate_y.txt");
 	istream_iterator<double> starty(isy), endy;
-	copy(starty, endy, back_inserter(coor_y));
+	copy(starty, endy, back_inserter(coor_y));*/
+
+	ifstream is("D:/pic/tracks.txt");
+	istream_iterator<double> start(is), end;
+	copy(start, end, back_inserter(tracks));
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(100, 100);
-	glutCreateWindow("Point examples");
+	glutCreateWindow("3D tracks");
 	glutDisplayFunc(RenderScene);
 	glutReshapeFunc(ChangeSize);
 	glutSpecialFunc(SpecialKeys);
@@ -61,20 +67,21 @@ void RenderScene()
 		glEnd();
 	}
 
+	for (int k = 0; k < tracks.size(); k++)
 	{
 		glColor3f(0.0f, 1.0f, 0.0f);
 		glPointSize(3);
 		glBegin(GL_LINES);
 		{
-			for (int i = 1; i < coor_x.size(); i++)
+			for (int i = 1; i < tracks[k].size(); i++)
 			{
-				glVertex3f(coor_x[i], coor_y[i], -100.0f + 2.0f * i);
-				glVertex3f(coor_x[i - 1], coor_y[i - 1], -100.0f + 2.0f * (i - 1));
+				glVertex3f(tracks[k][i][0], tracks[k][i][1], tracks[k][i][2]);
+				glVertex3f(tracks[k][i-1][0], tracks[k][i-1][1], tracks[k][i-1][2]);
 			}
 		}
 		glEnd();
 	}
-
+		
 	{
 		glColor3f(0.0f, 0.0f, 1.0f);
 		glBegin(GL_LINES);

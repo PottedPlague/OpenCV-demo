@@ -13,6 +13,8 @@ public:
 	std::vector<cv::Point> trace;
 	int track_id_;
 	int clr_id;
+	void setPaired(bool tf);
+	bool getPaired();
 private:
-	
+	bool isPaired;
 };
