@@ -33,11 +33,11 @@ int findParallel()
 	std::vector<cv::Point2f> corners;
 	std::vector<cv::Point3f> axis;
 
-	axis.push_back(cv::Point3f(5.0, 4.0, 0.0));
+	axis.push_back(cv::Point3f(5.0, 4.0, 0.0));				//x
 	axis.push_back(cv::Point3f(-1.0, 4.0, 0.0));
-	axis.push_back(cv::Point3f(2.0, 7.0, 0.0));
+	axis.push_back(cv::Point3f(2.0, 7.0, 0.0));				//y
 	axis.push_back(cv::Point3f(2.0, 1.0, 0.0));
-	axis.push_back(cv::Point3f(2.0, 4.0, 3.0));
+	axis.push_back(cv::Point3f(2.0, 4.0, 3.0));				//z
 	axis.push_back(cv::Point3f(2.0, 4.0, -3.0));
 
 	for (int j = 0; j < chess_n; j++)
@@ -75,11 +75,7 @@ int findParallel()
 				avg_red = 0;
 				i = 1;
 			}
-
 			i++;
-
-
-				
 		}
 		cv::imshow("Corners", frame);
 		if (cv::waitKey(16) == 27)
