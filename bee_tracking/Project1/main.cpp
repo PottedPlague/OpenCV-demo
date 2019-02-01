@@ -57,10 +57,10 @@ int main()
 
 	//return birdsEyeView();
 	//return camCalib();
-	//return simSubtractor();
+	return simSubtractor();
 	//return simDetector();
 	//return simCoorCalc();
-	return trackingMain();
+	//return trackingMain();
 	
 
 }

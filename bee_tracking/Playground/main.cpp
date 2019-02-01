@@ -6,7 +6,7 @@
 //	return OLcontours();
 //}
 
-#define ENABLE_TESTS 1	// 1 - bee creation
+#define ENABLE_TESTS 1	// 1 - test
 						// 2 - KCF tracker
 						// 3 - Kalman filter
 						// 4 - resize images in bulk

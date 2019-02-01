@@ -66,6 +66,12 @@
     <ClCompile Include="matcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="parallelAlign.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sim_tracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dualCam.h">
@@ -114,6 +120,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="matcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parallelAlign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sim_tracker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

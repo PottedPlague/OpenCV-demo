@@ -15,151 +15,46 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="detector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hungarian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="track.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tracking_main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KalmanFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="detector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hungarian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="track.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tracking_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Detector\DNNDetector.cpp">
+    <ClCompile Include="KalmanFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Detector\FaceDetector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Detector\MotionDetector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Detector\PedestrianDetector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Detector\Subsense\LBSP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Detector\vibe_src\vibe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\Ctracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\Kalman.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\LocalTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\track.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\components.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\fheap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\gml2dot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\gml2nestedsql.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\gport.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\mincut.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\mwbmatching.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\mygraph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\mytree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\rings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\script.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\graph\tokenise.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracker\HungarianAlg\HungarianAlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="defines.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseExample.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VideoExample.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\DNNDetector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\FaceDetector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\MotionDetector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\PedestrianDetector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\Subsense\DistanceUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\Subsense\LBSP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\Subsense\RandUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Detector\vibe_src\vibe.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\Kalman.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\LocalTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\track.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\fheap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\gdefs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\gport.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\mincut.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\mwbmatching.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\mygraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\mytree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\graph\tokenise.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tracker\HungarianAlg\HungarianAlg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

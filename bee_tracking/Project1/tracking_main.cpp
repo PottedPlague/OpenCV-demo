@@ -77,8 +77,8 @@ int trackingMain()
 					}
 				}
 			}
-			//cv::imshow("Left scene", frameL);
-			//cv::imshow("Right scene", frameR);
+			cv::imshow("Left scene", frameL);
+			cv::imshow("Right scene", frameR);
 		}
 
 		int k = cv::waitKey(16);
@@ -103,7 +103,7 @@ int trackingMain()
 		}
 	}
 
-	simCoorCalc(successfulMatches);
+	simCoorCalc(successfulMatches, capL.get(3), capL.get(4));
 	cv::destroyAllWindows();
 	return 0;
 }

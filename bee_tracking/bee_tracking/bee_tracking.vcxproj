@@ -19,62 +19,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Detector\DNNDetector.cpp" />
-    <ClCompile Include="Detector\FaceDetector.cpp" />
-    <ClCompile Include="Detector\MotionDetector.cpp" />
-    <ClCompile Include="Detector\PedestrianDetector.cpp" />
-    <ClCompile Include="Detector\Subsense\LBSP.cpp" />
-    <ClCompile Include="Detector\vibe_src\vibe.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Tracker\Ctracker.cpp" />
-    <ClCompile Include="Tracker\graph\components.cpp" />
-    <ClCompile Include="Tracker\graph\fheap.c" />
-    <ClCompile Include="Tracker\graph\gml2dot.cpp" />
-    <ClCompile Include="Tracker\graph\gml2nestedsql.cpp" />
-    <ClCompile Include="Tracker\graph\gport.cpp" />
-    <ClCompile Include="Tracker\graph\mincut.cpp" />
-    <ClCompile Include="Tracker\graph\mwbmatching.cpp" />
-    <ClCompile Include="Tracker\graph\mygraph.cpp" />
-    <ClCompile Include="Tracker\graph\mytree.cpp" />
-    <ClCompile Include="Tracker\graph\rings.cpp" />
-    <ClCompile Include="Tracker\graph\script.cpp" />
-    <ClCompile Include="Tracker\graph\tokenise.cpp" />
-    <ClCompile Include="Tracker\HungarianAlg\HungarianAlg.cpp" />
-    <ClCompile Include="Tracker\Kalman.cpp" />
-    <ClCompile Include="Tracker\LocalTracker.cpp" />
-    <ClCompile Include="Tracker\track.cpp" />
+    <ClInclude Include="detector.h" />
+    <ClInclude Include="Hungarian.h" />
+    <ClInclude Include="KalmanFilter.h" />
+    <ClInclude Include="track.h" />
+    <ClInclude Include="tracker.h" />
+    <ClInclude Include="tracking_main.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="defines.h" />
-    <ClInclude Include="Detector\DNNDetector.h" />
-    <ClInclude Include="Detector\FaceDetector.h" />
-    <ClInclude Include="Detector\MotionDetector.h" />
-    <ClInclude Include="Detector\PedestrianDetector.h" />
-    <ClInclude Include="Detector\Subsense\DistanceUtils.h" />
-    <ClInclude Include="Detector\Subsense\LBSP.h" />
-    <ClInclude Include="Detector\Subsense\RandUtils.h" />
-    <ClInclude Include="Detector\vibe_src\vibe.hpp" />
-    <ClInclude Include="MouseExample.h" />
-    <ClInclude Include="nms.h" />
-    <ClInclude Include="Tracker\graph\fheap.h" />
-    <ClInclude Include="Tracker\graph\gdefs.h" />
-    <ClInclude Include="Tracker\graph\gport.h" />
-    <ClInclude Include="Tracker\graph\mincut.h" />
-    <ClInclude Include="Tracker\graph\mwbmatching.h" />
-    <ClInclude Include="Tracker\graph\mygraph.h" />
-    <ClInclude Include="Tracker\graph\mytree.h" />
-    <ClInclude Include="Tracker\graph\tokenise.h" />
-    <ClInclude Include="Tracker\HungarianAlg\HungarianAlg.h" />
-    <ClInclude Include="Tracker\Kalman.h" />
-    <ClInclude Include="Tracker\LocalTracker.h" />
-    <ClInclude Include="Tracker\track.h" />
-    <ClInclude Include="VideoExample.h" />
+    <ClCompile Include="detector.cpp" />
+    <ClCompile Include="Hungarian.cpp" />
+    <ClCompile Include="KalmanFilter.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="track.cpp" />
+    <ClCompile Include="tracker.cpp" />
+    <ClCompile Include="tracking_main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E22E9926-9308-42AA-9E1B-4B845F501320}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>bee_tracking</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>2D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
