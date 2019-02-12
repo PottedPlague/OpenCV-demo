@@ -53,20 +53,20 @@ int simSubtractor()
 	}
 	else
 	{
-		String path("F:/renderoutput/multi/two_obj/right/*.tif");
+		String path("F:/renderoutput/multi/two_obj/left/*.tif");
 		vector<String> fn;
 		Mat frame, fgmask, output;
 		VideoWriter out;
 		Ptr<bgsegm::BackgroundSubtractorMOG> pMOG = bgsegm::createBackgroundSubtractorMOG();
-		out.open("F:/renderoutput/multi/morph/sthelse.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(1920, 1080));
+		out.open("F:/renderoutput/multi/morph/new/test.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(1920, 1080));
 		
 		pMOG->setHistory(200);
 		pMOG->setNMixtures(5);
-		pMOG->setBackgroundRatio(0.85); 
+		pMOG->setBackgroundRatio(0.9); 
 		Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(5, 5));
 
 		glob(path, fn, true);
-		for (size_t k = 0; k < fn.size(); k++)
+		for (size_t k = 0; k < 400; k++)
 		{
 			cout << k << endl;
 			frame = imread(fn[k]);

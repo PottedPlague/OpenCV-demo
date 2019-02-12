@@ -2,16 +2,10 @@
 #include <opencv2\opencv.hpp>
 #include <stdio.h>
 #include <iostream>
+#include "tools.h"
 
 using namespace std;
 using namespace cv;
-
-string intToStr(int number)
-{
-	std::stringstream ss;
-	ss << number;
-	return ss.str();
-}
 
 int simCoorCalc(std::vector<std::vector<Track*>>& matchedPairs, int frameWidth, int frameHeight)
 {

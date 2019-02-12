@@ -17,3 +17,10 @@ int imgSeqToAVI()
 	out.release();
 	return 0;
 }
+
+std::string intToStr(int number)
+{
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
+}

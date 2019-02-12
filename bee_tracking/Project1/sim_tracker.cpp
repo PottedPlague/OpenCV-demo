@@ -3,8 +3,8 @@
 int simTracker()
 {
 	cv::VideoCapture capL, capR;
-	capL.open("F:/renderoutput/multi/morph/left_long.avi");
-	capR.open("F:/renderoutput/multi/morph/right_long.avi");
+	capL.open("F:/renderoutput/multi/morph/two_left.avi");
+	capR.open("F:/renderoutput/multi/morph/two_right.avi");
 	Detectors detectorL, detectorR;
 	Tracker trackerL(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
 	Tracker trackerR(50, 20, 40, 100);
@@ -44,6 +44,7 @@ int simTracker()
 		{
 			trackerL.update(centersL);
 			trackerR.update(centersR);
+			std::cout << "No. tracks in cam L and R: " << trackerL.tracks.size() << ", " << trackerR.tracks.size() << std::endl;
 			for (int i = 0; i < trackerL.tracks.size(); i++)
 			{
 				if (trackerL.tracks[i].trace.size() > 1)
@@ -71,7 +72,7 @@ int simTracker()
 			cv::imshow("Right scene", frameR);
 		}
 
-		int k = cv::waitKey(16);
+		int k = cv::waitKey(5);
 		if (k == 27)
 			break;
 		if (k == 112)
