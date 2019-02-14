@@ -68,7 +68,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\opencv310\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\VTK\INSTALL\include\vtk-8.2;D:\opencv310\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\opencv310\opencv\build\x64\vc12\lib;$(LibraryPath)</LibraryPath>
     <OutDir>F:\PhD\OpenCV-demo\bee_tracking\Project1\Output</OutDir>
   </PropertyGroup>
@@ -81,12 +81,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\XIMEA\Examples\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\XIMEA\Examples\Include;D:\VTK\INSTALL\include\vtk-8.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\XIMEA\Examples\Bin;D:\opencv310\opencv\build\x64\vc12\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world310d.lib;xiapi64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\VTK\INSTALL\lib;D:\XIMEA\Examples\Bin;D:\opencv310\opencv\build\x64\vc12\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world310d.lib;xiapi64.lib;D:\VTK\INSTALL\lib\vtkRenderingVolumeOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtksqlite-8.2.lib;D:\VTK\INSTALL\lib\vtksys-8.2.lib;D:\VTK\INSTALL\lib\vtktheora-8.2.lib;D:\VTK\INSTALL\lib\vtktiff-8.2.lib;D:\VTK\INSTALL\lib\vtkverdict-8.2.lib;D:\VTK\INSTALL\lib\vtkViewsContext2D-8.2.lib;D:\VTK\INSTALL\lib\vtkViewsCore-8.2.lib;D:\VTK\INSTALL\lib\vtkViewsInfovis-8.2.lib;D:\VTK\INSTALL\lib\vtkzlib-8.2.lib;D:\VTK\INSTALL\lib\vtkChartsCore-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonColor-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonComputationalGeometry-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonCore-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonDataModel-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonExecutionModel-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonMath-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonMisc-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonSystem-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonTransforms-8.2.lib;D:\VTK\INSTALL\lib\vtkDICOMParser-8.2.lib;D:\VTK\INSTALL\lib\vtkDomainsChemistry-8.2.lib;D:\VTK\INSTALL\lib\vtkDomainsChemistryOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkdoubleconversion-8.2.lib;D:\VTK\INSTALL\lib\vtkexodusII-8.2.lib;D:\VTK\INSTALL\lib\vtkexpat-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersAMR-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersCore-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersExtraction-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersFlowPaths-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersGeneral-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersGeneric-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersGeometry-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersHybrid-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersHyperTree-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersImaging-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersModeling-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersParallel-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersParallelImaging-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersPoints-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersProgrammable-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersSelection-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersSMP-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersSources-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersStatistics-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersTexture-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersTopology-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersVerdict-8.2.lib;D:\VTK\INSTALL\lib\vtkfreetype-8.2.lib;D:\VTK\INSTALL\lib\vtkGeovisCore-8.2.lib;D:\VTK\INSTALL\lib\vtkgl2ps-8.2.lib;D:\VTK\INSTALL\lib\vtkglew-8.2.lib;D:\VTK\INSTALL\lib\vtkhdf5_hl-8.2.lib;D:\VTK\INSTALL\lib\vtkhdf5-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingColor-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingCore-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingFourier-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingGeneral-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingHybrid-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingMath-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingMorphological-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingSources-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingStatistics-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingStencil-8.2.lib;D:\VTK\INSTALL\lib\vtkInfovisCore-8.2.lib;D:\VTK\INSTALL\lib\vtkInfovisLayout-8.2.lib;D:\VTK\INSTALL\lib\vtkInteractionImage-8.2.lib;D:\VTK\INSTALL\lib\vtkInteractionStyle-8.2.lib;D:\VTK\INSTALL\lib\vtkInteractionWidgets-8.2.lib;D:\VTK\INSTALL\lib\vtkIOAMR-8.2.lib;D:\VTK\INSTALL\lib\vtkIOAsynchronous-8.2.lib;D:\VTK\INSTALL\lib\vtkIOCityGML-8.2.lib;D:\VTK\INSTALL\lib\vtkIOCore-8.2.lib;D:\VTK\INSTALL\lib\vtkIOEnSight-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExodus-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExport-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExportOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExportPDF-8.2.lib;D:\VTK\INSTALL\lib\vtkIOGeometry-8.2.lib;D:\VTK\INSTALL\lib\vtkIOImage-8.2.lib;D:\VTK\INSTALL\lib\vtkIOImport-8.2.lib;D:\VTK\INSTALL\lib\vtkIOInfovis-8.2.lib;D:\VTK\INSTALL\lib\vtkIOLegacy-8.2.lib;D:\VTK\INSTALL\lib\vtkIOLSDyna-8.2.lib;D:\VTK\INSTALL\lib\vtkIOMINC-8.2.lib;D:\VTK\INSTALL\lib\vtkIOMovie-8.2.lib;D:\VTK\INSTALL\lib\vtkIONetCDF-8.2.lib;D:\VTK\INSTALL\lib\vtkIOParallel-8.2.lib;D:\VTK\INSTALL\lib\vtkIOParallelXML-8.2.lib;D:\VTK\INSTALL\lib\vtkIOPLY-8.2.lib;D:\VTK\INSTALL\lib\vtkIOSegY-8.2.lib;D:\VTK\INSTALL\lib\vtkIOSQL-8.2.lib;D:\VTK\INSTALL\lib\vtkIOTecplotTable-8.2.lib;D:\VTK\INSTALL\lib\vtkIOVeraOut-8.2.lib;D:\VTK\INSTALL\lib\vtkIOVideo-8.2.lib;D:\VTK\INSTALL\lib\vtkIOXML-8.2.lib;D:\VTK\INSTALL\lib\vtkIOXMLParser-8.2.lib;D:\VTK\INSTALL\lib\vtkjpeg-8.2.lib;D:\VTK\INSTALL\lib\vtkjsoncpp-8.2.lib;D:\VTK\INSTALL\lib\vtklibharu-8.2.lib;D:\VTK\INSTALL\lib\vtklibxml2-8.2.lib;D:\VTK\INSTALL\lib\vtklz4-8.2.lib;D:\VTK\INSTALL\lib\vtklzma-8.2.lib;D:\VTK\INSTALL\lib\vtkmetaio-8.2.lib;D:\VTK\INSTALL\lib\vtkNetCDF-8.2.lib;D:\VTK\INSTALL\lib\vtkogg-8.2.lib;D:\VTK\INSTALL\lib\vtkParallelCore-8.2.lib;D:\VTK\INSTALL\lib\vtkpng-8.2.lib;D:\VTK\INSTALL\lib\vtkproj-8.2.lib;D:\VTK\INSTALL\lib\vtkpugixml-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingAnnotation-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingContext2D-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingContextOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingCore-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingFreeType-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingGL2PSOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingImage-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingLabel-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingLOD-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingVolume-8.2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -95,13 +95,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\opencv\BUILD\install\include;D:\XIMEA\Examples\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\VTK\INSTALL\include\vtk-8.2;D:\opencv\BUILD\install\include;D:\XIMEA\Examples\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\XIMEA\Examples\Bin;D:\opencv\BUILD\install\x64\vc15\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world330d.lib;xiapi64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\VTK\INSTALL\lib;D:\XIMEA\Examples\Bin;D:\opencv\BUILD\install\x64\vc15\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world330d.lib;xiapi64.lib;D:\VTK\INSTALL\lib\vtkRenderingVolumeOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtksqlite-8.2.lib;D:\VTK\INSTALL\lib\vtksys-8.2.lib;D:\VTK\INSTALL\lib\vtktheora-8.2.lib;D:\VTK\INSTALL\lib\vtktiff-8.2.lib;D:\VTK\INSTALL\lib\vtkverdict-8.2.lib;D:\VTK\INSTALL\lib\vtkViewsContext2D-8.2.lib;D:\VTK\INSTALL\lib\vtkViewsCore-8.2.lib;D:\VTK\INSTALL\lib\vtkViewsInfovis-8.2.lib;D:\VTK\INSTALL\lib\vtkzlib-8.2.lib;D:\VTK\INSTALL\lib\vtkChartsCore-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonColor-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonComputationalGeometry-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonCore-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonDataModel-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonExecutionModel-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonMath-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonMisc-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonSystem-8.2.lib;D:\VTK\INSTALL\lib\vtkCommonTransforms-8.2.lib;D:\VTK\INSTALL\lib\vtkDICOMParser-8.2.lib;D:\VTK\INSTALL\lib\vtkDomainsChemistry-8.2.lib;D:\VTK\INSTALL\lib\vtkDomainsChemistryOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkdoubleconversion-8.2.lib;D:\VTK\INSTALL\lib\vtkexodusII-8.2.lib;D:\VTK\INSTALL\lib\vtkexpat-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersAMR-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersCore-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersExtraction-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersFlowPaths-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersGeneral-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersGeneric-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersGeometry-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersHybrid-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersHyperTree-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersImaging-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersModeling-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersParallel-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersParallelImaging-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersPoints-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersProgrammable-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersSelection-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersSMP-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersSources-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersStatistics-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersTexture-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersTopology-8.2.lib;D:\VTK\INSTALL\lib\vtkFiltersVerdict-8.2.lib;D:\VTK\INSTALL\lib\vtkfreetype-8.2.lib;D:\VTK\INSTALL\lib\vtkGeovisCore-8.2.lib;D:\VTK\INSTALL\lib\vtkgl2ps-8.2.lib;D:\VTK\INSTALL\lib\vtkglew-8.2.lib;D:\VTK\INSTALL\lib\vtkhdf5_hl-8.2.lib;D:\VTK\INSTALL\lib\vtkhdf5-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingColor-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingCore-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingFourier-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingGeneral-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingHybrid-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingMath-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingMorphological-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingSources-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingStatistics-8.2.lib;D:\VTK\INSTALL\lib\vtkImagingStencil-8.2.lib;D:\VTK\INSTALL\lib\vtkInfovisCore-8.2.lib;D:\VTK\INSTALL\lib\vtkInfovisLayout-8.2.lib;D:\VTK\INSTALL\lib\vtkInteractionImage-8.2.lib;D:\VTK\INSTALL\lib\vtkInteractionStyle-8.2.lib;D:\VTK\INSTALL\lib\vtkInteractionWidgets-8.2.lib;D:\VTK\INSTALL\lib\vtkIOAMR-8.2.lib;D:\VTK\INSTALL\lib\vtkIOAsynchronous-8.2.lib;D:\VTK\INSTALL\lib\vtkIOCityGML-8.2.lib;D:\VTK\INSTALL\lib\vtkIOCore-8.2.lib;D:\VTK\INSTALL\lib\vtkIOEnSight-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExodus-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExport-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExportOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkIOExportPDF-8.2.lib;D:\VTK\INSTALL\lib\vtkIOGeometry-8.2.lib;D:\VTK\INSTALL\lib\vtkIOImage-8.2.lib;D:\VTK\INSTALL\lib\vtkIOImport-8.2.lib;D:\VTK\INSTALL\lib\vtkIOInfovis-8.2.lib;D:\VTK\INSTALL\lib\vtkIOLegacy-8.2.lib;D:\VTK\INSTALL\lib\vtkIOLSDyna-8.2.lib;D:\VTK\INSTALL\lib\vtkIOMINC-8.2.lib;D:\VTK\INSTALL\lib\vtkIOMovie-8.2.lib;D:\VTK\INSTALL\lib\vtkIONetCDF-8.2.lib;D:\VTK\INSTALL\lib\vtkIOParallel-8.2.lib;D:\VTK\INSTALL\lib\vtkIOParallelXML-8.2.lib;D:\VTK\INSTALL\lib\vtkIOPLY-8.2.lib;D:\VTK\INSTALL\lib\vtkIOSegY-8.2.lib;D:\VTK\INSTALL\lib\vtkIOSQL-8.2.lib;D:\VTK\INSTALL\lib\vtkIOTecplotTable-8.2.lib;D:\VTK\INSTALL\lib\vtkIOVeraOut-8.2.lib;D:\VTK\INSTALL\lib\vtkIOVideo-8.2.lib;D:\VTK\INSTALL\lib\vtkIOXML-8.2.lib;D:\VTK\INSTALL\lib\vtkIOXMLParser-8.2.lib;D:\VTK\INSTALL\lib\vtkjpeg-8.2.lib;D:\VTK\INSTALL\lib\vtkjsoncpp-8.2.lib;D:\VTK\INSTALL\lib\vtklibharu-8.2.lib;D:\VTK\INSTALL\lib\vtklibxml2-8.2.lib;D:\VTK\INSTALL\lib\vtklz4-8.2.lib;D:\VTK\INSTALL\lib\vtklzma-8.2.lib;D:\VTK\INSTALL\lib\vtkmetaio-8.2.lib;D:\VTK\INSTALL\lib\vtkNetCDF-8.2.lib;D:\VTK\INSTALL\lib\vtkogg-8.2.lib;D:\VTK\INSTALL\lib\vtkParallelCore-8.2.lib;D:\VTK\INSTALL\lib\vtkpng-8.2.lib;D:\VTK\INSTALL\lib\vtkproj-8.2.lib;D:\VTK\INSTALL\lib\vtkpugixml-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingAnnotation-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingContext2D-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingContextOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingCore-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingFreeType-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingGL2PSOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingImage-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingLabel-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingLOD-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingOpenGL2-8.2.lib;D:\VTK\INSTALL\lib\vtkRenderingVolume-8.2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -143,7 +143,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="3dRecording.cpp" />
-    <ClCompile Include="birdsEye.cpp" />
     <ClCompile Include="camCalib.cpp" />
     <ClCompile Include="detector.cpp" />
     <ClCompile Include="disparity.cpp" />
@@ -154,10 +153,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matcher.cpp" />
     <ClCompile Include="parallelAlign.cpp" />
-    <ClCompile Include="sim_coorCalc.cpp" />
     <ClCompile Include="sim_detector.cpp" />
     <ClCompile Include="sim_subtractor.cpp" />
-    <ClCompile Include="sim_tracker.cpp" />
     <ClCompile Include="tools.cpp" />
     <ClCompile Include="track.cpp" />
     <ClCompile Include="tracker.cpp" />
@@ -165,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3dRecording.h" />
-    <ClInclude Include="birdsEye.h" />
     <ClInclude Include="camCalib.h" />
     <ClInclude Include="detector.h" />
     <ClInclude Include="disparity.h" />
@@ -175,10 +171,8 @@
     <ClInclude Include="KalmanFilter.h" />
     <ClInclude Include="matcher.h" />
     <ClInclude Include="parallelAlign.h" />
-    <ClInclude Include="sim_coorCalc.h" />
     <ClInclude Include="sim_detector.h" />
     <ClInclude Include="sim_subtractor.h" />
-    <ClInclude Include="sim_tracker.h" />
     <ClInclude Include="tools.h" />
     <ClInclude Include="track.h" />
     <ClInclude Include="tracker.h" />

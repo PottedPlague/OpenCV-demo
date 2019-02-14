@@ -12,67 +12,89 @@
 #include "sim_tracker.h"
 #include "findEpiLine.h"
 #include "tools.h"
+#include "matcher.h"
+#include <array>
+
+#include <vtkAutoInit.h>
+#define vtkRenderingCore_AUTOINIT 2(vtkRenderingOpenGL2, vtkInteractionStyle)
+#include <vtkActor.h>
+#include <vtkCamera.h>
+#include <vtkCylinderSource.h>
+#include <vtkNamedColors.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkProperty.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkRenderer.h>
+#include <vtkSmartPointer.h>
+
+
+
 
 using namespace cv;
 using namespace std;
 
 int main()
 {
-	Mat frameL, frameR, greyL, greyR;
-	vector<vector<Point>> contoursL, contoursR;
-	vector<Point> epiline;
+	vtkSmartPointer<vtkNamedColors> colors =
+		vtkSmartPointer<vtkNamedColors>::New();
 
-	HungarianAlgorithm hungAlgo;
-	vector<vector<double>> CorresMatrix;
-	frameL = imread("D:/pic/epipolar_left20.tif");
-	frameR = imread("D:/pic/epipolar_right20.tif");
-	cvtColor(frameL, greyL, CV_BGR2GRAY);
-	cvtColor(frameR, greyR, CV_BGR2GRAY);
-	findContours(greyL, contoursL, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
-	findContours(greyR, contoursR, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
-	vector<Point> centroidL;
-	vector<Point> centroidR;
+	// Set the background color.
+	std::array<unsigned char, 4> bkg{ { 26, 51, 102, 255 } };
+	colors->SetColor("BkgColor", bkg.data());
 
-	for (size_t j = 0; j < contoursL.size(); j++)
-	{
-		vector<double> rowVec;
-		epiline.clear();
-		Moments ML = moments(contoursL[j]);
-		int xL = (int)(ML.m10 / ML.m00);
-		int yL = (int)(ML.m01 / ML.m00);
-		Point imgPnt = Point(xL, yL);
-		centroidL.push_back(imgPnt);
-		EpiGeo EpipolarGeo;
-		epiline = EpipolarGeo.findEpipolarLine(1080, 1920, imgPnt);
+	// This creates a polygonal cylinder model with eight circumferential facets
+	// (i.e, in practice an octagonal prism).
+	vtkSmartPointer<vtkCylinderSource> cylinder =
+		vtkSmartPointer<vtkCylinderSource>::New();
+	cylinder->SetResolution(8);
 
-		for (int i = 0; i < contoursL.size(); i++)
-		{
-			Moments MR = moments(contoursR[i]);
-			int xR = (int)(MR.m10 / MR.m00);
-			int yR = (int)(MR.m01 / MR.m00);
-			Point rpnt = Point(xR, yR);
-			centroidR.push_back(rpnt);
-			double corres = EpipolarGeo.pntCorrespondence(imgPnt, rpnt);
-			rowVec.push_back(abs(corres));
-		}
-		CorresMatrix.push_back(rowVec);
-	}
+	// The mapper is responsible for pushing the geometry into the graphics
+	// library. It may also do color mapping, if scalars or other attributes are
+	// defined.
+	vtkSmartPointer<vtkPolyDataMapper> cylinderMapper =
+		vtkSmartPointer<vtkPolyDataMapper>::New();
+	cylinderMapper->SetInputConnection(cylinder->GetOutputPort());
 
-	vector<int> assignment;
-	double cost = hungAlgo.Solve(CorresMatrix, assignment);
+	// The actor is a grouping mechanism: besides the geometry (mapper), it
+	// also has a property, transformation matrix, and/or texture map.
+	// Here we set its color and rotate it around the X and Y axes.
+	vtkSmartPointer<vtkActor> cylinderActor = vtkSmartPointer<vtkActor>::New();
+	cylinderActor->SetMapper(cylinderMapper);
+	cylinderActor->GetProperty()->SetColor(
+		colors->GetColor4d("Tomato").GetData());
+	cylinderActor->RotateX(30.0);
+	cylinderActor->RotateY(-45.0);
 
-	for (size_t i = 0; i < assignment.size(); i++) 
-	{
-		putText(frameL, intToStr(i), centroidL[i], FONT_HERSHEY_COMPLEX, 1, Scalar(255, 255, 255), 2);
-		putText(frameR, intToStr(i), centroidR[assignment[i]], FONT_HERSHEY_COMPLEX, 1, Scalar(255, 255, 255), 2);
-	}
-	
-	imshow("Left camera", frameL);
-	imshow("Epipolar Lines", frameR);
-	waitKey(0);
-	destroyAllWindows();
+	// The renderer generates the image
+	// which is then displayed on the render window.
+	// It can be thought of as a scene to which the actor is added
+	vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
+	renderer->AddActor(cylinderActor);
+	renderer->SetBackground(colors->GetColor3d("BkgColor").GetData());
+	// Zoom in a little by accessing the camera and invoking its "Zoom" method.
+	renderer->ResetCamera();
+	renderer->GetActiveCamera()->Zoom(1.5);
 
-	return 0;
+	// The render window is the actual GUI window
+	// that appears on the computer screen
+	vtkSmartPointer<vtkRenderWindow> renderWindow =
+		vtkSmartPointer<vtkRenderWindow>::New();
+	renderWindow->SetSize(300, 300);
+	renderWindow->AddRenderer(renderer);
+	renderWindow->SetWindowName("Cylinder");
+
+	// The render window interactor captures mouse events
+	// and will perform appropriate camera or actor manipulation
+	// depending on the nature of the events.
+	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
+		vtkSmartPointer<vtkRenderWindowInteractor>::New();
+	renderWindowInteractor->SetRenderWindow(renderWindow);
+
+	// This starts the event loop and as a side effect causes an initial render.
+	renderWindowInteractor->Start();
+
+	return EXIT_SUCCESS;
 
 	/*VideoCapture cap(1);
 	Mat frame;
@@ -148,7 +170,7 @@ int main()
 	//return simSubtractor();
 	//return simDetector();
 	//return simCoorCalc();
-	//return trackingMain();
 	//return simTracker();
 	//return dualCam();
+	//return trackingMain();
 }

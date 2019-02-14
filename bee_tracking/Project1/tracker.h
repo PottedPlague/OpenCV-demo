@@ -7,7 +7,7 @@ class Tracker
 public:
 	Tracker(int dist_thresh, int max_frame_to_skip, int max_trace_length, int trackIdCount);
 	~Tracker();
-	void update(std::vector<cv::Point> detections);
+	void update(std::vector<cv::Point3d> detections);
 	std::vector<Track> tracks;
 	
 private:

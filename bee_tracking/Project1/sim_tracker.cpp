@@ -37,8 +37,8 @@ int simTracker()
 			continue;
 		}
 
-		std::vector<cv::Point> centersL = detectorL.detect(frameL, 'l');
-		std::vector<cv::Point> centersR = detectorR.detect(frameR, 'r');
+		std::vector<cv::Point> centersL = detectorL.detect(frameL);
+		std::vector<cv::Point> centersR = detectorR.detect(frameR);
 
 		if (centersL.size() > 0 && centersR.size() > 0)
 		{

@@ -4,17 +4,16 @@
 class Track
 {
 public:
-	Track(cv::Point prediction, int track_id);
+	Track(cv::Point3d prediction, int track_id);
 	~Track();
-	cv::Point prediction_;
+	cv::Point3d prediction_;
 	int skipped_frames;
 	KF kalman;
 	int real;
-	std::vector<cv::Point> trace;
+	std::vector<cv::Point3d> trace;
 	int track_id_;
 	int clr_id;
-	void setPaired(bool tf);
-	bool getPaired();
+
 private:
-	bool isPaired;
+
 };

@@ -7,7 +7,7 @@ public:
 	Detectors();
 	~Detectors();
 
-	std::vector<cv::Point> detect(cv::Mat frame, char cam);
+	std::vector<cv::Point> detect(cv::Mat frame);
 
 private:
 	std::vector<std::vector<cv::Point>> contours;
@@ -15,5 +15,4 @@ private:
 	std::vector<int> numCon;
 	double area;
 	bool found = 0;
-	char cam_;
 };

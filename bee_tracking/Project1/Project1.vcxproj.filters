@@ -30,16 +30,10 @@
     <ClCompile Include="disparity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="birdsEye.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sim_subtractor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sim_detector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sim_coorCalc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KalmanFilter.cpp">
@@ -63,16 +57,13 @@
     <ClCompile Include="tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="matcher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="parallelAlign.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sim_tracker.cpp">
+    <ClCompile Include="findEpiLine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="findEpiLine.cpp">
+    <ClCompile Include="matcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,16 +80,10 @@
     <ClInclude Include="disparity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="birdsEye.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sim_subtractor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sim_detector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sim_coorCalc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KalmanFilter.h">
@@ -122,16 +107,13 @@
     <ClInclude Include="tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parallelAlign.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sim_tracker.h">
+    <ClInclude Include="findEpiLine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="findEpiLine.h">
+    <ClInclude Include="matcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

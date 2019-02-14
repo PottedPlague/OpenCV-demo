@@ -14,7 +14,7 @@ Tracker::~Tracker()
 {
 }
 
-void Tracker::update(vector<cv::Point> detections)
+void Tracker::update(vector<cv::Point3d> detections)
 {
 	if (tracks.size() == 0)
 	{
@@ -115,7 +115,7 @@ void Tracker::update(vector<cv::Point> detections)
 		}
 		else
 		{
-			tracks[i].prediction_ = tracks[i].kalman.update(cv::Point(0, 0), 0);
+			tracks[i].prediction_ = tracks[i].kalman.update(cv::Point3d(0, 0, 0), 0);
 		}
 
 		if (tracks[i].trace.size() > max_trace_length_)

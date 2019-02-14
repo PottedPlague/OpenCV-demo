@@ -1,26 +1,9 @@
 #pragma once
+#include <opencv2\opencv.hpp>
+#include "Hungarian.h"
+#include "findEpiLine.h"
+#include "tools.h"
+#include "track.h"
 #include "tracker.h"
 
-class Matcher
-{
-public:
-	Matcher();
-	~Matcher();
-	void setThresh(int th);
-	std::vector<std::vector<Track*>> subGroupsL;
-	std::vector<std::vector<Track*>> subGroupsR;
-	struct compStruct {
-		bool operator() (Track i, Track j) { return (i.trace.back().y < j.trace.back().y); }
-	} compStruct;
-	struct compStruct_p {
-		bool operator() (Track *i, Track *j) { return (i->trace.back().y < j->trace.back().y); }
-	} compStruct_p;
-
-	std::vector<std::vector<Track*>> doMatch(Tracker& left, Tracker& right);
-	std::vector<std::vector<Track*>> matchedPair;
-	int clrCounter;
-private:
-	int thresh_;
-	int threshGap_;
-	bool frameZero_;
-};
+std::vector<cv::Point3d> doMatch(std::vector<cv::Point> left, std::vector<cv::Point> right);

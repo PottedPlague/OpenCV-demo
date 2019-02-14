@@ -10,11 +10,14 @@ public:
 	void setTranslationVec(cv::Mat translation);
 	void setLeftCameraPos(cv::Mat leftCameraPos);
 	void setFocalLength(double focalLen);
+	double getFocalLength();
 	void setHorizontalFovAngle(double fovAngleH);
-	std::vector<cv::Point> findEpipolarLine(
-		int imageHeight,
-		int imageWidth,
-		cv::Point imagePnt);
+	void setImageWidth(int imageWidth);
+	int getImageWidth();
+	void setImageHeight(int imageHeight);
+	int getImageHeight();
+	double getAlpha();
+	std::vector<cv::Point> findEpipolarLine(cv::Point imagePnt);
 
 	double pntCorrespondence(
 		cv::Point leftPnt,
@@ -37,6 +40,8 @@ private:
 
 	double focalLength;
 	double horizontalFovAngle;
-
+	double alpha;
+	int imgWidth;
+	int imgHeight;
 
 };

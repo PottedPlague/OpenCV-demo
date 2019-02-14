@@ -2,23 +2,17 @@
 
 int trackingMain()
 {
+	vector<vector<cv::Point3d>> coor3d;
+	vector<cv::Point3d> detection;
 	cv::VideoCapture capL, capR;
-	capL.open("F:/renderoutput/multi/morph/left_long.avi");
-	capR.open("F:/renderoutput/multi/morph/right_long.avi");
+	capL.open("F:/renderoutput/ball20/video/left20.avi");
+	capR.open("F:/renderoutput/ball20/video/right20.avi");
 	Detectors detectorL, detectorR;
-	Tracker trackerL(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
-	Tracker trackerR(50, 20, 40, 100);
-	Matcher matcher;
-	int skip_frame_count = 0;
+	Tracker tracker(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
+	int frameCounter = 0;
 	std::vector<std::vector<Track*>> successfulMatches;
-
-	std::vector<cv::Scalar> track_colours = { 
-		cv::Scalar(255, 0, 0), cv::Scalar(0, 255, 0), cv::Scalar(0, 0, 255), 
-		cv::Scalar(255, 255, 0), cv::Scalar(0, 255, 255), cv::Scalar(255, 0, 255), 
-		cv::Scalar(255, 127, 255), cv::Scalar(127, 0, 255), cv::Scalar(127, 0, 127) };
-
 	bool pause = 0;
-	cv::Mat frameL, frameR, orig_frameL, orig_frameR;
+	cv::Mat frameL, frameR;
 
 	for (;;)
 	{
@@ -29,35 +23,25 @@ int trackingMain()
 			cv::destroyAllWindows();
 			break;
 		}
-
-		orig_frameL = frameL.clone();
-		orig_frameR = frameR.clone();
-		if (skip_frame_count < 5)
-		{
-			skip_frame_count++;
-			continue;
-		}
-
-		std::vector<cv::Point> centersL = detectorL.detect(frameL, 'l');
-		std::vector<cv::Point> centersR = detectorR.detect(frameR, 'r');
+		std::vector<cv::Point> centersL = detectorL.detect(frameL);
+		std::vector<cv::Point> centersR = detectorR.detect(frameR);
 
 		if (centersL.size() > 0 && centersR.size() > 0)
 		{
-			trackerL.update(centersL);
-			trackerR.update(centersR);
-			successfulMatches = matcher.doMatch(trackerL, trackerR);
-			for (int i = 0; i < trackerL.tracks.size(); i++)
+			detection = doMatch(centersL, centersR);
+			coor3d.push_back(detection);
+			tracker.update(detection);
+			//trackerL.update(centersL);
+			//trackerR.update(centersR);
+			/*for (int i = 0; i < trackerL.tracks.size(); i++)
 			{
 				if (trackerL.tracks[i].trace.size() > 1)
 				{
 					for (int j = 0; j < trackerL.tracks[i].trace.size() - 1; j++)
 					{
-						//int clr = trackerL.tracks[i].track_id_ % 9;
 						int clr = trackerL.tracks[i].clr_id % 9;
-						if (trackerL.tracks[i].getPaired())
-						{
-							cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
-						}
+						cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
+
 					}
 				}
 			}
@@ -68,19 +52,16 @@ int trackingMain()
 				{
 					for (int j = 0; j < trackerR.tracks[i].trace.size() - 1; j++)
 					{
-						//int clr = trackerR.tracks[i].track_id_ % 9;
 						int clr = trackerR.tracks[i].clr_id % 9;
-						if (trackerR.tracks[i].getPaired())
-						{
-							cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
-						}
+						cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
 					}
 				}
 			}
 			cv::imshow("Left scene", frameL);
-			cv::imshow("Right scene", frameR);
+			cv::imshow("Right scene", frameR);*/
 		}
-
+		frameCounter++;
+		cout << frameCounter << endl;
 		int k = cv::waitKey(16);
 		if (k == 27)
 			break;
@@ -103,7 +84,6 @@ int trackingMain()
 		}
 	}
 
-	simCoorCalc(successfulMatches, capL.get(3), capL.get(4));
 	cv::destroyAllWindows();
 	return 0;
 }

@@ -37,8 +37,8 @@ int main(int argc, char* argv[])
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(800, 600);
-	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(1920, 1080);
+	glutInitWindowPosition(10, 10);
 	glutCreateWindow("3D tracks");
 	glutDisplayFunc(RenderScene);
 	glutReshapeFunc(ChangeSize);
