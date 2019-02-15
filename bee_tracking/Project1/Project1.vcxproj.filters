@@ -66,6 +66,9 @@
     <ClCompile Include="matcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="visualise3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dualCam.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="matcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="visualise3d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

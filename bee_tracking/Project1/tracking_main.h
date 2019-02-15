@@ -6,5 +6,6 @@
 //#include "matcher_aborted.h"
 #include "matcher.h"
 #include "sim_coorCalc.h"
+#include "visualise3d.h"
 
 int trackingMain();

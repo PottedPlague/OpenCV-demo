@@ -8,7 +8,12 @@ int trackingMain()
 	capL.open("F:/renderoutput/ball20/video/left20.avi");
 	capR.open("F:/renderoutput/ball20/video/right20.avi");
 	Detectors detectorL, detectorR;
-	Tracker tracker(50, 20, 40, 100);						//thresholds of: max separation, max frameloss, max trace length; and ID counter; default(50, 10, 40, 100)
+
+
+	Tracker tracker(50, 20, 1700, 100);						
+	//thresholds of: max separation, max frameloss, max trace length; 
+	//and ID counter; default(50, 10, 40, 100)
+	
 	int frameCounter = 0;
 	std::vector<std::vector<Track*>> successfulMatches;
 	bool pause = 0;
@@ -84,6 +89,7 @@ int trackingMain()
 		}
 	}
 
+	visualisation3d(tracker.tracks);
 	cv::destroyAllWindows();
 	return 0;
 }

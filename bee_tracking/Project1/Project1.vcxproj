@@ -159,6 +159,7 @@
     <ClCompile Include="track.cpp" />
     <ClCompile Include="tracker.cpp" />
     <ClCompile Include="tracking_main.cpp" />
+    <ClCompile Include="visualise3d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3dRecording.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="track.h" />
     <ClInclude Include="tracker.h" />
     <ClInclude Include="tracking_main.h" />
+    <ClInclude Include="visualise3d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
