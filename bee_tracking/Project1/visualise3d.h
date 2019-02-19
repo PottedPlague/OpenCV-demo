@@ -24,5 +24,8 @@
 #include <opencv2\opencv.hpp>
 #include "track.h"
 #include "tracker.h"
+#include "tools.h"
 
 int visualisation3d(std::vector<Track> trackData);
+int visualisation3d(cv::String filename);
+int display(std::vector<std::vector<std::vector<double>>> tracks);

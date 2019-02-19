@@ -2,6 +2,32 @@
 
 int visualisation3d(std::vector<Track> trackData)
 {
+	std::vector<std::vector<std::vector<double>>> tracks;
+	std::vector<std::vector<double>> track;
+	for (int i = 0; i < trackData.size(); i++)
+	{
+		track.clear();
+		for (int j = 0; j < trackData[i].trace.size(); j++)
+		{
+			std::vector<double> pnt = { 
+				trackData[i].trace[j].x,
+				trackData[i].trace[j].y,
+				trackData[i].trace[j].z };
+			track.push_back(pnt);
+		}
+		tracks.push_back(track);
+	}
+	return display(tracks);
+}
+
+int visualisation3d(cv::String filename)
+{
+	return display(vectorReader(filename));
+}
+
+
+int display(std::vector<std::vector<std::vector<double>>> tracks)
+{
 	vtkSmartPointer<vtkRenderer> renderer =
 		vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkRenderWindow> renderWindow =
@@ -12,6 +38,13 @@ int visualisation3d(std::vector<Track> trackData)
 	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
 		vtkSmartPointer<vtkRenderWindowInteractor>::New();
 	renderWindowInteractor->SetRenderWindow(renderWindow);
+
+	unsigned char clr[10][3] =
+	{
+		{ 255, 0, 0 },{ 0, 255, 0 },{ 0, 0, 255 },
+	{ 255, 255, 0 },{ 0, 255, 255 },{ 255, 0, 255 },
+	{ 255, 127, 255 },{ 127, 0, 255 },{ 127, 0, 127 }
+	};
 
 	vtkSmartPointer<vtkPolyData> polyData =
 		vtkSmartPointer<vtkPolyData>::New();
@@ -34,32 +67,6 @@ int visualisation3d(std::vector<Track> trackData)
 	vtkSmartPointer<vtkActor> lineActor =
 		vtkSmartPointer<vtkActor>::New();
 
-	unsigned char clr[10][3] = 
-	{ 
-		{255, 0, 0}, {0, 255, 0}, {0, 0, 255}, 
-		{255, 255, 0}, {0, 255, 255}, {255, 0, 255},
-		{255, 127, 255}, {127, 0, 255}, {127, 0, 127}
-	};
-	//unsigned char red[3] = { 255, 0, 0 };
-	//unsigned char green[3] = { 0, 255, 0 };
-
-	std::vector<std::vector<std::vector<double>>> tracks;
-	std::vector<std::vector<double>> track;
-	for (int i = 0; i < trackData.size(); i++)
-	{
-		track.clear();
-		for (int j = 0; j < trackData[i].trace.size(); j++)
-		{
-			std::vector<double> pnt = { 
-				trackData[i].trace[j].x,
-				trackData[i].trace[j].y,
-				trackData[i].trace[j].z };
-			track.push_back(pnt);
-		}
-		tracks.push_back(track);
-	}
-
-	////////////////////////////////////////////
 	for (int i = 0; i < tracks.size(); i++)
 	{
 		polyData = vtkSmartPointer<vtkPolyData>::New();
@@ -87,7 +94,7 @@ int visualisation3d(std::vector<Track> trackData)
 
 		colors = vtkSmartPointer<vtkUnsignedCharArray>::New();
 		colors->SetNumberOfComponents(3);
-		colors->InsertNextTypedTuple(clr[i%9]);
+		colors->InsertNextTypedTuple(clr[i % 9]);
 
 		polyData->GetCellData()->SetScalars(colors);
 
@@ -99,12 +106,10 @@ int visualisation3d(std::vector<Track> trackData)
 		lineActor->SetMapper(lineMapper);
 		renderer->AddActor(lineActor);
 	}
-	
-
-	////////////////////////////////////////////
 
 	renderWindow->Render();
 	renderWindowInteractor->Start();
-	
+
 	return EXIT_SUCCESS;
+
 }

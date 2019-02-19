@@ -36,60 +36,17 @@ int trackingMain()
 			detection = doMatch(centersL, centersR);
 			coor3d.push_back(detection);
 			tracker.update(detection);
-			//trackerL.update(centersL);
-			//trackerR.update(centersR);
-			/*for (int i = 0; i < trackerL.tracks.size(); i++)
-			{
-				if (trackerL.tracks[i].trace.size() > 1)
-				{
-					for (int j = 0; j < trackerL.tracks[i].trace.size() - 1; j++)
-					{
-						int clr = trackerL.tracks[i].clr_id % 9;
-						cv::line(frameL, trackerL.tracks[i].trace[j], trackerL.tracks[i].trace[j + 1], track_colours[clr], 2);
-
-					}
-				}
-			}
-
-			for (int i = 0; i < trackerR.tracks.size(); i++)
-			{
-				if (trackerR.tracks[i].trace.size() > 1)
-				{
-					for (int j = 0; j < trackerR.tracks[i].trace.size() - 1; j++)
-					{
-						int clr = trackerR.tracks[i].clr_id % 9;
-						cv::line(frameR, trackerR.tracks[i].trace[j], trackerR.tracks[i].trace[j + 1], track_colours[clr], 2);
-					}
-				}
-			}
-			cv::imshow("Left scene", frameL);
-			cv::imshow("Right scene", frameR);*/
 		}
 		frameCounter++;
 		cout << frameCounter << endl;
 		int k = cv::waitKey(16);
 		if (k == 27)
 			break;
-		if (k == 112)
-		{
-			pause = !pause;
-			if (pause == 1)
-			{
-				std::cout << "Code is paused. Press 'p' to resume. " << std::endl;
-				while (pause = 1)
-				{
-					int key = cv::waitKey(30);
-					if (key == 112)
-					{
-						pause = 0;
-						break;
-					}
-				}
-			}
-		}
 	}
-
-	visualisation3d(tracker.tracks);
+	//saveVecOfVecOfPoints(coor3d, "coordinates/coor3d.xml");
+	//saveVecOfVecOfPoints(tracker.tracks, "coordinates/tracks.xml");
+	
+	visualisation3d("coordinates/tracks.xml");
 	cv::destroyAllWindows();
 	return 0;
 }

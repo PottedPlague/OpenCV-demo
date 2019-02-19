@@ -96,6 +96,6 @@ int main()
 	//return simCoorCalc();
 	//return simTracker();
 	//return dualCam();
-	return trackingMain();
-	//return visualisation3d();
+	//return trackingMain();
+	return visualisation3d("coordinates/tracks.xml");
 }

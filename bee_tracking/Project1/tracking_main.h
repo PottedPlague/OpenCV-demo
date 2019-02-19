@@ -7,5 +7,6 @@
 #include "matcher.h"
 #include "sim_coorCalc.h"
 #include "visualise3d.h"
+#include "tools.h"
 
 int trackingMain();
