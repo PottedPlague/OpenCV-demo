@@ -5,12 +5,12 @@ int trackingMain()
 	vector<vector<cv::Point3d>> coor3d;
 	vector<cv::Point3d> detection;
 	cv::VideoCapture capL, capR;
-	capL.open("F:/renderoutput/ball20/video/left20.avi");
-	capR.open("F:/renderoutput/ball20/video/right20.avi");
+	capL.open("F:/renderoutput/four/ball2468/left.avi");
+	capR.open("F:/renderoutput/four/ball2468/right.avi");
 	Detectors detectorL, detectorR;
 
 
-	Tracker tracker(50, 20, 1700, 100);						
+	Tracker tracker(50, 20, 1800, 100);						
 	//thresholds of: max separation, max frameloss, max trace length; 
 	//and ID counter; default(50, 10, 40, 100)
 	
@@ -39,14 +39,14 @@ int trackingMain()
 		}
 		frameCounter++;
 		cout << frameCounter << endl;
-		int k = cv::waitKey(16);
+		/*int k = cv::waitKey(2);
 		if (k == 27)
-			break;
+			break;*/
 	}
-	//saveVecOfVecOfPoints(coor3d, "coordinates/coor3d.xml");
-	//saveVecOfVecOfPoints(tracker.tracks, "coordinates/tracks.xml");
+	//saveVecOfVecOfPoints(coor3d, "F:/renderoutput/four/ball2468/coor3d.xml");
+	//saveVecOfVecOfPoints(tracker.tracks, "F:/renderoutput/four/ball2468/tracks.xml");
 	
-	visualisation3d("coordinates/tracks.xml");
+	visualisation3d(tracker.tracks);
 	cv::destroyAllWindows();
 	return 0;
 }

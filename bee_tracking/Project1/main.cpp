@@ -14,6 +14,7 @@
 #include "tools.h"
 #include "matcher.h"
 #include "visualise3d.h"
+#include "test.h"
 
 using namespace cv;
 using namespace std;
@@ -97,5 +98,8 @@ int main()
 	//return simTracker();
 	//return dualCam();
 	//return trackingMain();
-	return visualisation3d("coordinates/tracks.xml");
+	return visualisation3d("F:/renderoutput/four/ball2468/tracks.xml", 1);
+	//return imgSeqToAVI();
+	//return test();
+
 }

@@ -2,11 +2,11 @@
 
 int imgSeqToAVI()
 {
-	cv::String path("F:/renderoutput/ball20/right/*.tif");
+	cv::String path("F:/renderoutput/four/ball2468/left/*.tif");
 	std::vector<cv::String> fn;
 	cv::glob(path, fn, true);
 	cv::VideoWriter out;
-	out.open("F:/renderoutput/ball20/video/right20.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(1920, 1080));
+	out.open("F:/renderoutput/four/ball2468/left.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(1920, 1080));
 	for (size_t k = 0; k < fn.size(); ++k)
 	{
 		cv::Mat img = cv::imread(fn[k]);

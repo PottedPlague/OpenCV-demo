@@ -155,6 +155,7 @@
     <ClCompile Include="parallelAlign.cpp" />
     <ClCompile Include="sim_detector.cpp" />
     <ClCompile Include="sim_subtractor.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="tools.cpp" />
     <ClCompile Include="track.cpp" />
     <ClCompile Include="tracker.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="parallelAlign.h" />
     <ClInclude Include="sim_detector.h" />
     <ClInclude Include="sim_subtractor.h" />
+    <ClInclude Include="test.h" />
     <ClInclude Include="tools.h" />
     <ClInclude Include="track.h" />
     <ClInclude Include="tracker.h" />

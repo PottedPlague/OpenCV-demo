@@ -20,11 +20,13 @@ int visualisation3d(std::vector<Track> trackData)
 	return display(tracks);
 }
 
-int visualisation3d(cv::String filename)
+int visualisation3d(cv::String filename, bool plotDot)
 {
-	return display(vectorReader(filename));
+	if (plotDot)
+		return displayDot(vectorReader(filename));
+	else
+		return display(vectorReader(filename));
 }
-
 
 int display(std::vector<std::vector<std::vector<double>>> tracks)
 {
@@ -111,5 +113,61 @@ int display(std::vector<std::vector<std::vector<double>>> tracks)
 	renderWindowInteractor->Start();
 
 	return EXIT_SUCCESS;
+}
 
+int displayDot(std::vector<std::vector<std::vector<double>>> coor3d) 
+{
+	vtkSmartPointer<vtkNamedColors> colors =
+		vtkSmartPointer<vtkNamedColors>::New();
+	vtkSmartPointer<vtkPoints> points =
+		vtkSmartPointer<vtkPoints>::New();
+	vtkSmartPointer<vtkCellArray> vertices =
+		vtkSmartPointer<vtkCellArray>::New();
+
+	for (int i = 0; i < coor3d.size(); i++)
+	{
+		for (int j = 0; j < coor3d[i].size(); j++)
+		{
+			double pnt[3] = { coor3d[i][j][0], coor3d[i][j][1], coor3d[i][j][2] };
+			points->InsertNextPoint(pnt);
+			vtkIdType pid[1];
+			pid[0] = points->InsertNextPoint(pnt);
+			vertices->InsertNextCell(1, pid);
+		}
+	}
+
+	vtkSmartPointer<vtkPolyData> pointCloud =
+		vtkSmartPointer<vtkPolyData>::New();
+
+	pointCloud->SetPoints(points);
+	pointCloud->SetVerts(vertices);
+
+	// Visualize
+	vtkSmartPointer<vtkPolyDataMapper> mapper =
+		vtkSmartPointer<vtkPolyDataMapper>::New();
+	mapper->SetInputData(pointCloud);
+
+	vtkSmartPointer<vtkActor> actor =
+		vtkSmartPointer<vtkActor>::New();
+	actor->SetMapper(mapper);
+	actor->GetProperty()->SetColor(colors->GetColor3d("Tomato").GetData());
+	actor->GetProperty()->SetPointSize(2);
+
+	vtkSmartPointer<vtkRenderer> renderer =
+		vtkSmartPointer<vtkRenderer>::New();
+	vtkSmartPointer<vtkRenderWindow> renderWindow =
+		vtkSmartPointer<vtkRenderWindow>::New();
+	renderWindow->SetWindowName("Points");
+	renderWindow->AddRenderer(renderer);
+	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
+		vtkSmartPointer<vtkRenderWindowInteractor>::New();
+	renderWindowInteractor->SetRenderWindow(renderWindow);
+
+	renderer->AddActor(actor);
+	//renderer->SetBackground(colors->GetColor3d("DarkOliveGreen").GetData());
+
+	renderWindow->Render();
+	renderWindowInteractor->Start();
+
+	return EXIT_SUCCESS;
 }
