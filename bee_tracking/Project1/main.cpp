@@ -97,8 +97,8 @@ int main()
 	//return simCoorCalc();
 	//return simTracker();
 	//return dualCam();
-	//return trackingMain();
-	return visualisation3d("F:/renderoutput/four/ball2468/tracks.xml", 1);
+	//return trackingMain(50,20);
+	return visualisation3d("F:/renderoutput/ball20/allTracks.xml", 0);
 	//return imgSeqToAVI();
 	//return test();
 

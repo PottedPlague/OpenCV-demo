@@ -30,6 +30,7 @@ int visualisation3d(cv::String filename, bool plotDot)
 
 int display(std::vector<std::vector<std::vector<double>>> tracks)
 {
+	int lenDispThresh = 100;
 	vtkSmartPointer<vtkRenderer> renderer =
 		vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkRenderWindow> renderWindow =
@@ -70,43 +71,50 @@ int display(std::vector<std::vector<std::vector<double>>> tracks)
 		vtkSmartPointer<vtkActor>::New();
 
 	for (int i = 0; i < tracks.size(); i++)
+	//for (int i = 2; i < 4; i++)
 	{
-		polyData = vtkSmartPointer<vtkPolyData>::New();
-
-		points = vtkSmartPointer<vtkPoints>::New();
-		for (int j = 0; j < tracks[i].size(); j++)
+		if (i % 2 == 0)
 		{
-			double pnt[3] = { tracks[i][j][0], tracks[i][j][1], tracks[i][j][2] };
-			points->InsertNextPoint(pnt);
+			if (tracks[i].size() > lenDispThresh)
+			{
+				polyData = vtkSmartPointer<vtkPolyData>::New();
+
+				points = vtkSmartPointer<vtkPoints>::New();
+				for (int j = 0; j < tracks[i].size(); j++)
+				{
+					double pnt[3] = { tracks[i][j][0], tracks[i][j][1], tracks[i][j][2] };
+					points->InsertNextPoint(pnt);
+				}
+
+				polyData->SetPoints(points);
+
+				polyLine = vtkSmartPointer<vtkPolyLine>::New();
+				polyLine->GetPointIds()->SetNumberOfIds(tracks[i].size());
+				for (unsigned int j = 0; j < tracks[i].size(); j++)
+				{
+					polyLine->GetPointIds()->SetId(j, j);
+				}
+
+				lines = vtkSmartPointer<vtkCellArray>::New();
+				lines->InsertNextCell(polyLine);
+
+				polyData->SetLines(lines);
+
+				colors = vtkSmartPointer<vtkUnsignedCharArray>::New();
+				colors->SetNumberOfComponents(3);
+				colors->InsertNextTypedTuple(clr[i % 9]);
+
+				polyData->GetCellData()->SetScalars(colors);
+
+				lineMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+				lineMapper->SetInputData(polyData);
+
+				lineActor = vtkSmartPointer<vtkActor>::New();
+
+				lineActor->SetMapper(lineMapper);
+				renderer->AddActor(lineActor);
+			}
 		}
-
-		polyData->SetPoints(points);
-
-		polyLine = vtkSmartPointer<vtkPolyLine>::New();
-		polyLine->GetPointIds()->SetNumberOfIds(tracks[i].size());
-		for (unsigned int j = 0; j < tracks[i].size(); j++)
-		{
-			polyLine->GetPointIds()->SetId(j, j);
-		}
-
-		lines = vtkSmartPointer<vtkCellArray>::New();
-		lines->InsertNextCell(polyLine);
-
-		polyData->SetLines(lines);
-
-		colors = vtkSmartPointer<vtkUnsignedCharArray>::New();
-		colors->SetNumberOfComponents(3);
-		colors->InsertNextTypedTuple(clr[i % 9]);
-
-		polyData->GetCellData()->SetScalars(colors);
-
-		lineMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-		lineMapper->SetInputData(polyData);
-
-		lineActor = vtkSmartPointer<vtkActor>::New();
-
-		lineActor->SetMapper(lineMapper);
-		renderer->AddActor(lineActor);
 	}
 
 	renderWindow->Render();

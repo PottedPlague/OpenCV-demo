@@ -73,6 +73,7 @@ void Tracker::update(vector<cv::Point3d> detections)
 		{
 			if (del_tracks[i] < tracks.size())
 			{
+				completeTracks.push_back(tracks[del_tracks[i]]);
 				tracks.erase(tracks.begin() + del_tracks[i]);
 				assignment.erase(assignment.begin() + del_tracks[i]);
 			}
@@ -118,13 +119,13 @@ void Tracker::update(vector<cv::Point3d> detections)
 			tracks[i].prediction_ = tracks[i].kalman.update(cv::Point3d(0, 0, 0), 0);
 		}
 
-		if (tracks[i].trace.size() > max_trace_length_)
+		/*if (tracks[i].trace.size() > max_trace_length_)
 		{
 			for (int j = 0; j < tracks[i].trace.size() - max_trace_length_; j++)
 			{
 				tracks[i].trace.erase(tracks[i].trace.begin());
 			}
-		}
+		}*/
 		
 		tracks[i].trace.push_back(tracks[i].prediction_);
 		tracks[i].kalman.lastPointResult_ = tracks[i].prediction_;

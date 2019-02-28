@@ -10,7 +10,7 @@ std::vector<cv::Point3d> doMatch(std::vector<cv::Point> left, std::vector<cv::Po
 	HungarianAlgorithm hungAlgo;
 	vector<vector<double>> CorresMatrix;
 	vector<vector<Track*>> matchedPair;
-	double corresthresh = 0.0025;
+	double corresthresh = 0.003;
 	double targetDis = 3000;
 	int imageWidth = EpipolarGeo.getImageWidth();
 	int imageHeight = EpipolarGeo.getImageHeight();
@@ -51,11 +51,11 @@ std::vector<cv::Point3d> doMatch(std::vector<cv::Point> left, std::vector<cv::Po
 			{
 				left[i].x = -left[i].x + imageWidth / 2;
 				left[i].y = -left[i].y + imageHeight / 2;
-				right[i].x = right[i].x - imageWidth / 2;
-				right[i].y = -right[i].y + imageHeight / 2;
-				double x = (targetDis*scalar*right[i].x*(focal + scalar * left[i].x)) / (focal*focal - scalar * scalar*left[i].x*right[i].x);
-				double y = (targetDis*scalar*left[i].x*(focal + scalar * right[i].x)) / (focal*focal - scalar * scalar*left[i].x*right[i].x);
-				double z = (targetDis*scalar*left[i].y*(focal + scalar * right[i].x)) / (focal*focal - scalar * scalar*left[i].x*right[i].x);
+				right[assignment[i]].x = right[assignment[i]].x - imageWidth / 2;
+				right[assignment[i]].y = -right[assignment[i]].y + imageHeight / 2;
+				double x = (targetDis*scalar*right[assignment[i]].x*(focal + scalar * left[i].x)) / (focal*focal - scalar * scalar*left[i].x*right[assignment[i]].x);
+				double y = (targetDis*scalar*left[i].x*(focal + scalar * right[assignment[i]].x)) / (focal*focal - scalar * scalar*left[i].x*right[assignment[i]].x);
+				double z = (targetDis*scalar*left[i].y*(focal + scalar * right[assignment[i]].x)) / (focal*focal - scalar * scalar*left[i].x*right[assignment[i]].x);
 				points3D.push_back(cv::Point3d(x, y, z));
 			}
 		}

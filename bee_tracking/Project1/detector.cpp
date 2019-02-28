@@ -23,11 +23,14 @@ std::vector<cv::Point> Detectors::detect(cv::Mat frame)
 	{
 		for (size_t i = 0; i < contours.size(); i++)
 		{
-			cv::Moments M = moments(contours[i]);
-			int x = (int)(M.m10 / M.m00);
-			int y = (int)(M.m01 / M.m00);
-			cv::Point pnt = cv::Point(x, y);
-			centroid.push_back(pnt);
+			if (contours[i].size() > 3)
+			{
+				cv::Moments M = moments(contours[i]);
+				int x = (int)(M.m10 / M.m00);
+				int y = (int)(M.m01 / M.m00);
+				cv::Point pnt = cv::Point(x, y);
+				centroid.push_back(pnt);
+			}
 		}
 	}
 

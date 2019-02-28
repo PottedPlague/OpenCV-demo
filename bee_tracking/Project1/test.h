@@ -8,5 +8,7 @@
 #include <vtkRenderWindowInteractor.h>
 #include <vtkProgrammableFilter.h>
 #include <vtkCallbackCommand.h>
+#include "tools.h"
+#include <opencv2\opencv.hpp>
 
 int test();
