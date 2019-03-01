@@ -30,23 +30,38 @@ int visualisation3d(cv::String filename, bool plotDot)
 
 int display(std::vector<std::vector<std::vector<double>>> tracks)
 {
-	int lenDispThresh = 100;
+	int lenDispThresh = 30;
 	vtkSmartPointer<vtkRenderer> renderer =
 		vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkRenderWindow> renderWindow =
 		vtkSmartPointer<vtkRenderWindow>::New();
-	//renderWindow->SetSize(300, 300);
+	renderWindow->SetSize(1000, 1000);
 	renderWindow->AddRenderer(renderer);
 	renderWindow->SetWindowName("Lines");
 	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
 		vtkSmartPointer<vtkRenderWindowInteractor>::New();
 	renderWindowInteractor->SetRenderWindow(renderWindow);
 
-	unsigned char clr[10][3] =
+	/*unsigned char clr[20][3] =
+	{
+		{ 128, 0, 0 },{ 170, 110, 40 },{ 128, 128, 0 },
+		{ 0, 128, 128 },{ 0, 0, 128 },{ 230, 25, 75 },
+		{ 245, 130, 48 },{ 255, 255, 25 },{ 210, 245, 60 },
+		{ 60, 180, 75 }, { 70, 240, 240 }, { 0, 130, 200 },
+		{ 145, 30, 180 }, { 240, 50, 230 }, { 128, 128, 128 },
+		{ 250, 190, 190 }, { 255, 215, 180 }, { 255, 250, 200 },
+		{ 170, 255, 195 }, { 230, 190, 255 }
+	};*/
+	unsigned char clr[24][3] =
 	{
 		{ 255, 0, 0 },{ 0, 255, 0 },{ 0, 0, 255 },
-	{ 255, 255, 0 },{ 0, 255, 255 },{ 255, 0, 255 },
-	{ 255, 127, 255 },{ 127, 0, 255 },{ 127, 0, 127 }
+	{ 255, 255, 0 },{ 255, 0, 255 },{ 0, 255, 255 },
+	{ 255, 255, 128 },{ 255, 128, 255 },{ 128, 255, 255 },
+	{ 255, 128, 128 },{ 128, 255, 128 },{ 128, 128, 255 },
+	{ 128, 0, 0 },{ 0, 128, 0 },{ 0, 0, 128 },
+	{ 128, 128, 0 },{ 128, 0, 128 },{ 0, 128, 128 },
+	{ 255, 128, 0 },{ 255, 0, 128 },{ 128, 255, 0 },
+	{ 128, 0, 255 },{ 0, 128, 255 },{ 0, 255, 128 }
 	};
 
 	vtkSmartPointer<vtkPolyData> polyData =
@@ -71,54 +86,52 @@ int display(std::vector<std::vector<std::vector<double>>> tracks)
 		vtkSmartPointer<vtkActor>::New();
 
 	for (int i = 0; i < tracks.size(); i++)
-	//for (int i = 2; i < 4; i++)
 	{
-		if (i % 2 == 0)
+		if (tracks[i].size() > lenDispThresh)
 		{
-			if (tracks[i].size() > lenDispThresh)
+			polyData = vtkSmartPointer<vtkPolyData>::New();
+
+			points = vtkSmartPointer<vtkPoints>::New();
+			for (int j = 0; j < tracks[i].size(); j++)
 			{
-				polyData = vtkSmartPointer<vtkPolyData>::New();
-
-				points = vtkSmartPointer<vtkPoints>::New();
-				for (int j = 0; j < tracks[i].size(); j++)
-				{
-					double pnt[3] = { tracks[i][j][0], tracks[i][j][1], tracks[i][j][2] };
-					points->InsertNextPoint(pnt);
-				}
-
-				polyData->SetPoints(points);
-
-				polyLine = vtkSmartPointer<vtkPolyLine>::New();
-				polyLine->GetPointIds()->SetNumberOfIds(tracks[i].size());
-				for (unsigned int j = 0; j < tracks[i].size(); j++)
-				{
-					polyLine->GetPointIds()->SetId(j, j);
-				}
-
-				lines = vtkSmartPointer<vtkCellArray>::New();
-				lines->InsertNextCell(polyLine);
-
-				polyData->SetLines(lines);
-
-				colors = vtkSmartPointer<vtkUnsignedCharArray>::New();
-				colors->SetNumberOfComponents(3);
-				colors->InsertNextTypedTuple(clr[i % 9]);
-
-				polyData->GetCellData()->SetScalars(colors);
-
-				lineMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-				lineMapper->SetInputData(polyData);
-
-				lineActor = vtkSmartPointer<vtkActor>::New();
-
-				lineActor->SetMapper(lineMapper);
-				renderer->AddActor(lineActor);
+				double pnt[3] = { tracks[i][j][0], tracks[i][j][1], tracks[i][j][2] };
+				points->InsertNextPoint(pnt);
 			}
+
+			polyData->SetPoints(points);
+
+			polyLine = vtkSmartPointer<vtkPolyLine>::New();
+			polyLine->GetPointIds()->SetNumberOfIds(tracks[i].size());
+			for (unsigned int j = 0; j < tracks[i].size(); j++)
+			{
+				polyLine->GetPointIds()->SetId(j, j);
+			}
+
+			lines = vtkSmartPointer<vtkCellArray>::New();
+			lines->InsertNextCell(polyLine);
+
+			polyData->SetLines(lines);
+
+			colors = vtkSmartPointer<vtkUnsignedCharArray>::New();
+			colors->SetNumberOfComponents(3);
+			colors->InsertNextTypedTuple(clr[i % 24]);
+
+			polyData->GetCellData()->SetScalars(colors);
+
+			lineMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+			lineMapper->SetInputData(polyData);
+
+			lineActor = vtkSmartPointer<vtkActor>::New();
+
+			lineActor->SetMapper(lineMapper);
+			lineActor->GetProperty()->SetLineWidth(2);
+			renderer->AddActor(lineActor);
+			renderWindow->Render();
+			renderWindowInteractor->Start();
 		}
 	}
 
-	renderWindow->Render();
-	renderWindowInteractor->Start();
+	
 
 	return EXIT_SUCCESS;
 }
