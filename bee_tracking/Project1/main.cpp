@@ -97,8 +97,8 @@ int main()
 	//return simCoorCalc();
 	//return simTracker();
 	//return dualCam();
-	//return trackingMain(50,20);
-	return visualisation3d("F:/renderoutput/twenty/coor3d.xml", 1);
+	return trackingMain(50,20);
+	//return visualisation3d("F:/renderoutput/twenty/coor3d.xml", 1);
 	//return imgSeqToAVI();
 	//return test();
 

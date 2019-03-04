@@ -5,8 +5,8 @@ int trackingMain(int maxSeparation, int maxFrameLoss, int maxTraceLength, int id
 	vector<vector<cv::Point3d>> coor3d;
 	vector<cv::Point3d> detection;
 	cv::VideoCapture capL, capR;
-	capL.open("F:/renderoutput/twenty/left.avi");
-	capR.open("F:/renderoutput/twenty/right.avi");
+	capL.open("F:/renderoutput/four/left.avi");
+	capR.open("F:/renderoutput/four/right.avi");
 	Detectors detectorL, detectorR;
 	Tracker tracker(maxSeparation, maxFrameLoss, maxTraceLength, idCounter);						
 	//thresholds of: max separation, max frameloss, max trace length; 
@@ -104,8 +104,8 @@ int trackingMain(int maxSeparation, int maxFrameLoss, int maxTraceLength, int id
 	allTracks.reserve(tracker.tracks.size() + tracker.completeTracks.size());
 	allTracks.insert(allTracks.end(), tracker.tracks.begin(), tracker.tracks.end());
 	allTracks.insert(allTracks.end(), tracker.completeTracks.begin(), tracker.completeTracks.end());
-	saveVecOfVecOfPoints(coor3d, "F:/renderoutput/twenty/coor3d.xml");
-	saveVecOfVecOfPoints(allTracks, "F:/renderoutput/twenty/allTracks.xml");
+	saveVecOfVecOfPoints(coor3d, "F:/renderoutput/four/coor3d.xml");
+	saveVecOfVecOfPoints(allTracks, "F:/renderoutput/four/allTracks.xml");
 	
 	visualisation3d(allTracks);
 	cv::destroyAllWindows();
