@@ -1,3 +1,9 @@
+/*
+Calibrates two cameras and calculates the stereo camera intrinsics.
+
+Date modified: 08/05/2019
+*/
+
 #include "dualCam.h"
 #include <opencv2\opencv.hpp>
 #include <stdio.h>
@@ -19,13 +25,13 @@ int dualCam()
 	vector<vector<Point2f>> imagePoints1, imagePoints2;
 	vector<Point2f> corners1, corners2;
 
-	cv::String path1 = "F:/renderoutput/multi/chessboard/left/*.tif";
-	cv::String path2 = "F:/renderoutput/multi/chessboard/right/*.tif";
+	cv::String path1 = "D:/gopro_stream/11-07-2019/Session2/Calibration/left/*.tif";
+	cv::String path2 = "D:/gopro_stream/11-07-2019/Session2/Calibration/right/*.tif";
 	vector<String> fn1, fn2;
 	glob(path1, fn1, true);
 	glob(path2, fn2, true);
 	Mat img1, gray1, img2, gray2;
-
+	int j = 1;
 	bool found1 = false;
 	bool found2 = false;
 
@@ -33,19 +39,19 @@ int dualCam()
 	for (int j = 0; j < board_n; j++)
 		obj.push_back(Point3f(j / board_w, j%board_w, 0.0f));
 
-	for(int k=1;k<50;k++)
+	for(int k=0;k<fn1.size();k++)
 	{
 		img1 = imread(fn1[k]);
 		img2 = imread(fn2[k]);
-		cvtColor(img1, gray1, CV_BGR2GRAY);
-		cvtColor(img2, gray2, CV_BGR2GRAY);
-		found1 = findChessboardCorners(gray1, board_sz, corners1, 0); //CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS
-		found2 = findChessboardCorners(gray2, board_sz, corners2, 0); //CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS
+		cvtColor(img1, gray1, COLOR_BGR2GRAY);
+		cvtColor(img2, gray2, COLOR_BGR2GRAY);
+		found1 = findChessboardCorners(gray1, board_sz, corners1, 0);// cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_FILTER_QUADS);
+		found2 = findChessboardCorners(gray2, board_sz, corners2, 0);// cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_FILTER_QUADS);
 
 		if (found1 && found2)
 		{
-			cornerSubPix(gray1, corners1, Size(11, 11), Size(-1, -1), TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
-			cornerSubPix(gray2, corners2, Size(11, 11), Size(-1, -1), TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+			cornerSubPix(gray1, corners1, Size(11, 11), Size(-1, -1), TermCriteria(TermCriteria::EPS | TermCriteria::MAX_ITER, 30, 0.1));
+			cornerSubPix(gray2, corners2, Size(11, 11), Size(-1, -1), TermCriteria(TermCriteria::EPS | TermCriteria::MAX_ITER, 30, 0.1));
 			drawChessboardCorners(gray1, board_sz, corners1, found1);
 			drawChessboardCorners(gray2, board_sz, corners2, found2);
 			imagePoints1.push_back(corners1);
@@ -54,12 +60,13 @@ int dualCam()
 			cout << fn2[k] << endl;
 			imshow("corners1", gray1);
 			imshow("corners2", gray2);
+			waitKey(500);
 			objectPoints.push_back(obj);
-			printf("Corners stored: ");
-			cout << k << endl;
+			printf("Corners stored: %d \n", j);
+			j++;
 		}
+		cout << "Frame. L:" << found1 << ", R:" << found2 << endl;
 		
-		waitKey(500);
 	}
 
 	destroyAllWindows();
@@ -73,7 +80,7 @@ int dualCam()
 	stereoCalibrate(objectPoints, imagePoints1, imagePoints2,
 		CM1, D1, CM2, D2, img1.size(), R, T, E, F, CALIB_FIX_ASPECT_RATIO | CALIB_ZERO_TANGENT_DIST | CALIB_SAME_FOCAL_LENGTH, TermCriteria(TermCriteria::COUNT | TermCriteria::EPS, 100, 1e-5));
 
-	FileStorage fs1("chessboardcalib.yml", FileStorage::WRITE);
+	FileStorage fs1("D:/gopro_stream/11-07-2019/Session2/Calibration/dual_GoPro.yml", FileStorage::WRITE);
 	fs1 << "CM1" << CM1;
 	fs1 << "CM2" << CM2;
 	fs1 << "D1" << D1;

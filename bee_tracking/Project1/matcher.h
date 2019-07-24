@@ -6,4 +6,4 @@
 #include "track.h"
 #include "tracker.h"
 
-std::vector<cv::Point3d> doMatch(std::vector<cv::Point> left, std::vector<cv::Point> right);
+std::vector<cv::Point3d> doMatch(std::vector<cv::Point> left, std::vector<cv::Point> right, cv::Mat lScene, cv::Mat rScene);

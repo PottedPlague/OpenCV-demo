@@ -1,3 +1,10 @@
+/*
+Dual-camera realtime recording and saving into MJPEG
+(Mainly used for stereo calibration)
+
+Date modified: 08/05/2019
+*/
+
 #include "3dRecording.h"
 #include <opencv2\opencv.hpp>
 #include <stdio.h>
@@ -17,8 +24,8 @@ void tdRecording()
 	std::string filename2 = "D:/pic/dual2.avi";
 	int numFrame = 0;
 
-	cv::VideoWriter writer1(filename1, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(cap1.get(cv::CAP_PROP_FRAME_WIDTH), cap1.get(cv::CAP_PROP_FRAME_HEIGHT)));
-	cv::VideoWriter writer2(filename2, CV_FOURCC('M', 'J', 'P', 'G'), 30, cv::Size(cap2.get(cv::CAP_PROP_FRAME_WIDTH), cap2.get(cv::CAP_PROP_FRAME_HEIGHT)));
+	cv::VideoWriter writer1(filename1, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, cv::Size(cap1.get(cv::CAP_PROP_FRAME_WIDTH), cap1.get(cv::CAP_PROP_FRAME_HEIGHT)));
+	cv::VideoWriter writer2(filename2, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, cv::Size(cap2.get(cv::CAP_PROP_FRAME_WIDTH), cap2.get(cv::CAP_PROP_FRAME_HEIGHT)));
 
 	while (numFrame < 600)
 	{

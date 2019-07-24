@@ -27,12 +27,6 @@
     <ClCompile Include="camCalib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="disparity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sim_subtractor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sim_detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,6 +66,15 @@
     <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="getChessboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="videoTrim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="subtractor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dualCam.h">
@@ -84,9 +87,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="disparity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sim_subtractor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sim_detector.h">
@@ -126,6 +126,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getChessboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="videoTrim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="subtractor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

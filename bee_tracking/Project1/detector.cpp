@@ -15,15 +15,16 @@ std::vector<cv::Point> Detectors::detect(cv::Mat frame)
 	frame_ = frame.clone();
 
 	//cv::GaussianBlur(frame_, frame_, cv::Size(5, 5), 0);
-	cv::cvtColor(frame_, thresh, CV_BGR2GRAY);
+	cv::cvtColor(frame_, thresh, cv::COLOR_BGR2GRAY);
 	cv::threshold(thresh, thresh, 10, 255, 0);
-	findContours(thresh, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+	findContours(thresh, contours, cv::RetrievalModes::RETR_LIST, cv::ContourApproximationModes::CHAIN_APPROX_NONE);
 
 	if (contours.size() != 0)
 	{
 		for (size_t i = 0; i < contours.size(); i++)
 		{
-			if (contours[i].size() > 3)
+			double area = cv::contourArea(contours[i]);
+			if (area > 10 /*&& area < 150*/)
 			{
 				cv::Moments M = moments(contours[i]);
 				int x = (int)(M.m10 / M.m00);

@@ -2,17 +2,18 @@
 
 EpiGeo::EpiGeo()
 {
-	R = (cv::Mat_<double>(3, 3) << 0, 0, 1, 0, 1, 0, -1, 0, 0);
-	T = (cv::Mat_<double>(3, 1) << -1, 0, 1);
+	R = (cv::Mat_<double>(3, 3) << 1.1324584933210915e-02, -3.6707809869289858e-03, 9.9992913706074027e-01, -7.2941631488052565e-03, 9.9996635254407018e-01, 3.7535268305266423e-03, -9.9990927036409116e-01, -7.3361533963564752e-03, 1.1297428614336257e-02);
+	T = (cv::Mat_<double>(3, 1) << -5.1470698727199213e+01, 2.2122760773804612e-02, 5.3477628856229380e+01);
 	C = (cv::Mat_<double>(4, 1) << 0, 0, 0, 1);
 	a = (cv::Mat_<double>(3, 4) << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0);
-	imgWidth = 1920;
-	imgHeight = 1080;
-	focalLength = 19.561;
-	horizontalFovAngle = 0.950017618;
+	imgWidth = 2704;
+	imgHeight = 1520;
+	focalLength = 17;
+	horizontalFovAngle = 1.5;
 	alpha = (imgWidth / 2) / (focalLength*tan(0.5*horizontalFovAngle));
 
-	K = (cv::Mat_<double>(3, 3) << focalLength * alpha, 0.0, imgWidth / 2.0, 0.0, focalLength*alpha, imgHeight / 2.0, 0.0, 0.0, 1.0);
+	//K = (cv::Mat_<double>(3, 3) << focalLength * alpha, 0.0, imgWidth / 2.0, 0.0, focalLength*alpha, imgHeight / 2.0, 0.0, 0.0, 1.0);
+	K = (cv::Mat_<double>(3, 3) << 1.3889719780811658e+03, 0., 1.3082529520864737e+03, 0., 1.3889719780811658e+03, 7.5327594486217765e+02, 0., 0., 1.);
 	K_dash = K.clone();
 
 	cv::Mat b;
@@ -32,6 +33,11 @@ EpiGeo::EpiGeo()
 	e_dash_skew = (cv::Mat_<double>(3, 3) << 0.0, -e_dash.at<double>(2), e_dash.at<double>(1), e_dash.at<double>(2), 0.0, -e_dash.at<double>(0), -e_dash.at<double>(1), e_dash.at<double>(0), 0.0);
 	F = e_dash_skew * P_dash * P_plus;
 	F = F / F.at<double>(2, 2);
+	
+	/*std::cout << F.at<double>(0, 0) << ", " << F.at<double>(0, 1) << ", " << F.at<double>(0, 2) << std::endl;
+	std::cout << F.at<double>(1, 0) << ", " << F.at<double>(1, 1) << ", " << F.at<double>(1, 2) << std::endl;
+	std::cout << F.at<double>(2, 0) << ", " << F.at<double>(2, 1) << ", " << F.at<double>(2, 2) << std::endl;*/
+
 }
 
 EpiGeo::~EpiGeo()

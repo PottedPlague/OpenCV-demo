@@ -30,11 +30,11 @@ int simDetector()
 		if (frameL.empty()|frameR.empty())
 			break;
 
-		cvtColor(frameL, threshL, CV_BGR2GRAY);
-		cvtColor(frameR, threshR, CV_BGR2GRAY);
+		cvtColor(frameL, threshL, COLOR_BGR2GRAY);
+		cvtColor(frameR, threshR, COLOR_BGR2GRAY);
 		
-		findContours(threshL, cntL, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
-		findContours(threshR, cntR, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+		findContours(threshL, cntL, cv::RetrievalModes::RETR_LIST, cv::ContourApproximationModes::CHAIN_APPROX_NONE);
+		findContours(threshR, cntR, cv::RetrievalModes::RETR_LIST, cv::ContourApproximationModes::CHAIN_APPROX_NONE);
 		numConL.push_back(cntL.size());
 		numConR.push_back(cntR.size());
 

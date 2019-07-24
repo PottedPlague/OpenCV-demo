@@ -48,7 +48,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{750A78ED-1944-44D4-A109-8A330DE84714}</ProjectGuid>
     <RootNamespace>Playground</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

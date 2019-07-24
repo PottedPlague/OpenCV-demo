@@ -30,7 +30,7 @@ int visualisation3d(cv::String filename, bool plotDot)
 
 int display(std::vector<std::vector<std::vector<double>>> tracks)
 {
-	int lenDispThresh = 30;
+	int lenDispThresh = 50;
 	vtkSmartPointer<vtkRenderer> renderer =
 		vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkRenderWindow> renderWindow =

@@ -11,6 +11,6 @@
 int trackingMain(
 	int maxSeparation = 50, 
 	int maxFrameLoss = 20, 
-	int maxTraceLength = 1800, 
+	int maxTraceLength = 2340, 
 	int idCounter = 100
 );

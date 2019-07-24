@@ -39,7 +39,7 @@
     <ProjectGuid>{E22E9926-9308-42AA-9E1B-4B845F501320}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>bee_tracking</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName>2D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
