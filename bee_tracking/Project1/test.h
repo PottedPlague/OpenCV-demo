@@ -8,6 +8,7 @@
 #include <opencv2/cudaimgproc.hpp>
 #include <opencv2/cudacodec.hpp>
 #include <opencv2/highgui.hpp>
+#include "findEpiLine.h"
 
 int test();
 int masking();

@@ -111,3 +111,9 @@ std::vector<std::vector<std::vector<double>>> vectorReader(cv::String filename)
 	
 	return tracks;
 }
+
+void mouse_callback(int event, int x, int y, int flag, void * param)
+{
+	if (event = cv::EVENT_LBUTTONDBLCLK)
+		std::cout << "(" << x << ", " << y << ")" << std::endl;
+}

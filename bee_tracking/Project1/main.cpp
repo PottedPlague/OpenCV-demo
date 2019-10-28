@@ -34,7 +34,7 @@ int main()
 
 	//return addedMorph();
 	//return masking();
-	//return test();
+	return test();
 	//return getChessboard();
 	//return camCalib();
 	//return findParallel();
@@ -46,8 +46,8 @@ int main()
 	//return simTracker();
 	//return dualCam();
 	//return trackingMain(50,20);
-	//return visualisation3d("D:/gopro_stream/06-06-2019/Session_2/Contours/coor3d.xml", 1);
-	return visualisation3d("D:/gopro_stream/11-07-2019/Session2/Contours/allTracks.xml", 0);
+	//return visualisation3d("D:/gopro_stream/06-06-2019/Session_2/Contours/allTracks.xml", 0);
+	//return visualisation3d("D:/gopro_stream/11-07-2019/Session2/Contours/allTracks.xml", 0);
 	//return imgSeqToAVI();
 
 

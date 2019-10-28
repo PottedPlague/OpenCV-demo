@@ -57,7 +57,7 @@ int test()
 	cv::waitKey(200);
 	return 0;*/
 	////////////////////////////////////////////////////////////////////////////////
-	cv::Mat frame, mask, output;
+	/*cv::Mat frame, mask, output;
 	cv::cuda::GpuMat frame_g, mask_g, output_g;
 	cv::VideoCapture cap;
 	cap.open("D:/gopro_stream/11-07-2019/Session2/Contours/right.avi");
@@ -83,7 +83,7 @@ int test()
 	}
 
 	cv::waitKey(200);
-	return 0;
+	return 0;*/
 	////////////////////////////////////////////////////////////////////////////////
 	/*cv::VideoCapture left, right;
 	left.open("D:/gopro_stream/11-07-2019/Session2/Calibration/chessboard_left.mp4");
@@ -184,6 +184,58 @@ int test()
 		k++;
 	}
 	out.release();
+	cv::waitKey(200);
+	return 0;*/
+	////////////////////////////////////////////////////////////////////////////////
+	/*cv::VideoCapture capL;
+	cv::VideoCapture capR;
+	capL.open("D:/gopro_stream/11-07-2019/Session2/Left/GH010016_synched.mp4");
+	capR.open("D:/gopro_stream/11-07-2019/Session2/Right/GX010017_synched.mp4");
+	cv::Mat frameL, frameR, Rot, Trans;
+	EpiGeo epi;
+
+	for (int i = 0; i < MIN(capL.get(cv::CAP_PROP_FRAME_COUNT), capR.get(cv::CAP_PROP_FRAME_COUNT)); i++)
+	{
+		capL >> frameL;
+		capR >> frameR;
+
+		cv::namedWindow("Left Camera");
+		cv::setMouseCallback("Left Camera", mouse_callback);
+		cv::namedWindow("Right Camera");
+
+		cv::circle(frameL, cv::Point(1131, 1178), 4, cv::Scalar(0, 255, 0), 2);
+		cv::circle(frameL, cv::Point(1527, 1178), 4, cv::Scalar(0, 255, 0), 2);
+		cv::circle(frameL, cv::Point(1058, 1317), 4, cv::Scalar(0, 255, 0), 2);
+		cv::circle(frameL, cv::Point(1582, 1317), 4, cv::Scalar(0, 255, 0), 2);
+
+		cv::circle(frameL, cv::Point(365, 957), 4, cv::Scalar(0, 255, 0), 2);
+		cv::circle(frameL, cv::Point(377, 664), 4, cv::Scalar(0, 255, 0), 2);
+		cv::circle(frameL, cv::Point(1354, 743), 4, cv::Scalar(0, 255, 0), 2);
+
+		Rot = (cv::Mat_<double>(3, 3) << 0, 0, 1., 0, 1. - 10 * 0.005, 0, -1.+14*0.005, 0, 0);
+		epi.setRotationMat(Rot);
+		Trans = (cv::Mat_<double>(3, 1) << -51.47-80*0.04, 0.022+0*0.02, 53.47+0*0.08);
+		epi.setTranslationVec(Trans);
+
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(1131,1178))[0], epi.findEpipolarLine(cv::Point(1131,1178))[1], cv::Scalar(0, 255, 0), 2);
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(1527, 1178))[0], epi.findEpipolarLine(cv::Point(1527, 1178))[1], cv::Scalar(0, 255, 0), 2);
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(1058, 1317))[0], epi.findEpipolarLine(cv::Point(1058, 1317))[1], cv::Scalar(255, 0, 0), 2);
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(1582, 1317))[0], epi.findEpipolarLine(cv::Point(1582, 1317))[1], cv::Scalar(255, 0, 0), 2);
+
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(365, 957))[0], epi.findEpipolarLine(cv::Point(365, 957))[1], cv::Scalar(0, 0, 255), 2);
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(377, 664))[0], epi.findEpipolarLine(cv::Point(377, 664))[1], cv::Scalar(255, 255, 0), 2);
+		cv::line(frameR, epi.findEpipolarLine(cv::Point(1354, 743))[0], epi.findEpipolarLine(cv::Point(1354, 743))[1], cv::Scalar(255, 255, 255), 2);
+
+		cv::resize(frameL, frameL, cv::Size(1920, 1080));
+		cv::resize(frameR, frameR, cv::Size(1920, 1080));
+		cv::imshow("Left Camera", frameL);
+		cv::imshow("Right Camera", frameR);
+
+		if (cv::waitKey(0) == 'e')
+			break;
+	}
+
+	cv::destroyAllWindows();
 	cv::waitKey(200);
 	return 0;*/
 }

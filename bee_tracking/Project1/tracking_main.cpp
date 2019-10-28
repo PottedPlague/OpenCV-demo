@@ -59,6 +59,15 @@ int trackingMain(int maxSeparation, int maxFrameLoss, int maxTraceLength, int id
 	saveVecOfVecOfPoints(coor3d, "D:/gopro_stream/11-07-2019/Session2/Contours/coor3d.xml");
 	saveVecOfVecOfPoints(allTracks, "D:/gopro_stream/11-07-2019/Session2/Contours/allTracks.xml");
 	
+	//////////////////////////////////////////
+	/*std::vector<Track> Tracks50;
+	for (int t = 0; t < allTracks.size(); t++)
+	{
+		if (allTracks[t].trace.size() > 50)
+			Tracks50.push_back(allTracks[t]);
+	}
+	saveVecOfVecOfPoints(Tracks50, "D:/gopro_stream/11-07-2019/Session2/Contours/Tracks50.xml");*/
+	//////////////////////////////////////////
 	visualisation3d("D:/gopro_stream/11-07-2019/Session2/Contours/coor3d.xml", 1);
 	cv::destroyAllWindows();
 	return 0;

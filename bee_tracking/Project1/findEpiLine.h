@@ -6,6 +6,7 @@ class EpiGeo
 public:
 	EpiGeo();
 	~EpiGeo();
+	void update();
 	void setRotationMat(cv::Mat rotation);
 	void setTranslationVec(cv::Mat translation);
 	void setLeftCameraPos(cv::Mat leftCameraPos);
